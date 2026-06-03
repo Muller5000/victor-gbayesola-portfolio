@@ -463,6 +463,10 @@ function handleFormSubmit(event) {
   
   if (!form || !submitBtn) return;
   
+  const name = document.getElementById('contact-name').value;
+  const email = document.getElementById('contact-email').value;
+  const message = document.getElementById('contact-message').value;
+
   // Animate button sending state
   submitBtn.disabled = true;
   submitBtn.style.opacity = '0.7';
@@ -470,8 +474,19 @@ function handleFormSubmit(event) {
   const currentLang = localStorage.getItem('lang') || 'en';
   btnText.textContent = currentLang === 'en' ? "Transmitting..." : "Transmitiendo...";
   
-  // Simulate professional API post request
-  setTimeout(() => {
+  // Real API post request to node backend
+  fetch('/api/contact', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name, email, message })
+  })
+  .then(response => {
+    if (!response.ok) throw new Error('API submission failed');
+    return response.json();
+  })
+  .then(data => {
     successAlert.style.display = 'flex';
     form.reset();
     
@@ -488,7 +503,16 @@ function handleFormSubmit(event) {
         successAlert.style.opacity = '1';
       }, 500);
     }, 4000);
-  }, 1200);
+  })
+  .catch(err => {
+    console.error("Transmission error:", err);
+    btnText.textContent = currentLang === 'en' ? "Error!" : "¡Error!";
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+      btnText.textContent = originalText;
+    }, 2000);
+  });
 }
 
 /* ==========================================================================
