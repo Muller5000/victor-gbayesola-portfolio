@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Finvera Financial Suite</title>
+  <meta name="description" content="Explore Finvera's comprehensive financial tools designed to help you grow, manage, and protect your wealth. Learn about Trade, Loans, and Wealth.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Services Page Specific Styles */
+    .services-deep-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .service-detailed-card {
+      background-color: var(--color-bg-light);
+      border: var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-detailed-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 102, 255, 0.15);
+    }
+
+    .service-media-header {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-media-header.trade { background: linear-gradient(135deg, #eff6ff, #dbeafe); color: var(--color-primary); }
+    .service-media-header.loan { background: linear-gradient(135deg, #f0fdf4, #dcfce7); color: var(--color-success); }
+    .service-media-header.wealth { background: linear-gradient(135deg, #faf5ff, #f3e8ff); color: hsl(270, 100%, 50%); }
+
+    .service-body {
+      padding: 36px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-body h3 {
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+      color: var(--color-text-dark);
+    }
+
+    .service-body p {
+      margin-bottom: 24px;
+      flex-grow: 1;
+      font-size: 0.95rem;
+    }
+
+    /* Timeline Process Styles */
+    .timeline-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 60px auto 0;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      bottom: 30px;
+      width: 4px;
+      background-color: var(--color-primary-light);
+      z-index: 1;
+    }
+
+    .timeline-step {
+      position: relative;
+      display: flex;
+      gap: 30px;
+      margin-bottom: 40px;
+      z-index: 2;
+    }
+
+    .timeline-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-badge {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+      border: 4px solid var(--color-bg-light);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .timeline-step:hover .timeline-badge {
+      background-color: var(--color-primary);
+      color: var(--color-bg-light);
+      transform: scale(1.1);
+    }
+
+    .timeline-content {
+      background-color: var(--color-bg-light);
+      border: var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px 30px;
+      flex-grow: 1;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+      color: var(--color-text-dark);
+    }
+
+    .timeline-content p {
+      font-size: 0.95rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .services-deep-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .timeline-line {
+        left: 20px;
+      }
+      .timeline-badge {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+      }
+      .timeline-step {
+        gap: 16px;
+      }
+    }
+  
+    /* Why Choose Redesign Styles */
+    .why-choose-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .why-choose-header h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: var(--color-text-dark);
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .why-choose-header p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--color-text-muted-dark);
+      margin: 0;
+    }
+
+    .arc-container {
+      width: 100%;
+      margin: 0 0 40px;
+    }
+
+    .arc-container svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .why-choose-body {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .choose-column {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .choose-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .choose-item h3 {
+      font-size: 1.35rem;
+      color: var(--color-text-dark);
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .choose-subtitle {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .choose-item p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--color-text-muted-dark);
+      margin: 0;
+    }
+
+    /* Center Card Styles */
+    .barrel-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 0.76; /* Tall card */
+      clip-path: url(#barrelClip);
+      background: linear-gradient(180deg, #ffedd5 0%, #fecdd3 100%);
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .barrel-card:hover {
+      transform: scale(1.03);
+    }
+
+    .barrel-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 992px) {
+      .why-choose-header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .why-choose-body {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .choose-column {
+        gap: 36px;
+      }
+
+      .barrel-card {
+        max-width: 380px;
+        margin: 0 auto;
+        aspect-ratio: 1; /* Make it more square on mobile/tablet */
+      }
+    }
+</style>
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <header class="site-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="site-logo">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <defs>
+            <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00C2FF" />
+              <stop offset="100%" stop-color="#0066FF" />
+            </linearGradient>
+          </defs>
+          <path d="M18 2 L32 10 V26 L18 34 L4 26 V10 L18 2 Z" fill="rgba(16, 24, 40, 0.6)" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+          <g filter="url(#neonGlow)">
+            <path d="M10 24 Q13 18 11 11 H18.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M11.2 16.5 H16.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M10 24 L16.5 27.5 L24.5 11" stroke="#0066FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="21" cy="16" r="1.2" fill="#00C2FF" />
+            <circle cx="23" cy="21" r="1.2" fill="#00C2FF" />
+          </g>
+        </svg>
+        <span>Finvera</span>
+      </a>
+
+      <button class="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link active">Services</a></li>
+        <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="nav-login">Login</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero Title -->
+  <section class="page-hero">
+    <div class="container animate-fade-in-up">
+      <span class="hero-tagline" style="color: var(--color-primary); background-color: rgba(0, 102, 255, 0.05); border-color: rgba(0, 102, 255, 0.1);">Our Suite</span>
+      <h1>Our Services</h1>
+      <p>Comprehensive financial tools designed to help you grow, manage, and protect your wealth.</p>
+    </div>
+  </section>
+
+  <!-- Services deep dive grid -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="services-deep-grid">
+        <!-- Trade Detailed -->
+        <div class="service-detailed-card animate-fade-in-up">
+          <div class="service-media-header trade">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <div class="service-body">
+            <h3>Finvera Trade</h3>
+            <p>Access global markets with advanced trading tools, real-time data, and zero-commission trades on stocks and crypto.</p>
+            <a href="product-trade.html" class="btn btn-primary" style="margin-top: auto; width: 100%;">Explore Trade</a>
+          </div>
+        </div>
+
+        <!-- Loan Detailed -->
+        <div class="service-detailed-card animate-fade-in-up">
+          <div class="service-media-header loan">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          </div>
+          <div class="service-body">
+            <h3>Finvera Loan</h3>
+            <p>Flexible financing solutions with competitive rates, instant approval, and customized repayment plans for your business.</p>
+            <a href="product-loan.html" class="btn btn-primary" style="margin-top: auto; width: 100%;">Explore Loans</a>
+          </div>
+        </div>
+
+        <!-- Wealth Detailed -->
+        <div class="service-detailed-card animate-fade-in-up">
+          <div class="service-media-header wealth">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="service-body">
+            <h3>Finvera Wealth</h3>
+            <p>Build long-term wealth with expertly managed portfolios, robo-advisors, and personalized investment strategies.</p>
+            <a href="product-wealth.html" class="btn btn-primary" style="margin-top: auto; width: 100%;">Explore Wealth</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Why Choose Finvera section (Redesigned Symmetrical 3-Column Layout) -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <clipPath id="barrelClip" clipPathUnits="objectBoundingBox">
+        <path d="M 0,0.06 Q 0.5,0 1,0.06 L 1,0.94 Q 0.5,1 0,0.94 Z"/>
+      </clipPath>
+    </defs>
+  </svg>
+
+  <section class="section-padding why-choose-section" style="background-color: var(--color-bg-secondary-light); border-top: var(--border-light); border-bottom: var(--border-light); overflow: hidden;">
+    <div class="container">
+      <!-- Header Column Layout -->
+      <div class="why-choose-header animate-fade-in-up">
+        <div class="header-left">
+          <h2>Why Choose Finvera</h2>
+        </div>
+        <div class="header-right">
+          <p>We provide premium, high-performance financial tools designed to give you a clear competitive advantage. Manage wealth, execute trades, and secure capital under a unified framework of expert care, advanced analytics, and top-tier security.</p>
+        </div>
+      </div>
+
+      <!-- Dotted Arc Separator -->
+      <div class="arc-container animate-fade-in-up">
+        <svg viewBox="0 0 1200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,75 Q600,-15 1200,75" stroke="var(--color-primary)" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <!-- Symmetrical 3-Column Content Layout -->
+      <div class="why-choose-body">
+        <!-- Left Column: 2 Features -->
+        <div class="choose-column left-column animate-fade-in-up">
+          <div class="choose-item">
+            <span class="choose-subtitle">Market Insights</span>
+            <h3>Real-Time Analytics</h3>
+            <p>Track your performance with live data feed streams, detailed performance charts, and automated, actionable analytics insights.</p>
+          </div>
+          <div class="choose-item">
+            <span class="choose-subtitle">Professional Advice</span>
+            <h3>Expert Guidance</h3>
+            <p>Access step-by-step video tutorials, premium webinars, and dedicated one-on-one consultation support from certified financial specialists.</p>
+          </div>
+        </div>
+
+        <!-- Middle Column: Barrel Graphic Card -->
+        <div class="choose-column center-column animate-fade-in-up">
+          <div class="barrel-card">
+            <img src="images/why_choose_center.png" alt="Finvera Growth Hub" class="barrel-image">
+          </div>
+        </div>
+
+        <!-- Right Column: 2 Features -->
+        <div class="choose-column right-column animate-fade-in-up">
+          <div class="choose-item">
+            <span class="choose-subtitle">Military-Grade Defense</span>
+            <h3>Bank-Level Security</h3>
+            <p>Your sensitive data, personal profile details, and funds are guarded with military-grade encryption and robust access control protocols.</p>
+          </div>
+          <div class="choose-item">
+            <span class="choose-subtitle">Latency Optimized</span>
+            <h3>Lightning Fast Execution</h3>
+            <p>Execute financial transfers, borrow capital, and invest in asset segments instantly using our latency-optimized transaction engines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section (Timeline) -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Get started on your financial growth journey in four simple steps.</p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+        <!-- Step 1 -->
+        <div class="timeline-step animate-fade-in-up">
+          <div class="timeline-badge">1</div>
+          <div class="timeline-content">
+            <h3>Sign Up</h3>
+            <p>Create your account in minutes and verify your identity securely.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-step animate-fade-in-up">
+          <div class="timeline-badge">2</div>
+          <div class="timeline-content">
+            <h3>Choose Service</h3>
+            <p>Select the right product for you (Trade, Loan, or Wealth portfolio).</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-step animate-fade-in-up">
+          <div class="timeline-badge">3</div>
+          <div class="timeline-content">
+            <h3>Get Started</h3>
+            <p>Follow our guided onboarding process tailored to your experience level.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline-step animate-fade-in-up">
+          <div class="timeline-badge">4</div>
+          <div class="timeline-content">
+            <h3>Grow Wealth</h3>
+            <p>Sit back and watch your money work for you with automated tools and expert support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Action CTA Callout -->
+  <section class="blue-cta">
+    <div class="container animate-fade-in-up">
+      <h2>Ready to Transform Your Finances?</h2>
+      <p>Start with any of our services and upgrade anytime.</p>
+      <a href="signup.html" class="btn btn-white" style="color: var(--color-primary);">Get Started Free</a>
+    </div>
+  </section>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <defs>
+            <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00C2FF" />
+              <stop offset="100%" stop-color="#0066FF" />
+            </linearGradient>
+          </defs>
+          <path d="M18 2 L32 10 V26 L18 34 L4 26 V10 L18 2 Z" fill="rgba(16, 24, 40, 0.6)" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+          <g filter="url(#neonGlow)">
+            <path d="M10 24 Q13 18 11 11 H18.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M11.2 16.5 H16.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M10 24 L16.5 27.5 L24.5 11" stroke="#0066FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="21" cy="16" r="1.2" fill="#00C2FF" />
+            <circle cx="23" cy="21" r="1.2" fill="#00C2FF" />
+          </g>
+        </svg>
+          <span>Finvera</span>
+        </a>
+        <p>Building tomorrow's wealth from today's new beginning.</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Products</h4>
+        <ul class="footer-links">
+          <li><a href="product-trade.html">Finvera Trade</a></li>
+          <li><a href="product-loan.html">Finvera Loan</a></li>
+          <li><a href="product-wealth.html">Finvera Wealth</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2025 Finvera. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

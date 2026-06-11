@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finvera | Financial Solutions Built for Growth</title>
+  <meta name="description" content="Empower your business with intelligent financial tools designed for the modern economy. Trade smarter, borrow better, invest wiser.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Home Page Specific Styles */
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    /* Live Growth Chart Card Widget */
+    .growth-widget {
+      position: relative;
+      background: rgba(30, 41, 59, 0.6);
+      border: var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+      animation: float 6s ease-in-out infinite;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .growth-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .growth-tag {
+      background-color: var(--color-success-bg);
+      color: var(--color-success);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .growth-chart-path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawChart 3s ease-out forwards;
+    }
+
+    .growth-glow-dot {
+      animation: pulseDot 2s infinite;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+      font-weight: 800;
+      color: var(--color-text-light);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--color-text-muted-light);
+    }
+
+    /* Feature Grid Section */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .feature-card {
+      padding: 36px;
+      background: var(--color-bg-light);
+      border: var(--border-light);
+      border-radius: var(--radius-md);
+      transition: var(--transition-smooth);
+    }
+
+    .feature-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-8px);
+      border-color: rgba(0, 102, 255, 0.2);
+    }
+
+    .feature-icon-wrapper {
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .feature-icon-wrapper.blue { background-color: var(--color-primary-light); color: var(--color-primary); }
+    .feature-icon-wrapper.green { background-color: var(--color-success-bg); color: var(--color-success); }
+    .feature-icon-wrapper.red { background-color: var(--color-danger-bg); color: var(--color-danger); }
+    .feature-icon-wrapper.purple { background-color: hsl(270, 100%, 96%); color: hsl(270, 100%, 50%); }
+    .feature-icon-wrapper.orange { background-color: hsl(30, 100%, 96%); color: var(--color-warning); }
+
+    .feature-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+      color: var(--color-text-dark);
+    }
+
+    /* Core Product Cards */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .product-card {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+      border: var(--border-light);
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-bg-light);
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .product-card-body {
+      padding: 40px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+
+    .product-card p {
+      margin-bottom: 30px;
+      flex-grow: 1;
+    }
+
+    .product-card-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* Trust Section Side Layout */
+    .trust-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .trust-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .trust-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .trust-icon {
+      flex-shrink: 0;
+      color: var(--color-primary);
+    }
+
+    .trust-item h4 {
+      font-size: 1rem;
+      color: var(--color-text-light);
+      margin-bottom: 4px;
+    }
+
+    .trust-item p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted-light);
+    }
+
+    /* Keyframe Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes drawChart {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.4; }
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+
+    .section-header h2 {
+      margin-bottom: 16px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .hero-layout, .trust-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .features-grid, .products-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+  
+    /* Why Choose Redesign Styles */
+    .why-choose-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .why-choose-header h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: var(--color-text-dark);
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .why-choose-header p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--color-text-muted-dark);
+      margin: 0;
+    }
+
+    .arc-container {
+      width: 100%;
+      margin: 0 0 40px;
+    }
+
+    .arc-container svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .why-choose-body {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .choose-column {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .choose-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .choose-item h3 {
+      font-size: 1.35rem;
+      color: var(--color-text-dark);
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .choose-subtitle {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .choose-item p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--color-text-muted-dark);
+      margin: 0;
+    }
+
+    /* Center Card Styles */
+    .barrel-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 0.76; /* Tall card */
+      clip-path: url(#barrelClip);
+      background: linear-gradient(180deg, #ffedd5 0%, #fecdd3 100%);
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .barrel-card:hover {
+      transform: scale(1.03);
+    }
+
+    .barrel-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 992px) {
+      .why-choose-header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .why-choose-body {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .choose-column {
+        gap: 36px;
+      }
+
+      .barrel-card {
+        max-width: 380px;
+        margin: 0 auto;
+        aspect-ratio: 1; /* Make it more square on mobile/tablet */
+      }
+    }
+</style>
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <header class="site-header dark">
+    <div class="container nav-container">
+      <a href="index.html" class="site-logo">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <defs>
+            <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00C2FF" />
+              <stop offset="100%" stop-color="#0066FF" />
+            </linearGradient>
+          </defs>
+          <path d="M18 2 L32 10 V26 L18 34 L4 26 V10 L18 2 Z" fill="rgba(16, 24, 40, 0.6)" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+          <g filter="url(#neonGlow)">
+            <path d="M10 24 Q13 18 11 11 H18.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M11.2 16.5 H16.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M10 24 L16.5 27.5 L24.5 11" stroke="#0066FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="21" cy="16" r="1.2" fill="#00C2FF" />
+            <circle cx="23" cy="21" r="1.2" fill="#00C2FF" />
+          </g>
+        </svg>
+        <span>Finvera</span>
+      </a>
+
+      <button class="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="nav-login">Login</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient section-padding">
+    <div class="container hero-layout">
+      <div class="hero-content">
+        <span class="hero-tagline">Trusted by 50,000+ businesses worldwide</span>
+        <h1 class="hero-title">Financial Solutions<br><span style="color: var(--color-primary);">Built for Growth</span></h1>
+        <p class="hero-subtitle">Empower your business with intelligent financial tools designed for the modern economy. Trade smarter, borrow better, invest wiser.</p>
+        <div class="hero-actions">
+          <a href="signup.html" class="btn btn-primary">Get Started Free</a>
+          <a href="services.html" class="btn btn-outline" style="border-color: rgba(255,255,255,0.2); color: white;">Explore Services</a>
+        </div>
+
+        <!-- Animated Stats Counter Row -->
+        <div class="stats-row">
+          <div>
+            <div class="stat-number" data-target="50K+">0</div>
+            <div class="stat-label">Active Clients</div>
+          </div>
+          <div>
+            <div class="stat-number" data-target="$1.0M+">0</div>
+            <div class="stat-label">Processed</div>
+          </div>
+          <div>
+            <div class="stat-number" data-target="99%">0</div>
+            <div class="stat-label">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Growth Chart Interactive SVG -->
+      <div class="growth-widget animate-fade-in-up">
+        <div class="growth-header">
+          <div>
+            <h4 style="color: var(--color-text-light); margin-bottom: 4px;">Portfolio Growth</h4>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted-light);">Aggressive AI allocation strategy</p>
+          </div>
+          <div class="growth-tag">+24.5%</div>
+        </div>
+        <div style="width: 100%; height: 200px;">
+          <svg viewBox="0 0 400 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0066FF" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#0066FF" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- Grid Lines -->
+            <line x1="0" y1="50" x2="400" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <line x1="0" y1="150" x2="400" y2="150" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <!-- Chart Area Filled Gradient -->
+            <path d="M 0 170 C 50 160, 100 130, 150 110 C 200 90, 250 50, 300 65 C 350 80, 370 20, 400 25 L 400 200 L 0 200 Z" fill="url(#chartGradient)"/>
+            <!-- Chart Stroke Line -->
+            <path class="growth-chart-path" d="M 0 170 C 50 160, 100 130, 150 110 C 200 90, 250 50, 300 65 C 350 80, 370 20, 400 25" fill="none" stroke="#0066FF" stroke-width="4" stroke-linecap="round"/>
+            <!-- Glowing Endpoint Dot -->
+            <circle cx="400" cy="25" r="8" fill="#0066FF" fill-opacity="0.3" class="growth-glow-dot"/>
+            <circle cx="400" cy="25" r="4" fill="#0066FF"/>
+          </svg>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 15px; font-size: 0.75rem; color: var(--color-text-muted-light);">
+          <span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Nov</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Features Grid Section (Redesigned Symmetrical 3-Column Layout) -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <clipPath id="barrelClip" clipPathUnits="objectBoundingBox">
+        <path d="M 0,0.06 Q 0.5,0 1,0.06 L 1,0.94 Q 0.5,1 0,0.94 Z"/>
+      </clipPath>
+    </defs>
+  </svg>
+
+  <section class="section-padding why-choose-section" style="background-color: var(--color-bg-secondary-light); border-top: var(--border-light); border-bottom: var(--border-light); overflow: hidden;">
+    <div class="container">
+      <!-- Header Column Layout -->
+      <div class="why-choose-header animate-fade-in-up">
+        <div class="header-left">
+          <h2>Why Choose Finvera?</h2>
+        </div>
+        <div class="header-right">
+          <p>We provide a best-in-class digital asset suite with safety guarantees. Everything you need to manage, grow, and protect your financial future in one unified, high-performance platform. We never compromise on security, execution speed, or client success.</p>
+        </div>
+      </div>
+
+      <!-- Dotted Arc Separator -->
+      <div class="arc-container animate-fade-in-up">
+        <svg viewBox="0 0 1200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,75 Q600,-15 1200,75" stroke="var(--color-primary)" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <!-- Symmetrical 3-Column Content Layout -->
+      <div class="why-choose-body">
+        <!-- Left Column: 2 Features -->
+        <div class="choose-column left-column animate-fade-in-up">
+          <div class="choose-item">
+            <span class="choose-subtitle">Military-Grade Defense</span>
+            <h3>Bank-Grade Security</h3>
+            <p>Our platform uses 256-bit AES encryption and multi-factor authentication to keep your assets and data completely protected from threats.</p>
+          </div>
+          <div class="choose-item">
+            <span class="choose-subtitle">Milliseconds Count</span>
+            <h3>Lightning Fast Latency</h3>
+            <p>Execute trades, disburse business loans, and run portfolio reallocations instantly with our ultra-optimized trade matching engine.</p>
+          </div>
+        </div>
+
+        <!-- Middle Column: Barrel Graphic Card -->
+        <div class="choose-column center-column animate-fade-in-up">
+          <div class="barrel-card">
+            <img src="images/why_choose_center.png" alt="Finvera Security Hub" class="barrel-image">
+          </div>
+        </div>
+
+        <!-- Right Column: 2 Features -->
+        <div class="choose-column right-column animate-fade-in-up">
+          <div class="choose-item">
+            <span class="choose-subtitle">Your Portfolio in Focus</span>
+            <h3>Real-Time Analytics</h3>
+            <p>Monitor your net worth, check live currency rates, and run interactive wealth allocator projections with zero delays.</p>
+          </div>
+          <div class="choose-item">
+            <span class="choose-subtitle">Border-Free Finance</span>
+            <h3>Global Access</h3>
+            <p>Trade, deposit, and invest across 150+ countries with support for 40+ fiat currencies and instant localized payouts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Products Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Core Products</h2>
+        <p>Tailored financial products designed to support you at every phase of your journey.</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Trade -->
+        <div class="product-card">
+          <div style="background-color: var(--color-primary-light); height: 180px; display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </div>
+          <div class="product-card-body">
+            <h3>Finvera Trade</h3>
+            <p>Access global markets with advanced trading tools, real-time data, and zero-commission trades on stocks and crypto.</p>
+            <a href="product-trade.html" class="product-card-link">
+              <span>Learn More</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Loan -->
+        <div class="product-card">
+          <div style="background-color: var(--color-success-bg); height: 180px; display: flex; align-items: center; justify-content: center; color: var(--color-success);">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          </div>
+          <div class="product-card-body">
+            <h3>Finvera Loan</h3>
+            <p>Flexible financing solutions with competitive rates, instant approval, and customized repayment plans for your business.</p>
+            <a href="product-loan.html" class="product-card-link">
+              <span>Learn More</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Wealth -->
+        <div class="product-card">
+          <div style="background-color: hsl(270, 100%, 96%); height: 180px; display: flex; align-items: center; justify-content: center; color: hsl(270, 100%, 50%);">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="product-card-body">
+            <h3>Finvera Wealth</h3>
+            <p>Build long-term wealth with expertly managed portfolios, robo-advisors, and personalized investment strategies.</p>
+            <a href="product-wealth.html" class="product-card-link">
+              <span>Learn More</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="section-padding" style="background-color: var(--color-bg-dark); color: var(--color-text-light);">
+    <div class="container trust-layout">
+      <div>
+        <h2 style="margin-bottom: 20px;">Built on Trust, Powered by Innovation</h2>
+        <p style="color: var(--color-text-muted-light); margin-bottom: 30px;">Finvera combines cutting-edge technology with decades of financial expertise to deliver a platform you can trust. Your success is our mission.</p>
+        
+        <div class="trust-items">
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>SEC Registered</h4>
+              <p>Fully compliant with regulatory standards.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>FDIC Insured</h4>
+              <p>Funds insured up to $250,000 maximum.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>SOC 2 Certified</h4>
+              <p>Highest standards of information safety.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>99.99% Uptime</h4>
+              <p>Constant reliability when you need it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!-- Visual Shield/Network Graph Illustration -->
+        <div style="background: rgba(255,255,255,0.03); border: var(--border-dark); border-radius: var(--radius-lg); padding: 40px; text-align: center;">
+          <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#0066FF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 30px; filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0.4));">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <h3 style="margin-bottom: 12px;">Secure Vaulting</h3>
+          <p style="color: var(--color-text-muted-light); font-size: 0.95rem; max-width: 320px; margin: 0 auto;">Your data is locked down with multi-layer hardware security modules and distributed ledgers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding" style="text-align: center; background-color: var(--color-bg-secondary-light);">
+    <div class="container" style="max-width: 700px;">
+      <h2 style="margin-bottom: 20px;">Ready to Transform Your Finances?</h2>
+      <p style="margin-bottom: 40px;">Join thousands of businesses already growing with Finvera. Start your journey today with a free account.</p>
+      <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
+        <a href="signup.html" class="btn btn-primary">Create Free Account</a>
+        <a href="contact.html" class="btn btn-white">Talk to Sales</a>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--color-text-muted-dark);">No credit card required &bull; Cancel Anytime</p>
+    </div>
+  </section>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <defs>
+            <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00C2FF" />
+              <stop offset="100%" stop-color="#0066FF" />
+            </linearGradient>
+          </defs>
+          <path d="M18 2 L32 10 V26 L18 34 L4 26 V10 L18 2 Z" fill="rgba(16, 24, 40, 0.6)" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+          <g filter="url(#neonGlow)">
+            <path d="M10 24 Q13 18 11 11 H18.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M11.2 16.5 H16.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M10 24 L16.5 27.5 L24.5 11" stroke="#0066FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="21" cy="16" r="1.2" fill="#00C2FF" />
+            <circle cx="23" cy="21" r="1.2" fill="#00C2FF" />
+          </g>
+        </svg>
+          <span>Finvera</span>
+        </a>
+        <p>Building tomorrow's wealth from today's new beginning.</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Products</h4>
+        <ul class="footer-links">
+          <li><a href="product-trade.html">Finvera Trade</a></li>
+          <li><a href="product-loan.html">Finvera Loan</a></li>
+          <li><a href="product-wealth.html">Finvera Wealth</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2025 Finvera. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

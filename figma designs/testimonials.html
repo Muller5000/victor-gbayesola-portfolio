@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success Stories | Finvera Testimonials</title>
+  <meta name="description" content="Real people, real results. See reviews, rating statistics, and testimonials from business owners, retirees, graduates, and professionals using Finvera.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Testimonials Page Specific Styles */
+    .stats-card-block {
+      background-color: var(--color-bg-secondary-light);
+      border-radius: var(--radius-lg);
+      padding: 50px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      text-align: center;
+      margin-bottom: 80px;
+      border: var(--border-light);
+    }
+
+    .stats-card-block h3 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .stats-card-block p {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-text-dark);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .review-card {
+      background-color: var(--color-bg-light);
+      border: var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 36px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    .review-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+      border-color: rgba(0, 102, 255, 0.15);
+    }
+
+    .stars-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+      color: #fbbf24; /* Star Gold */
+    }
+
+    .review-quote {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--color-text-dark);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+
+    .reviewer-profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .reviewer-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-primary-light), #dbeafe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 1.1rem;
+      border: 2px solid white;
+      box-shadow: var(--shadow-sm);
+      object-fit: cover;
+    }
+
+    .reviewer-info h4 {
+      font-size: 1rem;
+      color: var(--color-text-dark);
+      margin-bottom: 2px;
+    }
+
+    .reviewer-info p {
+      font-size: 0.8rem;
+      color: var(--color-text-muted-dark);
+    }
+
+    /* Buffett Quote Box styling */
+    .buffett-section {
+      background-color: var(--color-bg-secondary-light);
+      border-top: var(--border-light);
+      border-bottom: var(--border-light);
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .buffett-quote {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      font-weight: 600;
+      color: var(--color-text-dark);
+      max-width: 800px;
+      margin: 0 auto 20px;
+      line-height: 1.4;
+    }
+
+    .buffett-author {
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .stats-card-block {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 30px;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .stats-card-block {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <header class="site-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="site-logo">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <defs>
+            <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00C2FF" />
+              <stop offset="100%" stop-color="#0066FF" />
+            </linearGradient>
+          </defs>
+          <path d="M18 2 L32 10 V26 L18 34 L4 26 V10 L18 2 Z" fill="rgba(16, 24, 40, 0.6)" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+          <g filter="url(#neonGlow)">
+            <path d="M10 24 Q13 18 11 11 H18.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M11.2 16.5 H16.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M10 24 L16.5 27.5 L24.5 11" stroke="#0066FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="21" cy="16" r="1.2" fill="#00C2FF" />
+            <circle cx="23" cy="21" r="1.2" fill="#00C2FF" />
+          </g>
+        </svg>
+        <span>Finvera</span>
+      </a>
+
+      <button class="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="testimonials.html" class="nav-link active">Testimonials</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="nav-login">Login</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero Title -->
+  <section class="page-hero">
+    <div class="container animate-fade-in-up">
+      <span class="hero-tagline" style="color: var(--color-primary); background-color: rgba(0, 102, 255, 0.05); border-color: rgba(0, 102, 255, 0.1);">Success Stories</span>
+      <h1>Real People, Real Results</h1>
+      <p>See how Finvera has helped thousands rebuild their financial future and scale their operations.</p>
+    </div>
+  </section>
+
+  <!-- Statistics Block & Testimonials Grid -->
+  <section class="section-padding">
+    <div class="container">
+      <!-- 4 Stats elements block -->
+      <div class="stats-card-block animate-fade-in-up">
+        <div>
+          <h3 data-target="50K+">0</h3>
+          <p>Active Users</p>
+        </div>
+        <div>
+          <h3 data-target="$2.5B+">0</h3>
+          <p>Assets Under Management</p>
+        </div>
+        <div>
+          <h3 data-target="4.9/5">0</h3>
+          <p>Average Rating</p>
+        </div>
+        <div>
+          <h3 data-target="98%">0</h3>
+          <p>Customer Satisfaction</p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <h2>What Our Users Say</h2>
+        <p>Stories of growth, security, and success from our diverse global community.</p>
+      </div>
+
+      <!-- Testimonial Grid -->
+      <div class="reviews-grid">
+        <!-- Card 1: Tony Cruz -->
+        <div class="review-card animate-fade-in-up">
+          <div class="stars-row">
+            &#9733;&#9733;&#9733;&#9733;&#9733;
+          </div>
+          <p class="review-quote">"Finvera helped me rebuild my finances after my business struggled during the pandemic. The loan program gave me the capital I needed, and the trading tools helped me grow my savings. I'm finally seeing progress."</p>
+          <div class="reviewer-profile">
+            <img class="reviewer-avatar" src="images/user_tony.png" alt="Tony Cruz">
+            <div class="reviewer-info">
+              <h4>Tony Cruz</h4>
+              <p>Small Business Owner</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Michael Chen -->
+        <div class="review-card animate-fade-in-up">
+          <div class="stars-row">
+            &#9733;&#9733;&#9733;&#9733;&#9733;
+          </div>
+          <p class="review-quote">"As someone with zero trading experience, I was nervous about investing. Finvera's guided tutorials and simple interface made it easy to learn. I made my first successful trade within a week!"</p>
+          <div class="reviewer-profile">
+            <img class="reviewer-avatar" src="images/user_michael.png" alt="Michael Chen">
+            <div class="reviewer-info">
+              <h4>Michael Chen</h4>
+              <p>Recent Graduate</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Sarah Thompson -->
+        <div class="review-card animate-fade-in-up">
+          <div class="stars-row">
+            &#9733;&#9733;&#9733;&#9733;&#9733;
+          </div>
+          <p class="review-quote">"The transparency at Finvera is refreshing. No hidden fees, clear explanations, and excellent customer support. They actually care about helping you succeed, not just making money off you."</p>
+          <div class="reviewer-profile">
+            <img class="reviewer-avatar" src="images/user_sarah.png" alt="Sarah Thompson">
+            <div class="reviewer-info">
+              <h4>Sarah Thompson</h4>
+              <p>Career Changer</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: David Rodriguez -->
+        <div class="review-card animate-fade-in-up">
+          <div class="stars-row">
+            &#9733;&#9733;&#9733;&#9733;&#9733;
+          </div>
+          <p class="review-quote">"Finvera Wealth has been a game-changer for my irregular income. The automated investing helps me save consistently, even when client payments vary. My portfolio has grown 23% this year."</p>
+          <div class="reviewer-profile">
+            <img class="reviewer-avatar" src="images/user_david.png" alt="David Rodriguez">
+            <div class="reviewer-info">
+              <h4>David Rodriguez</h4>
+              <p>Freelance Designer</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Emily Washington -->
+        <div class="review-card animate-fade-in-up">
+          <div class="stars-row">
+            &#9733;&#9733;&#9733;&#9733;&#9733;
+          </div>
+          <p class="review-quote">"I love how Finvera makes complex financial concepts simple. The educational content is top-notch, and the community forum is incredibly supportive. It feels like having a financial advisor in your pocket."</p>
+          <div class="reviewer-profile">
+            <img class="reviewer-avatar" src="images/user_emily.png" alt="Emily Washington">
+            <div class="reviewer-info">
+              <h4>Emily Washington</h4>
+              <p>Teacher</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: James Kim -->
+        <div class="review-card animate-fade-in-up">
+          <div class="stars-row">
+            &#9733;&#9733;&#9733;&#9733;&#9733;
+          </div>
+          <p class="review-quote">"After retiring, I needed to make my savings work harder. Finvera's personalized support helped me create a strategy that fits my risk tolerance. I'm earning more than I ever did with traditional banks."</p>
+          <div class="reviewer-profile">
+            <img class="reviewer-avatar" src="images/user_james.png" alt="James Kim">
+            <div class="reviewer-info">
+              <h4>James Kim</h4>
+              <p>Retired Veteran</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warren Buffett quote section -->
+  <section class="buffett-section">
+    <div class="container animate-fade-in-up">
+      <div class="buffett-quote">"Opportunities come infrequently. When it rains gold, put out the bucket, not the thimble."</div>
+      <div class="buffett-author">- Warren Buffett</div>
+    </div>
+  </section>
+
+  <!-- CTA section -->
+  <section class="blue-cta">
+    <div class="container animate-fade-in-up">
+      <h2>Your comeback deserves more than luck, it deserves Finvera.</h2>
+      <p>Let Finvera be the ally you've been looking for.</p>
+      <a href="signup.html" class="btn btn-white" style="color: var(--color-primary);">Join Finvera Today</a>
+    </div>
+  </section>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <defs>
+            <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00C2FF" />
+              <stop offset="100%" stop-color="#0066FF" />
+            </linearGradient>
+          </defs>
+          <path d="M18 2 L32 10 V26 L18 34 L4 26 V10 L18 2 Z" fill="rgba(16, 24, 40, 0.6)" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+          <g filter="url(#neonGlow)">
+            <path d="M10 24 Q13 18 11 11 H18.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M11.2 16.5 H16.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M10 24 L16.5 27.5 L24.5 11" stroke="#0066FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="21" cy="16" r="1.2" fill="#00C2FF" />
+            <circle cx="23" cy="21" r="1.2" fill="#00C2FF" />
+          </g>
+        </svg>
+          <span>Finvera</span>
+        </a>
+        <p>Building tomorrow's wealth from today's new beginning.</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Products</h4>
+        <ul class="footer-links">
+          <li><a href="product-trade.html">Finvera Trade</a></li>
+          <li><a href="product-loan.html">Finvera Loan</a></li>
+          <li><a href="product-wealth.html">Finvera Wealth</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2025 Finvera. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

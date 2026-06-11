@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finvera Wealth | AI-Optimized Wealth Portfolios</title>
+  <meta name="description" content="Build wealth on autopilot with Finvera's automated, AI-powered investing platform. Tailored risk portfolios with low fees and high diversification.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Wealth Page Specific Styles */
+    .wealth-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .key-info-card {
+      background-color: var(--color-bg-light);
+      border: var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .key-info-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+      color: var(--color-text-dark);
+      text-align: center;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-label {
+      color: var(--color-text-muted-dark);
+      font-weight: 500;
+    }
+
+    .info-value {
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* Strategy Allocator Styles */
+    .strategy-section {
+      background-color: var(--color-bg-secondary-light);
+      border-top: var(--border-light);
+      border-bottom: var(--border-light);
+    }
+
+    .allocator-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .strategy-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .strategy-option {
+      background-color: var(--color-bg-light);
+      border: var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px 30px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .strategy-option:hover {
+      border-color: rgba(0, 102, 255, 0.2);
+      transform: translateX(4px);
+    }
+
+    .strategy-option.active {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-md);
+      background: linear-gradient(90deg, var(--color-bg-light) 0%, var(--color-primary-light) 100%);
+    }
+
+    .strategy-option h3 {
+      font-size: 1.25rem;
+      color: var(--color-text-dark);
+      margin-bottom: 6px;
+    }
+
+    .strategy-tag-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .strategy-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+    }
+
+    .strategy-tag.risk-low { background-color: var(--color-success-bg); color: var(--color-success); }
+    .strategy-tag.risk-med { background-color: hsl(38, 92%, 95%); color: var(--color-warning); }
+    .strategy-tag.risk-high { background-color: var(--color-danger-bg); color: var(--color-danger); }
+    
+    .strategy-tag.ret-5 { background-color: var(--color-primary-light); color: var(--color-primary); }
+
+    .chart-visual-box {
+      background-color: var(--color-bg-light);
+      border: var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pie-svg-container {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin-bottom: 30px;
+    }
+
+    .pie-segment {
+      transition: stroke-dasharray 0.8s ease-in-out, stroke-dashoffset 0.8s ease-in-out;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    .legend-box {
+      display: flex;
+      gap: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-color {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+    }
+
+    /* Goals Matching Section */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .goal-card {
+      background-color: var(--color-bg-light);
+      border: var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      text-align: center;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .goal-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+
+    .goal-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .goal-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+      color: var(--color-text-dark);
+    }
+
+    .goal-timeline {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .goal-allocation {
+      font-size: 0.9rem;
+      color: var(--color-text-muted-dark);
+      background-color: var(--color-bg-secondary-light);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      display: inline-block;
+    }
+
+    /* Stats Grid Column Counter Row */
+    .wealth-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      border-top: var(--border-light);
+      padding-top: 60px;
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .wealth-stat-item h3 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--color-primary);
+      margin-bottom: 6px;
+    }
+
+    .wealth-stat-item p {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-text-dark);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .wealth-hero-grid, .allocator-box {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .goals-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .wealth-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .goals-grid {
+        grid-template-columns: 1fr;
+      }
+      .wealth-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <header class="site-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="site-logo">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <defs>
+            <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00C2FF" />
+              <stop offset="100%" stop-color="#0066FF" />
+            </linearGradient>
+          </defs>
+          <path d="M18 2 L32 10 V26 L18 34 L4 26 V10 L18 2 Z" fill="rgba(16, 24, 40, 0.6)" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+          <g filter="url(#neonGlow)">
+            <path d="M10 24 Q13 18 11 11 H18.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M11.2 16.5 H16.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M10 24 L16.5 27.5 L24.5 11" stroke="#0066FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="21" cy="16" r="1.2" fill="#00C2FF" />
+            <circle cx="23" cy="21" r="1.2" fill="#00C2FF" />
+          </g>
+        </svg>
+        <span>Finvera</span>
+      </a>
+
+      <button class="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="nav-login">Login</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero Title -->
+  <section class="page-hero" style="padding-bottom: 50px;">
+    <div class="container wealth-hero-grid">
+      <div class="hero-content" style="text-align: left;">
+        <span class="hero-tagline" style="color: var(--color-primary); background-color: rgba(0, 102, 255, 0.05); border-color: rgba(0, 102, 255, 0.1);">Finvera Wealth</span>
+        <h1 style="line-height: 1.2; margin-bottom: 20px;">Build Wealth<br>on Autopilot</h1>
+        <p style="margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; color: var(--color-text-muted-dark);">Automated wealth management powered by AI. Grow your money effortlessly with diversified portfolios optimized for your specific goals.</p>
+        <div class="hero-actions" style="justify-content: flex-start;">
+          <a href="signup.html" class="btn btn-primary">Start Investing</a>
+          <a href="#strategy-allocator" class="btn btn-outline">View Portfolios</a>
+        </div>
+      </div>
+
+      <!-- Right Side Info Box Card -->
+      <div class="key-info-card animate-fade-in-up">
+        <h3>Why Finvera Wealth?</h3>
+        <div class="info-row">
+          <span class="info-label">Minimum Investment</span>
+          <span class="info-value">$100</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Management Fee</span>
+          <span class="info-value">0.25%</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Average Returns</span>
+          <span class="info-value">8-10%</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Portfolio Types</span>
+          <span class="info-value">15+</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Features Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <h2>Smart Features for Smarter Investing</h2>
+        <p>Advanced technology meets simple investing to maximize your wealth growth.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3>Automated Investing</h3>
+          <p>Set up recurring deposits, auto-invest cash balances, and let our system handle the rest.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Goal-Based Planning</h3>
+          <p>Create separate accounts for retirement, a house deposit, or college funds, each with targeted timelines.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3>Portfolio Optimization</h3>
+          <p>Our algorithms continuously balance assets to maintain your target risk profile, boosting returns.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper orange">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Tax Efficiency</h3>
+          <p>Benefit from tax-loss harvesting and tax-optimized asset placement to keep more of your earnings.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Diversification</h3>
+          <p>Assets spread across global stocks, bonds, real estate, and municipal funds to shelter against shocks.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Expert Guidance</h3>
+          <p>Connect with a certified financial planner for personalized advice and financial reviews.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Portfolio Risk Allocator -->
+  <section id="strategy-allocator" class="section-padding strategy-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Choose Your Investment Strategy</h2>
+        <p>Managed portfolios aligned with your risk profile. Toggle options to view asset distributions.</p>
+      </div>
+
+      <div class="allocator-box">
+        <!-- Selector buttons column -->
+        <div class="strategy-selector animate-fade-in-up">
+          <!-- Conservative -->
+          <div class="strategy-option" onclick="setActiveStrategy('conservative')">
+            <div class="strategy-tag-row">
+              <span class="strategy-tag risk-low">Low Risk</span>
+              <span class="strategy-tag ret-5">5-7% Expected Returns</span>
+            </div>
+            <h3>Conservative Portfolio</h3>
+            <p>Perfect for capital preservation with reliable, steady growth and low volatility.</p>
+          </div>
+
+          <!-- Balanced -->
+          <div class="strategy-option active" onclick="setActiveStrategy('balanced')">
+            <div class="strategy-tag-row">
+              <span class="strategy-tag risk-med">Moderate Risk</span>
+              <span class="strategy-tag ret-5" style="background-color: var(--color-success-bg); color: var(--color-success);">8-10% Expected Returns</span>
+            </div>
+            <h3>Balanced Portfolio</h3>
+            <p>The sweet spot between long-term capital growth and index shelter stability.</p>
+          </div>
+
+          <!-- Aggressive -->
+          <div class="strategy-option" onclick="setActiveStrategy('aggressive')">
+            <div class="strategy-tag-row">
+              <span class="strategy-tag risk-high">High Risk</span>
+              <span class="strategy-tag ret-5" style="background-color: var(--color-danger-bg); color: var(--color-danger);">12-15% Expected Returns</span>
+            </div>
+            <h3>Aggressive Portfolio</h3>
+            <p>Maximum capital appreciation potential with a high exposure to stocks and growth equities.</p>
+          </div>
+        </div>
+
+        <!-- Interactive SVG Pie Chart Display Box -->
+        <div class="chart-visual-box animate-fade-in-up">
+          <h3 id="chartStrategyTitle" style="color: var(--color-text-dark); margin-bottom: 24px;">Balanced Allocation</h3>
+          
+          <div class="pie-svg-container">
+            <svg viewBox="0 0 36 36" width="100%" height="100%">
+              <!-- Circular background grey ring -->
+              <circle cx="18" cy="18" r="15.915" fill="none" stroke="#f1f5f9" stroke-width="4"/>
+              
+              <!-- Primary Stocks slice (Blue) -->
+              <circle id="sliceStocks" class="pie-segment" cx="18" cy="18" r="15.915" fill="none" stroke="#0066FF" stroke-width="4.2" stroke-dasharray="60 40" stroke-dashoffset="0"/>
+              
+              <!-- Secondary Bonds slice (Green) -->
+              <circle id="sliceBonds" class="pie-segment" cx="18" cy="18" r="15.915" fill="none" stroke="#10b981" stroke-width="4.2" stroke-dasharray="40 60" stroke-dashoffset="-60"/>
+            </svg>
+          </div>
+
+          <!-- Legend metrics -->
+          <div class="legend-box">
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #0066FF;"></div>
+              <span id="labelStocks">Stocks: 60%</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #10b981;"></div>
+              <span id="labelBonds">Bonds: 40%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Match Portfolio to Goals section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <h2>Match Your Portfolio to Your Goals</h2>
+        <p>We configure allocations to match your specific timeline and risk requirements.</p>
+      </div>
+
+      <div class="goals-grid">
+        <!-- Goal 1 -->
+        <div class="goal-card animate-fade-in-up">
+          <div class="goal-icon">🏖️</div>
+          <h3>Retirement</h3>
+          <div class="goal-timeline">20-30 Years Horizon</div>
+          <div class="goal-allocation">Balanced Portfolio</div>
+        </div>
+
+        <!-- Goal 2 -->
+        <div class="goal-card animate-fade-in-up">
+          <div class="goal-icon">🏠</div>
+          <h3>Home Purchase</h3>
+          <div class="goal-timeline">3-7 Years Horizon</div>
+          <div class="goal-allocation">Conservative Portfolio</div>
+        </div>
+
+        <!-- Goal 3 -->
+        <div class="goal-card animate-fade-in-up">
+          <div class="goal-icon">🎓</div>
+          <h3>Education Fund</h3>
+          <div class="goal-timeline">10-18 Years Horizon</div>
+          <div class="goal-allocation">Balanced Portfolio</div>
+        </div>
+
+        <!-- Goal 4 -->
+        <div class="goal-card animate-fade-in-up">
+          <div class="goal-icon">💰</div>
+          <h3>Wealth Building</h3>
+          <div class="goal-timeline">15+ Years Horizon</div>
+          <div class="goal-allocation">Aggressive Portfolio</div>
+        </div>
+      </div>
+
+      <!-- Process timeline summary steps -->
+      <div class="wealth-stats-grid">
+        <div class="wealth-stat-item">
+          <h3 data-target="$2.5B+">0</h3>
+          <p>Assets Managed</p>
+        </div>
+        <div class="wealth-stat-item">
+          <h3 data-target="50K+">0</h3>
+          <p>Active Investors</p>
+        </div>
+        <div class="wealth-stat-item">
+          <h3 data-target="8.7%">0</h3>
+          <p>Avg. Annual Return</p>
+        </div>
+        <div class="wealth-stat-item">
+          <h3 data-target="0.25%">0</h3>
+          <p>Management Fee</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA section -->
+  <section class="blue-cta">
+    <div class="container animate-fade-in-up">
+      <h2>Start Building Your Wealth Today</h2>
+      <p>Join thousands of smart investors growing their wealth on autopilot with Finvera.</p>
+      <a href="signup.html" class="btn btn-white" style="color: var(--color-primary);">Open Your Account</a>
+    </div>
+  </section>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <defs>
+            <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00C2FF" />
+              <stop offset="100%" stop-color="#0066FF" />
+            </linearGradient>
+          </defs>
+          <path d="M18 2 L32 10 V26 L18 34 L4 26 V10 L18 2 Z" fill="rgba(16, 24, 40, 0.6)" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+          <g filter="url(#neonGlow)">
+            <path d="M10 24 Q13 18 11 11 H18.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M11.2 16.5 H16.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M10 24 L16.5 27.5 L24.5 11" stroke="#0066FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="21" cy="16" r="1.2" fill="#00C2FF" />
+            <circle cx="23" cy="21" r="1.2" fill="#00C2FF" />
+          </g>
+        </svg>
+          <span>Finvera</span>
+        </a>
+        <p>Building tomorrow's wealth from today's new beginning.</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Products</h4>
+        <ul class="footer-links">
+          <li><a href="product-trade.html">Finvera Trade</a></li>
+          <li><a href="product-loan.html">Finvera Loan</a></li>
+          <li><a href="product-wealth.html">Finvera Wealth</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2025 Finvera. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Asset Allocation Data definitions
+    const allocations = {
+      conservative: {
+        title: 'Conservative Allocation',
+        stocks: 30,
+        bonds: 70
+      },
+      balanced: {
+        title: 'Balanced Allocation',
+        stocks: 60,
+        bonds: 40
+      },
+      aggressive: {
+        title: 'Aggressive Allocation',
+        stocks: 90,
+        bonds: 10
+      }
+    };
+
+    function setActiveStrategy(strategyName) {
+      // Toggle selector styling active states
+      document.querySelectorAll('.strategy-option').forEach(option => {
+        option.classList.remove('active');
+        const h3Text = option.querySelector('h3').textContent;
+        if (h3Text.toLowerCase().includes(strategyName)) {
+          option.classList.add('active');
+        }
+      });
+
+      // Update allocation chart visual
+      const data = allocations[strategyName];
+      document.getElementById('chartStrategyTitle').textContent = data.title;
+      document.getElementById('labelStocks').textContent = `Stocks: ${data.stocks}%`;
+      document.getElementById('labelBonds').textContent = `Bonds: ${data.bonds}%`;
+
+      // Animate SVG Pie Chart
+      const sliceStocks = document.getElementById('sliceStocks');
+      const sliceBonds = document.getElementById('sliceBonds');
+
+      // The stroke-dasharray represents segment length and rest of circle (Circumference ~ 100)
+      sliceStocks.setAttribute('stroke-dasharray', `${data.stocks} ${100 - data.stocks}`);
+      
+      sliceBonds.setAttribute('stroke-dasharray', `${data.bonds} ${100 - data.bonds}`);
+      sliceBonds.setAttribute('stroke-dashoffset', -data.stocks); // Offset must match previous segment size
+    }
+  </script>
+</body>
+</html>

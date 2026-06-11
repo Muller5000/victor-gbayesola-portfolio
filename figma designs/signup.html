@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | Finvera</title>
+  <meta name="description" content="Sign up for a free Finvera account to start your trading, automated wealth building, or business financing journey today.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Auth Layout Specific Styles */
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(circle at 10% 20%, rgba(0, 102, 255, 0.08) 0%, rgba(0, 0, 0, 0) 90%), 
+                  linear-gradient(135deg, hsl(222, 47%, 98%), hsl(210, 100%, 96%));
+      padding-top: 100px;
+    }
+
+    .auth-container {
+      margin: auto;
+      width: 100%;
+      max-width: 520px;
+      padding: 0 24px 60px;
+    }
+
+    .auth-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.06);
+      width: 100%;
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .auth-header h1 {
+      font-size: 2rem;
+      color: var(--color-text-dark);
+      margin-bottom: 8px;
+    }
+
+    .auth-header p {
+      font-size: 0.95rem;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-text-muted-dark);
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+
+    .password-toggle:hover {
+      color: var(--color-primary);
+    }
+
+    /* Password Strength Indicator */
+    .strength-meter {
+      height: 4px;
+      width: 100%;
+      background-color: hsl(214, 32%, 88%);
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .strength-bar {
+      height: 100%;
+      width: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .strength-label {
+      font-size: 0.75rem;
+      color: var(--color-text-muted-dark);
+      margin-top: 4px;
+      display: block;
+      text-align: right;
+    }
+
+    .checkbox-label {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--color-text-muted-dark);
+      line-height: 1.4;
+      margin-bottom: 28px;
+      user-select: none;
+      align-items: flex-start;
+    }
+
+    .checkbox-label input {
+      margin-top: 3px;
+      accent-color: var(--color-primary);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--color-text-muted-dark);
+      margin: 32px 0;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid hsl(214, 32%, 88%);
+    }
+
+    .divider:not(:empty)::before {
+      margin-right: 16px;
+    }
+
+    .divider:not(:empty)::after {
+      margin-left: 16px;
+    }
+
+    .oauth-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .oauth-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: var(--color-bg-light);
+      border: 1px solid hsl(214, 32%, 85%);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .oauth-btn:hover {
+      background-color: var(--color-bg-secondary-light);
+      border-color: hsl(214, 32%, 78%);
+      transform: translateY(-2px);
+    }
+
+    .auth-footer-text {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--color-text-muted-dark);
+    }
+
+    .auth-footer-text a {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .auth-footer-text a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 576px) {
+      .auth-card {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body class="auth-page">
+
+  <!-- Shared Header (Scrolled for consistency) -->
+  <header class="site-header scrolled">
+    <div class="container nav-container" style="justify-content: center;">
+      <a href="index.html" class="site-logo">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <defs>
+            <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00C2FF" />
+              <stop offset="100%" stop-color="#0066FF" />
+            </linearGradient>
+          </defs>
+          <path d="M18 2 L32 10 V26 L18 34 L4 26 V10 L18 2 Z" fill="rgba(16, 24, 40, 0.6)" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+          <g filter="url(#neonGlow)">
+            <path d="M10 24 Q13 18 11 11 H18.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M11.2 16.5 H16.5" stroke="#00C2FF" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M10 24 L16.5 27.5 L24.5 11" stroke="#0066FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="21" cy="16" r="1.2" fill="#00C2FF" />
+            <circle cx="23" cy="21" r="1.2" fill="#00C2FF" />
+          </g>
+        </svg>
+        <span>Finvera</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Signup Card Container -->
+  <div class="auth-container animate-fade-in-up">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1>Create Account</h1>
+        <p>Start building your financial future today</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); handleSignup();">
+        <div class="form-group">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" id="fullName" class="form-input" placeholder="John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="password" class="form-label">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" class="form-input" placeholder="••••••••" required style="padding-right: 50px;" oninput="checkPasswordStrength(this.value)">
+            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('password', this)" aria-label="Toggle password visibility">
+              <svg class="eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg class="eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+          <!-- Strength indicator bar -->
+          <div class="strength-meter">
+            <div id="strengthBar" class="strength-bar"></div>
+          </div>
+          <span id="strengthLabel" class="strength-label">Strength: Weak</span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="confirmPassword" class="form-input" placeholder="••••••••" required style="padding-right: 50px;">
+            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('confirmPassword', this)" aria-label="Toggle password visibility">
+              <svg class="eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg class="eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="terms" required>
+          <span>I agree to the <a href="#" style="color: var(--color-primary); font-weight:600;">Terms of Service</a> and <a href="#" style="color: var(--color-primary); font-weight:600;">Privacy Policy</a></span>
+        </label>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">Create Account</button>
+      </form>
+
+      <div class="divider">Or sign up with</div>
+
+      <div class="oauth-row">
+        <button class="oauth-btn" onclick="handleSocialLogin('Google')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span>Google</span>
+        </button>
+        <button class="oauth-btn" onclick="handleSocialLogin('Facebook')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span>Facebook</span>
+        </button>
+      </div>
+
+      <div class="auth-footer-text">
+        Already have an account? <a href="login.html">Log in</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer" style="margin-top: auto;">
+    <div class="container footer-bottom" style="border-top: none; padding-top: 0;">
+      <p>&copy; 2025 Finvera. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Password visibility toggle logic
+    function togglePasswordVisibility(fieldId, button) {
+      const input = document.getElementById(fieldId);
+      const eyeOpen = button.querySelector('.eye-open');
+      const eyeClosed = button.querySelector('.eye-closed');
+
+      if (input.type === 'password') {
+        input.type = 'text';
+        eyeOpen.style.display = 'none';
+        eyeClosed.style.display = 'block';
+      } else {
+        input.type = 'password';
+        eyeOpen.style.display = 'block';
+        eyeClosed.style.display = 'none';
+      }
+    }
+
+    // Dynamic strength check
+    function checkPasswordStrength(password) {
+      const bar = document.getElementById('strengthBar');
+      const label = document.getElementById('strengthLabel');
+      
+      let strength = 0;
+      if (password.length > 5) strength++;
+      if (password.length > 8) strength++;
+      if (/[A-Z]/.test(password)) strength++;
+      if (/[0-9]/.test(password)) strength++;
+      if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+      let percent = (strength / 5) * 100;
+      let color = "red";
+      let text = "Weak";
+
+      if (strength >= 4) {
+        color = "#10b981";
+        text = "Strong";
+      } else if (strength >= 2) {
+        color = "#fbbf24";
+        text = "Medium";
+      }
+
+      bar.style.width = percent + "%";
+      bar.style.backgroundColor = color;
+      label.textContent = `Strength: ${text}`;
+      label.style.color = color;
+    }
+
+    // Handle authentication submissions
+    function handleSignup() {
+      const name = document.getElementById('fullName').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        showToast("Passwords do not match!", "error");
+        return;
+      }
+
+      showToast(`Welcome, ${name}! Creating your account...`);
+      
+      setTimeout(() => {
+        // Redirect to Login
+        window.location.href = "login.html";
+      }, 1500);
+    }
+
+    function handleSocialLogin(provider) {
+      showToast(`Connecting to ${provider} authentication...`);
+    }
+  </script>
+</body>
+</html>
