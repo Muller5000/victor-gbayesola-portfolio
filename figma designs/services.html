@@ -18,7 +18,7 @@
     .service-detailed-card {
       background-color: var(--color-bg-light);
       border: var(--border-light);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg); /* Consistent rounding for repetition and unity */
       overflow: hidden;
       box-shadow: var(--shadow-md);
       transition: var(--transition-smooth);
@@ -27,7 +27,7 @@
     }
 
     .service-detailed-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px); /* Standardized hover shift */
       box-shadow: var(--shadow-lg);
       border-color: rgba(0, 102, 255, 0.15);
     }
@@ -46,7 +46,7 @@
     .service-media-header.wealth { background: linear-gradient(135deg, #faf5ff, #f3e8ff); color: hsl(270, 100%, 50%); }
 
     .service-body {
-      padding: 36px;
+      padding: 48px 40px; /* Increased padding to align with hierarchy and balance */
       flex-grow: 1;
       display: flex;
       flex-direction: column;
