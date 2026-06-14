@@ -187,6 +187,743 @@
         gap: 40px;
       }
     }
+
+    /* Trading Odyssey Gamified Layout */
+    .trading-odyssey-section {
+      background-color: #0b0f19;
+      color: #ffffff;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    
+    .trading-odyssey-section h2 {
+      color: #ffffff;
+    }
+    
+    .trading-odyssey-section .section-header p {
+      color: var(--color-text-muted-light);
+    }
+
+    .trading-odyssey-dashboard {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 50px;
+    }
+
+    .odyssey-map-console {
+      background: radial-gradient(circle at center, rgba(17, 26, 46, 0.4) 0%, rgba(10, 14, 23, 0.8) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-lg), inset 0 0 40px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 480px;
+    }
+
+    .odyssey-map-console::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(rgba(15, 119, 255, 0.02) 50%, rgba(0, 0, 0, 0) 50%), linear-gradient(90deg, rgba(15, 119, 255, 0.02) 50%, rgba(0, 0, 0, 0) 50%);
+      background-size: 20px 20px;
+      pointer-events: none;
+      border-radius: var(--radius-lg);
+    }
+
+    .map-svg {
+      width: 100%;
+      height: auto;
+      max-height: 440px;
+      z-index: 2;
+    }
+
+    .glow-path {
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .active-path {
+      stroke: var(--color-primary);
+      stroke-width: 4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 10 10;
+      animation: dashFlow 15s linear infinite;
+    }
+
+    .success-path {
+      stroke: var(--color-success);
+      stroke-width: 4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @keyframes dashFlow {
+      to {
+        stroke-dashoffset: -200;
+      }
+    }
+
+    .map-node {
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .map-node.locked {
+      cursor: not-allowed;
+      opacity: 0.35;
+    }
+
+    .map-node circle.outer-glow {
+      fill: none;
+      stroke-width: 2;
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      transition: var(--transition-smooth);
+    }
+
+    .map-node.active circle.outer-glow {
+      stroke: var(--color-primary);
+      opacity: 0.6;
+      animation: nodePulse 2s infinite ease-in-out;
+    }
+
+    .map-node.completed circle.outer-glow {
+      stroke: var(--color-success);
+      opacity: 0.6;
+      animation: nodePulseSuccess 2s infinite ease-in-out;
+    }
+
+    @keyframes nodePulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.3); opacity: 0.1; }
+      100% { transform: scale(1); opacity: 0.6; }
+    }
+
+    @keyframes nodePulseSuccess {
+      0% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.3); opacity: 0.1; }
+      100% { transform: scale(1); opacity: 0.6; }
+    }
+
+    .map-node circle.core {
+      fill: #162238;
+      stroke: rgba(255, 255, 255, 0.2);
+      stroke-width: 2;
+      transition: var(--transition-smooth);
+    }
+
+    .map-node:hover:not(.locked) circle.core {
+      stroke: #ffffff;
+      fill: #1e355c;
+    }
+
+    .map-node.active circle.core {
+      fill: var(--color-primary);
+      stroke: #ffffff;
+      stroke-width: 3;
+    }
+
+    .map-node.completed circle.core {
+      fill: var(--color-success);
+      stroke: #ffffff;
+      stroke-width: 3;
+    }
+
+    .map-node text.number {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 12px;
+      fill: #ffffff;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    .map-node text.label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      fill: var(--color-text-muted-light);
+      font-weight: 500;
+      text-anchor: middle;
+      transition: var(--transition-smooth);
+    }
+
+    .map-node.active text.label, .map-node.completed text.label {
+      fill: #ffffff;
+      font-weight: 600;
+    }
+
+    .odyssey-control-console {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .odyssey-progress-panel {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .progress-level {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: #00C2FF;
+      font-size: 0.95rem;
+    }
+
+    .progress-xp-text {
+      font-size: 0.85rem;
+      color: var(--color-text-muted-light);
+      font-family: monospace;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary) 0%, #00C2FF 100%);
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .stations-checklist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .checklist-tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--color-text-muted-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .checklist-tag.completed {
+      background: rgba(0, 166, 62, 0.1);
+      border-color: rgba(0, 166, 62, 0.2);
+      color: var(--color-success);
+    }
+
+    .checklist-tag.active {
+      background: rgba(15, 119, 255, 0.1);
+      border-color: rgba(15, 119, 255, 0.2);
+      color: var(--color-primary-light);
+    }
+
+    .terminal-card {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .terminal-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+
+    .terminal-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .terminal-icon.blue { background: rgba(15, 119, 255, 0.15); color: #00C2FF; }
+    .terminal-icon.green { background: rgba(0, 166, 62, 0.15); color: #10b981; }
+    .terminal-icon.purple { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+    .terminal-icon.orange { background: rgba(249, 115, 22, 0.15); color: #f97316; }
+    .terminal-icon.red { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+    .terminal-title h3 {
+      font-size: 1.25rem;
+      margin-bottom: 2px;
+      color: #ffffff;
+    }
+
+    .terminal-title span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted-light);
+    }
+
+    .terminal-description {
+      font-size: 0.95rem;
+      color: var(--color-text-muted-light);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .simulation-panel {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Simulation Widgets Styles */
+    .sim-widget {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    /* Ticker chart sim */
+    .sim-chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: monospace;
+      font-size: 0.85rem;
+    }
+
+    .sim-chart-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .sim-chart-price.up { color: var(--color-success); }
+    .sim-chart-price.down { color: var(--color-danger); }
+
+    .sim-canvas-container {
+      width: 100%;
+      height: 90px;
+      background: rgba(255,255,255,0.01);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sim-controls {
+      display: flex;
+      gap: 10px;
+    }
+
+    .sim-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-align: center;
+    }
+
+    .sim-btn.buy { background-color: var(--color-success); color: #ffffff; }
+    .sim-btn.sell { background-color: var(--color-danger); color: #ffffff; }
+    .sim-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .sim-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+
+    /* Radar/Signal Scanner */
+    .sim-radar-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 90px;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+      overflow: hidden;
+    }
+
+    .radar-sweep {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: conic-gradient(from 0deg, rgba(16, 185, 129, 0.15) 0deg, transparent 90deg);
+      border-radius: 50%;
+      animation: sweep 4s linear infinite;
+    }
+
+    @keyframes sweep {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .radar-signal {
+      position: absolute;
+      font-family: monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-success);
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--color-success);
+      animation: flash 0.5s infinite alternate;
+      cursor: pointer;
+      display: none;
+      z-index: 10;
+    }
+
+    @keyframes flash {
+      from { opacity: 0.4; box-shadow: 0 0 4px var(--color-success); }
+      to { opacity: 1; box-shadow: 0 0 12px var(--color-success); }
+    }
+
+    .sim-radar-log {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--color-text-muted-light);
+      height: 20px;
+      text-align: center;
+    }
+
+    /* Risk Slider */
+    .risk-game-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--color-text-muted-light);
+      font-family: monospace;
+    }
+
+    .risk-slider {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .risk-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 6px var(--color-primary);
+      transition: var(--transition-fast);
+    }
+
+    .risk-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    /* Latency Execution match click game */
+    .latency-bar-container {
+      width: 100%;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .latency-target-zone {
+      position: absolute;
+      left: 70%;
+      width: 15%;
+      height: 100%;
+      background: rgba(16, 185, 129, 0.3);
+      border-left: 2px solid var(--color-success);
+      border-right: 2px solid var(--color-success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-family: monospace;
+      color: #ffffff;
+    }
+
+    .latency-indicator {
+      position: absolute;
+      left: 0%;
+      width: 4px;
+      height: 100%;
+      background: #ffffff;
+      box-shadow: 0 0 8px #ffffff;
+    }
+
+    /* Copy trade managers */
+    .manager-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .manager-sim-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .manager-sim-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .manager-sim-card.active {
+      border-color: var(--color-primary);
+      background: rgba(15, 119, 255, 0.1);
+    }
+
+    .manager-info-row {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .manager-sim-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .manager-sim-desc {
+      font-size: 0.65rem;
+      color: var(--color-text-muted-light);
+    }
+
+    .manager-sim-perf {
+      font-family: monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-success);
+    }
+
+    /* Sharpe allocator rebalancer */
+    .allocator-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      font-family: monospace;
+      color: var(--color-text-muted-light);
+      margin-bottom: 4px;
+    }
+
+    .rebalance-chart-mock {
+      display: flex;
+      height: 20px;
+      border-radius: 4px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .rebalance-segment {
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .rebalance-segment.crypto { background-color: var(--color-primary); }
+    .rebalance-segment.stocks { background-color: #a855f7; }
+    .rebalance-segment.cash { background-color: #f97316; }
+
+    /* Lock overlays and notifications */
+    .sim-success-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      animation: fadeInUp 0.4s ease-out;
+    }
+
+    .sim-success-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 166, 62, 0.15);
+      color: var(--color-success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      border: 1px solid rgba(0, 166, 62, 0.3);
+    }
+
+    .sim-success-screen h4 {
+      font-size: 1.05rem;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .sim-success-screen p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted-light);
+      margin: 0;
+    }
+
+    .btn-next-station {
+      background: var(--color-primary);
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-fast);
+    }
+
+    .btn-next-station:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .odyssey-reward-panel {
+      margin-top: 10px;
+    }
+
+    .reward-banner {
+      background: linear-gradient(135deg, rgba(0, 166, 62, 0.12) 0%, rgba(0, 194, 255, 0.08) 100%);
+      border: 1px dashed var(--color-success);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition-smooth);
+    }
+
+    .reward-banner.locked {
+      filter: grayscale(1) opacity(0.4);
+      cursor: not-allowed;
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255,255,255,0.01);
+    }
+
+    .reward-info h4 {
+      color: #ffffff;
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+
+    .reward-info p {
+      color: var(--color-text-muted-light);
+      font-size: 0.75rem;
+      margin-bottom: 0;
+    }
+
+    .coupon-code {
+      background: rgba(0, 166, 62, 0.15);
+      color: var(--color-success);
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 166, 62, 0.3);
+      letter-spacing: 0.05em;
+    }
+
+    .coupon-locked-text {
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--color-text-muted-light);
+    }
+
+    /* Floating XP animations */
+    .floating-xp {
+      position: absolute;
+      color: #00C2FF;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.25rem;
+      pointer-events: none;
+      z-index: 100;
+      animation: floatUpFade 1.2s ease-out forwards;
+      text-shadow: 0 0 8px rgba(0, 194, 255, 0.5);
+    }
+
+    @keyframes floatUpFade {
+      0% { transform: translateY(0) scale(0.8); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-40px) scale(1.1); opacity: 0; }
+    }
+
+    /* Responsive updates for Odyssey */
+    @media (max-width: 992px) {
+      .trading-odyssey-dashboard {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .odyssey-map-console {
+        min-height: 380px;
+        padding: 10px;
+      }
+      .map-svg {
+        max-height: 340px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -283,61 +1020,143 @@
     </div>
   </section>
 
-  <!-- Features Grid Section -->
-  <section class="section-padding" style="background-color: var(--color-bg-secondary-light);">
+  <!-- Features Gamified Map Section -->
+  <section class="trading-odyssey-section section-padding">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" style="text-align: center;">
         <h2>Powerful Trading Features</h2>
-        <p>Advanced charting, smart signals, and instant fills tailored for modern investors.</p>
+        <p>Embark on the Finvera Trading Odyssey. Unlock stations to master the deck.</p>
       </div>
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon-wrapper blue">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
-          </div>
-          <h3>Real-Time Charts</h3>
-          <p>Advanced technical indicators, order books, and depth charts updated in real-time.</p>
+      <div class="trading-odyssey-dashboard">
+        <!-- Left: Journey Map Console -->
+        <div class="odyssey-map-console" id="mapConsole">
+          <svg class="map-svg" viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
+            <!-- Blueprint grid lines -->
+            <line x1="50" y1="0" x2="50" y2="450" class="grid-line" />
+            <line x1="150" y1="0" x2="150" y2="450" class="grid-line" />
+            <line x1="250" y1="0" x2="250" y2="450" class="grid-line" />
+            <line x1="350" y1="0" x2="350" y2="450" class="grid-line" />
+            <line x1="450" y1="0" x2="450" y2="450" class="grid-line" />
+            
+            <line x1="0" y1="75" x2="500" y2="75" class="grid-line" />
+            <line x1="0" y1="175" x2="500" y2="175" class="grid-line" />
+            <line x1="0" y1="275" x2="500" y2="275" class="grid-line" />
+            <line x1="0" y1="375" x2="500" y2="375" class="grid-line" />
+
+            <!-- Connecting Winding Paths (SVG Bezier curves) -->
+            <!-- Path 1-2 -->
+            <path id="path1" d="M 80 380 Q 150 380, 220 330" class="glow-path" />
+            <!-- Path 2-3 -->
+            <path id="path2" d="M 220 330 Q 290 330, 150 220" class="glow-path" />
+            <!-- Path 3-4 -->
+            <path id="path3" d="M 150 220 Q 180 220, 320 180" class="glow-path" />
+            <!-- Path 4-5 -->
+            <path id="path4" d="M 320 180 Q 420 180, 220 100" class="glow-path" />
+            <!-- Path 5-6 -->
+            <path id="path5" d="M 220 100 Q 220 50, 400 70" class="glow-path" />
+
+            <!-- Station Nodes -->
+            <!-- Station 1 -->
+            <g class="map-node active" id="node1" onclick="selectStation(1)">
+              <circle cx="80" cy="380" r="24" class="outer-glow" />
+              <circle cx="80" cy="380" r="16" class="core" />
+              <text x="80" y="380" class="number">1</text>
+              <text x="80" y="416" class="label">Charts Nexus</text>
+            </g>
+
+            <!-- Station 2 -->
+            <g class="map-node locked" id="node2" onclick="selectStation(2)">
+              <circle cx="220" cy="330" r="24" class="outer-glow" />
+              <circle cx="220" cy="330" r="16" class="core" />
+              <text x="220" y="330" class="number">2</text>
+              <text x="220" y="366" class="label">Beacon Signal</text>
+            </g>
+
+            <!-- Station 3 -->
+            <g class="map-node locked" id="node3" onclick="selectStation(3)">
+              <circle cx="150" cy="220" r="24" class="outer-glow" />
+              <circle cx="150" cy="220" r="16" class="core" />
+              <text x="150" y="220" class="number">3</text>
+              <text x="150" y="256" class="label">Shield Protocol</text>
+            </g>
+
+            <!-- Station 4 -->
+            <g class="map-node locked" id="node4" onclick="selectStation(4)">
+              <circle cx="320" cy="180" r="24" class="outer-glow" />
+              <circle cx="320" cy="180" r="16" class="core" />
+              <text x="320" y="180" class="number">4</text>
+              <text x="320" y="216" class="label">Execution Gateway</text>
+            </g>
+
+            <!-- Station 5 -->
+            <g class="map-node locked" id="node5" onclick="selectStation(5)">
+              <circle cx="220" cy="100" r="24" class="outer-glow" />
+              <circle cx="220" cy="100" r="16" class="core" />
+              <text x="220" y="100" class="number">5</text>
+              <text x="220" y="136" class="label">Syndicate Mirror</text>
+            </g>
+
+            <!-- Station 6 -->
+            <g class="map-node locked" id="node6" onclick="selectStation(6)">
+              <circle cx="400" cy="70" r="24" class="outer-glow" />
+              <circle cx="400" cy="70" r="16" class="core" />
+              <text x="400" y="70" class="number">6</text>
+              <text x="400" y="106" class="label">Ledger Vault</text>
+            </g>
+          </svg>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon-wrapper green">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <!-- Right: Control Console Panel -->
+        <div class="odyssey-control-console">
+          <!-- User Rank and Progress -->
+          <div class="odyssey-progress-panel">
+            <div class="progress-header">
+              <span class="progress-level" id="userRank">Level 1: Novice Analyst</span>
+              <span class="progress-xp-text" id="xpText">XP: 0 / 600</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="xpBar" style="width: 5%"></div>
+            </div>
+            <div class="stations-checklist" id="stationsChecklist">
+              <span class="checklist-tag active" id="tag1">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 1. Charts
+              </span>
+              <span class="checklist-tag" id="tag2">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 2. Signals
+              </span>
+              <span class="checklist-tag" id="tag3">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 3. Risk
+              </span>
+              <span class="checklist-tag" id="tag4">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 4. Execution
+              </span>
+              <span class="checklist-tag" id="tag5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 5. Syndicate
+              </span>
+              <span class="checklist-tag" id="tag6">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 6. Ledger
+              </span>
+            </div>
           </div>
-          <h3>Smart Signals</h3>
-          <p>AI-powered market scanner alerts you to emerging bullish/bearish trading signals.</p>
-        </div>
 
-        <div class="feature-card">
-          <div class="feature-icon-wrapper purple">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <!-- Dynamic Feature Terminal Card -->
+          <div class="terminal-card" id="terminalCard">
+            <!-- Content will be injected dynamically by selectStation() -->
           </div>
-          <h3>Risk Management</h3>
-          <p>Automated stop-loss, take-profit, trailing stops, and position sizing indicators.</p>
-        </div>
 
-        <div class="feature-card">
-          <div class="feature-icon-wrapper orange">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <!-- Final Locked Reward panel -->
+          <div class="odyssey-reward-panel">
+            <div class="reward-banner locked" id="rewardBanner">
+              <div class="reward-info">
+                <h4>Finvera Elite Reward</h4>
+                <p id="rewardDesc">Complete all map training modules to unlock discount coupon.</p>
+              </div>
+              <div id="rewardCouponContainer">
+                <span class="coupon-locked-text">Locked &middot; Complete Odyssey</span>
+              </div>
+            </div>
           </div>
-          <h3>Instant Execution</h3>
-          <p>Low latency market orders executed through secure high-frequency gateways.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon-wrapper red">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Copy Trading</h3>
-          <p>Instantly follow and mirror the trades of top-performing portfolio managers.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon-wrapper blue">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>Portfolio Analytics</h3>
-          <p>Get detailed performance ratios, Sharpe metrics, and risk-drawdown metrics.</p>
         </div>
       </div>
     </div>
@@ -659,6 +1478,773 @@
       drawChart();
     }, 2500);
 
+    // ==========================================
+    // TRADING ODYSSEY GAMIFIED ENGINE
+    // ==========================================
+    const stations = {
+      1: {
+        name: "Charts Nexus",
+        tagline: "Station 1: Real-Time Charts",
+        theme: "blue",
+        desc: "Scan the market canvas. Real-time data streams converged into visual indicators. Trade simulated assets to prove your charting skills.",
+        completed: false
+      },
+      2: {
+        name: "Beacon Signal",
+        tagline: "Station 2: Smart Signals",
+        theme: "green",
+        desc: "Receive real-time AI trading signals showing market momentum. Decode the scan and execute on high-yield trends instantly.",
+        completed: false
+      },
+      3: {
+        name: "Shield Protocol",
+        tagline: "Station 3: Risk Management",
+        theme: "purple",
+        desc: "Configure automated stop-loss, take-profit, and trailing defense shields to protect capital from extreme volatility events.",
+        completed: false
+      },
+      4: {
+        name: "Execution Gateway",
+        tagline: "Station 4: Instant Execution",
+        theme: "orange",
+        desc: "Deploy trades through low-latency direct market routing. Time your order entry to secure institutional fills under 15ms.",
+        completed: false
+      },
+      5: {
+        name: "Syndicate Mirror",
+        tagline: "Station 5: Copy Trading",
+        theme: "red",
+        desc: "Sync your portfolio with top-tier Syndicate managers. Choose a manager, allocate funds, and mirror their trades in real time.",
+        completed: false
+      },
+      6: {
+        name: "Ledger Vault",
+        tagline: "Station 6: Portfolio Analytics",
+        theme: "blue",
+        desc: "Review comprehensive performance metrics. Optimize your asset diversification mix to achieve maximum Sharpe ratio grades.",
+        completed: false
+      }
+    };
+
+    let activeStation = 1;
+    let completedStations = [];
+    let currentXP = 0;
+    let playerLevel = 1;
+    let xpNeeded = 600; // 100 per station
+
+    // Load from local storage if exists
+    function loadSaveState() {
+      try {
+        const savedCompleted = localStorage.getItem('finvera_completed_stations');
+        if (savedCompleted) {
+          completedStations = JSON.parse(savedCompleted);
+          completedStations.forEach(id => {
+            stations[id].completed = true;
+          });
+        }
+        const savedXP = localStorage.getItem('finvera_xp');
+        if (savedXP) currentXP = parseInt(savedXP, 10);
+        const savedLevel = localStorage.getItem('finvera_level');
+        if (savedLevel) playerLevel = parseInt(savedLevel, 10);
+      } catch (e) {
+        console.error("Local storage error: ", e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem('finvera_completed_stations', JSON.stringify(completedStations));
+        localStorage.setItem('finvera_xp', currentXP.toString());
+        localStorage.setItem('finvera_level', playerLevel.toString());
+      } catch (e) {
+        console.error("Local storage save error: ", e);
+      }
+    }
+
+    function initOdyssey() {
+      loadSaveState();
+      
+      // Update nodes on the map SVG based on completion/locked states
+      updateMapUI();
+      updateProgressUI();
+      
+      // Select the first uncompleted station or the last one completed
+      let nextUncompleted = 1;
+      for (let i = 1; i <= 6; i++) {
+        if (!stations[i].completed) {
+          nextUncompleted = i;
+          break;
+        }
+        if (i === 6) nextUncompleted = 6; // All completed, show last
+      }
+      selectStation(nextUncompleted);
+    }
+
+    function updateMapUI() {
+      // Winding path stroke coloring
+      for (let i = 1; i <= 5; i++) {
+        const path = document.getElementById(`path${i}`);
+        if (!path) continue;
+        
+        // Node i must be completed for path i to light up
+        if (stations[i].completed && stations[i+1].completed) {
+          path.className.baseVal = "success-path";
+        } else if (stations[i].completed) {
+          path.className.baseVal = "active-path";
+        } else {
+          path.className.baseVal = "glow-path";
+        }
+      }
+
+      // Nodes classes
+      for (let i = 1; i <= 6; i++) {
+        const node = document.getElementById(`node${i}`);
+        if (!node) continue;
+
+        let nodeClass = "map-node";
+        const isPrevCompleted = i === 1 || stations[i - 1].completed;
+
+        if (stations[i].completed) {
+          nodeClass += " completed";
+        } else if (i === activeStation) {
+          nodeClass += " active";
+        } else if (!isPrevCompleted) {
+          nodeClass += " locked";
+        } else {
+          // Unlocked but not active
+          nodeClass += " unlocked";
+        }
+        node.className.baseVal = nodeClass;
+      }
+    }
+
+    function updateProgressUI() {
+      const ranks = [
+        "Novice Analyst",
+        "Signal Analyst",
+        "Risk Controller",
+        "Execution Officer",
+        "Syndicate Partner",
+        "Finvera Titan"
+      ];
+      
+      const levelIndex = Math.min(playerLevel - 1, ranks.length - 1);
+      document.getElementById('userRank').textContent = `Level ${playerLevel}: ${ranks[levelIndex]}`;
+      
+      // XP bar calculation
+      const xpPercent = Math.min((currentXP / xpNeeded) * 100, 100);
+      document.getElementById('xpBar').style.width = `${xpPercent}%`;
+      document.getElementById('xpText').textContent = `XP: ${currentXP} / ${xpNeeded}`;
+
+      // Update checklists tag
+      for (let i = 1; i <= 6; i++) {
+        const tag = document.getElementById(`tag${i}`);
+        if (!tag) continue;
+        if (stations[i].completed) {
+          tag.className = "checklist-tag completed";
+        } else if (i === activeStation) {
+          tag.className = "checklist-tag active";
+        } else {
+          tag.className = "checklist-tag";
+        }
+      }
+
+      // Check reward banner unlock
+      const rewardBanner = document.getElementById('rewardBanner');
+      const rewardCouponContainer = document.getElementById('rewardCouponContainer');
+      const rewardDesc = document.getElementById('rewardDesc');
+
+      if (completedStations.length === 6) {
+        rewardBanner.className = "reward-banner";
+        rewardDesc.textContent = "Congratulations! You have completed the Trading Odyssey.";
+        rewardCouponContainer.innerHTML = `<span class="coupon-code">FINVERAELITE10</span>`;
+      } else {
+        rewardBanner.className = "reward-banner locked";
+        rewardDesc.textContent = "Complete all map training modules to unlock discount coupon.";
+        rewardCouponContainer.innerHTML = `<span class="coupon-locked-text">Locked &middot; Complete Odyssey</span>`;
+      }
+    }
+
+    function selectStation(id) {
+      // Check if locked
+      if (id > 1 && !stations[id - 1].completed && !stations[id].completed) {
+        // Shaking card effect to show it is locked
+        const card = document.getElementById('terminalCard');
+        card.style.animation = "none";
+        setTimeout(() => {
+          card.style.animation = "shake 0.4s ease-in-out";
+        }, 10);
+        return;
+      }
+
+      activeStation = id;
+      updateMapUI();
+      updateProgressUI();
+      renderTerminalCard();
+    }
+
+    // Shake animation style added dynamically
+    const styleElem = document.createElement('style');
+    styleElem.innerHTML = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-6px); }
+        75% { transform: translateX(6px); }
+      }
+    `;
+    document.head.appendChild(styleElem);
+
+    function renderTerminalCard() {
+      const card = document.getElementById('terminalCard');
+      const s = stations[activeStation];
+
+      let simulationHTML = "";
+      if (s.completed) {
+        simulationHTML = `
+          <div class="sim-success-screen">
+            <div class="sim-success-icon">&#10003;</div>
+            <h4>Station Mastered</h4>
+            <p>You have successfully unlocked the +100 XP training node for ${s.name}.</p>
+            ${activeStation < 6 ? `<button class="btn-next-station" onclick="selectStation(${activeStation + 1})">Next Station &rarr;</button>` : `<p style="color: var(--color-success); font-weight:700;">All Stations Mastered! Claim your coupon code below.</p>`}
+          </div>
+        `;
+      } else {
+        simulationHTML = getSimulationWidgetHTML(activeStation);
+      }
+
+      card.innerHTML = `
+        <div class="terminal-card-header">
+          <div class="terminal-icon ${s.theme}">
+            ${getStationIcon(activeStation)}
+          </div>
+          <div class="terminal-title">
+            <h3>${s.name}</h3>
+            <span>${s.tagline}</span>
+          </div>
+        </div>
+        <div class="terminal-description">
+          <p>${s.desc}</p>
+        </div>
+        <div class="simulation-panel" id="simulationPanel">
+          ${simulationHTML}
+        </div>
+      `;
+
+      // Activate interactive scripts for simulators if not completed
+      if (!s.completed) {
+        initSimulationScript(activeStation);
+      }
+    }
+
+    function getStationIcon(id) {
+      switch (id) {
+        case 1: // charts
+          return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>`;
+        case 2: // signals
+          return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
+        case 3: // risk
+          return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+        case 4: // execution
+          return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+        case 5: // copy
+          return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+        case 6: // analytics
+          return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
+      }
+    }
+
+    function getSimulationWidgetHTML(id) {
+      switch (id) {
+        case 1:
+          return `
+            <div class="sim-widget" id="widget1">
+              <div class="sim-chart-header">
+                <span>Ticker: FVRA</span>
+                <span class="sim-chart-price up" id="simPrice1">$100.00 (+0.00%)</span>
+              </div>
+              <div class="sim-canvas-container">
+                <canvas id="simChartCanvas1" style="width:100%; height:100%;"></canvas>
+              </div>
+              <div class="sim-controls">
+                <button class="sim-btn buy" id="simBuyBtn">Buy Ticker</button>
+                <button class="sim-btn sell" id="simSellBtn" disabled>Sell Ticker</button>
+              </div>
+              <div class="sim-radar-log" id="simFeedback1">Buy low and sell higher to earn XP.</div>
+            </div>
+          `;
+        case 2:
+          return `
+            <div class="sim-widget" id="widget2">
+              <div class="sim-radar-container">
+                <div class="radar-sweep"></div>
+                <div class="radar-signal" id="radarSignal" style="display:none">BULLISH BUY: BTC</div>
+              </div>
+              <div class="sim-radar-log" id="simFeedback2">Scanning markets for high-growth indicators...</div>
+            </div>
+          `;
+        case 3:
+          return `
+            <div class="sim-widget" id="widget3">
+              <div class="risk-game-stats">
+                <span>Capital: $10,000</span>
+                <span id="riskLabel">Stop Loss: 5%</span>
+              </div>
+              <input type="range" class="risk-slider" id="riskSlider" min="1" max="15" value="5">
+              <button class="sim-btn buy" style="background:#a855f7;" id="riskTriggerBtn">Deploy Crash Shield</button>
+              <div class="sim-radar-log" id="simFeedback3">Position Stop Loss between 2% and 5% to survive volatility spikes.</div>
+            </div>
+          `;
+        case 4:
+          return `
+            <div class="sim-widget" id="widget4">
+              <div class="sim-chart-header">
+                <span>Gateway Status: Ready</span>
+                <span id="latencyDisplay" style="color:#00C2FF;">Click Fill Order in zone</span>
+              </div>
+              <div class="latency-bar-container">
+                <div class="latency-target-zone">15ms</div>
+                <div class="latency-indicator" id="latencyIndicator"></div>
+              </div>
+              <button class="sim-btn buy" style="background:#f97316;" id="latencyTriggerBtn">FILL ORDER</button>
+              <div class="sim-radar-log" id="simFeedback4">Strike during the sub-15ms green zone for maximum fill efficiency.</div>
+            </div>
+          `;
+        case 5:
+          return `
+            <div class="sim-widget" id="widget5">
+              <div class="manager-card-list">
+                <div class="manager-sim-card" onclick="copyManager('AlphaBot', 0.95, this)">
+                  <div class="manager-info-row">
+                    <span class="manager-sim-name">AlphaBot (AI)</span>
+                    <span class="manager-sim-desc">Automated Grid Trades</span>
+                  </div>
+                  <span class="manager-sim-perf">+95.4% Win</span>
+                </div>
+                <div class="manager-sim-card" onclick="copyManager('Elena Trend', 0.76, this)">
+                  <div class="manager-info-row">
+                    <span class="manager-sim-name">Elena Trend</span>
+                    <span class="manager-sim-desc">Macro Momentum Leader</span>
+                  </div>
+                  <span class="manager-sim-perf">+76.2% Win</span>
+                </div>
+              </div>
+              <div class="sim-radar-log" id="simFeedback5" style="margin-top:5px;">Select a manager to mirror trades and unlock copy tracking.</div>
+            </div>
+          `;
+        case 6:
+          return `
+            <div class="sim-widget" id="widget6">
+              <div class="allocator-row">
+                <span>Crypto: <b id="valCrypto">70%</b></span>
+                <span>Stocks: <b id="valStocks">10%</b></span>
+                <span>Cash: <b id="valCash">20%</b></span>
+              </div>
+              <div class="rebalance-chart-mock">
+                <div class="rebalance-segment crypto" id="segCrypto" style="width: 70%"></div>
+                <div class="rebalance-segment stocks" id="segStocks" style="width: 10%"></div>
+                <div class="rebalance-segment cash" id="segCash" style="width: 20%"></div>
+              </div>
+              <button class="sim-btn buy" style="background:#0066FF;" id="rebalanceBtn">OPTIMIZE ALLOCATION</button>
+              <div class="sim-radar-log" id="simFeedback6">Diversify allocation to secure an optimal Sharpe ratio grade.</div>
+            </div>
+          `;
+      }
+    }
+
+    // Interactive Widget Implementations
+    function initSimulationScript(id) {
+      if (id === 1) {
+        // Ticker Chart Sim
+        const canvas = document.getElementById('simChartCanvas1');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        
+        // Ensure proper dimensions
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width || 280;
+        canvas.height = rect.height || 90;
+
+        let prices = [100, 102, 101, 103, 102, 105, 103, 106];
+        let currentPrice = 106;
+        let isHolding = false;
+        let buyPrice = 0;
+        let intervalId;
+
+        const buyBtn = document.getElementById('simBuyBtn');
+        const sellBtn = document.getElementById('simSellBtn');
+        const priceLabel = document.getElementById('simPrice1');
+        const feedback = document.getElementById('simFeedback1');
+
+        function drawSimChart() {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          // Draw simple path
+          ctx.strokeStyle = '#00C2FF';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          const stepX = canvas.width / (prices.length - 1);
+          
+          const minP = Math.min(...prices) * 0.99;
+          const maxP = Math.max(...prices) * 1.01;
+          
+          const getY = (val) => canvas.height - 10 - ((val - minP) / (maxP - minP)) * (canvas.height - 20);
+
+          ctx.moveTo(0, getY(prices[0]));
+          for (let i = 1; i < prices.length; i++) {
+            ctx.lineTo(i * stepX, getY(prices[i]));
+          }
+          ctx.stroke();
+        }
+
+        drawSimChart();
+
+        intervalId = setInterval(() => {
+          const shift = (Math.random() * 8 - 3.7); // trend upward slightly
+          currentPrice = Math.max(80, currentPrice + shift);
+          prices.shift();
+          prices.push(currentPrice);
+          
+          const pct = ((currentPrice - 100) / 100) * 100;
+          priceLabel.textContent = `$${currentPrice.toFixed(2)} (${pct >= 0 ? '+' : ''}${pct.toFixed(2)}%)`;
+          priceLabel.className = `sim-chart-price ${currentPrice >= prices[prices.length - 2] ? 'up' : 'down'}`;
+          
+          drawSimChart();
+
+          if (isHolding) {
+            const gain = ((currentPrice - buyPrice) / buyPrice) * 100;
+            feedback.textContent = `Position: Buy @ $${buyPrice.toFixed(2)} | Current: $${currentPrice.toFixed(2)} (${gain >= 0 ? '+' : ''}${gain.toFixed(2)}%)`;
+          }
+        }, 800);
+
+        buyBtn.onclick = () => {
+          isHolding = true;
+          buyPrice = currentPrice;
+          buyBtn.disabled = true;
+          sellBtn.disabled = false;
+          feedback.textContent = `Holding asset. Sell higher than $${buyPrice.toFixed(2)} to secure profit!`;
+          feedback.style.color = "#00C2FF";
+        };
+
+        sellBtn.onclick = () => {
+          clearInterval(intervalId);
+          isHolding = false;
+          buyBtn.disabled = true;
+          sellBtn.disabled = true;
+          
+          if (currentPrice > buyPrice) {
+            feedback.textContent = `Trade successful! Profit secured: +$${(currentPrice - buyPrice).toFixed(2)}`;
+            feedback.style.color = "#10b981";
+            setTimeout(() => {
+              completeStation(1);
+            }, 1000);
+          } else {
+            feedback.textContent = `Loss recorded. Restarting simulation...`;
+            feedback.style.color = "#ef4444";
+            setTimeout(() => {
+              renderTerminalCard();
+            }, 1500);
+          }
+        };
+
+        // Cleanup interval on section redraw
+        canvas.addEventListener('remove', () => clearInterval(intervalId));
+      } 
+      else if (id === 2) {
+        // Smart Signals radar
+        const signal = document.getElementById('radarSignal');
+        const feedback = document.getElementById('simFeedback2');
+        let radarInterval;
+
+        let tickers = ['TSLA', 'BTC', 'ETH', 'AAPL', 'MSFT', 'SOL'];
+        
+        radarInterval = setInterval(() => {
+          const isSignal = Math.random() > 0.6;
+          if (isSignal) {
+            clearInterval(radarInterval);
+            const selectedTicker = tickers[Math.floor(Math.random() * tickers.length)];
+            const yield = (Math.random() * 6 + 3).toFixed(1);
+            
+            signal.textContent = `EXECUTE ${selectedTicker} (+${yield}%)`;
+            signal.style.display = "block";
+            // Random position in radar container
+            signal.style.left = `${Math.random() * 40 + 20}%`;
+            signal.style.top = `${Math.random() * 30 + 20}%`;
+            feedback.textContent = `⚡ HIGH-YIELD MOMENTUM SIGNAL FOUND! CLICK NOW!`;
+            feedback.style.color = "#fbbf24";
+            
+            let timer = setTimeout(() => {
+              signal.style.display = "none";
+              feedback.textContent = `Signal expired. Re-scanning...`;
+              feedback.style.color = "#ef4444";
+              initSimulationScript(2); // restart scanner
+            }, 2000);
+
+            signal.onclick = () => {
+              clearTimeout(timer);
+              signal.style.display = "none";
+              feedback.textContent = `Filled signal order perfectly! +100 XP unlocked.`;
+              feedback.style.color = "#10b981";
+              setTimeout(() => {
+                completeStation(2);
+              }, 1200);
+            };
+          } else {
+            const randTicker = tickers[Math.floor(Math.random() * tickers.length)];
+            feedback.textContent = `Scanning: ${randTicker} markets consolidated...`;
+            feedback.style.color = "var(--color-text-muted-light)";
+          }
+        }, 1200);
+
+        signal.parentElement.addEventListener('remove', () => clearInterval(radarInterval));
+      }
+      else if (id === 3) {
+        // Risk Management slider
+        const slider = document.getElementById('riskSlider');
+        const riskLabel = document.getElementById('riskLabel');
+        const feedback = document.getElementById('simFeedback3');
+        const triggerBtn = document.getElementById('riskTriggerBtn');
+
+        slider.oninput = () => {
+          riskLabel.textContent = `Stop Loss: ${slider.value}%`;
+          if (slider.value >= 2 && slider.value <= 5) {
+            feedback.textContent = `Optimal shield parameters configured. Protects from margin sweeps.`;
+            feedback.style.color = "#10b981";
+          } else if (slider.value < 2) {
+            feedback.textContent = `Stop Loss too tight. Crash will execute premature exit.`;
+            feedback.style.color = "#ef4444";
+          } else {
+            feedback.textContent = `Stop Loss too loose. Risk sweep will cause major drawdown.`;
+            feedback.style.color = "#fbbf24";
+          }
+        };
+
+        triggerBtn.onclick = () => {
+          const val = parseInt(slider.value, 10);
+          triggerBtn.disabled = true;
+          slider.disabled = true;
+          
+          feedback.textContent = `INITIALIZING MOCK VOLATILITY CRASH...`;
+          feedback.style.color = "#ef4444";
+          
+          setTimeout(() => {
+            if (val >= 2 && val <= 5) {
+              feedback.textContent = `Crash Triggered: Stop loss shielded capital. Loss limited to -${val}%. XP Unlocked!`;
+              feedback.style.color = "#10b981";
+              setTimeout(() => {
+                completeStation(3);
+              }, 1800);
+            } else {
+              feedback.textContent = `Account Cleared! Stop setting at ${val}% failed validation checks. Resetting...`;
+              feedback.style.color = "#ef4444";
+              setTimeout(() => {
+                renderTerminalCard();
+              }, 2200);
+            }
+          }, 1500);
+        };
+      }
+      else if (id === 4) {
+        // Latency execution game
+        const indicator = document.getElementById('latencyIndicator');
+        const triggerBtn = document.getElementById('latencyTriggerBtn');
+        const display = document.getElementById('latencyDisplay');
+        const feedback = document.getElementById('simFeedback4');
+
+        let position = 0;
+        let direction = 1;
+        let speed = 2.5;
+        let loopId;
+
+        function stepLatency() {
+          position += speed * direction;
+          if (position >= 96) {
+            direction = -1;
+          } else if (position <= 0) {
+            direction = 1;
+          }
+          if (indicator) {
+            indicator.style.left = `${position}%`;
+            loopId = requestAnimationFrame(stepLatency);
+          }
+        }
+
+        stepLatency();
+
+        triggerBtn.onclick = () => {
+          cancelAnimationFrame(loopId);
+          triggerBtn.disabled = true;
+          
+          // Target zone is between 70% and 85%
+          if (position >= 70 && position <= 85) {
+            const finalLatency = (Math.random() * 6 + 7).toFixed(1);
+            display.textContent = `Latency: ${finalLatency}ms`;
+            display.style.color = "var(--color-success)";
+            feedback.textContent = `SUCCESS! Low latency filled order instantly on high-frequency node.`;
+            feedback.style.color = "#10b981";
+            setTimeout(() => {
+              completeStation(4);
+            }, 1200);
+          } else {
+            display.textContent = `Latency: 280ms (Failed)`;
+            display.style.color = "var(--color-danger)";
+            feedback.textContent = `FAIL! Connection timed out. Slippage exceeded limit. Retrying...`;
+            feedback.style.color = "#ef4444";
+            setTimeout(() => {
+              renderTerminalCard();
+            }, 2000);
+          }
+        };
+      }
+      else if (id === 6) {
+        // Portfolio rebalance optimizer
+        const btn = document.getElementById('rebalanceBtn');
+        const feedback = document.getElementById('simFeedback6');
+        
+        btn.onclick = () => {
+          btn.disabled = true;
+          feedback.textContent = `REBALANCING FUNDS... CALIBRATING VAULT PORTFOLIO...`;
+          feedback.style.color = "#00C2FF";
+
+          setTimeout(() => {
+            // Animate segments to optimal ratios: 40% crypto, 40% stocks, 20% cash
+            const segCrypto = document.getElementById('segCrypto');
+            const segStocks = document.getElementById('segStocks');
+            const segCash = document.getElementById('segCash');
+            
+            if (segCrypto && segStocks && segCash) {
+              segCrypto.style.width = "40%";
+              segStocks.style.width = "40%";
+              segCash.style.width = "20%";
+              
+              document.getElementById('valCrypto').textContent = "40%";
+              document.getElementById('valStocks').textContent = "40%";
+              document.getElementById('valCash').textContent = "20%";
+            }
+
+            feedback.innerHTML = `OPTIMIZED: Sharpe Ratio: <b style="color:#10b981">2.84</b> &middot; Drawdown Max: <b style="color:#10b981">6.2%</b> &middot; Grade: A+`;
+            feedback.style.color = "#ffffff";
+            
+            setTimeout(() => {
+              completeStation(6);
+            }, 2000);
+          }, 1500);
+        };
+      }
+    }
+
+    // Copier trigger for Station 5
+    function copyManager(name, winRate, elem) {
+      // Highlight card
+      document.querySelectorAll('.manager-sim-card').forEach(c => c.classList.remove('active'));
+      elem.classList.add('active');
+
+      const feedback = document.getElementById('simFeedback5');
+      feedback.textContent = `Copying trades from ${name}... Syncing allocation ledger...`;
+      feedback.style.color = "#00C2FF";
+
+      let progress = 0;
+      let balance = 1000;
+      
+      const copyInterval = setInterval(() => {
+        progress += 20;
+        const profit = Math.random() * 40 + 10;
+        balance += profit;
+        feedback.textContent = `Copying ${name} | Portfolio Equity: $${balance.toFixed(2)} (+${((balance-1000)/10).toFixed(1)}% earnings)`;
+        feedback.style.color = "#10b981";
+
+        if (progress >= 100) {
+          clearInterval(copyInterval);
+          feedback.textContent = `Copy Trade ledger established! Mirror synced with ${name}. +100 XP.`;
+          setTimeout(() => {
+            completeStation(5);
+          }, 1500);
+        }
+      }, 500);
+    }
+
+    function completeStation(id) {
+      if (stations[id].completed) return;
+
+      stations[id].completed = true;
+      if (!completedStations.includes(id)) {
+        completedStations.push(id);
+      }
+
+      saveState();
+      
+      // Floating XP points overlay animation
+      createXPEffect();
+
+      addXP(100);
+    }
+
+    function createXPEffect() {
+      const consolePanel = document.getElementById('mapConsole');
+      if (!consolePanel) return;
+      const xpFloat = document.createElement('div');
+      xpFloat.className = "floating-xp";
+      xpFloat.textContent = "+100 XP";
+      xpFloat.style.left = "50%";
+      xpFloat.style.top = "50%";
+      consolePanel.appendChild(xpFloat);
+      
+      setTimeout(() => {
+        xpFloat.remove();
+      }, 1200);
+    }
+
+    function addXP(amount) {
+      let tempXP = currentXP + amount;
+      let xpInterval = setInterval(() => {
+        if (currentXP < tempXP) {
+          currentXP += 5;
+          if (currentXP >= xpNeeded && playerLevel < 6) {
+            // Level Up trigger
+            playerLevel++;
+            currentXP = 0;
+            tempXP = tempXP - xpNeeded;
+            triggerLevelUpAnim();
+          }
+          updateProgressUI();
+        } else {
+          clearInterval(xpInterval);
+          saveState();
+          updateMapUI();
+          updateProgressUI();
+          // Reload the terminal screen with completion UI
+          renderTerminalCard();
+        }
+      }, 30);
+    }
+
+    function triggerLevelUpAnim() {
+      // Small toast indicator
+      const toast = document.createElement('div');
+      toast.className = "toast toast-success show";
+      toast.style.position = "fixed";
+      toast.style.bottom = "24px";
+      toast.style.right = "24px";
+      toast.style.zIndex = "2500";
+      toast.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <div>
+          <b style="color:#ffffff">LEVEL UP!</b><br>
+          <span style="font-size:0.8rem">Advanced to Level ${playerLevel}!</span>
+        </div>
+      `;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.className = "toast toast-success";
+        setTimeout(() => toast.remove(), 400);
+      }, 3000);
+    }
+
+    // Call init when document is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      initOdyssey();
+    });
   </script>
 </body>
 </html>
