@@ -15,6 +15,44 @@
       align-items: center;
     }
 
+    /* Dynamic Text Rotator */
+    .text-rotator {
+      display: inline-block;
+      color: var(--color-primary);
+      position: relative;
+      transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      transform-origin: left center;
+    }
+    .text-rotator.fade-out {
+      opacity: 0;
+      transform: translateY(-15px) scale(0.95);
+    }
+    .text-rotator.fade-in {
+      opacity: 0;
+      transform: translateY(15px) scale(0.95);
+    }
+
+    /* Scroll Reveal Animation Framework */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform, opacity;
+    }
+    .scroll-reveal.reveal-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Parallax & Hover Lift Glow Transitions */
+    .hero-main-img, .floating-card {
+      transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
     /* Hero Layered Visual Deck (PiggyVest Inspired) */
     .hero-image-wrapper {
       position: relative;
@@ -160,17 +198,17 @@
     .feature-card {
       padding: 44px 40px; /* Increased padding for premium breathing room (White Space) */
       background: var(--color-bg-light);
-      border: var(--border-light);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: var(--radius-lg); /* Consistent rounding for repetition and unity */
-      transition: var(--transition-smooth);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease;
       display: flex;
       flex-direction: column;
       height: 100%;
     }
 
     .feature-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-6px); /* Balanced, subtle translation */
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.08), var(--shadow-lg);
+      transform: translateY(-8px); /* Balanced, subtle translation */
       border-color: rgba(0, 102, 255, 0.2);
     }
 
@@ -208,16 +246,17 @@
       border-radius: var(--radius-lg); /* Matches feature-card for visual unity */
       overflow: hidden;
       box-shadow: var(--shadow-md);
-      transition: var(--transition-smooth);
-      border: var(--border-light);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
       background-color: var(--color-bg-light);
     }
 
     .product-card:hover {
-      transform: translateY(-6px); /* Matches feature-card transition for balance */
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-10px); /* Enhanced lift */
+      box-shadow: 0 20px 40px -10px rgba(0, 102, 255, 0.12), var(--shadow-lg); /* Neon-blue shadow hint */
+      border-color: rgba(0, 102, 255, 0.25);
     }
 
     .product-card-body {
@@ -505,7 +544,7 @@
     <div class="container hero-layout">
       <div class="hero-content">
         <span class="hero-tagline">Trusted by 50,000+ businesses worldwide</span>
-        <h1 class="hero-title">The Better Way to<br><span style="color: var(--color-primary);">Save, Invest & Trade</span></h1>
+        <h1 class="hero-title">The Better Way to<br><span id="hero-rotator" class="text-rotator">Save</span></h1>
         <p class="hero-subtitle">Finvera helps over 50,000+ customers achieve their financial goals by helping them save, trade, and invest with ease.</p>
         <div class="hero-actions">
           <a href="signup.html" class="btn btn-primary">Get Started Free</a>
@@ -593,7 +632,7 @@
   <section class="section-padding why-choose-section" style="background-color: var(--color-bg-secondary-light); border-top: var(--border-light); border-bottom: var(--border-light); overflow: hidden;">
     <div class="container">
       <!-- Header Column Layout -->
-      <div class="why-choose-header animate-fade-in-up">
+      <div class="why-choose-header scroll-reveal">
         <div class="header-left">
           <h2>Why Choose Finvera?</h2>
         </div>
@@ -603,7 +642,7 @@
       </div>
 
       <!-- Dotted Arc Separator -->
-      <div class="arc-container animate-fade-in-up">
+      <div class="arc-container scroll-reveal">
         <svg viewBox="0 0 1200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,75 Q600,-15 1200,75" stroke="var(--color-primary)" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.35"/>
         </svg>
@@ -612,7 +651,7 @@
       <!-- Symmetrical 3-Column Content Layout -->
       <div class="why-choose-body">
         <!-- Left Column: 2 Features -->
-        <div class="choose-column left-column animate-fade-in-up">
+        <div class="choose-column left-column scroll-reveal reveal-delay-1">
           <div class="choose-item">
             <span class="choose-subtitle">Military-Grade Defense</span>
             <h3>Bank-Grade Security</h3>
@@ -626,14 +665,14 @@
         </div>
 
         <!-- Middle Column: Barrel Graphic Card -->
-        <div class="choose-column center-column animate-fade-in-up">
+        <div class="choose-column center-column scroll-reveal reveal-delay-2">
           <div class="barrel-card">
             <img src="images/why_choose_center.png" alt="Finvera Security Hub" class="barrel-image">
           </div>
         </div>
 
         <!-- Right Column: 2 Features -->
-        <div class="choose-column right-column animate-fade-in-up">
+        <div class="choose-column right-column scroll-reveal reveal-delay-3">
           <div class="choose-item">
             <span class="choose-subtitle">Your Portfolio in Focus</span>
             <h3>Real-Time Analytics</h3>
@@ -652,14 +691,14 @@
   <!-- Core Products Section -->
   <section class="section-padding">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <h2>Our Core Products</h2>
         <p>Tailored financial products designed to support you at every phase of your journey.</p>
       </div>
 
       <div class="products-grid">
         <!-- Trade -->
-        <div class="product-card">
+        <div class="product-card scroll-reveal reveal-delay-1">
           <div style="background-color: var(--color-primary-light); height: 180px; display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
           </div>
@@ -673,7 +712,7 @@
           </div>
         </div>
         <!-- Loan -->
-        <div class="product-card">
+        <div class="product-card scroll-reveal reveal-delay-2">
           <div style="background-color: var(--color-success-bg); height: 180px; display: flex; align-items: center; justify-content: center; color: var(--color-success);">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
           </div>
@@ -687,7 +726,7 @@
           </div>
         </div>
         <!-- Wealth -->
-        <div class="product-card">
+        <div class="product-card scroll-reveal reveal-delay-3">
           <div style="background-color: hsl(270, 100%, 96%); height: 180px; display: flex; align-items: center; justify-content: center; color: hsl(270, 100%, 50%);">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
@@ -707,7 +746,7 @@
   <!-- Trust Section -->
   <section class="section-padding" style="background-color: var(--color-bg-dark); color: var(--color-text-light);">
     <div class="container trust-layout">
-      <div>
+      <div class="scroll-reveal">
         <h2 style="margin-bottom: 20px;">Built on Trust, Powered by Innovation</h2>
         <p style="color: var(--color-text-muted-light); margin-bottom: 30px;">Finvera combines cutting-edge technology with decades of financial expertise to deliver a platform you can trust. Your success is our mission.</p>
         
@@ -750,7 +789,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="scroll-reveal reveal-delay-2">
         <!-- Visual Shield/Network Graph Illustration -->
         <div style="background: rgba(255,255,255,0.03); border: var(--border-dark); border-radius: var(--radius-lg); padding: 40px; text-align: center;">
           <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#0066FF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 30px; filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0.4));">
@@ -766,7 +805,7 @@
 
   <!-- CTA Section -->
   <section class="section-padding" style="text-align: center; background-color: var(--color-bg-secondary-light);">
-    <div class="container" style="max-width: 700px;">
+    <div class="container scroll-reveal" style="max-width: 700px;">
       <h2 style="margin-bottom: 20px;">Ready to Transform Your Finances?</h2>
       <p style="margin-bottom: 40px;">Join thousands of businesses already growing with Finvera. Start your journey today with a free account.</p>
       <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
