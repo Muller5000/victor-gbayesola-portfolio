@@ -8,11 +8,23 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Home Page Specific Styles */
+    :root {
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill) !important;
+      padding: 14px 32px !important;
+    }
+
     .hero-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
+      gap: 36px;
     }
 
     /* Dynamic Text Rotator */
@@ -57,8 +69,8 @@
     .hero-image-wrapper {
       position: relative;
       width: 100%;
-      max-width: 440px;
-      margin: 0 auto;
+      max-width: 680px; /* Wider for centered group photo */
+      margin: 48px auto 0;
       z-index: 2;
     }
 
@@ -98,19 +110,19 @@
 
     /* Offsets & Animations */
     .floating-card-balance {
-      top: 12%;
-      left: -12%;
+      top: 10%;
+      left: -8%;
       animation: floatCard1 5s ease-in-out infinite;
     }
 
     .floating-card-trade {
-      top: 50%;
-      right: -10%;
+      top: 48%;
+      right: -8%;
       animation: floatCard2 6s ease-in-out infinite;
     }
 
     .floating-card-stats {
-      bottom: 8%;
+      bottom: 10%;
       left: -6%;
       animation: floatCard3 5.5s ease-in-out infinite;
     }
@@ -135,35 +147,112 @@
       50% { transform: translateY(-9px) rotate(0.7deg); }
     }
 
-    /* Store Download Badges */
+    /* Premium Store Download Badges */
     .hero-download-buttons {
       display: flex;
-      gap: 12px;
-      margin-top: 30px;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 36px;
       flex-wrap: wrap;
     }
 
-    .download-btn {
+    .download-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #0b0f19;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 8px 20px;
+      text-decoration: none;
+      text-align: left;
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+      min-width: 155px;
+    }
+
+    .download-badge:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-primary);
+      background: #000000;
+      box-shadow: 0 10px 20px -5px rgba(0, 102, 255, 0.25);
+    }
+
+    .badge-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .badge-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badge-text .small-label {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted-light);
+      line-height: 1.2;
+    }
+
+    .badge-text .store-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #ffffff;
+    }
+
+    /* Infinite Logo Ticker */
+    .logo-ticker-section {
+      padding: 28px 0;
+      background: var(--color-bg-grey);
+      border-top: var(--border-light);
+      border-bottom: var(--border-light);
+      text-align: center;
+      overflow: hidden;
+      width: 100%;
+    }
+    
+    .ticker-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted-dark);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .ticker-wrap {
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ticker {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: tickerAnimation 30s linear infinite;
+      gap: 50px;
+    }
+
+    .ticker-item {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-text-muted-dark);
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 20px;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.04);
-      color: #ffffff;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: var(--transition-smooth);
     }
 
-    .download-btn:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: #ffffff;
-      transform: translateY(-2px);
-      color: #ffffff;
+    @keyframes tickerAnimation {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
 
     .stats-row {
@@ -553,13 +642,23 @@
         
         <!-- Store Download Badges -->
         <div class="hero-download-buttons">
-          <a class="download-btn" target="_blank" href="https://apps.apple.com/us/app/finvera">
-            <svg width="16" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right:2px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.1.67-2.82 1.5-.63.72-1.18 1.86-1.04 2.97 1.1.08 2.21-.59 2.87-1.41z"/></svg>
-            Get on iPhone
+          <a class="download-badge" target="_blank" href="https://apps.apple.com/us/app/finvera">
+            <span class="badge-icon">
+              <svg width="20" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.1.67-2.82 1.5-.63.72-1.18 1.86-1.04 2.97 1.1.08 2.21-.59 2.87-1.41z"/></svg>
+            </span>
+            <span class="badge-text">
+              <span class="small-label">Download on the</span>
+              <span class="store-name">App Store</span>
+            </span>
           </a>
-          <a class="download-btn" target="_blank" href="https://play.google.com/store/apps/details?id=com.finvera">
-            <svg width="16" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right:2px"><path d="M3 5.27V18.73c0 .88.75 1.54 1.63 1.23L16.2 13.9l-2.6-2.6L3 5.27m14.28 6.03L14.73 10.3l-2.03 2.03 2.03 2.03 2.55-1.45c.8-.46.8-1.2 0-1.61M13.6 9.17l2.6 2.6 1.08-.62c.88-.5 1.02-1.54.3-2.22l-3.98-3.98c-.68-.68-1.77-.61-2.22.3L13.6 9.17M3 4.16L12.56 13.7l1.04-1.04L4.63 3.73c-.88-.3-1.63.36-1.63 1.23v-.8z"/></svg>
-            Get on Android
+          <a class="download-badge" target="_blank" href="https://play.google.com/store/apps/details?id=com.finvera">
+            <span class="badge-icon">
+              <svg width="20" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.27V18.73c0 .88.75 1.54 1.63 1.23L16.2 13.9l-2.6-2.6L3 5.27m14.28 6.03L14.73 10.3l-2.03 2.03 2.03 2.03 2.55-1.45c.8-.46.8-1.2 0-1.61M13.6 9.17l2.6 2.6 1.08-.62c.88-.5 1.02-1.54.3-2.22l-3.98-3.98c-.68-.68-1.77-.61-2.22.3L13.6 9.17M3 4.16L12.56 13.7l1.04-1.04L4.63 3.73c-.88-.3-1.63.36-1.63 1.23v-.8z"/></svg>
+            </span>
+            <span class="badge-text">
+              <span class="small-label">Get it on</span>
+              <span class="store-name">Google Play</span>
+            </span>
           </a>
         </div>
  
@@ -582,7 +681,7 @@
  
       <!-- Layered Visual Deck (PiggyVest Inspired) -->
       <div class="hero-image-wrapper animate-fade-in-up">
-        <img src="images/hero_happy_users.png" alt="Happy Finvera Customers" class="hero-main-img">
+        <img src="images/hero_group_users.png" alt="Happy Finvera Customers" class="hero-main-img">
         
         <!-- Floating Card 1: Active Balance -->
         <div class="floating-card floating-card-balance">
