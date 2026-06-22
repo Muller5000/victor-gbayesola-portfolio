@@ -86,14 +86,12 @@
 
     .floating-card {
       position: absolute;
-      background: rgba(16, 24, 40, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-md);
-      padding: 12px 18px;
-      box-shadow: var(--shadow-lg), 0 15px 30px rgba(0, 0, 0, 0.3);
-      color: #ffffff;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 40px;
+      padding: 10px 20px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+      color: #101828;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -104,8 +102,8 @@
 
     .floating-card:hover {
       transform: translateY(-4px) scale(1.03);
-      border-color: var(--color-primary);
-      box-shadow: 0 15px 30px -5px rgba(0, 102, 255, 0.3);
+      border-color: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.12);
     }
 
     /* Offsets & Animations */
@@ -683,36 +681,45 @@
       <div class="hero-image-wrapper animate-fade-in-up">
         <img src="images/hero_group_users.png" alt="Happy Finvera Customers" class="hero-main-img">
         
-        <!-- Floating Card 1: Active Balance -->
+        <!-- Floating Card 1: Yearly House Rent -->
         <div class="floating-card floating-card-balance">
-          <div class="card-avatar" style="width: 32px; height: 32px; border-radius: 50%; background: #1f293d; display:flex; align-items:center; justify-content:center; color: var(--color-primary); flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff1f2; color: #f43f5e; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
           <div style="display:flex; flex-direction:column; text-align:left;">
-            <span style="font-size: 0.65rem; color: var(--color-text-muted-light); text-transform:uppercase; letter-spacing:0.02em;">Active Net Worth</span>
-            <span style="font-size: 0.95rem; font-weight: 800; color: #10b981;">$48,250.00</span>
+            <span style="font-size: 0.8rem; font-weight: 700; color: #101828; line-height: 1.2;">Yearly House Rent</span>
+            <span style="font-size: 0.65rem; color: #667085; line-height: 1.2;">HouseMoney</span>
+          </div>
+          <div style="font-size: 0.85rem; font-weight: 800; color: #101828; margin-left: auto; padding-left: 8px;">
+            +₦80,000
           </div>
         </div>
  
-        <!-- Floating Card 2: Trade Signal -->
+        <!-- Floating Card 2: Group Trip -->
         <div class="floating-card floating-card-trade">
-          <div class="card-icon-wrapper" style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: rgba(0, 166, 62, 0.15); color: var(--color-success); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #e6fdf4; color: #10b981; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           </div>
           <div style="display:flex; flex-direction:column; text-align:left;">
-            <span style="font-size: 0.65rem; color: var(--color-text-muted-light); text-transform:uppercase; letter-spacing:0.02em;">BTC Trade Filled</span>
-            <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff;">+$520.40 <span style="font-size:0.75rem; color:#10b981; font-weight:normal;">(+4.8%)</span></span>
+            <span style="font-size: 0.8rem; font-weight: 700; color: #101828; line-height: 1.2;">Group trip to Cape Verde</span>
+            <span style="font-size: 0.65rem; color: #667085; line-height: 1.2;">Target Savings</span>
+          </div>
+          <div style="font-size: 0.85rem; font-weight: 800; color: #101828; margin-left: auto; padding-left: 8px;">
+            +₦15,000
           </div>
         </div>
  
-        <!-- Floating Card 3: Shield Protocol -->
+        <!-- Floating Card 3: Interest -->
         <div class="floating-card floating-card-stats">
-          <div class="card-icon-wrapper" style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: rgba(168, 85, 247, 0.15); color: #a855f7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #eff6ff; color: #3b82f6; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
           </div>
           <div style="display:flex; flex-direction:column; text-align:left;">
-            <span style="font-size: 0.65rem; color: var(--color-text-muted-light); text-transform:uppercase; letter-spacing:0.02em;">Shield Protocol</span>
-            <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff;">Risk Defense Active</span>
+            <span style="font-size: 0.8rem; font-weight: 700; color: #101828; line-height: 1.2;">Interest for July</span>
+            <span style="font-size: 0.65rem; color: #667085; line-height: 1.2;">Piggybank</span>
+          </div>
+          <div style="font-size: 0.85rem; font-weight: 800; color: #101828; margin-left: auto; padding-left: 8px;">
+            +₦305,000
           </div>
         </div>
       </div>
@@ -798,8 +805,8 @@
       <div class="products-grid">
         <!-- Trade -->
         <div class="product-card scroll-reveal reveal-delay-1">
-          <div style="background-color: var(--color-primary-light); height: 180px; display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          <div style="background-color: var(--color-primary-light); height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="images/mascot_trade.png" alt="Finvera Trade Mascot" style="height: 100%; width: auto; object-fit: contain; padding: 16px;">
           </div>
           <div class="product-card-body">
             <h3>Finvera Trade</h3>
@@ -812,8 +819,8 @@
         </div>
         <!-- Loan -->
         <div class="product-card scroll-reveal reveal-delay-2">
-          <div style="background-color: var(--color-success-bg); height: 180px; display: flex; align-items: center; justify-content: center; color: var(--color-success);">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          <div style="background-color: var(--color-success-bg); height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="images/mascot_loan.png" alt="Finvera Loan Mascot" style="height: 100%; width: auto; object-fit: contain; padding: 16px;">
           </div>
           <div class="product-card-body">
             <h3>Finvera Loan</h3>
@@ -826,8 +833,8 @@
         </div>
         <!-- Wealth -->
         <div class="product-card scroll-reveal reveal-delay-3">
-          <div style="background-color: hsl(270, 100%, 96%); height: 180px; display: flex; align-items: center; justify-content: center; color: hsl(270, 100%, 50%);">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <div style="background-color: hsl(270, 100%, 96%); height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="images/mascot_wealth.png" alt="Finvera Wealth Mascot" style="height: 100%; width: auto; object-fit: contain; padding: 16px;">
           </div>
           <div class="product-card-body">
             <h3>Finvera Wealth</h3>
