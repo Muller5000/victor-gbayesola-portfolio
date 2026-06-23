@@ -709,3 +709,86 @@ header.site-header.dark .hamburger span {
     text-align: center;
   }
 }
+
+/* Mascot Dancing Animations */
+.mascot-robot {
+  animation: robotDance 2.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.mascot-safe {
+  animation: safeBounce 2.2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  transform-origin: bottom center;
+}
+
+.mascot-piggy {
+  animation: piggyWiggle 2.8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes robotDance {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-8px) rotate(-6deg) translateX(-4px);
+  }
+  40% {
+    transform: translateY(0) rotate(4deg) translateX(4px);
+  }
+  60% {
+    transform: translateY(-10px) rotate(-4deg) translateX(-2px);
+  }
+  80% {
+    transform: translateY(0) rotate(6deg) translateX(2px);
+  }
+}
+
+@keyframes safeBounce {
+  0%, 100% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.15, 0.85) translateY(0);
+  }
+  30% {
+    transform: scale(0.85, 1.15) translateY(-25px);
+  }
+  50% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  65% {
+    transform: scale(0.95, 1.05) translateY(-6px);
+  }
+  75% {
+    transform: scale(1.02, 0.98) translateY(0);
+  }
+  90% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+@keyframes piggyWiggle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1) translateY(0);
+  }
+  15% {
+    transform: rotate(-12deg) scale(1.03) translateY(-4px);
+  }
+  30% {
+    transform: rotate(12deg) scale(0.97) translateY(0);
+  }
+  45% {
+    transform: rotate(-9deg) scale(1.03) translateY(-4px);
+  }
+  60% {
+    transform: rotate(9deg) scale(0.97) translateY(0);
+  }
+  75% {
+    transform: rotate(-4deg) scale(1.01) translateY(-2px);
+  }
+  85% {
+    transform: rotate(4deg) scale(0.99) translateY(0);
+  }
+}
+
