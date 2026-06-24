@@ -110,6 +110,7 @@
       border: 2px dashed rgba(15, 119, 255, 0.25);
       border-radius: 50%;
       animation: spinRing 15s linear infinite;
+      animation-play-state: paused;
       pointer-events: none;
       z-index: 0;
       top: 50%;
@@ -127,6 +128,7 @@
       border: 1px dashed rgba(15, 119, 255, 0.15);
       border-radius: 50%;
       animation: spinRingReverse 10s linear infinite;
+      animation-play-state: paused;
     }
 
     @keyframes spinRing {
@@ -152,6 +154,7 @@
       filter: blur(3px);
       z-index: 1;
       animation: shadowPulse 2.2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+      animation-play-state: paused;
       pointer-events: none;
     }
 
@@ -193,6 +196,7 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 1;
+      animation-play-state: paused;
     }
 
     /* Trade Tech Dots */
@@ -255,6 +259,14 @@
         transform: translate(var(--dx, -25px), var(--dy, -25px)) scale(1.2) rotate(180deg);
         opacity: 1;
       }
+    }
+
+    /* Trigger animations only on hover of parent detailed card */
+    .service-detailed-card:hover .tech-ring,
+    .service-detailed-card:hover .tech-ring::after,
+    .service-detailed-card:hover .safe-shadow,
+    .service-detailed-card:hover .floating-particle {
+      animation-play-state: running;
     }
 
     /* Timeline Process Styles */

@@ -713,18 +713,32 @@ header.site-header.dark .hamburger span {
 /* Mascot Dancing Animations */
 .mascot-robot {
   animation: robotDance 2.5s ease-in-out infinite;
+  animation-play-state: paused;
   transform-origin: bottom center;
 }
 
 .mascot-safe {
   animation: safeBounce 2.2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  animation-play-state: paused;
   transform-origin: bottom center;
 }
 
 .mascot-piggy {
   animation: piggyWiggle 2.8s ease-in-out infinite;
+  animation-play-state: paused;
   transform-origin: bottom center;
 }
+
+/* Trigger Mascot Dancing on Card Hover */
+.product-card:hover .mascot-robot,
+.product-card:hover .mascot-safe,
+.product-card:hover .mascot-piggy,
+.service-detailed-card:hover .mascot-robot,
+.service-detailed-card:hover .mascot-safe,
+.service-detailed-card:hover .mascot-piggy {
+  animation-play-state: running;
+}
+
 
 @keyframes robotDance {
   0%, 100% {
