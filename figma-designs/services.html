@@ -64,6 +64,199 @@
       font-size: 0.95rem;
     }
 
+    /* Captivating Interactive Service Card Motion Elements */
+    .service-media-header {
+      position: relative;
+      overflow: hidden;
+      perspective: 1000px;
+    }
+
+    /* Base glow behind mascots */
+    .card-bg-glow {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      filter: blur(45px);
+      opacity: 0.35;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .trade .card-bg-glow {
+      background: radial-gradient(circle, rgba(15, 119, 255, 0.4) 0%, rgba(15, 119, 255, 0) 70%);
+    }
+    .loan .card-bg-glow {
+      background: radial-gradient(circle, rgba(0, 166, 62, 0.4) 0%, rgba(0, 166, 62, 0) 70%);
+    }
+    .wealth .card-bg-glow {
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(168, 85, 247, 0) 70%);
+    }
+
+    /* Brighter glow on card hover */
+    .service-detailed-card:hover .card-bg-glow {
+      opacity: 0.75;
+      transform: translate(-50%, -50%) scale(1.4);
+    }
+
+    /* Trade: Tech Ring */
+    .tech-ring {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 2px dashed rgba(15, 119, 255, 0.25);
+      border-radius: 50%;
+      animation: spinRing 15s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+      top: 50%;
+      left: 50%;
+      margin-top: -75px;
+      margin-left: -75px;
+    }
+    .tech-ring::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px dashed rgba(15, 119, 255, 0.15);
+      border-radius: 50%;
+      animation: spinRingReverse 10s linear infinite;
+    }
+
+    @keyframes spinRing {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.05); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    @keyframes spinRingReverse {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* Loan: Safe Shadow (Squash/stretch partner) */
+    .safe-shadow {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 10px;
+      background: rgba(0, 166, 62, 0.18);
+      border-radius: 50%;
+      filter: blur(3px);
+      z-index: 1;
+      animation: shadowPulse 2.2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shadowPulse {
+      0%, 100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.8;
+      }
+      10% {
+        transform: translateX(-50%) scale(1.2, 1.1); /* squash start, shadow widens */
+        opacity: 0.9;
+      }
+      30% {
+        transform: translateX(-50%) scale(0.5, 0.8); /* jump, shadow shrinks & fades */
+        opacity: 0.25;
+        filter: blur(5px);
+      }
+      50% {
+        transform: translateX(-50%) scale(1.15, 1.05); /* land, shadow widens */
+        opacity: 0.85;
+      }
+      65% {
+        transform: translateX(-50%) scale(0.9, 0.95); /* small bounce */
+        opacity: 0.6;
+      }
+      75% {
+        transform: translateX(-50%) scale(1.02, 0.98);
+        opacity: 0.8;
+      }
+      90% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.8;
+      }
+    }
+
+    /* Particles / Sparkles */
+    .floating-particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Trade Tech Dots */
+    .trade .floating-particle {
+      background: rgba(15, 119, 255, 0.5);
+      box-shadow: 0 0 8px rgba(15, 119, 255, 0.8);
+      animation: floatParticle 5s ease-in-out infinite;
+    }
+    /* Loan Coins */
+    .loan .floating-particle {
+      background: linear-gradient(135deg, #ffd700, #ffa500); /* Gold coin gradient */
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+      animation: riseParticle 4s ease-in-out infinite;
+    }
+    /* Wealth Stars */
+    .wealth .floating-particle.star {
+      background: none;
+      color: rgba(168, 85, 247, 0.8);
+      font-size: 16px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: sparkleStar 3.5s ease-in-out infinite;
+      text-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+    }
+
+    @keyframes floatParticle {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translate(var(--dx, 20px), var(--dy, -30px)) scale(1.3);
+        opacity: 0.8;
+      }
+    }
+    @keyframes riseParticle {
+      0% {
+        transform: translateY(110px) translateX(0) scale(0.5);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.9;
+      }
+      80% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-90px) translateX(var(--dx, 15px)) scale(1.1);
+        opacity: 0;
+      }
+    }
+    @keyframes sparkleStar {
+      0%, 100% {
+        transform: translate(0, 0) scale(0) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        transform: translate(var(--dx, -25px), var(--dy, -25px)) scale(1.2) rotate(180deg);
+        opacity: 1;
+      }
+    }
+
     /* Timeline Process Styles */
     .timeline-container {
       position: relative;
@@ -353,7 +546,13 @@
         <!-- Trade Detailed -->
         <div class="service-detailed-card animate-fade-in-up">
           <div class="service-media-header trade">
-            <img src="images/mascot_trade.png" alt="Finvera Trade Mascot" class="mascot-robot" style="height: 100%; width: auto; object-fit: contain; padding: 20px;">
+            <div class="card-bg-glow"></div>
+            <div class="tech-ring"></div>
+            <span class="floating-particle" style="width: 6px; height: 6px; top: 30px; left: 40px; --dx: 30px; --dy: -40px; animation-delay: 0s;"></span>
+            <span class="floating-particle" style="width: 4px; height: 4px; top: 120px; left: 70px; --dx: -20px; --dy: -50px; animation-delay: 1.5s;"></span>
+            <span class="floating-particle" style="width: 8px; height: 8px; top: 60px; right: 50px; --dx: -35px; --dy: 30px; animation-delay: 0.7s;"></span>
+            <span class="floating-particle" style="width: 5px; height: 5px; bottom: 40px; right: 80px; --dx: 25px; --dy: -25px; animation-delay: 2.2s;"></span>
+            <img src="images/mascot_trade.png" alt="Finvera Trade Mascot" class="mascot-robot" style="height: 100%; width: auto; object-fit: contain; padding: 20px; z-index: 2;">
           </div>
           <div class="service-body">
             <h3>Finvera Trade</h3>
@@ -365,7 +564,13 @@
         <!-- Loan Detailed -->
         <div class="service-detailed-card animate-fade-in-up">
           <div class="service-media-header loan">
-            <img src="images/mascot_loan.png" alt="Finvera Loan Mascot" class="mascot-safe" style="height: 100%; width: auto; object-fit: contain; padding: 20px;">
+            <div class="card-bg-glow"></div>
+            <div class="safe-shadow"></div>
+            <span class="floating-particle" style="width: 10px; height: 10px; bottom: 10px; left: 25%; --dx: -15px; animation-delay: 0s;"></span>
+            <span class="floating-particle" style="width: 8px; height: 8px; bottom: 10px; left: 45%; --dx: 20px; animation-delay: 1.2s;"></span>
+            <span class="floating-particle" style="width: 12px; height: 12px; bottom: 10px; right: 30%; --dx: -25px; animation-delay: 0.6s;"></span>
+            <span class="floating-particle" style="width: 9px; height: 9px; bottom: 10px; right: 15%; --dx: 15px; animation-delay: 2s;"></span>
+            <img src="images/mascot_loan.png" alt="Finvera Loan Mascot" class="mascot-safe" style="height: 100%; width: auto; object-fit: contain; padding: 20px; z-index: 2;">
           </div>
           <div class="service-body">
             <h3>Finvera Loan</h3>
@@ -377,7 +582,12 @@
         <!-- Wealth Detailed -->
         <div class="service-detailed-card animate-fade-in-up">
           <div class="service-media-header wealth">
-            <img src="images/mascot_wealth.png" alt="Finvera Wealth Mascot" class="mascot-piggy" style="height: 100%; width: auto; object-fit: contain; padding: 20px;">
+            <div class="card-bg-glow"></div>
+            <span class="floating-particle star" style="top: 40px; left: 30%; --dx: -20px; --dy: -30px; animation-delay: 0s;">✦</span>
+            <span class="floating-particle star" style="top: 80px; left: 20%; --dx: -30px; --dy: 20px; animation-delay: 1.5s;">✦</span>
+            <span class="floating-particle star" style="top: 50px; right: 25%; --dx: 30px; --dy: -40px; animation-delay: 0.8s;">✦</span>
+            <span class="floating-particle star" style="bottom: 50px; right: 20%; --dx: 25px; --dy: 30px; animation-delay: 2.3s;">✦</span>
+            <img src="images/mascot_wealth.png" alt="Finvera Wealth Mascot" class="mascot-piggy" style="height: 100%; width: auto; object-fit: contain; padding: 20px; z-index: 2;">
           </div>
           <div class="service-body">
             <h3>Finvera Wealth</h3>
