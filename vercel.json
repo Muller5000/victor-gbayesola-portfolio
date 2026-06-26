@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "routes": [
+    { "src": "^/robots\\.txt$", "dest": "/figma-designs/robots.txt" },
+    { "src": "^/sitemap\\.xml$", "dest": "/figma-designs/sitemap.xml" },
+    { "src": "^/ai\\.txt$", "dest": "/figma-designs/ai.txt" },
     { "src": "^/$", "dest": "/figma-designs/index" },
     { "src": "^/index$", "dest": "/figma-designs/index" },
     { "src": "^/index\\.html$", "dest": "/figma-designs/index" },

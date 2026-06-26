@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+Disallow: /login
+Disallow: /signup
+Disallow: /chuks-kitchen/
+
+# Allow and prioritize AI search engine bots to crawl and cite Finvera
+User-agent: GPTBot
+Allow: /
+Disallow: /login
+Disallow: /signup
+Disallow: /chuks-kitchen/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /login
+Disallow: /signup
+Disallow: /chuks-kitchen/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /login
+Disallow: /signup
+Disallow: /chuks-kitchen/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /login
+Disallow: /signup
+Disallow: /chuks-kitchen/
+
+Sitemap: https://finvera-zeta.vercel.app/sitemap.xml
