@@ -1,34 +1,16 @@
 {
+  "version": 2,
   "cleanUrls": true,
+  "builds": [
+    { "src": "api/**/*.js", "use": "@vercel/node" },
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "style.css", "use": "@vercel/static" },
+    { "src": "app.js", "use": "@vercel/static" },
+    { "src": "assets/**/*", "use": "@vercel/static" }
+  ],
   "routes": [
-    { "src": "^/robots\\.txt$", "dest": "/figma-designs/robots.txt" },
-    { "src": "^/sitemap\\.xml$", "dest": "/figma-designs/sitemap.xml" },
-    { "src": "^/ai\\.txt$", "dest": "/figma-designs/ai.txt" },
-    { "src": "^/$", "dest": "/figma-designs/index" },
-    { "src": "^/index$", "dest": "/figma-designs/index" },
-    { "src": "^/index\\.html$", "dest": "/figma-designs/index" },
-    { "src": "^/about$", "dest": "/figma-designs/about" },
-    { "src": "^/about\\.html$", "dest": "/figma-designs/about" },
-    { "src": "^/contact$", "dest": "/figma-designs/contact" },
-    { "src": "^/contact\\.html$", "dest": "/figma-designs/contact" },
-    { "src": "^/login$", "dest": "/figma-designs/login" },
-    { "src": "^/login\\.html$", "dest": "/figma-designs/login" },
-    { "src": "^/signup$", "dest": "/figma-designs/signup" },
-    { "src": "^/signup\\.html$", "dest": "/figma-designs/signup" },
-    { "src": "^/services$", "dest": "/figma-designs/services" },
-    { "src": "^/services\\.html$", "dest": "/figma-designs/services" },
-    { "src": "^/testimonials$", "dest": "/figma-designs/testimonials" },
-    { "src": "^/testimonials\\.html$", "dest": "/figma-designs/testimonials" },
-    { "src": "^/product-trade$", "dest": "/figma-designs/product-trade" },
-    { "src": "^/product-trade\\.html$", "dest": "/figma-designs/product-trade" },
-    { "src": "^/product-loan$", "dest": "/figma-designs/product-loan" },
-    { "src": "^/product-loan\\.html$", "dest": "/figma-designs/product-loan" },
-    { "src": "^/product-wealth$", "dest": "/figma-designs/product-wealth" },
-    { "src": "^/product-wealth\\.html$", "dest": "/figma-designs/product-wealth" },
-    { "src": "^/styles\\.css$", "dest": "/figma-designs/styles.css" },
-    { "src": "^/main\\.js$", "dest": "/figma-designs/main.js" },
-    { "src": "^/images/(.*)$", "dest": "/figma-designs/images/$1" },
-    { "src": "^/portfolio$", "dest": "/portfolio" },
-    { "src": "^/portfolio\\.html$", "dest": "/portfolio" }
+    { "src": "/api/contact", "dest": "api/contact.js" },
+    { "src": "/api/messages", "dest": "api/messages.js" },
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
