@@ -1,0 +1,2 @@
+# Exclude local dev server from Vercel deployment to prevent serverless function compilation crashes
+server.js
