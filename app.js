@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('preloading');
   window.scrollTo(0, 0);
 
+  initLenisScroll();
   initPreloader();
   initThemeEngine();
   initLanguageEngine();
@@ -891,6 +892,9 @@ function initPreloader() {
   function dismissPreloader() {
     preloader.classList.add('fade-out');
     document.body.classList.remove('preloading');
+    if (window.lenisInstance) {
+      window.lenisInstance.start();
+    }
   }
 
   // Initiate typewriter
@@ -946,4 +950,37 @@ function makeTextBouncy(element) {
   childNodes.forEach(child => {
     element.appendChild(processNode(child));
   });
+}
+
+/* ==========================================================================
+   13. LENIS SMOOTH INERTIA SCROLL SYSTEM
+   ========================================================================== */
+window.lenisInstance = null;
+
+function initLenisScroll() {
+  if (typeof Lenis === 'undefined') return;
+
+  window.lenisInstance = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  // Lock scroll during preloading
+  window.lenisInstance.stop();
+
+  function raf(time) {
+    if (window.lenisInstance) {
+      window.lenisInstance.raf(time);
+    }
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
 }
