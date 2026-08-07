@@ -159,6 +159,19 @@ const TRANSLATIONS = {
     metric_3_title: "Years Active Research & UX",
     metric_3_desc: "Collaborating with high-growth startups and venture studios to transform abstract concepts into memorable interfaces.",
     
+    niches_subtitle: "Sector Expertise",
+    niches_title: "Bridging diverse industries with aesthetic rigor and quantitative logic.",
+    niche_1: "Fintech & Payments",
+    niche_2: "Venture Capital & Pitching",
+    niche_3: "Quantitative Economics",
+    niche_4: "Real Estate Tech (PropTech)",
+    niche_5: "SaaS & Enterprise Platforms",
+    niche_6: "Consumer Mobile Apps",
+    niche_7: "Data Analytics & Dashboards",
+    niche_8: "EdTech & Learning Platforms",
+    niche_9: "AI & Neural Networks",
+    niche_10: "Brand & Modular Design Systems",
+    
     footer_copyright: "&copy; 2026 Victor Gbayesola. Curated with absolute designer precision."
   },
   es: {
@@ -274,6 +287,19 @@ const TRANSLATIONS = {
     metric_3_num: "5+",
     metric_3_title: "Años de Investigación y UX",
     metric_3_desc: "Colaborando con startups de alto crecimiento y estudios de capital para transformar conceptos abstractos en interfaces memorables.",
+    
+    niches_subtitle: "Sectores de Especialidad",
+    niches_title: "Conectando diversas industrias con rigor estético y lógica cuantitativa.",
+    niche_1: "Fintech y Pagos",
+    niche_2: "Capital de Riesgo y Pitching",
+    niche_3: "Economía Cuantitativa",
+    niche_4: "Tecnología Inmobiliaria (PropTech)",
+    niche_5: "SaaS y Plataformas Empresariales",
+    niche_6: "Aplicaciones Móviles de Consumo",
+    niche_7: "Análisis de Datos y Dashboards",
+    niche_8: "EdTech y Plataformas de Aprendizaje",
+    niche_9: "IA y Redes Neuronales",
+    niche_10: "Sistemas de Diseño Modular y Marca",
     
     footer_copyright: "&copy; 2026 Victor Gbayesola. Curado con absoluta precisión de diseñador."
   }

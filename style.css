@@ -1469,6 +1469,57 @@ body.portfolio-body {
   color: var(--text-secondary);
 }
 
+/* ═══ 12c. SECTOR EXPERTISE / NICHES SECTION ═══ */
+.niches-section {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-app);
+}
+
+.niches-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 50px auto 0 auto;
+}
+
+.niche-pill {
+  font-family: var(--font-sub);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 12px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  transition: var(--transition-fast);
+  cursor: pointer;
+  user-select: none;
+}
+
+.niche-pill:hover {
+  background-color: var(--bg-card-hover);
+  transform: translateY(-3px);
+}
+
+/* Rotating Hover Glow Accents */
+.niche-pill:nth-child(3n+1):hover {
+  border-color: var(--color-ux);
+  box-shadow: 0 8px 24px rgba(255, 0, 127, 0.15);
+}
+
+.niche-pill:nth-child(3n+2):hover {
+  border-color: var(--color-econ);
+  box-shadow: 0 8px 24px rgba(0, 240, 255, 0.15);
+}
+
+.niche-pill:nth-child(3n+3):hover {
+  border-color: var(--color-strategy);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.15);
+}
+
 /* ═══ 13. RESPONSIVE MEDIA CONTROLLER ═══ */
 @media (max-width: 1200px) {
   .hero-headline { font-size: 3.4rem; }
