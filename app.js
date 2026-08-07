@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageEngine();
   initCursorGlow();
   initCursorFollower(); // Fancy.design cursor
-  initProjectHoverReveal(); // Typography project hover reveal
   initTestimonialsSlider(); // Interactive client reviews slider
   initNichesHoverSlider(); // Redesigned services hover slider
   initScrollRockAnimation(); // Floating lava rock animation
@@ -448,68 +447,6 @@ function initCursorGlow() {
   }
 }
 
-/* ==========================================================================
-   4. TYPOGRAPHIC HOVER-TO-REVEAL PROJECT PREVIEW (ORGNZM.STUDIO STYLE)
-   ========================================================================== */
-function initProjectHoverReveal() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const container = document.querySelector('.projects-list-container');
-  const rows = document.querySelectorAll('.project-list-row');
-  const preview = document.getElementById('project-cursor-preview');
-  const previewImgs = document.querySelectorAll('#project-cursor-preview .preview-img');
-  
-  if (!container || !rows.length || !preview) return;
-  
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
-  let isMoving = false;
-  
-  // Smoothly follow the cursor with linear interpolation (lerp)
-  function smoothMove() {
-    if (!isMoving) return;
-    
-    currentX += (targetX - currentX) * 0.12;
-    currentY += (targetY - currentY) * 0.12;
-    
-    preview.style.left = `${currentX}px`;
-    preview.style.top = `${currentY}px`;
-    
-    requestAnimationFrame(smoothMove);
-  }
-  
-  window.addEventListener('mousemove', (e) => {
-    targetX = e.clientX;
-    targetY = e.clientY;
-  });
-  
-  rows.forEach(row => {
-    row.addEventListener('mouseenter', (e) => {
-      const index = row.getAttribute('data-project-index');
-      
-      previewImgs.forEach(img => img.classList.remove('active'));
-      const activeImg = document.getElementById(`preview-img-${index}`);
-      if (activeImg) activeImg.classList.add('active');
-      
-      preview.classList.add('active');
-      
-      if (!isMoving) {
-        currentX = e.clientX;
-        currentY = e.clientY;
-        preview.style.left = `${currentX}px`;
-        preview.style.top = `${currentY}px`;
-        isMoving = true;
-        smoothMove();
-      }
-    });
-    
-    row.addEventListener('mouseleave', () => {
-      preview.classList.remove('active');
-      isMoving = false;
-    });
-  });
-}
 
 /* ==========================================================================
    5. INTERACTIVE MUSIC PLAYER BENTO WIDGET
