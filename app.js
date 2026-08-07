@@ -173,6 +173,18 @@ const TRANSLATIONS = {
     niche_9: "Data-Rich Interfaces",
     niche_10: "Corporate Web Designs",
     
+    methodology_subtitle: "My Methodology",
+    methodology_title: "A structured, three-step approach to turning product vision into interactive high-fidelity realities.",
+    phase_1_num: "01",
+    phase_1_title: "Empirical Discovery",
+    phase_1_desc: "Before opening Figma, I analyze user behavior and market research to map core workflows, validating design directions with empirical logic rather than assumptions.",
+    phase_2_num: "02",
+    phase_2_title: "High-Fi Interface Architecture",
+    phase_2_desc: "I build responsive, visual design systems from the ground up, crafting detailed layouts, pixel-perfect hierarchies, and smooth micro-interactions that engage users.",
+    phase_3_num: "03",
+    phase_3_title: "Venture Alignment & Growth",
+    phase_3_desc: "Design is a business accelerator. I help founders package their product logic into high-impact pitch decks and scale their visual MVPs to drive startup growth.",
+    
     footer_copyright: "&copy; 2026 Victor Gbayesola. Curated with absolute designer precision."
   },
   es: {
@@ -301,6 +313,18 @@ const TRANSLATIONS = {
     niche_8: "Pitch Decks y Branding",
     niche_9: "Interfaces de Datos Complejos",
     niche_10: "Diseño Web Corporativo",
+    
+    methodology_subtitle: "Mi Metodología",
+    methodology_title: "Un enfoque estructurado de tres pasos para transformar la visión del producto en realidades interactivas de alta fidelidad.",
+    phase_1_num: "01",
+    phase_1_title: "Descubrimiento Empírico",
+    phase_1_desc: "Antes de abrir Figma, analizo el comportamiento de los usuarios e investigo el mercado para mapear flujos clave, validando decisiones con datos en lugar de suposiciones.",
+    phase_2_num: "02",
+    phase_2_title: "Arquitectura de Interfaces de Alta Fidelidad",
+    phase_2_desc: "Construyo sistemas de diseño visuales y adaptables, creando maquetas detalladas, jerarquías perfectas y microinteracciones fluidas que conectan con los usuarios.",
+    phase_3_num: "03",
+    phase_3_title: "Alineación de Negocio y Crecimiento",
+    phase_3_desc: "El diseño es un motor de negocio. Ayudo a fundadores a empaquetar la lógica de su producto en pitch decks atractivos y estructuro MVPs visuales para escalar su startup.",
     
     footer_copyright: "&copy; 2026 Victor Gbayesola. Curado con absoluta precisión de diseñador."
   }
