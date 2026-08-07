@@ -473,8 +473,8 @@ function initStackedCards() {
       ease: "none",
       scrollTrigger: {
         trigger: cards[index + 1],
-        start: "top bottom", // Starts when next card enters bottom of viewport
-        end: "top top+=160", // Ends when next card hits its sticky top offset
+        start: "top 75%", // Wait until the next card is substantially overlapping before shrinking
+        end: `top top+=${120 + ((index + 1) * 40)}`, // Dynamically calculate the sticky top offset of the next card
         scrub: true
       }
     });
