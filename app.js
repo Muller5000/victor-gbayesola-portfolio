@@ -411,6 +411,7 @@ function setLanguage(lang) {
    3. HIGH-PERFORMANCE MOUSE GLOW TRACKER (60FPS THROTTLED)
    ========================================================================== */
 function initCursorGlow() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const glowElement = document.getElementById('cursor-glow');
   if (!glowElement) return;
 
@@ -451,6 +452,7 @@ function initCursorGlow() {
    4. TYPOGRAPHIC HOVER-TO-REVEAL PROJECT PREVIEW (ORGNZM.STUDIO STYLE)
    ========================================================================== */
 function initProjectHoverReveal() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const container = document.querySelector('.projects-list-container');
   const rows = document.querySelectorAll('.project-list-row');
   const preview = document.getElementById('project-cursor-preview');
@@ -551,14 +553,26 @@ function handleFormSubmit(event) {
   
   if (!form || !submitBtn) return;
   
-  const name = document.getElementById('contact-name').value;
-  const email = document.getElementById('contact-email').value;
-  const message = document.getElementById('contact-message').value;
+  const nameInput = document.getElementById('contact-name');
+  const emailInput = document.getElementById('contact-email');
+  const messageInput = document.getElementById('contact-message');
+  const originalText = btnText.textContent;
+
+  if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+    btnText.textContent = "Please fill all fields";
+    setTimeout(() => btnText.textContent = originalText, 2000);
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = '1';
+    return;
+  }
+
+  const name = nameInput.value;
+  const email = emailInput.value;
+  const message = messageInput.value;
 
   // Animate button sending state
   submitBtn.disabled = true;
   submitBtn.style.opacity = '0.7';
-  const originalText = btnText.textContent;
   const currentLang = localStorage.getItem('lang') || 'en';
   btnText.textContent = currentLang === 'en' ? "Transmitting..." : "Transmitiendo...";
   
@@ -614,19 +628,30 @@ function initMobileNavigation() {
   if (!toggleBtn || !menu) return;
   
   toggleBtn.addEventListener('click', () => {
-    toggleBtn.classList.toggle('active');
-    menu.classList.toggle('active');
+    const isActive = menu.classList.toggle('active');
+    toggleBtn.classList.toggle('active', isActive);
+    toggleBtn.setAttribute('aria-expanded', isActive);
     
     // Block main body scrolling when overlay is active
-    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    document.body.style.overflow = isActive ? 'hidden' : '';
   });
   
   links.forEach(link => {
     link.addEventListener('click', () => {
       toggleBtn.classList.remove('active');
       menu.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('active')) {
+      toggleBtn.classList.remove('active');
+      menu.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
   });
 }
 
@@ -680,6 +705,7 @@ function updateActiveNavigationItem() {
    9. DYNAMIC TEXT CURSOR FOLLOWER (FANCY.DESIGN STYLE)
    ========================================================================== */
 function initCursorFollower() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const follower = document.getElementById('cursor-follower');
   const textEl = follower ? follower.querySelector('.cursor-text') : null;
   if (!follower || !textEl) return;
@@ -865,6 +891,7 @@ function scrollToContact() {
    11. ARCTIC FLOATING ICE CRYSTALS ENGINE (IGLOO.INC STYLE)
    ========================================================================== */
 function initArcticParticles() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const container = document.getElementById('arctic-particles');
   const footer = document.querySelector('.app-footer');
   if (!container || !footer) return;
@@ -973,7 +1000,7 @@ function initPreloader() {
     });
 
     // Stagger slide up transition of preloader overlay screen after bounce completes
-    setTimeout(dismissPreloader, 1300);
+    setTimeout(dismissPreloader, 500);
   }
 
   function dismissPreloader() {
@@ -1182,6 +1209,7 @@ function initTestimonialsSlider() {
    16. SCROLL-ANIMATED LAVA ROCK PARALLAX & BOBBING
    ========================================================================== */
 function initScrollRockAnimation() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const container = document.getElementById('lava-rock-container');
   const rock = document.getElementById('lava-rock');
   if (!container || !rock) return;

@@ -7,6 +7,7 @@
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sub: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-main: var(--font-heading);
 
   /* Smooth Custom Transitions */
   --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -35,6 +36,7 @@
 
 /* LIGHT THEME PRESETS */
 [data-theme="light"] {
+  --font-main: var(--font-heading);
   --bg-app: #f6f8fa;
   --bg-card: rgba(255, 255, 255, 0.72);
   --bg-card-hover: rgba(255, 255, 255, 0.95);
@@ -76,6 +78,26 @@ html, body {
 
 body.portfolio-body {
   position: relative;
+}
+
+/* Global focus-visible accessibility styles */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Screen reader utility class */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
 
 /* ═══ 2. HARDWARE ACCELERATED MOUSE GLOW ═══ */
@@ -277,15 +299,17 @@ body.portfolio-body {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 24px;
-  height: 16px;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 14px 10px;
   background: none;
   border: none;
   cursor: pointer;
 }
 
 .hamburger-bar {
-  width: 100%;
+  width: 24px;
   height: 2px;
   background-color: var(--text-primary);
   transition: var(--transition-fast);
@@ -2871,6 +2895,16 @@ body.preloading {
     width: 260px;
     height: 260px;
     opacity: 0.5;
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

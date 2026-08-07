@@ -7,6 +7,15 @@
   <title>Victor Gbayesola — Creative Designer & Research Analyst</title>
   <meta name="description" content="Portfolio of Victor Gbayesola — High-fidelity Creative UX Designer, Quantitative Economics Analyst, and Entrepreneurial Strategist.">
   
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Victor Gbayesola — Creative Designer & Research Analyst">
+  <meta property="og:description" content="Portfolio of Victor Gbayesola — High-fidelity Creative UX Designer, Quantitative Economics Analyst, and Entrepreneurial Strategist.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://victorgbayesola.com">
+  
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,9 +37,9 @@
   <!-- Dynamic Typewriter Preloader Screen (Intro Animation) -->
   <div class="preloader-screen" id="preloader">
     <div class="preloader-content">
-      <h1 class="preloader-title">
+      <div class="preloader-title">
         <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
-      </h1>
+      </div>
     </div>
   </div>
 
@@ -74,8 +83,8 @@
 
         <!-- Minimal theme Switcher -->
         <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
-          <i class="fa-solid fa-moon moon-icon"></i>
-          <i class="fa-solid fa-sun sun-icon"></i>
+          <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
         </button>
 
         <!-- Mobile hamburger drawer toggle -->
@@ -155,7 +164,7 @@
         <div class="projects-list-container">
           
           <!-- Project 1: QuickBite -->
-          <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="project-list-row" data-project-index="1">
+          <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="project-list-row" data-project-index="1">
             <div class="row-num">01</div>
             <div class="row-info">
               <h3 class="row-title" data-translate="project_1_title">QuickBite</h3>
@@ -165,12 +174,12 @@
               <span class="row-tool" data-translate="project_1_tool_1">UX/UI Design</span>
               <span class="row-tool" data-translate="project_1_tool_2">Mobile App</span>
               <span class="row-tool" data-translate="project_1_tool_3">Interaction</span>
-              <i class="fa-solid fa-arrow-right-long row-arrow"></i>
+              <i class="fa-solid fa-arrow-right-long row-arrow" aria-hidden="true"></i>
             </div>
           </a>
 
           <!-- Project 2: Pulse Analytics -->
-          <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="project-list-row" data-project-index="2">
+          <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="project-list-row" data-project-index="2">
             <div class="row-num">02</div>
             <div class="row-info">
               <h3 class="row-title" data-translate="project_2_title">Pulse Analytics</h3>
@@ -180,12 +189,12 @@
               <span class="row-tool" data-translate="project_2_tool_1">Data Modeling</span>
               <span class="row-tool" data-translate="project_2_tool_2">UX Research</span>
               <span class="row-tool" data-translate="project_2_tool_3">Dashboard</span>
-              <i class="fa-solid fa-arrow-right-long row-arrow"></i>
+              <i class="fa-solid fa-arrow-right-long row-arrow" aria-hidden="true"></i>
             </div>
           </a>
 
           <!-- Project 3: Ventura -->
-          <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="project-list-row" data-project-index="3">
+          <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="project-list-row" data-project-index="3">
             <div class="row-num">03</div>
             <div class="row-info">
               <h3 class="row-title" data-translate="project_3_title">Ventura</h3>
@@ -195,7 +204,7 @@
               <span class="row-tool" data-translate="project_3_tool_1">Venture Strategy</span>
               <span class="row-tool" data-translate="project_3_tool_2">Brand System</span>
               <span class="row-tool" data-translate="project_3_tool_3">Investor Pitch</span>
-              <i class="fa-solid fa-arrow-right-long row-arrow"></i>
+              <i class="fa-solid fa-arrow-right-long row-arrow" aria-hidden="true"></i>
             </div>
           </a>
 
@@ -204,14 +213,15 @@
       
       <!-- Floating Preview Box -->
       <div id="project-cursor-preview">
-        <img src="assets/project 1.png" alt="QuickBite Preview" class="preview-img" id="preview-img-1">
-        <img src="assets/project 2.png" alt="Pulse Analytics Preview" class="preview-img" id="preview-img-2">
-        <img src="assets/project 3.png" alt="Ventura Preview" class="preview-img" id="preview-img-3">
+        <img src="assets/project 1.png" alt="QuickBite Preview" class="preview-img" id="preview-img-1" loading="lazy">
+        <img src="assets/project 2.png" alt="Pulse Analytics Preview" class="preview-img" id="preview-img-2" loading="lazy">
+        <img src="assets/project 3.png" alt="Ventura Preview" class="preview-img" id="preview-img-3" loading="lazy">
       </div>
     </section>
 
     <!-- ═══ SECTOR EXPERTISE / SERVICES SECTION ═══ -->
     <section class="niches-section" id="niches">
+      <h2 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0);">Services</h2>
       <div class="container niches-container-split">
         
         <!-- Left Sidebar -->
@@ -242,11 +252,11 @@
         <!-- Right Visual Display Container -->
         <div class="niches-display">
           <div class="display-frame">
-            <img src="assets/project 1.png" alt="Web Design Mockup" class="display-img active" id="service-img-0">
-            <img src="assets/project 2.png" alt="Web Dev Mockup" class="display-img" id="service-img-1">
-            <img src="assets/project 3.png" alt="Branding Mockup" class="display-img" id="service-img-2">
-            <img src="assets/visual_3d_design.jpg" alt="3D Design Visual" class="display-img" id="service-img-3">
-            <img src="assets/visual_art_direction.jpg" alt="Art Direction Visual" class="display-img" id="service-img-4">
+            <img src="assets/project 1.png" alt="Web Design Mockup" class="display-img active" id="service-img-0" loading="lazy">
+            <img src="assets/project 2.png" alt="Web Dev Mockup" class="display-img" id="service-img-1" loading="lazy">
+            <img src="assets/project 3.png" alt="Branding Mockup" class="display-img" id="service-img-2" loading="lazy">
+            <img src="assets/visual_3d_design.jpg" alt="3D Design Visual" class="display-img" id="service-img-3" loading="lazy">
+            <img src="assets/visual_art_direction.jpg" alt="Art Direction Visual" class="display-img" id="service-img-4" loading="lazy">
           </div>
         </div>
 
@@ -370,7 +380,7 @@
               </div>
             </div>
 
-            <div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i></div>
             <h3 class="card-title" data-translate="about_ux_title">Creative UX/UI Design</h3>
             <p class="card-desc" data-translate="about_ux_desc">
               I craft pixel-perfect interfaces, scalable design systems, and thoughtful micro-interactions — the kind of details that turn first-time visitors into loyal users.
@@ -414,7 +424,7 @@
               </div>
             </div>
 
-            <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="card-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
             <h3 class="card-title" data-translate="about_econ_title">Quantitative Economics</h3>
             <p class="card-desc" data-translate="about_econ_desc">
               I ground every design decision in real user data. Behavioral research, usability testing, and analytics help me build interfaces that perform — not just look good.
@@ -451,7 +461,7 @@
               </div>
             </div>
 
-            <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <div class="card-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></div>
             <h3 class="card-title" data-translate="about_strategy_title">Venture Strategy</h3>
             <p class="card-desc" data-translate="about_strategy_desc">
               From pitch decks that close rounds to brand systems that scale — I help founders translate complex ideas into visual stories investors and customers believe in.
@@ -579,9 +589,9 @@
                 <h4 class="song-title">Resonance</h4>
                 <p class="song-artist">Home · Chillwave</p>
                 <div class="player-controls">
-                  <i class="fa-solid fa-backward"></i>
-                  <i class="fa-solid fa-pause play-pause-btn"></i>
-                  <i class="fa-solid fa-forward"></i>
+                  <i class="fa-solid fa-backward" aria-hidden="true"></i>
+                  <i class="fa-solid fa-pause play-pause-btn" aria-hidden="true"></i>
+                  <i class="fa-solid fa-forward" aria-hidden="true"></i>
                 </div>
               </div>
             </div>
@@ -592,15 +602,15 @@
             <h3 class="habit-card-title" data-translate="goals_title">Future Milestones</h3>
             <ul class="goals-list">
               <li>
-                <span class="goal-check"><i class="fa-regular fa-circle-check"></i></span>
+                <span class="goal-check"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
                 <span data-translate="goal_1">Master Conversational Spanish 🇪🇸</span>
               </li>
               <li>
-                <span class="goal-check"><i class="fa-regular fa-circle-check"></i></span>
+                <span class="goal-check"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
                 <span data-translate="goal_2">Deploy Complex Neural Networks 🐍</span>
               </li>
               <li>
-                <span class="goal-check"><i class="fa-regular fa-circle-check"></i></span>
+                <span class="goal-check"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></span>
                 <span data-translate="goal_3">Embark on a Solo Kyoto Trek 🇯🇵</span>
               </li>
             </ul>
@@ -660,7 +670,7 @@
 
           <div class="testimonials-controls">
             <button class="slider-btn prev-btn" aria-label="Previous Review">
-              <i class="fa-solid fa-arrow-left-long"></i>
+              <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>
             </button>
             <div class="slider-counter">
               <span class="current-slide">01</span>
@@ -668,7 +678,7 @@
               <span class="total-slides">03</span>
             </div>
             <button class="slider-btn next-btn" aria-label="Next Review">
-              <i class="fa-solid fa-arrow-right-long"></i>
+              <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
             </button>
           </div>
         </div>
@@ -746,11 +756,11 @@
           </p>
           <div class="direct-contact-methods">
             <a href="mailto:gbayesolavictor@gmail.com" class="direct-link">
-              <i class="fa-solid fa-envelope"></i>
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
               <span>gbayesolavictor@gmail.com</span>
             </a>
-            <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="direct-link">
-              <i class="fa-brands fa-behance"></i>
+            <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="direct-link">
+              <i class="fa-brands fa-behance" aria-hidden="true"></i>
               <span>behance.net/gbayesolavictor</span>
             </a>
           </div>
@@ -779,12 +789,12 @@
 
             <button type="submit" class="btn btn-primary form-btn" id="submit-btn">
               <span data-translate="contact_submit">Send secure Inquiry</span>
-              <i class="fa-solid fa-paper-plane send-icon"></i>
+              <i class="fa-solid fa-paper-plane send-icon" aria-hidden="true"></i>
             </button>
 
             <!-- Form Success Feedback -->
             <div class="form-alert success" id="form-success">
-              <i class="fa-solid fa-circle-check"></i>
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
               <span data-translate="contact_success">Message sent successfully! I will reach out in 24 hours.</span>
             </div>
           </form>
@@ -805,16 +815,16 @@
     <div class="container footer-container">
       <p class="copyright-text" data-translate="footer_copyright">&copy; 2026 Victor Gbayesola. Designed with care, built with intent.</p>
       <div class="footer-links">
-        <a href="https://www.behance.net/gbayesolavictor" target="_blank" aria-label="Behance Profile"><i class="fa-brands fa-behance"></i></a>
-        <a href="#" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="mailto:gbayesolavictor@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" aria-label="Behance Profile"><i class="fa-brands fa-behance" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/victorgbayesola" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="mailto:gbayesolavictor@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
       </div>
     </div>
   </footer>
 
   <!-- Scroll-Animated Volcanic Lava Rock -->
   <div class="floating-lava-rock-container" id="lava-rock-container" style="opacity: 0;">
-    <img src="assets/lava_rock.jpg" alt="Lava Rock" class="floating-lava-rock" id="lava-rock">
+    <img src="assets/lava_rock.jpg" alt="Lava Rock" class="floating-lava-rock" id="lava-rock" loading="lazy">
   </div>
 
   <!-- Lenis Smooth Scroll Script -->
