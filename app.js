@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageEngine();
   initCursorGlow();
   initCursorFollower(); // Fancy.design cursor
+  initFloatingEcosystem(); // Parallax floating UI in hero
   initStackedCards(); // GSAP ScrollTrigger Stacked Cards
   initTestimonialsSlider(); // Interactive client reviews slider
   initNichesHoverSlider(); // Redesigned services hover slider
@@ -446,6 +447,51 @@ function initCursorGlow() {
       isMoving = false;
     }
   }
+}
+
+/* ==========================================================================
+   3.5 FLOATING UI ECOSYSTEM (HERO PARALLAX)
+   ========================================================================== */
+function initFloatingEcosystem() {
+  if (typeof gsap === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const elements = gsap.utils.toArray('.floating-ui-element');
+  const heroSection = document.querySelector('.hero-section');
+  if (!elements.length || !heroSection) return;
+
+  // 1. Continuous breathing animation (subtle floating)
+  elements.forEach((el, index) => {
+    const yOffset = index % 2 === 0 ? 12 : -15;
+    gsap.to(el, {
+      y: yOffset,
+      duration: 3 + (index * 0.5),
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1
+    });
+  });
+
+  // 2. Mouse Parallax Effect
+  heroSection.addEventListener('mousemove', (e) => {
+    const { clientX, clientY } = e;
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    
+    // Normalized coordinates (-1 to 1)
+    const moveX = (clientX - centerX) / centerX;
+    const moveY = (clientY - centerY) / centerY;
+
+    elements.forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-speed')) || 0.05;
+      gsap.to(el, {
+        x: moveX * 100 * speed * 50,
+        yPercent: moveY * 100 * speed * 50,
+        duration: 1.5,
+        ease: "power2.out"
+      });
+    });
+  });
 }
 
 /* ==========================================================================

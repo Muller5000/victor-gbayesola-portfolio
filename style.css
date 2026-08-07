@@ -561,6 +561,127 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: var(--text-secondary);
 }
 
+/* ═══ FLOATING UI ECOSYSTEM ═══ */
+.floating-ui-element {
+  position: absolute;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  z-index: 12;
+  transition: transform 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  pointer-events: none; /* Passes clicks through */
+}
+
+/* 1. Metric Pill */
+.floating-metric-pill {
+  top: -20px;
+  left: -50px;
+  padding: 12px 20px;
+  gap: 12px;
+}
+.floating-metric-pill .ui-icon {
+  background: rgba(46, 204, 113, 0.15);
+  color: #2ecc71;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+.floating-metric-pill .ui-text {
+  display: flex;
+  flex-direction: column;
+}
+.floating-metric-pill .ui-text strong {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.floating-metric-pill .ui-text span {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+/* 2. Mini Chart */
+.floating-chart {
+  bottom: 30px;
+  right: -40px;
+  padding: 16px;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+.floating-chart .chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 40px;
+}
+.floating-chart .bar {
+  width: 12px;
+  background: var(--border-color);
+  border-radius: 2px 2px 0 0;
+  transition: background 0.3s;
+}
+.floating-chart .bar.active {
+  background: var(--color-ux);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+.floating-chart .chart-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* 3. Toggle Switch */
+.floating-toggle {
+  bottom: 90px;
+  left: -70px;
+  padding: 12px 16px;
+  gap: 12px;
+}
+.floating-toggle .toggle-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.floating-toggle .toggle-track {
+  width: 36px;
+  height: 20px;
+  background: var(--color-strategy);
+  border-radius: 20px;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+.floating-toggle .toggle-knob {
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Hide floating elements on mobile to preserve portrait clarity */
+@media (max-width: 768px) {
+  .floating-ui-element {
+    display: none;
+  }
+}
+
 /* ═══ 6. SECTION HEADER ═══ */
 .section-header {
   margin-bottom: 60px;
