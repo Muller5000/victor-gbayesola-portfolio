@@ -1191,9 +1191,8 @@ function initTestimonialsSlider() {
    ========================================================================== */
 function initScrollRockAnimation() {
   const container = document.getElementById('lava-rock-container');
-  const rockBase = document.getElementById('lava-rock-base');
-  const rockIce = document.getElementById('lava-rock-ice');
-  if (!container || !rockBase || !rockIce) return;
+  const rock = document.getElementById('lava-rock');
+  if (!container || !rock) return;
 
   if (window.lenisInstance) {
     function tick() {
@@ -1201,22 +1200,17 @@ function initScrollRockAnimation() {
       
       const scroll = window.lenisInstance.scroll;
       
-      // 1. Z-axis Rotation: Spin the entire container so both images rotate in pixel sync
+      // 1. Z-axis Rotation: Spin the rock slower/faster based on scroll position
       const targetRotation = scroll * 0.08;
       
-      // 2. Parallax Shift: Slower vertical slide offset
+      // 2. Parallax Shift: Slide the rock vertically slightly in opposite direction
       const targetTranslation = Math.sin(scroll * 0.0015) * 35;
       
-      // 3. Passive Bobbing: Harmonic idle float
+      // 3. Passive Bobbing: Floating offset when stationary (harmonic sine wave)
       const bobbing = Math.cos(Date.now() * 0.0015) * 8;
 
-      container.style.transform = `translate(-50%, -50%) rotate(${targetRotation}deg) translateY(${targetTranslation + bobbing}px)`;
-      
-      // 4. Scroll-Based Melting: Fade out the ice overlay as the user scrolls down
-      // Fully frozen at scroll = 0, fully melted by scroll = 900px
-      const maxMeltScroll = 900;
-      const iceOpacity = Math.max(0, 1 - (scroll / maxMeltScroll));
-      rockIce.style.opacity = iceOpacity;
+      // Update styling
+      rock.style.transform = `rotate(${targetRotation}deg) translateY(${targetTranslation + bobbing}px)`;
       
       requestAnimationFrame(tick);
     }
