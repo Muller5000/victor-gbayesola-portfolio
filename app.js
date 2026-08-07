@@ -148,6 +148,17 @@ const TRANSLATIONS = {
     cursor_visit: "VISIT 🔗",
     cursor_talk: "TALK! 💬",
     
+    metrics_tagline: "Blending mathematical analysis with aesthetic design to deliver measurable product expansion.",
+    metric_1_num: "50+",
+    metric_1_title: "MVPs Designed & Shipped",
+    metric_1_desc: "Empirical design solutions engineered from initial strategy pitch to high-converting product launch.",
+    metric_2_num: "100%",
+    metric_2_title: "Visual & Logic Precision",
+    metric_2_desc: "Bridging quantitative behavioral economic trends with pixel-perfect, interactive CSS micro-animations.",
+    metric_3_num: "5+",
+    metric_3_title: "Years Active Research & UX",
+    metric_3_desc: "Collaborating with high-growth startups and venture studios to transform abstract concepts into memorable interfaces.",
+    
     footer_copyright: "&copy; 2026 Victor Gbayesola. Curated with absolute designer precision."
   },
   es: {
@@ -252,6 +263,17 @@ const TRANSLATIONS = {
     cursor_send: "ENVIAR 🚀",
     cursor_visit: "VISITAR 🔗",
     cursor_talk: "¡HABLAR! 💬",
+    
+    metrics_tagline: "Fusionando el análisis matemático con el diseño estético para lograr una expansión medible del producto.",
+    metric_1_num: "50+",
+    metric_1_title: "MVPs Diseñados y Lanzados",
+    metric_1_desc: "Soluciones de diseño empíricas desde el pitch de estrategia inicial hasta lanzamientos de alta conversión.",
+    metric_2_num: "100%",
+    metric_2_title: "Precisión Visual y Lógica",
+    metric_2_desc: "Conectando tendencias económicas cuantitativas con microanimaciones CSS interactivas y perfectas.",
+    metric_3_num: "5+",
+    metric_3_title: "Años de Investigación y UX",
+    metric_3_desc: "Colaborando con startups de alto crecimiento y estudios de capital para transformar conceptos abstractos en interfaces memorables.",
     
     footer_copyright: "&copy; 2026 Victor Gbayesola. Curado con absoluta precisión de diseñador."
   }
