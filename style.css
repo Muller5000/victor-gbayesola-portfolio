@@ -1497,6 +1497,20 @@ body.portfolio-body {
   border-left: 1px solid var(--border-color);
   padding-left: 30px;
   margin-left: 20px;
+  position: relative;
+}
+
+.experience-timeline-grid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 2px;
+  height: var(--timeline-progress, 0%);
+  background: linear-gradient(to bottom, var(--color-ux), var(--color-econ), var(--color-strategy));
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.5), 0 0 6px rgba(255, 0, 127, 0.4);
+  z-index: 1;
+  transition: height 0.1s ease-out;
 }
 
 .timeline-row {
@@ -1505,18 +1519,31 @@ body.portfolio-body {
   gap: 20px;
   position: relative;
   padding-bottom: 50px;
+  opacity: 0.3;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .timeline-row:last-child {
   padding-bottom: 0;
 }
 
+.timeline-row.illuminated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .role-year {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-muted);
   margin-top: 2px;
+  transition: color 0.4s ease;
+}
+
+.timeline-row.illuminated .role-year {
+  color: var(--text-primary);
 }
 
 .timeline-marker {
@@ -1528,20 +1555,35 @@ body.portfolio-body {
 .marker-dot {
   width: 10px;
   height: 10px;
-  background-color: var(--text-primary);
+  background-color: var(--text-muted);
   border-radius: 50%;
   position: absolute;
   top: 8px;
   left: -36px;
   border: 2px solid var(--bg-app);
   z-index: 10;
-  transition: var(--transition-fast);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.timeline-row:hover .marker-dot {
+.timeline-row.illuminated .marker-dot {
   background-color: var(--color-econ);
   box-shadow: 0 0 10px var(--color-econ);
   transform: scale(1.3);
+}
+
+.timeline-row.illuminated:nth-child(1) .marker-dot {
+  background-color: var(--color-ux);
+  box-shadow: 0 0 10px var(--color-ux);
+}
+
+.timeline-row.illuminated:nth-child(2) .marker-dot {
+  background-color: var(--color-econ);
+  box-shadow: 0 0 10px var(--color-econ);
+}
+
+.timeline-row.illuminated:nth-child(3) .marker-dot {
+  background-color: var(--color-strategy);
+  box-shadow: 0 0 10px var(--color-strategy);
 }
 
 .role-details {
@@ -1554,6 +1596,7 @@ body.portfolio-body {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 4px;
+  color: var(--text-primary);
 }
 
 .company-name {
@@ -1565,6 +1608,10 @@ body.portfolio-body {
   color: var(--color-econ);
   margin-bottom: 12px;
 }
+
+.timeline-row:nth-child(1) .company-name { color: var(--color-ux); }
+.timeline-row:nth-child(2) .company-name { color: var(--color-econ); }
+.timeline-row:nth-child(3) .company-name { color: var(--color-strategy); }
 
 .role-desc {
   font-size: 0.92rem;

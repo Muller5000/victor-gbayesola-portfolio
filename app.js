@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMusicVibeWidget();
   initMobileNavigation();
   initScrollIntersectionReveals();
+  initTimelinePathing(); // Glowing career timeline progress line
   initInteractiveMarquee(); // Fancy.design marquee
   initTextScrambler(); // Hover text scrambler
   initArcticParticles(); // Igloo.inc ice drift particles
@@ -1239,6 +1240,60 @@ function initNichesHoverSlider() {
     });
   });
 }
+
+/* ==========================================================================
+   18. GLOWING TIMELINE PATH PROGRESS
+   ========================================================================== */
+function initTimelinePathing() {
+  const grid = document.querySelector('.experience-timeline-grid');
+  const rows = document.querySelectorAll('.timeline-row');
+  
+  if (!grid || !rows.length) return;
+
+  function updateTimeline() {
+    const gridRect = grid.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    
+    // Growth boundaries
+    const startTrigger = viewportHeight * 0.75;
+    const endTrigger = viewportHeight * 0.25;
+    
+    const gridTop = gridRect.top;
+    const gridHeight = gridRect.height;
+    
+    // Calculate progress fraction
+    const scrollDist = startTrigger - gridTop;
+    let progress = scrollDist / gridHeight;
+    progress = Math.max(0, Math.min(1, progress));
+    
+    grid.style.setProperty('--timeline-progress', `${progress * 100}%`);
+    
+    // Light up nodes that the glowing line has reached
+    rows.forEach(row => {
+      const dot = row.querySelector('.marker-dot');
+      if (!dot) return;
+      
+      const dotRect = dot.getBoundingClientRect();
+      // If the dot is above the trigger line, illuminate it!
+      if (dotRect.top < startTrigger) {
+        row.classList.add('illuminated');
+      } else {
+        row.classList.remove('illuminated');
+      }
+    });
+  }
+
+  // Bind to Lenis scrolling for seamless updates
+  if (window.lenisInstance) {
+    window.lenisInstance.on('scroll', updateTimeline);
+  } else {
+    window.addEventListener('scroll', updateTimeline);
+  }
+  
+  // Trigger initial check
+  setTimeout(updateTimeline, 200);
+}
+
 
 
 
