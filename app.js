@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorFollower(); // Fancy.design cursor
   initProjectHoverReveal(); // Typography project hover reveal
   initTestimonialsSlider(); // Interactive client reviews slider
+  initScrollRockAnimation(); // Floating lava rock animation
   initMusicVibeWidget();
   initMobileNavigation();
   initScrollIntersectionReveals();
@@ -989,6 +990,10 @@ function initPreloader() {
     if (window.lenisInstance) {
       window.lenisInstance.start();
     }
+    const rock = document.getElementById('lava-rock-container');
+    if (rock) {
+      rock.style.opacity = document.documentElement.getAttribute('data-theme') === 'light' ? '0.12' : '0.8';
+    }
   }
 
   // Initiate typewriter
@@ -1180,5 +1185,46 @@ function initTestimonialsSlider() {
     showSlide(currentIdx + 1);
   });
 }
+
+/* ==========================================================================
+   16. SCROLL-ANIMATED LAVA ROCK PARALLAX & BOBBING
+   ========================================================================== */
+function initScrollRockAnimation() {
+  const container = document.getElementById('lava-rock-container');
+  const rock = document.getElementById('lava-rock');
+  if (!container || !rock) return;
+
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+
+  // Track scroll and update transform state
+  if (window.lenisInstance) {
+    // Continuous rendering tick loop (handles both scroll updates and passive idle bobbing)
+    function tick() {
+      if (!window.lenisInstance) return;
+      
+      const scroll = window.lenisInstance.scroll;
+      
+      // 1. Z-axis Rotation: Spin the rock slower/faster based on scroll position
+      const targetRotation = scroll * 0.08;
+      
+      // 2. Parallax Shift: Slide the rock vertically slightly in opposite direction
+      const targetTranslation = Math.sin(scroll * 0.0015) * 35;
+      
+      // 3. Passive Bobbing: Floating offset when stationary (harmonic sine wave)
+      const bobbing = Math.cos(Date.now() * 0.0015) * 8;
+
+      // Update styling
+      rock.style.transform = `rotate(${targetRotation}deg) translateY(${targetTranslation + bobbing}px)`;
+      
+      requestAnimationFrame(tick);
+    }
+    
+    requestAnimationFrame(tick);
+  }
+}
+
 
 
