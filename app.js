@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNavigation();
   initScrollIntersectionReveals();
   initInteractiveMarquee(); // Fancy.design marquee
+  initTextScrambler(); // Hover text scrambler
   initArcticParticles(); // Igloo.inc ice drift particles
 });
 
@@ -315,6 +316,11 @@ function setLanguage(lang) {
   
   localStorage.setItem('lang', lang);
   document.documentElement.setAttribute('data-lang', lang);
+  
+  // Clear any cached scramble texts so they are recaptured in the new language
+  document.querySelectorAll('[data-scramble-original]').forEach(el => {
+    el.removeAttribute('data-scramble-original');
+  });
   
   // Toggle active language switch pills
   document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
@@ -1032,3 +1038,57 @@ function initLenisScroll() {
 
   requestAnimationFrame(raf);
 }
+
+/* ==========================================================================
+   14. INTERACTIVE HOVER TEXT SCRAMBLER (ORGNZM.STUDIO STYLE)
+   ========================================================================== */
+function initTextScrambler() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+  
+  const targets = document.querySelectorAll('.nav-item, .btn-primary, .btn-secondary, #submit-btn, .footer-links a, .direct-link');
+  
+  targets.forEach(target => {
+    let textContainer = target;
+    const innerSpan = target.querySelector('span[data-translate]');
+    
+    if (innerSpan) {
+      textContainer = innerSpan;
+    } else if (target.tagName === 'A' && target.querySelector('span')) {
+      const span = target.querySelector('span');
+      if (span) textContainer = span;
+    }
+    
+    let interval = null;
+    
+    target.addEventListener('mouseenter', () => {
+      const originalText = textContainer.getAttribute('data-scramble-original') || textContainer.textContent.trim();
+      if (!textContainer.getAttribute('data-scramble-original')) {
+        textContainer.setAttribute('data-scramble-original', originalText);
+      }
+      
+      let iteration = 0;
+      clearInterval(interval);
+      
+      interval = setInterval(() => {
+        textContainer.textContent = originalText
+          .split('')
+          .map((char, index) => {
+            if (char === ' ') return ' ';
+            if (index < iteration) {
+              return originalText[index];
+            }
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join('');
+        
+        if (iteration >= originalText.length) {
+          clearInterval(interval);
+          textContainer.textContent = originalText;
+        }
+        
+        iteration += 1 / 3;
+      }, 30);
+    });
+  });
+}
+
