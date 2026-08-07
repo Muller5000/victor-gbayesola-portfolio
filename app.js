@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorFollower(); // Fancy.design cursor
   initProjectHoverReveal(); // Typography project hover reveal
   initTestimonialsSlider(); // Interactive client reviews slider
+  initNichesHoverSlider(); // Redesigned services hover slider
   initScrollRockAnimation(); // Floating lava rock animation
   initMusicVibeWidget();
   initMobileNavigation();
@@ -162,18 +163,13 @@ const TRANSLATIONS = {
     metric_3_title: "Years Designing",
     metric_3_desc: "Partnering with ambitious founders and startups to turn complex ideas into clean, user-friendly designs.",
     
-    niches_subtitle: "Sector Expertise",
-    niches_title: "Designing clean, high-performing digital experiences across multiple industries.",
-    niche_1: "Fintech & Payments",
-    niche_2: "SaaS & B2B Dashboards",
-    niche_3: "Consumer Mobile Apps",
-    niche_4: "Real Estate Tech",
-    niche_5: "Web3 & Crypto Platforms",
-    niche_6: "EdTech & Learning",
-    niche_7: "Design System Architecture",
-    niche_8: "Pitch Decks & Branding",
-    niche_9: "Data-Rich Interfaces",
-    niche_10: "Corporate Web Designs",
+    expertise_sidebar_top: "SERVICES - THAT I PROVIDE",
+    expertise_sidebar_bottom: "Smooth builds for digital products",
+    service_1: "Web Design",
+    service_2: "Web Development",
+    service_3: "Branding Identity",
+    service_4: "3D Design",
+    service_5: "Art Direction",
     
     methodology_subtitle: "My Methodology",
     methodology_title: "A structured, three-step approach to turning product vision into interactive high-fidelity realities.",
@@ -315,18 +311,13 @@ const TRANSLATIONS = {
     metric_3_title: "Años Diseñando",
     metric_3_desc: "Colaborando con fundadores y startups ambiciosas para transformar ideas complejas en diseños limpios.",
     
-    niches_subtitle: "Sectores de Especialidad",
-    niches_title: "Diseñando experiencias digitales limpias y de alto rendimiento en múltiples industrias.",
-    niche_1: "Fintech y Pagos",
-    niche_2: "SaaS y Paneles B2B",
-    niche_3: "Aplicaciones Móviles",
-    niche_4: "Tecnología Inmobiliaria",
-    niche_5: "Plataformas Web3 y Crypto",
-    niche_6: "EdTech y Aprendizaje",
-    niche_7: "Arquitectura de Sistemas de Diseño",
-    niche_8: "Pitch Decks y Branding",
-    niche_9: "Interfaces de Datos Complejos",
-    niche_10: "Diseño Web Corporativo",
+    expertise_sidebar_top: "SERVICIOS - QUE OFREZCO",
+    expertise_sidebar_bottom: "Creaciones fluidas para productos digitales",
+    service_1: "Diseño Web",
+    service_2: "Desarrollo Web",
+    service_3: "Identidad de Marca",
+    service_4: "Diseño 3D",
+    service_5: "Dirección de Arte",
     
     methodology_subtitle: "Mi Metodología",
     methodology_title: "Un enfoque estructurado de tres pasos para transformar la visión del producto en realidades interactivas de alta fidelidad.",
@@ -1217,6 +1208,36 @@ function initScrollRockAnimation() {
     
     requestAnimationFrame(tick);
   }
+}
+
+/* ==========================================================================
+   17. SECTOR EXPERTISE / SERVICES SLIDER INTERACTION
+   ========================================================================== */
+function initNichesHoverSlider() {
+  const container = document.querySelector('.niches-container-split');
+  if (!container) return;
+
+  const items = container.querySelectorAll('.niche-item');
+  const imgs = container.querySelectorAll('.display-img');
+
+  if (!items.length || !imgs.length) return;
+
+  items.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const targetIndex = item.getAttribute('data-service-index');
+
+      items.forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+
+      imgs.forEach((img, idx) => {
+        if (String(idx) === targetIndex) {
+          img.classList.add('active');
+        } else {
+          img.classList.remove('active');
+        }
+      });
+    });
+  });
 }
 
 
