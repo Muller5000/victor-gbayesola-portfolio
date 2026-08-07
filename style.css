@@ -1055,6 +1055,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   grid-template-columns: 1fr 1fr;
   min-height: 480px;
   transition: border-color var(--transition-smooth);
+  transform-origin: top center;
+  will-change: transform, filter;
 }
 
 [data-theme="light"] .card-inner {

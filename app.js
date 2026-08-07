@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageEngine();
   initCursorGlow();
   initCursorFollower(); // Fancy.design cursor
+  initStackedCards(); // GSAP ScrollTrigger Stacked Cards
   initTestimonialsSlider(); // Interactive client reviews slider
   initNichesHoverSlider(); // Redesigned services hover slider
   initScrollRockAnimation(); // Floating lava rock animation
@@ -447,6 +448,38 @@ function initCursorGlow() {
   }
 }
 
+/* ==========================================================================
+   4. GSAP SCROLLTRIGGER STACKED CARDS
+   ========================================================================== */
+function initStackedCards() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = gsap.utils.toArray('.stacked-card');
+  
+  if (cards.length === 0) return;
+
+  // We want to scale down card N as card N+1 scrolls up over it.
+  cards.forEach((card, index) => {
+    if (index === cards.length - 1) return; // Last card doesn't get covered
+
+    const innerCard = card.querySelector('.card-inner');
+    
+    gsap.to(innerCard, {
+      scale: 0.92,
+      filter: "brightness(0.5)",
+      ease: "none",
+      scrollTrigger: {
+        trigger: cards[index + 1],
+        start: "top bottom", // Starts when next card enters bottom of viewport
+        end: "top top+=160", // Ends when next card hits its sticky top offset
+        scrub: true
+      }
+    });
+  });
+}
 
 /* ==========================================================================
    5. INTERACTIVE MUSIC PLAYER BENTO WIDGET
