@@ -1191,33 +1191,32 @@ function initTestimonialsSlider() {
    ========================================================================== */
 function initScrollRockAnimation() {
   const container = document.getElementById('lava-rock-container');
-  const rock = document.getElementById('lava-rock');
-  if (!container || !rock) return;
+  const rockBase = document.getElementById('lava-rock-base');
+  const rockIce = document.getElementById('lava-rock-ice');
+  if (!container || !rockBase || !rockIce) return;
 
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
-
-  // Track scroll and update transform state
   if (window.lenisInstance) {
-    // Continuous rendering tick loop (handles both scroll updates and passive idle bobbing)
     function tick() {
       if (!window.lenisInstance) return;
       
       const scroll = window.lenisInstance.scroll;
       
-      // 1. Z-axis Rotation: Spin the rock slower/faster based on scroll position
+      // 1. Z-axis Rotation: Spin the entire container so both images rotate in pixel sync
       const targetRotation = scroll * 0.08;
       
-      // 2. Parallax Shift: Slide the rock vertically slightly in opposite direction
+      // 2. Parallax Shift: Slower vertical slide offset
       const targetTranslation = Math.sin(scroll * 0.0015) * 35;
       
-      // 3. Passive Bobbing: Floating offset when stationary (harmonic sine wave)
+      // 3. Passive Bobbing: Harmonic idle float
       const bobbing = Math.cos(Date.now() * 0.0015) * 8;
 
-      // Update styling
-      rock.style.transform = `rotate(${targetRotation}deg) translateY(${targetTranslation + bobbing}px)`;
+      container.style.transform = `translate(-50%, -50%) rotate(${targetRotation}deg) translateY(${targetTranslation + bobbing}px)`;
+      
+      // 4. Scroll-Based Melting: Fade out the ice overlay as the user scrolls down
+      // Fully frozen at scroll = 0, fully melted by scroll = 900px
+      const maxMeltScroll = 900;
+      const iceOpacity = Math.max(0, 1 - (scroll / maxMeltScroll));
+      rockIce.style.opacity = iceOpacity;
       
       requestAnimationFrame(tick);
     }
