@@ -380,101 +380,70 @@
       </div>
     </section>
 
-    <!-- ═══ HORIZONTAL SCROLL PROJECTS SECTION ═══ -->
-    <section class="projects-section-horizontal" id="projects">
-      <div class="projects-sticky-wrapper">
-        <div class="projects-horizontal-header container">
+    <!-- ═══ TYPOGRAPHIC HOVER-TO-REVEAL PROJECTS SECTION ═══ -->
+    <section class="projects-section" id="projects">
+      <div class="container">
+        <div class="projects-header">
           <span class="subtitle-label" data-translate="projects_subtitle">Selected Works</span>
           <h2 class="section-heading" data-translate="projects_title">Design Alchemist Cases</h2>
-          <p class="section-hint" data-translate="projects_hint">Hover over project cards to pause and inspect.</p>
+          <p class="section-hint" data-translate="projects_hint">Hover over project titles to reveal their high-fidelity visual mockups.</p>
         </div>
         
-        <div class="projects-slide-track-container">
-          <div class="projects-slide-track" id="projects-slide-track">
-            
-            <!-- Project 1: QuickBite Fast Food App -->
-            <article class="project-slide-card cat-ux">
-              <div class="aurora-flare"></div>
-              <div class="project-image-wrapper">
-                <img src="assets/project 1.png" alt="QuickBite Fast Food App Cover" class="project-actual-img" loading="lazy">
-                <div class="project-overlay-glow"></div>
-              </div>
-              <div class="project-details">
-                <div class="project-cat">
-                  <span class="cat-pill pill-ux" data-translate="project_1_cat">UX/UI & Mobile App</span>
-                </div>
-                <h3 class="project-title" data-translate="project_1_title">QuickBite</h3>
-                <p class="project-desc" data-translate="project_1_desc">
-                  A high-fidelity mobile food ordering application designed for a premium fast-food brand, optimizing rapid checkout, smart rewards, and gamified ordering.
-                </p>
-                <div class="project-tools">
-                  <span data-translate="project_1_tool_1">UX/UI Design</span>
-                  <span data-translate="project_1_tool_2">Mobile App</span>
-                  <span data-translate="project_1_tool_3">Interaction</span>
-                </div>
-                <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="project-link">
-                  <span data-translate="view_case">View Case Study</span>
-                  <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-              </div>
-            </article>
+        <div class="projects-list-container">
+          
+          <!-- Project 1: QuickBite -->
+          <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="project-list-row" data-project-index="1">
+            <div class="row-num">01</div>
+            <div class="row-info">
+              <h3 class="row-title" data-translate="project_1_title">QuickBite</h3>
+              <span class="row-cat" data-translate="project_1_cat">UX/UI & Mobile App</span>
+            </div>
+            <div class="row-meta">
+              <span class="row-tool" data-translate="project_1_tool_1">UX/UI Design</span>
+              <span class="row-tool" data-translate="project_1_tool_2">Mobile App</span>
+              <span class="row-tool" data-translate="project_1_tool_3">Interaction</span>
+              <i class="fa-solid fa-arrow-right-long row-arrow"></i>
+            </div>
+          </a>
 
-            <!-- Project 2: Pulse Analytics -->
-            <article class="project-slide-card cat-economics">
-              <div class="aurora-flare"></div>
-              <div class="project-image-wrapper">
-                <img src="assets/project 2.png" alt="Pulse Analytics Dashboard Cover" class="project-actual-img" loading="lazy">
-                <div class="project-overlay-glow"></div>
-              </div>
-              <div class="project-details">
-                <div class="project-cat">
-                  <span class="cat-pill pill-econ" data-translate="project_2_cat">Research & Economics</span>
-                </div>
-                <h3 class="project-title" data-translate="project_2_title">Pulse Analytics</h3>
-                <p class="project-desc" data-translate="project_2_desc">
-                  Comprehensive macro-economic data parsing interface rendering interactive metrics, statistical trends, and behavioral charts.
-                </p>
-                <div class="project-tools">
-                  <span data-translate="project_2_tool_1">Data Modeling</span>
-                  <span data-translate="project_2_tool_2">UX Research</span>
-                  <span data-translate="project_2_tool_3">Dashboard</span>
-                </div>
-                <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="project-link">
-                  <span data-translate="view_case">View Case Study</span>
-                  <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-              </div>
-            </article>
+          <!-- Project 2: Pulse Analytics -->
+          <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="project-list-row" data-project-index="2">
+            <div class="row-num">02</div>
+            <div class="row-info">
+              <h3 class="row-title" data-translate="project_2_title">Pulse Analytics</h3>
+              <span class="row-cat" data-translate="project_2_cat">Research & Economics</span>
+            </div>
+            <div class="row-meta">
+              <span class="row-tool" data-translate="project_2_tool_1">Data Modeling</span>
+              <span class="row-tool" data-translate="project_2_tool_2">UX Research</span>
+              <span class="row-tool" data-translate="project_2_tool_3">Dashboard</span>
+              <i class="fa-solid fa-arrow-right-long row-arrow"></i>
+            </div>
+          </a>
 
-            <!-- Project 3: Ventura -->
-            <article class="project-slide-card cat-strategy">
-              <div class="aurora-flare"></div>
-              <div class="project-image-wrapper">
-                <img src="assets/project 3.png" alt="Ventura Cover" class="project-actual-img" loading="lazy">
-                <div class="project-overlay-glow"></div>
-              </div>
-              <div class="project-details">
-                <div class="project-cat">
-                  <span class="cat-pill pill-strategy" data-translate="project_3_cat">Branding & Venture Strategy</span>
-                </div>
-                <h3 class="project-title" data-translate="project_3_title">Ventura</h3>
-                <p class="project-desc" data-translate="project_3_desc">
-                  Strategic growth, visual branding, investor pitch structures, and comprehensive identity systems built for a high-impact startup ecosystem.
-                </p>
-                <div class="project-tools">
-                  <span data-translate="project_3_tool_1">Venture Strategy</span>
-                  <span data-translate="project_3_tool_2">Brand System</span>
-                  <span data-translate="project_3_tool_3">Investor Pitch</span>
-                </div>
-                <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="project-link">
-                  <span data-translate="view_case">View Case Study</span>
-                  <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-              </div>
-            </article>
+          <!-- Project 3: Ventura -->
+          <a href="https://www.behance.net/gbayesolavictor" target="_blank" class="project-list-row" data-project-index="3">
+            <div class="row-num">03</div>
+            <div class="row-info">
+              <h3 class="row-title" data-translate="project_3_title">Ventura</h3>
+              <span class="row-cat" data-translate="project_3_cat">Branding & Venture Strategy</span>
+            </div>
+            <div class="row-meta">
+              <span class="row-tool" data-translate="project_3_tool_1">Venture Strategy</span>
+              <span class="row-tool" data-translate="project_3_tool_2">Brand System</span>
+              <span class="row-tool" data-translate="project_3_tool_3">Investor Pitch</span>
+              <i class="fa-solid fa-arrow-right-long row-arrow"></i>
+            </div>
+          </a>
 
-          </div>
         </div>
+      </div>
+      
+      <!-- Floating Preview Box -->
+      <div id="project-cursor-preview">
+        <img src="assets/project 1.png" alt="QuickBite Preview" class="preview-img" id="preview-img-1">
+        <img src="assets/project 2.png" alt="Pulse Analytics Preview" class="preview-img" id="preview-img-2">
+        <img src="assets/project 3.png" alt="Ventura Preview" class="preview-img" id="preview-img-3">
       </div>
     </section>
 

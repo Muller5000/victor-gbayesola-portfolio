@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageEngine();
   initCursorGlow();
   initCursorFollower(); // Fancy.design cursor
-  initHorizontalScroll();
+  initProjectHoverReveal(); // Typography project hover reveal
   initMusicVibeWidget();
   initMobileNavigation();
   initScrollIntersectionReveals();
@@ -430,74 +430,65 @@ function initCursorGlow() {
 }
 
 /* ==========================================================================
-   4. CINEMATIC AUTOMATIC HORIZONTAL SCROLL SLIDER
+   4. TYPOGRAPHIC HOVER-TO-REVEAL PROJECT PREVIEW (ORGNZM.STUDIO STYLE)
    ========================================================================== */
-function initHorizontalScroll() {
-  const section = document.getElementById('projects');
-  const track = document.getElementById('projects-slide-track');
-  if (!section || !track) return;
-
-  let translate = 0;
-  let direction = 1; // 1 = right, -1 = left
-  let isHovered = false;
-  let isIntersecting = false;
-  let animationId = null;
-
-  // Track hover status
-  track.addEventListener('mouseenter', () => { isHovered = true; });
-  track.addEventListener('mouseleave', () => { isHovered = false; });
+function initProjectHoverReveal() {
+  const container = document.querySelector('.projects-list-container');
+  const rows = document.querySelectorAll('.project-list-row');
+  const preview = document.getElementById('project-cursor-preview');
+  const previewImgs = document.querySelectorAll('#project-cursor-preview .preview-img');
   
-  // Track touch/mobile status
-  track.addEventListener('touchstart', () => { isHovered = true; });
-  track.addEventListener('touchend', () => { isHovered = false; });
-
-  function autoGlide() {
-    if (isIntersecting && !isHovered) {
-      const trackWidth = track.scrollWidth;
-      const containerWidth = section.offsetWidth;
-      // Subtract container width to get scrollable distance, add 40px for margin
-      const maxScroll = trackWidth - containerWidth + 40;
-
-      if (maxScroll > 0) {
-        // Ultra-smooth slow cinematic scroll (0.5px per frame)
-        translate += 0.5 * direction;
-
-        if (translate >= maxScroll) {
-          translate = maxScroll;
-          direction = -1; // Glide back left
-        } else if (translate <= 0) {
-          translate = 0;
-          direction = 1; // Glide right
-        }
-
-        track.style.transform = `translate3d(-${translate}px, 0, 0)`;
-      }
-    }
+  if (!container || !rows.length || !preview) return;
+  
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let isMoving = false;
+  
+  // Smoothly follow the cursor with linear interpolation (lerp)
+  function smoothMove() {
+    if (!isMoving) return;
     
-    // Only continue RAF loop if visible
-    if (isIntersecting) {
-      animationId = requestAnimationFrame(autoGlide);
-    }
+    currentX += (targetX - currentX) * 0.12;
+    currentY += (targetY - currentY) * 0.12;
+    
+    preview.style.left = `${currentX}px`;
+    preview.style.top = `${currentY}px`;
+    
+    requestAnimationFrame(smoothMove);
   }
-
-  // Intersection Observer to stop the loop when off-screen
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      isIntersecting = entry.isIntersecting;
-      if (isIntersecting) {
-        if (!animationId) {
-          animationId = requestAnimationFrame(autoGlide);
-        }
-      } else {
-        if (animationId) {
-          cancelAnimationFrame(animationId);
-          animationId = null;
-        }
+  
+  window.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+  });
+  
+  rows.forEach(row => {
+    row.addEventListener('mouseenter', (e) => {
+      const index = row.getAttribute('data-project-index');
+      
+      previewImgs.forEach(img => img.classList.remove('active'));
+      const activeImg = document.getElementById(`preview-img-${index}`);
+      if (activeImg) activeImg.classList.add('active');
+      
+      preview.classList.add('active');
+      
+      if (!isMoving) {
+        currentX = e.clientX;
+        currentY = e.clientY;
+        preview.style.left = `${currentX}px`;
+        preview.style.top = `${currentY}px`;
+        isMoving = true;
+        smoothMove();
       }
     });
-  }, { threshold: 0.05 });
-
-  observer.observe(section);
+    
+    row.addEventListener('mouseleave', () => {
+      preview.classList.remove('active');
+      isMoving = false;
+    });
+  });
 }
 
 /* ==========================================================================
