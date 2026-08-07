@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorGlow();
   initCursorFollower(); // Fancy.design cursor
   initProjectHoverReveal(); // Typography project hover reveal
+  initTestimonialsSlider(); // Interactive client reviews slider
   initMusicVibeWidget();
   initMobileNavigation();
   initScrollIntersectionReveals();
@@ -185,6 +186,18 @@ const TRANSLATIONS = {
     phase_3_title: "Venture Alignment & Growth",
     phase_3_desc: "Design is a business accelerator. I help founders package their product logic into high-impact pitch decks and scale their visual MVPs to drive startup growth.",
     
+    testimonials_subtitle: "Client Reviews",
+    testimonials_title: "Trusted by founders and high-growth ventures.",
+    review_1_quote: '"Victor transformed our complex checkout pipeline into a remarkably clean, high-fidelity experience. User drop-offs dropped by 35% in the first month."',
+    review_1_author: "Sarah Chen",
+    review_1_role: "Co-Founder & COO, QuickBite Group",
+    review_2_quote: '"His ability to bridge quantitative behavioral research with visual dashboard systems is rare. The interface is clean, intuitive, and highly functional."',
+    review_2_author: "Marcus Vance",
+    review_2_role: "VP of Product, Pulse Analytics",
+    review_3_quote: '"Victor\'s design precision and strategic narrative help us secure our seed funding. The investor pitch deck and visual MVP were masterfully executed."',
+    review_3_author: "Elena Rostova",
+    review_3_role: "Founder, Ventura Ecosystems",
+    
     footer_copyright: "&copy; 2026 Victor Gbayesola. Curated with absolute designer precision."
   },
   es: {
@@ -325,6 +338,18 @@ const TRANSLATIONS = {
     phase_3_num: "03",
     phase_3_title: "Alineación de Negocio y Crecimiento",
     phase_3_desc: "El diseño es un motor de negocio. Ayudo a fundadores a empaquetar la lógica de su producto en pitch decks atractivos y estructuro MVPs visuales para escalar su startup.",
+    
+    testimonials_subtitle: "Opiniones de Clientes",
+    testimonials_title: "Confianza de fundadores y empresas de alto crecimiento.",
+    review_1_quote: '"Victor transformó nuestro complejo flujo de pago en una experiencia de alta fidelidad notablemente limpia. La pérdida de usuarios disminuyó un 35% en el primer mes."',
+    review_1_author: "Sarah Chen",
+    review_1_role: "Co-Fundadora y COO, QuickBite Group",
+    review_2_quote: '"Su capacidad para conectar la investigación cuantitativa de comportamiento con sistemas visuales de paneles es única. La interfaz es limpia, intuitiva y altamente funcional."',
+    review_2_author: "Marcus Vance",
+    review_2_role: "VP de Producto, Pulse Analytics",
+    review_3_quote: '"La precisión de diseño y la narrativa estratégica de Victor nos ayudaron a asegurar nuestra financiación inicial. El pitch deck para inversores y el MVP visual fueron ejecutados con maestría."',
+    review_3_author: "Elena Rostova",
+    review_3_role: "Fundadora, Ventura Ecosystems",
     
     footer_copyright: "&copy; 2026 Victor Gbayesola. Curado con absoluta precisión de diseñador."
   }
@@ -1106,4 +1131,54 @@ function initTextScrambler() {
     });
   });
 }
+
+/* ==========================================================================
+   15. INTERACTIVE TESTIMONIALS SLIDER
+   ========================================================================== */
+function initTestimonialsSlider() {
+  const container = document.querySelector('.testimonials-slider-container');
+  if (!container) return;
+
+  const slides = container.querySelectorAll('.testimonial-slide');
+  const prevBtn = container.querySelector('.prev-btn');
+  const nextBtn = container.querySelector('.next-btn');
+  const counterCurrent = container.querySelector('.current-slide');
+  const totalSlidesSpan = container.querySelector('.total-slides');
+
+  if (!slides.length || !prevBtn || !nextBtn) return;
+
+  let currentIdx = 0;
+  const totalSlides = slides.length;
+
+  totalSlidesSpan.textContent = String(totalSlides).padStart(2, '0');
+
+  function showSlide(index) {
+    if (index >= totalSlides) {
+      currentIdx = 0;
+    } else if (index < 0) {
+      currentIdx = totalSlides - 1;
+    } else {
+      currentIdx = index;
+    }
+
+    slides.forEach((slide, idx) => {
+      if (idx === currentIdx) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    counterCurrent.textContent = String(currentIdx + 1).padStart(2, '0');
+  }
+
+  prevBtn.addEventListener('click', () => {
+    showSlide(currentIdx - 1);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    showSlide(currentIdx + 1);
+  });
+}
+
 
