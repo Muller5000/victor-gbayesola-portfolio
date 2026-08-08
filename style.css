@@ -417,6 +417,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .hero-ctas {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 /* Mechanical Mechanical Buttons */
