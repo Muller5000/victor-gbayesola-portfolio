@@ -32,13 +32,26 @@
       </a>
       <nav class="nav-menu" id="main-navigation">
         <ul class="nav-list">
-          <li><a href="index.html#projects" class="nav-item">Back to Projects</a></li>
+          <li><a href="index.html#about" class="nav-item" data-translate="nav_about">About</a></li>
+          <li><a href="index.html#projects" class="nav-item" data-translate="nav_projects">Projects</a></li>
+          <li><a href="index.html#habits" class="nav-item" data-translate="nav_habits">Life Hub</a></li>
+          <li><a href="index.html#experience" class="nav-item" data-translate="nav_experience">Experience</a></li>
+          <li><a href="index.html#contact" class="nav-item" data-translate="nav_contact">Contact</a></li>
         </ul>
       </nav>
       <div class="nav-widgets">
+        <div class="lang-switcher-pill">
+          <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
+          <span class="pill-divider">|</span>
+          <button class="lang-btn" id="lang-es" onclick="setLanguage('es')">ES</button>
+        </div>
         <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
           <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
           <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
+        </button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
         </button>
       </div>
     </div>
@@ -50,6 +63,13 @@
     <section class="cs-hero">
       <div class="container">
         <h1 class="cs-title">Ventura <br><span class="accent-gradient">Venture-scale visual strategy.</span></h1>
+        
+        <div style="margin-bottom: 50px;">
+          <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 8px;"></i>
+          </a>
+        </div>
+
         <div class="cs-hero-image-wrapper">
           <img src="assets/project 3.png" alt="Ventura Hero" class="cs-hero-img">
         </div>
