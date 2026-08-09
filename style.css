@@ -3129,3 +3129,60 @@ body.preloading {
   }
 }
 
+/* --- LIVE PREVIEW IFRAME WRAPPERS --- */
+.live-preview-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.browser-header {
+  height: 32px;
+  background: rgba(20, 20, 20, 0.9);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+}
+
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff5f56;
+}
+.browser-dot:nth-child(2) { background: #ffbd2e; }
+.browser-dot:nth-child(3) { background: #27c93f; }
+
+.live-iframe {
+  flex-grow: 1;
+  width: 100%;
+  border: none;
+  background: #fff;
+}
+
+/* Glass overlay to prevent scroll trapping until interacted */
+.iframe-overlay {
+  position: absolute;
+  top: 32px; /* below browser header */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 32px);
+  background: transparent;
+  z-index: 10;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+/* When the user hovers over the container, hide the overlay so they can interact with the iframe */
+.live-preview-wrapper:hover .iframe-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
