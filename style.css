@@ -12,6 +12,9 @@
   /* Smooth Custom Transitions */
   --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Shape Language (Border Radii) */
+  --radius-lg: 24px;
+  --radius-md: 16px;
   
   /* NEON DARK THEME PRESETS (Default) */
   --bg-app: #08090a;
@@ -1171,7 +1174,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .card-inner {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(12px);
@@ -3202,10 +3205,9 @@ body.preloading {
 
 .cf-section {
   padding: 100px 0;
-  background: #050505;
+  background: var(--bg-app);
   overflow: hidden;
   position: relative;
-  z-index: 10;
 }
 
 .cf-section-header {
@@ -3252,7 +3254,7 @@ body.preloading {
   width: var(--cf-card);
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background: var(--bg-card);
   box-shadow: var(--shadow-card);
   will-change: transform, opacity, z-index;

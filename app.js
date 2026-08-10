@@ -1244,9 +1244,13 @@ function initScrollRockAnimation() {
       
       // 3. Passive Bobbing: Floating offset when stationary (harmonic sine wave)
       const bobbing = Math.cos(Date.now() * 0.0015) * 8;
+      
+      // 4. Fade Out on Scroll: Disappear as we scroll down
+      const opacity = Math.max(0, 0.8 - (scroll / 1200));
 
       // Update styling
       rock.style.transform = `rotate(${targetRotation}deg) translateY(${targetTranslation + bobbing}px)`;
+      container.style.opacity = opacity;
       
       requestAnimationFrame(tick);
     }
