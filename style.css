@@ -3202,9 +3202,10 @@ body.preloading {
 
 .cf-section {
   padding: 100px 0;
-  background: var(--bg-app);
+  background: #050505;
   overflow: hidden;
   position: relative;
+  z-index: 10;
 }
 
 .cf-section-header {
