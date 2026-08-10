@@ -71,6 +71,15 @@ class CoverflowCarousel {
       dot.addEventListener('click', () => this.goTo(index));
     });
     
+    // Hover to center
+    this.cards.forEach((card, index) => {
+      card.addEventListener('mouseenter', () => {
+        if (!this.drag) {
+          this.goTo(index);
+        }
+      });
+    });
+    
     // Initial paint
     setTimeout(() => {
       if (this.cards[0]) {

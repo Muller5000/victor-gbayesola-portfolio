@@ -3259,16 +3259,9 @@ body.preloading {
 
 .cf-card img {
   width: 100%;
-  height: auto;
-  min-height: 100%;
+  height: 100%;
+  object-fit: cover;
   pointer-events: none;
-  transition: transform 4s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateY(0);
-}
-
-.cf-card:hover img {
-  /* Scroll the image up smoothly until the bottom is visible */
-  transform: translateY(calc(-100% + var(--cf-card)));
 }
 
 .cf-nav {
