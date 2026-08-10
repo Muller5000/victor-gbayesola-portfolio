@@ -71,13 +71,17 @@ class CoverflowCarousel {
       dot.addEventListener('click', () => this.goTo(index));
     });
     
-    // Hover to center
-    this.cards.forEach((card, index) => {
-      card.addEventListener('mouseenter', () => {
-        if (!this.drag) {
-          this.goTo(index);
-        }
-      });
+    // Hover to scrub
+    this.frame.addEventListener('pointermove', (e) => {
+      // Only scrub on hover if we are not actively click-dragging
+      if (!this.drag && e.pointerType === 'mouse') {
+        const rect = this.frame.getBoundingClientRect();
+        const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+        const fraction = x / rect.width;
+        // Map 0-100% width to the indices of the cards
+        const target = fraction * (this.count - 1);
+        this.settle(this.clamp(target));
+      }
     });
     
     // Initial paint
