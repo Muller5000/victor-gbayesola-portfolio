@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finvera Case Study — Victor Gbayesola</title>
-  <meta name="description" content="Case study: Designing and building Finvera, a comprehensive fintech platform.">
+  <meta name="description" content="Case study: Designing Finvera, a comprehensive fintech platform democratizing financial growth.">
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,7 +49,8 @@
           <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
           <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
         </button>
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+        <!-- Mobile hamburger drawer toggle -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-navigation">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
         </button>
@@ -65,13 +66,9 @@
         <h1 class="cs-title">Finvera <br><span class="accent-gradient">Democratizing financial growth.</span></h1>
         
         <div style="margin-bottom: 50px;">
-          <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 8px;"></i>
+          <a href="#" class="btn btn-primary" style="opacity: 0.5; cursor: not-allowed; text-decoration: line-through;">
+            Live Site Offline
           </a>
-        </div>
-
-        <div class="cs-hero-image-wrapper">
-          <img src="assets/finvera.webp" alt="Finvera Hero" class="cs-hero-img">
         </div>
       </div>
     </section>
@@ -108,9 +105,10 @@
       </div>
     </section>
 
-    <section class="cs-visual">
-      <div class="container">
-        <img src="assets/finvera.webp" alt="Finvera Interface" class="cs-full-img">
+    <!-- FULL BLEED SCROLLING UI DESIGN -->
+    <section class="cs-visual" style="padding: 0; max-width: 1200px; margin: 0 auto; overflow: hidden; border-radius: 20px; box-shadow: var(--shadow-card); border: 1px solid var(--border-color);">
+      <div style="width: 100%; display: flex; flex-direction: column;">
+        <img src="assets/finvera_full.webp" alt="Finvera Full High-Res Interface" style="width: 100%; height: auto; display: block;" loading="lazy">
       </div>
     </section>
 
@@ -127,7 +125,7 @@
     <section class="cs-next-project">
       <div class="container">
         <p>Next Case Study</p>
-        <a href="case-study-ventura.html" class="cs-next-title">Ventura <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="case-study-quickbite.html" class="cs-next-title">QuickBite <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </section>
 

@@ -1166,6 +1166,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .stacked-card.card-3 { top: 200px; z-index: 12; }
 .stacked-card.card-4 { top: 240px; z-index: 13; }
 .stacked-card.card-5 { top: 280px; z-index: 14; }
+.stacked-card.card-6 { top: 320px; z-index: 15; }
 
 .card-inner {
   background: var(--bg-card);
@@ -1298,6 +1299,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .stacked-card.card-3 { top: 120px; }
   .stacked-card.card-4 { top: 140px; }
   .stacked-card.card-5 { top: 160px; }
+  .stacked-card.card-6 { top: 180px; }
 }
 
 /* ═══ 9. QUANTIFIED HABITS & ROUTINE BENTO GRID ═══ */
