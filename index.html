@@ -847,60 +847,33 @@
           <h2 class="section-heading" data-translate="testimonials_title">Trusted by founders and high-growth ventures.</h2>
         </div>
 
-        <div class="testimonials-slider-container">
-          <div class="testimonials-slides-wrap">
+        <div class="anim-testim-container">
+          
+          <!-- LEFT COL: Image Stack -->
+          <div class="anim-testim-images" id="anim-testim-images">
+            <!-- Images injected via JS -->
+          </div>
+
+          <!-- RIGHT COL: Text Reveal & Controls -->
+          <div class="anim-testim-content">
+            <div id="anim-testim-text-wrap" class="anim-testim-text-wrap">
+              <h3 class="anim-testim-name" id="anim-testim-name">Sarah Chen</h3>
+              <p class="anim-testim-designation" id="anim-testim-desig">Product Manager at TechFlow</p>
+              <div class="anim-testim-quote" id="anim-testim-quote">
+                <!-- Spans injected via JS for staggered blur reveal -->
+              </div>
+            </div>
             
-            <!-- Slide 1: QuickBite -->
-            <div class="testimonial-slide active" data-slide-index="0">
-              <span class="testimonial-accent-tag tag-ux">UX/UI DESIGN</span>
-              <blockquote class="testimonial-quote" data-translate="review_1_quote">
-                "Victor transformed our complex checkout pipeline into a remarkably clean, high-fidelity experience. User drop-offs dropped by 35% in the first month."
-              </blockquote>
-              <div class="testimonial-author-meta">
-                <span class="author-name" data-translate="review_1_author">Sarah Chen</span>
-                <span class="author-role" data-translate="review_1_role">Co-Founder & COO, QuickBite Group</span>
-              </div>
+            <div class="anim-testim-controls">
+              <button class="anim-testim-btn" id="anim-testim-prev" aria-label="Previous Review">
+                <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>
+              </button>
+              <button class="anim-testim-btn" id="anim-testim-next" aria-label="Next Review">
+                <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+              </button>
             </div>
-
-            <!-- Slide 2: Pulse Analytics -->
-            <div class="testimonial-slide" data-slide-index="1">
-              <span class="testimonial-accent-tag tag-econ">QUANTITATIVE ANALYSIS</span>
-              <blockquote class="testimonial-quote" data-translate="review_2_quote">
-                "His ability to bridge quantitative behavioral research with visual dashboard systems is rare. The interface is clean, intuitive, and highly functional."
-              </blockquote>
-              <div class="testimonial-author-meta">
-                <span class="author-name" data-translate="review_2_author">Marcus Vance</span>
-                <span class="author-role" data-translate="review_2_role">VP of Product, Pulse Analytics</span>
-              </div>
-            </div>
-
-            <!-- Slide 3: Ventura -->
-            <div class="testimonial-slide" data-slide-index="2">
-              <span class="testimonial-accent-tag tag-strategy">VENTURE STRATEGY</span>
-              <blockquote class="testimonial-quote" data-translate="review_3_quote">
-                "Victor's design precision and strategic narrative help us secure our seed funding. The investor pitch deck and visual MVP were masterfully executed."
-              </blockquote>
-              <div class="testimonial-author-meta">
-                <span class="author-name" data-translate="review_3_author">Elena Rostova</span>
-                <span class="author-role" data-translate="review_3_role">Founder, Ventura Ecosystems</span>
-              </div>
-            </div>
-
           </div>
-
-          <div class="testimonials-controls">
-            <button class="slider-btn prev-btn" aria-label="Previous Review">
-              <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>
-            </button>
-            <div class="slider-counter">
-              <span class="current-slide">01</span>
-              <span class="divider">/</span>
-              <span class="total-slides">03</span>
-            </div>
-            <button class="slider-btn next-btn" aria-label="Next Review">
-              <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
-            </button>
-          </div>
+          
         </div>
       </div>
     </section>

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorFollower(); // Fancy.design cursor
   initFloatingEcosystem(); // Parallax floating UI in hero
   initStackedCards(); // GSAP ScrollTrigger Stacked Cards
-  initTestimonialsSlider(); // Interactive client reviews slider
+  initAnimatedTestimonials(); // Interactive client reviews slider
   initNichesHoverSlider(); // Redesigned services hover slider
   initScrollRockAnimation(); // Floating lava rock animation
   initMusicVibeWidget();
