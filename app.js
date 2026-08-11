@@ -592,19 +592,15 @@ function handleFormSubmit(event) {
   const currentLang = localStorage.getItem('lang') || 'en';
   btnText.textContent = currentLang === 'en' ? "Transmitting..." : "Transmitiendo...";
   
-  // Real API post request to node backend
-  fetch('/api/contact', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ name, email, message })
-  })
-  .then(response => {
-    if (!response.ok) throw new Error('API submission failed');
-    return response.json();
-  })
-  .then(data => {
+  // Instant Mailto Redirection (Requires no backend or API keys)
+  const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+  const body = encodeURIComponent(`${message}\n\n---\nSender: ${name}\nEmail: ${email}`);
+  
+  // Open the user's default email client (Gmail, Outlook, Mail, etc.)
+  window.location.href = `mailto:gbayesolavictor@gmail.com?subject=${subject}&body=${body}`;
+
+  // Fake a slight delay for the button animation before showing success
+  setTimeout(() => {
     successAlert.style.display = 'flex';
     form.reset();
     
@@ -621,16 +617,7 @@ function handleFormSubmit(event) {
         successAlert.style.opacity = '1';
       }, 500);
     }, 4000);
-  })
-  .catch(err => {
-    console.error("Transmission error:", err);
-    btnText.textContent = currentLang === 'en' ? "Error!" : "¡Error!";
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = '1';
-      btnText.textContent = originalText;
-    }, 2000);
-  });
+  }, 800);
 }
 
 /* ==========================================================================
