@@ -364,13 +364,27 @@
                   <span class="row-tool">UI/UX Design</span>
                   <span class="row-tool">Design System</span>
                 </div>
-                <a href="case-study-finvera.html" class="btn btn-secondary card-btn">
-                  <span>View Case Study</span>
-                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </a>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; width: 100%;">
+                  <a href="case-study-finvera.html" class="btn btn-secondary card-btn" style="margin: 0; align-self: auto;">
+                    <span>View Case Study</span>
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://finvera-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary card-btn" style="margin: 0; align-self: auto; background: var(--color-primary, #0066FF); color: white; border: none; box-shadow: 0 4px 14px rgba(0, 102, 255, 0.35);">
+                    <span>Visit Live Site</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  </a>
+                </div>
               </div>
-              <div class="card-visual">
-                <img src="assets/finvera_thumb.webp" alt="Finvera Preview" loading="lazy">
+              <div class="card-visual" style="padding: 10px; display: flex; align-items: center; justify-content: center; background: transparent;">
+                <div class="live-preview-wrapper" style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
+                  <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                  </div>
+                  <iframe src="https://finvera-zeta.vercel.app/" class="live-iframe" title="Finvera Live Preview" loading="lazy"></iframe>
+                  <div class="iframe-overlay"></div>
+                </div>
               </div>
             </div>
           </div>
