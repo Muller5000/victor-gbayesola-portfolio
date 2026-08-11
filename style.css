@@ -324,6 +324,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   min-height: 90vh;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-grid {
@@ -331,6 +333,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   grid-template-columns: 1.2fr 0.8fr;
   gap: 60px;
   align-items: center;
+  position: relative;
+  z-index: 10;
 }
 
 .status-badge {
@@ -3409,75 +3413,32 @@ body.preloading {
 }
 
 /* ==========================================================================
-   22. PARALLAX EFFECT SECTION
+   22. HERO BACKGROUND PARALLAX
    ========================================================================== */
-.parallax-wrapper {
-  position: relative;
-  width: 100%;
-  height: 150vh;
-  overflow: hidden;
-  background-color: var(--bg-app);
-}
-.parallax {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.parallax__header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-.parallax__visuals {
+.hero-bg-parallax {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
-.parallax__layers {
-  position: relative;
-  width: 100%;
-  height: 120%;
-  top: -10%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  z-index: 0;
+  pointer-events: none;
 }
-.parallax__layer-img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  will-change: transform;
-}
-.parallax__layer-title {
-  position: absolute;
-  z-index: 3;
-  width: 100%;
-  text-align: center;
-  will-change: transform;
-}
-.parallax__title {
+
+.hero-bg-text {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: clamp(6rem, 15vw, 18rem);
   font-weight: 800;
-  color: #fff;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
   text-transform: uppercase;
+  white-space: nowrap;
   letter-spacing: -0.02em;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
   margin: 0;
-}
-.parallax__fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30vh;
-  background: linear-gradient(to top, var(--bg-app) 0%, transparent 100%);
-  z-index: 10;
+  will-change: transform;
 }
 
 /* ==========================================================================

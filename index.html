@@ -105,7 +105,12 @@
     
     <!-- ═══ HERO SECTION (Editorial Grid) ═══ -->
     <section class="hero-section grid-section" id="hero">
-      <div class="container hero-grid">
+      <!-- Deep Parallax Background Layer -->
+      <div class="hero-bg-parallax" data-hero-parallax-bg>
+        <h1 class="hero-bg-text">CREATIVE DESIGNER</h1>
+      </div>
+      
+      <div class="container hero-grid" data-hero-parallax-fg>
         <!-- Left Side: Editorial Typography -->
         <div class="hero-text-col">
           <div class="status-badge">
@@ -190,25 +195,7 @@
       </div>
     </section>
 
-    <!-- ═══ PARALLAX TRANSITION SECTION ═══ -->
-    <section class="parallax-wrapper grid-section" id="parallax-wrapper">
-      <div class="parallax" id="parallax-container">
-        <section class="parallax__header">
-          <div class="parallax__visuals">
-            <div class="parallax__black-line-overflow"></div>
-            <div data-parallax-layers class="parallax__layers">
-              <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795be09b462b2e8ebf71_osmo-parallax-layer-3.webp" loading="lazy" data-parallax-layer="1" alt="" class="parallax__layer-img parallax-img-back">
-              <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795b4d5ac529e7d3a562_osmo-parallax-layer-2.webp" loading="lazy" data-parallax-layer="2" alt="" class="parallax__layer-img parallax-img-mid">
-              <div data-parallax-layer="3" class="parallax__layer-title">
-                <h2 class="parallax__title">Creative Designer</h2>
-              </div>
-              <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795bb5aceca85011ad83_osmo-parallax-layer-1.webp" loading="lazy" data-parallax-layer="4" alt="" class="parallax__layer-img parallax-img-front">
-            </div>
-            <div class="parallax__fade"></div>
-          </div>
-        </section>
-      </div>
-    </section>
+
 
     <!-- ═══ TYPOGRAPHIC HOVER-TO-REVEAL PROJECTS SECTION ═══ -->
     <section class="projects-section" id="projects">

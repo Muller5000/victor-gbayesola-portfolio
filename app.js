@@ -1442,45 +1442,42 @@ function initSkillsTabs() {
 }
 
 /* ==========================================================================
-   15. PARALLAX SECTION LOGIC
+   15. HERO PARALLAX LOGIC
    ========================================================================== */
-function initParallax() {
-  const parallaxWrapper = document.getElementById('parallax-wrapper');
-  if (!parallaxWrapper) return;
+function initHeroParallax() {
+  if (typeof gsap === 'undefined') return;
+  const heroSection = document.querySelector('.hero-section');
+  if (!heroSection) return;
 
-  const triggerElement = parallaxWrapper.querySelector('[data-parallax-layers]');
-  if (triggerElement) {
+  const bgText = heroSection.querySelector('.hero-bg-text');
+  const heroGrid = heroSection.querySelector('.hero-grid');
+
+  if (bgText && heroGrid) {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: triggerElement,
-        start: "0% 0%",
-        end: "100% 0%",
-        scrub: 0
+        trigger: heroSection,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1
       }
     });
 
-    const layers = [
-      { layer: "1", yPercent: 70 },
-      { layer: "2", yPercent: 55 },
-      { layer: "3", yPercent: 40 },
-      { layer: "4", yPercent: 10 }
-    ];
+    // Move background text UP very slowly (deep parallax)
+    tl.to(bgText, {
+      yPercent: -20,
+      ease: "none"
+    }, 0);
 
-    layers.forEach((layerObj, idx) => {
-      tl.to(
-        triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
-        {
-          yPercent: layerObj.yPercent,
-          ease: "none"
-        },
-        idx === 0 ? undefined : "<"
-      );
-    });
+    // Move foreground elements UP faster (midground parallax)
+    tl.to(heroGrid, {
+      yPercent: 15,
+      ease: "none"
+    }, 0);
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   initSkillsTabs();
-  initParallax();
+  initHeroParallax();
 });
 
