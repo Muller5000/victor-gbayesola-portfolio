@@ -3407,3 +3407,244 @@ body.preloading {
   opacity: 0;
   pointer-events: none;
 }
+
+/* ==========================================================================
+   22. PARALLAX EFFECT SECTION
+   ========================================================================== */
+.parallax-wrapper {
+  position: relative;
+  width: 100%;
+  height: 150vh;
+  overflow: hidden;
+  background-color: var(--bg-app);
+}
+.parallax {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.parallax__header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.parallax__visuals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.parallax__layers {
+  position: relative;
+  width: 100%;
+  height: 120%;
+  top: -10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.parallax__layer-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+.parallax__layer-title {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  text-align: center;
+  will-change: transform;
+}
+.parallax__title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 800;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin: 0;
+}
+.parallax__fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  background: linear-gradient(to top, var(--bg-app) 0%, transparent 100%);
+  z-index: 10;
+}
+
+/* ==========================================================================
+   23. LORO-STYLE FOOTER
+   ========================================================================== */
+.site-footer {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  padding: 80px 0 40px;
+  font-family: var(--font-body);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-col-brand .footer-logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 16px;
+  display: inline-block;
+  letter-spacing: -0.02em;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #a0a0a0;
+  margin-bottom: 24px;
+  max-width: 300px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-socials a {
+  color: #a0a0a0;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #fff;
+}
+
+.footer-col h4 {
+  font-family: var(--font-sub);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul a {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul a:hover {
+  color: #fff;
+}
+
+.footer-contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.footer-contact-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #a0a0a0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.footer-contact-info i {
+  margin-top: 4px;
+  color: #fff;
+}
+
+.footer-contact-info a {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-contact-info a:hover { color: #fff; }
+
+.footer-btn {
+  display: inline-block;
+  background-color: #e51d45;
+  color: #fff;
+  font-family: var(--font-sub);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-btn:hover {
+  background-color: #ff2a55;
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.footer-bottom-center {
+  font-style: italic;
+  color: #888;
+}
+
+.footer-legal a {
+  color: #666;
+  text-decoration: none;
+  margin-left: 16px;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: #a0a0a0;
+}
