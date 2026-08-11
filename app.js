@@ -1190,31 +1190,31 @@ function initAnimatedTestimonials() {
       quote: "Victor's UI/UX redesign of our fintech app was a game-changer. He simplified complex financial data into an incredibly intuitive interface. Our user retention skyrocketed by 40%.",
       name: "Oluwaseun Adebayo",
       designation: "Founder & CEO at PayNaira",
-      src: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=600&auto=format&fit=crop"
+      src: "assets/testim_oluwaseun.jpg"
     },
     {
       quote: "Victor transformed our complex checkout pipeline into a remarkably clean, high-fidelity experience. User drop-offs dropped by 35% in the first month.",
       name: "Sarah Chen",
       designation: "Co-Founder & COO at QuickBite Group",
-      src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop"
+      src: "assets/testim_sarah.jpg"
     },
     {
       quote: "His branding and visual strategy for our organic products gave us the premium feel we desperately needed. Sales doubled purely because of the new brand trust.",
       name: "Chiamaka Nwosu",
       designation: "Marketing Director at NatureEdge",
-      src: "https://images.unsplash.com/photo-1531123897727-8f129e1b43ea?q=80&w=600&auto=format&fit=crop"
+      src: "assets/testim_chiamaka.jpg"
     },
     {
       quote: "His ability to bridge quantitative behavioral research with visual dashboard systems is rare. The interface is clean, intuitive, and highly functional.",
       name: "Marcus Vance",
       designation: "VP of Product at Pulse Analytics",
-      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
+      src: "assets/testim_marcus.jpg"
     },
     {
       quote: "Victor's design precision and strategic narrative helped us secure our seed funding. The investor pitch deck and visual MVP were masterfully executed.",
       name: "Elena Rostova",
       designation: "Founder at Ventura Ecosystems",
-      src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop"
+      src: "assets/testim_elena.jpg"
     }
   ];
 
