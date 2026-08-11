@@ -1175,50 +1175,137 @@ function initTextScrambler() {
 /* ==========================================================================
    15. INTERACTIVE TESTIMONIALS SLIDER
    ========================================================================== */
-function initTestimonialsSlider() {
-  const container = document.querySelector('.testimonials-slider-container');
-  if (!container) return;
+function initAnimatedTestimonials() {
+  const imagesContainer = document.getElementById('anim-testim-images');
+  const nameEl = document.getElementById('anim-testim-name');
+  const desigEl = document.getElementById('anim-testim-desig');
+  const quoteEl = document.getElementById('anim-testim-quote');
+  const prevBtn = document.getElementById('anim-testim-prev');
+  const nextBtn = document.getElementById('anim-testim-next');
 
-  const slides = container.querySelectorAll('.testimonial-slide');
-  const prevBtn = container.querySelector('.prev-btn');
-  const nextBtn = container.querySelector('.next-btn');
-  const counterCurrent = container.querySelector('.current-slide');
-  const totalSlidesSpan = container.querySelector('.total-slides');
+  if (!imagesContainer || !nameEl) return;
 
-  if (!slides.length || !prevBtn || !nextBtn) return;
-
-  let currentIdx = 0;
-  const totalSlides = slides.length;
-
-  totalSlidesSpan.textContent = String(totalSlides).padStart(2, '0');
-
-  function showSlide(index) {
-    if (index >= totalSlides) {
-      currentIdx = 0;
-    } else if (index < 0) {
-      currentIdx = totalSlides - 1;
-    } else {
-      currentIdx = index;
+  const testimonials = [
+    {
+      quote: "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
+      name: "Sarah Chen",
+      designation: "Product Manager at TechFlow",
+      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      quote: "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+      name: "Michael Rodriguez",
+      designation: "CTO at InnovateSphere",
+      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      quote: "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
+      name: "Emily Watson",
+      designation: "Operations Director at CloudScale",
+      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      quote: "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
+      name: "James Kim",
+      designation: "Engineering Lead at DataPro",
+      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      quote: "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+      name: "Lisa Thompson",
+      designation: "VP of Technology at FutureNet",
+      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=600&auto=format&fit=crop"
     }
+  ];
 
-    slides.forEach((slide, idx) => {
-      if (idx === currentIdx) {
-        slide.classList.add('active');
+  let active = 0;
+  let autoplayInterval;
+
+  // Generate Image Elements
+  const imageElements = testimonials.map((testim, index) => {
+    const img = document.createElement('img');
+    img.src = testim.src;
+    img.alt = testim.name;
+    img.draggable = false;
+    img.className = 'anim-testim-img';
+    // Pre-calculate a random rotation for inactive state (-10 to 10 deg)
+    img.dataset.rot = Math.floor(Math.random() * 21) - 10;
+    imagesContainer.appendChild(img);
+    return img;
+  });
+
+  function render() {
+    // Render images
+    imageElements.forEach((img, index) => {
+      const isActive = index === active;
+      if (isActive) {
+        img.style.opacity = '1';
+        img.style.transform = `scale(1) translateZ(0) rotateY(0) translateY(0)`;
+        img.style.zIndex = '999';
       } else {
-        slide.classList.remove('active');
+        img.style.opacity = '0.7';
+        img.style.transform = `scale(0.95) translateZ(-100px) rotate(${img.dataset.rot}deg)`;
+        img.style.zIndex = testimonials.length + 2 - index;
       }
     });
 
-    counterCurrent.textContent = String(currentIdx + 1).padStart(2, '0');
+    // Render Text Wrapper Entrance
+    const textWrap = document.getElementById('anim-testim-text-wrap');
+    textWrap.style.opacity = '0';
+    textWrap.style.transform = 'translateY(20px)';
+    
+    setTimeout(() => {
+      nameEl.textContent = testimonials[active].name;
+      desigEl.textContent = testimonials[active].designation;
+      
+      // Render Words (Staggered)
+      quoteEl.innerHTML = '';
+      const words = testimonials[active].quote.split(' ');
+      words.forEach((word, index) => {
+        const span = document.createElement('span');
+        span.className = 'anim-testim-word';
+        span.innerHTML = word + '&nbsp;';
+        quoteEl.appendChild(span);
+        
+        // Trigger reflow and apply reveal class with stagger
+        setTimeout(() => {
+          span.classList.add('revealed');
+        }, 20 * index);
+      });
+
+      textWrap.style.opacity = '1';
+      textWrap.style.transform = 'translateY(0)';
+    }, 200);
+  }
+
+  function handleNext() {
+    active = (active + 1) % testimonials.length;
+    render();
+  }
+
+  function handlePrev() {
+    active = (active - 1 + testimonials.length) % testimonials.length;
+    render();
   }
 
   prevBtn.addEventListener('click', () => {
-    showSlide(currentIdx - 1);
+    handlePrev();
+    resetAutoplay();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    handleNext();
+    resetAutoplay();
   });
 
-  nextBtn.addEventListener('click', () => {
-    showSlide(currentIdx + 1);
-  });
+  function resetAutoplay() {
+    clearInterval(autoplayInterval);
+    autoplayInterval = setInterval(handleNext, 5000);
+  }
+
+  // Initial render
+  render();
+  resetAutoplay();
 }
 
 /* ==========================================================================
