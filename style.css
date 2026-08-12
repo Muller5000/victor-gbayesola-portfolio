@@ -162,26 +162,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ═══ 4. NAVIGATION HEADER ═══ */
 .app-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1100px;
   z-index: 100;
-  border-bottom: 1px solid var(--border-color);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background-color: rgba(8, 9, 10, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: 60px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(8, 9, 10, 0.65);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   transition: background-color 0.6s ease, border-color 0.6s ease;
 }
 
 [data-theme="light"] .app-header {
-  background-color: rgba(246, 248, 250, 0.7);
+  background-color: rgba(246, 248, 250, 0.65);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
 .header-container {
-  max-width: 1400px;
-  height: 80px;
-  margin: 0 auto;
-  padding: 0 40px;
+  height: 64px;
+  padding: 0 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2310,13 +2313,14 @@ a {
   .header-container { padding: 0 20px; }
   .nav-menu {
     position: fixed;
-    top: 80px;
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 100vh;
     background-color: var(--bg-app);
-    border-top: 1px solid var(--border-color);
-    padding: 40px;
+    border-top: none;
+    padding: 100px 40px 40px 40px;
+    z-index: 90;
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
@@ -2378,9 +2382,9 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: 14px;
-  height: 14px;
-  background-color: var(--text-primary);
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -2388,7 +2392,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  mix-blend-mode: difference; /* inverted contrast overlay! */
+  mix-blend-mode: difference;
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.3s ease,
@@ -2396,6 +2400,27 @@ a {
               box-shadow 0.3s ease;
   opacity: 0;
   will-change: transform, width, height;
+}
+
+/* Create the crosshair/star effect using pseudo-elements */
+.cursor-follower::before,
+.cursor-follower::after {
+  content: '';
+  position: absolute;
+  background-color: var(--text-primary);
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
+
+/* Vertical line of crosshair */
+.cursor-follower::before {
+  width: 2px;
+  height: 12px;
+}
+
+/* Horizontal line of crosshair */
+.cursor-follower::after {
+  width: 12px;
+  height: 2px;
 }
 
 .cursor-follower.active {
@@ -2424,6 +2449,13 @@ a {
   background-color: var(--text-primary);
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
   border-radius: 50%;
+}
+
+/* Hide the crosshair lines when expanded to a pill */
+.cursor-follower.expanded::before,
+.cursor-follower.expanded::after {
+  opacity: 0;
+  transform: scale(0);
 }
 
 [data-theme="light"] .cursor-follower.expanded {
