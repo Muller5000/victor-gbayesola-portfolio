@@ -582,42 +582,44 @@ function handleFormSubmit(event) {
     return;
   }
 
-  const name = nameInput.value;
-  const email = emailInput.value;
-  const message = messageInput.value;
-
   // Animate button sending state
   submitBtn.disabled = true;
   submitBtn.style.opacity = '0.7';
   const currentLang = localStorage.getItem('lang') || 'en';
-  btnText.textContent = currentLang === 'en' ? "Transmitting..." : "Transmitiendo...";
-  
-  // Instant Mailto Redirection (Requires no backend or API keys)
-  const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-  const body = encodeURIComponent(`${message}\n\n---\nSender: ${name}\nEmail: ${email}`);
-  
-  // Open the user's default email client (Gmail, Outlook, Mail, etc.)
-  window.location.href = `mailto:gbayesolavictor@gmail.com?subject=${subject}&body=${body}`;
+  btnText.textContent = currentLang === 'en' ? "Sending..." : "Enviando...";
 
-  // Fake a slight delay for the button animation before showing success
-  setTimeout(() => {
-    successAlert.style.display = 'flex';
-    form.reset();
-    
-    // Restore button values
+  const formData = new FormData(form);
+
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: formData
+  })
+  .then(async (response) => {
+    if (response.status === 200) {
+      successAlert.style.display = 'flex';
+      form.reset();
+      
+      setTimeout(() => {
+        successAlert.style.opacity = '0';
+        setTimeout(() => {
+          successAlert.style.display = 'none';
+          successAlert.style.opacity = '1';
+        }, 500);
+      }, 4000);
+    } else {
+      console.error(response);
+      btnText.textContent = "Error sending message";
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    btnText.textContent = "Error sending message";
+  })
+  .finally(() => {
     submitBtn.disabled = false;
     submitBtn.style.opacity = '1';
-    btnText.textContent = originalText;
-    
-    // Automatically fade out success state after 4 seconds
-    setTimeout(() => {
-      successAlert.style.opacity = '0';
-      setTimeout(() => {
-        successAlert.style.display = 'none';
-        successAlert.style.opacity = '1';
-      }, 500);
-    }, 4000);
-  }, 800);
+    setTimeout(() => btnText.textContent = originalText, 2000);
+  });
 }
 
 /* ==========================================================================
