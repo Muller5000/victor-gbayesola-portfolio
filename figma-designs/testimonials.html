@@ -33,10 +33,75 @@
       color: var(--color-text-dark);
     }
 
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    /* Testimonials Marquee Slider Styling */
+    .testimonials-marquee-container {
+      display: flex;
+      justify-content: center;
       gap: 30px;
+      max-height: 640px;
+      overflow: hidden;
+      margin-top: 40px;
+      position: relative;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+    }
+
+    .marquee-column {
+      flex: 1;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .marquee-track {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      animation-play-state: running;
+    }
+
+    /* Column animations */
+    .marquee-track.duration-30 {
+      animation: scroll-vertical 30s linear infinite;
+    }
+
+    .marquee-track.duration-50 {
+      animation: scroll-vertical 50s linear infinite;
+    }
+
+    .marquee-track.duration-35 {
+      animation: scroll-vertical 35s linear infinite;
+    }
+
+    /* Pause scrolling on hover of the container */
+    .testimonials-marquee-container:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll-vertical {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(calc(-50% - 15px)); /* half height of content plus half gap */
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .marquee-column.lg-block {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .marquee-column.md-block {
+        display: none;
+      }
+      .testimonials-marquee-container {
+        max-height: 520px;
+      }
     }
 
     .review-card {
@@ -239,20 +304,12 @@
         grid-template-columns: repeat(2, 1fr);
         padding: 40px 30px;
       }
-
-      .reviews-grid {
-        grid-template-columns: 1fr 1fr;
-      }
     }
 
     @media (max-width: 576px) {
       .stats-card-block {
         grid-template-columns: 1fr;
         gap: 24px;
-      }
-
-      .reviews-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -347,97 +404,222 @@
         <p>Stories of growth, security, and success from our diverse global community.</p>
       </div>
 
-      <!-- Testimonial Grid -->
-      <div class="reviews-grid">
-        <!-- Card 1: Tony Cruz -->
-        <div class="review-card animate-fade-in-up">
-          <div class="stars-row">
-            &#9733;&#9733;&#9733;&#9733;&#9733;
-          </div>
-          <p class="review-quote">"Finvera helped me rebuild my finances after my business struggled during the pandemic. The loan program gave me the capital I needed, and the trading tools helped me grow my savings. I'm finally seeing progress."</p>
-          <div class="reviewer-profile">
-            <img class="reviewer-avatar" src="images/user_tony.png" alt="Tony Cruz">
-            <div class="reviewer-info">
-              <h4>Tony Cruz</h4>
-              <p>Small Business Owner</p>
+      <!-- Testimonials Marquee Slider Container -->
+      <div class="testimonials-marquee-container">
+        
+        <!-- Column 1 (Scroll duration 30s) -->
+        <div class="marquee-column">
+          <div class="marquee-track duration-30">
+            <!-- Testimonial 1: Shadcn -->
+            <div class="review-card">
+              <p class="review-quote">"Finvera is so polished I might just retire and become a full-time potato farmer. The ecosystem is in safe hands."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://github.com/shadcn.png" alt="Shadcn">
+                <div class="reviewer-info">
+                  <h4>Shadcn</h4>
+                  <p>Founder, Shadcn UI</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 2: Guillermo Rauch -->
+            <div class="review-card">
+              <p class="review-quote">"Finvera is why I still have hair. No more pulling it out over centering divs or fighting with CSS grid."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://github.com/rauchg.png" alt="Guillermo Rauch">
+                <div class="reviewer-info">
+                  <h4>Guillermo Rauch</h4>
+                  <p>CEO, Vercel</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 3: Elon Musk -->
+            <div class="review-card">
+              <p class="review-quote">"I tried to buy Finvera but they wouldn't sell. So I just bought Twitter instead to complain about it."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/elonmusk" alt="Elon Musk">
+                <div class="reviewer-info">
+                  <h4>Elon Musk</h4>
+                  <p>CEO, X.com</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Duplicates of Column 1 for Infinite Scroll -->
+            <div class="review-card">
+              <p class="review-quote">"Finvera is so polished I might just retire and become a full-time potato farmer. The ecosystem is in safe hands."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://github.com/shadcn.png" alt="Shadcn">
+                <div class="reviewer-info">
+                  <h4>Shadcn</h4>
+                  <p>Founder, Shadcn UI</p>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <p class="review-quote">"Finvera is why I still have hair. No more pulling it out over centering divs or fighting with CSS grid."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://github.com/rauchg.png" alt="Guillermo Rauch">
+                <div class="reviewer-info">
+                  <h4>Guillermo Rauch</h4>
+                  <p>CEO, Vercel</p>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <p class="review-quote">"I tried to buy Finvera but they wouldn't sell. So I just bought Twitter instead to complain about it."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/elonmusk" alt="Elon Musk">
+                <div class="reviewer-info">
+                  <h4>Elon Musk</h4>
+                  <p>CEO, X.com</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 2: Michael Chen -->
-        <div class="review-card animate-fade-in-up">
-          <div class="stars-row">
-            &#9733;&#9733;&#9733;&#9733;&#9733;
-          </div>
-          <p class="review-quote">"As someone with zero trading experience, I was nervous about investing. Finvera's guided tutorials and simple interface made it easy to learn. I made my first successful trade within a week!"</p>
-          <div class="reviewer-profile">
-            <img class="reviewer-avatar" src="images/user_michael.png" alt="Michael Chen">
-            <div class="reviewer-info">
-              <h4>Michael Chen</h4>
-              <p>Recent Graduate</p>
+        <!-- Column 2 (Scroll duration 50s) -->
+        <div class="marquee-column md-block">
+          <div class="marquee-track duration-50">
+            <!-- Testimonial 4: Tim Cook -->
+            <div class="review-card">
+              <p class="review-quote">"We just acquired Finvera for 3 gazillion dollars. We're calling it iFinvera. It's our best product yet."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/tim_cook" alt="Tim Cook">
+                <div class="reviewer-info">
+                  <h4>Tim Cook</h4>
+                  <p>CEO, Apple</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 5: Jeff Bezos -->
+            <div class="review-card">
+              <p class="review-quote">"I'm considering shipping Finvera components with Prime delivery. 2-day shipping on beautiful UIs? Done."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/JeffBezos" alt="Jeff Bezos">
+                <div class="reviewer-info">
+                  <h4>Jeff Bezos</h4>
+                  <p>Founder, Amazon</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 6: Sam Altman -->
+            <div class="review-card">
+              <p class="review-quote">"We're rewriting OpenAI's entire frontend in Finvera. The AGI told us it's the only logical choice."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/sama" alt="Sam Altman">
+                <div class="reviewer-info">
+                  <h4>Sam Altman</h4>
+                  <p>CEO, OpenAI</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Duplicates of Column 2 for Infinite Scroll -->
+            <div class="review-card">
+              <p class="review-quote">"We just acquired Finvera for 3 gazillion dollars. We're calling it iFinvera. It's our best product yet."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/tim_cook" alt="Tim Cook">
+                <div class="reviewer-info">
+                  <h4>Tim Cook</h4>
+                  <p>CEO, Apple</p>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <p class="review-quote">"I'm considering shipping Finvera components with Prime delivery. 2-day shipping on beautiful UIs? Done."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/JeffBezos" alt="Jeff Bezos">
+                <div class="reviewer-info">
+                  <h4>Jeff Bezos</h4>
+                  <p>Founder, Amazon</p>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <p class="review-quote">"We're rewriting OpenAI's entire frontend in Finvera. The AGI told us it's the only logical choice."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/sama" alt="Sam Altman">
+                <div class="reviewer-info">
+                  <h4>Sam Altman</h4>
+                  <p>CEO, OpenAI</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 3: Sarah Thompson -->
-        <div class="review-card animate-fade-in-up">
-          <div class="stars-row">
-            &#9733;&#9733;&#9733;&#9733;&#9733;
-          </div>
-          <p class="review-quote">"The transparency at Finvera is refreshing. No hidden fees, clear explanations, and excellent customer support. They actually care about helping you succeed, not just making money off you."</p>
-          <div class="reviewer-profile">
-            <img class="reviewer-avatar" src="images/user_sarah.png" alt="Sarah Thompson">
-            <div class="reviewer-info">
-              <h4>Sarah Thompson</h4>
-              <p>Career Changer</p>
+        <!-- Column 3 (Scroll duration 35s) -->
+        <div class="marquee-column lg-block">
+          <div class="marquee-track duration-35">
+            <!-- Testimonial 7: Sundar Pichai -->
+            <div class="review-card">
+              <p class="review-quote">"We processed 100 petabytes of data to find the perfect UI library. The algorithm returned 'Finvera' with 99.9% confidence."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/sundarpichai" alt="Sundar Pichai">
+                <div class="reviewer-info">
+                  <h4>Sundar Pichai</h4>
+                  <p>CEO, Google</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 8: Steven Tey -->
+            <div class="review-card">
+              <p class="review-quote">"Our links might 404 sometimes, but thanks to Finvera, at least the 404 page looks absolutely stunning."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://github.com/steven-tey.png" alt="Steven Tey">
+                <div class="reviewer-info">
+                  <h4>Steven Tey</h4>
+                  <p>Founder, Dub.co</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 9: Peer Richelsen -->
+            <div class="review-card">
+              <p class="review-quote">"It's so fast, I finished my UI sprint before my next meeting even started. Open source for the win."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/peer_rich" alt="Peer Richelsen">
+                <div class="reviewer-info">
+                  <h4>Peer Richelsen</h4>
+                  <p>Co-Founder, Cal.com</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Duplicates of Column 3 for Infinite Scroll -->
+            <div class="review-card">
+              <p class="review-quote">"We processed 100 petabytes of data to find the perfect UI library. The algorithm returned 'Finvera' with 99.9% confidence."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/sundarpichai" alt="Sundar Pichai">
+                <div class="reviewer-info">
+                  <h4>Sundar Pichai</h4>
+                  <p>CEO, Google</p>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <p class="review-quote">"Our links might 404 sometimes, but thanks to Finvera, at least the 404 page looks absolutely stunning."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://github.com/steven-tey.png" alt="Steven Tey">
+                <div class="reviewer-info">
+                  <h4>Steven Tey</h4>
+                  <p>Founder, Dub.co</p>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <p class="review-quote">"It's so fast, I finished my UI sprint before my next meeting even started. Open source for the win."</p>
+              <div class="reviewer-profile">
+                <img class="reviewer-avatar" src="https://unavatar.io/x/peer_rich" alt="Peer Richelsen">
+                <div class="reviewer-info">
+                  <h4>Peer Richelsen</h4>
+                  <p>Co-Founder, Cal.com</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 4: David Rodriguez -->
-        <div class="review-card animate-fade-in-up">
-          <div class="stars-row">
-            &#9733;&#9733;&#9733;&#9733;&#9733;
-          </div>
-          <p class="review-quote">"Finvera Wealth has been a game-changer for my irregular income. The automated investing helps me save consistently, even when client payments vary. My portfolio has grown 23% this year."</p>
-          <div class="reviewer-profile">
-            <img class="reviewer-avatar" src="images/user_david.png" alt="David Rodriguez">
-            <div class="reviewer-info">
-              <h4>David Rodriguez</h4>
-              <p>Freelance Designer</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 5: Emily Washington -->
-        <div class="review-card animate-fade-in-up">
-          <div class="stars-row">
-            &#9733;&#9733;&#9733;&#9733;&#9733;
-          </div>
-          <p class="review-quote">"I love how Finvera makes complex financial concepts simple. The educational content is top-notch, and the community forum is incredibly supportive. It feels like having a financial advisor in your pocket."</p>
-          <div class="reviewer-profile">
-            <img class="reviewer-avatar" src="images/user_emily.png" alt="Emily Washington">
-            <div class="reviewer-info">
-              <h4>Emily Washington</h4>
-              <p>Teacher</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 6: James Kim -->
-        <div class="review-card animate-fade-in-up">
-          <div class="stars-row">
-            &#9733;&#9733;&#9733;&#9733;&#9733;
-          </div>
-          <p class="review-quote">"After retiring, I needed to make my savings work harder. Finvera's personalized support helped me create a strategy that fits my risk tolerance. I'm earning more than I ever did with traditional banks."</p>
-          <div class="reviewer-profile">
-            <img class="reviewer-avatar" src="images/user_james.png" alt="James Kim">
-            <div class="reviewer-info">
-              <h4>James Kim</h4>
-              <p>Retired Veteran</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
