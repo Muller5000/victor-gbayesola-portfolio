@@ -18,3 +18,8 @@ Thumbs.db
 figma-designs/.vercel/
 figma designs/
 figma-designs/chuks-kitchen/
+
+# Next.js Build Outputs
+.next/
+next-env.d.ts
+out/
