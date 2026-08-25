@@ -14,75 +14,67 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     quote:
-      "Efferd is so polished I might just retire and become a full-time potato farmer. The ecosystem is in safe hands.",
-    image: "https://github.com/shadcn.png",
-    name: "Shadcn",
-    role: "Founder",
-    company: "Shadcn UI",
+      "Finvera's small business loan program gave us the flexible capital we needed to scale our inventory before peak season. The interest rates were transparent and the repayment terms fit our cash flow. They are a true partner for retail entrepreneurs.",
+    image: "images/user_tony.png",
+    name: "Tony Cruz",
+    role: "Small Business Owner",
+    company: "Cruz Retail",
   },
   {
     quote:
-      "Efferd is why I still have hair. No more pulling it out over centering divs or fighting with CSS grid.",
-    image: "https://github.com/rauchg.png",
-    name: "Guillermo Rauch",
-    role: "CEO",
-    company: "Vercel",
+      "I was always intimidated by investing until I found Finvera Wealth. Their automated robo-advisor custom-built a diversified portfolio tailored to my budget and risk tolerance. It's rewarding to see my savings grow hands-free.",
+    image: "images/user_sarah.png",
+    name: "Sarah Thompson",
+    role: "Career Changer",
   },
   {
     quote:
-      "I tried to buy Efferd but they wouldn't sell. So I just bought Twitter instead to complain about it.",
-    image: "https://unavatar.io/x/elonmusk",
-    name: "Elon Musk",
-    role: "CEO",
-    company: "X.com",
+      "The zero-commission trading on Finvera Trade is perfect for building a portfolio early in my career. The interface is clean, execution is instant, and the real-time market insights have helped me make smarter investment choices.",
+    image: "images/user_michael.png",
+    name: "Michael Chen",
+    role: "Recent Graduate",
   },
   {
     quote:
-      "We just acquired Efferd for 3 gazillion dollars. We're calling it iEfferd. It's our best product yet.",
-    image: "https://unavatar.io/x/tim_cook",
-    name: "Tim Cook",
-    role: "CEO",
-    company: "Apple",
+      "As a freelancer, my monthly income is highly unpredictable. Finvera's smart automated savings tool automatically sweeps small percentages of client deposits into a high-yield investment account. It has taken the stress out of saving for taxes.",
+    image: "images/user_david.png",
+    name: "David Rodriguez",
+    role: "Freelance Designer",
   },
   {
     quote:
-      "I'm considering shipping Efferd components with Prime delivery. 2-day shipping on beautiful UIs? Done.",
-    image: "https://unavatar.io/x/JeffBezos",
-    name: "Jeff Bezos",
-    role: "Founder",
-    company: "Amazon",
+      "I love how Finvera makes complex financial concepts simple. The educational content is top-notch, and the community forum is incredibly supportive. It feels like having a financial advisor in your pocket.",
+    image: "images/user_emily.png",
+    name: "Emily Washington",
+    role: "Teacher",
   },
   {
     quote:
-      "We're rewriting OpenAI's entire frontend in Efferd. The AGI told us it's the only logical choice.",
-    image: "https://unavatar.io/x/sama",
-    name: "Sam Altman",
-    role: "CEO",
-    company: "OpenAI",
+      "After retiring, I needed my savings to work harder for me. Finvera's personalized asset management and fixed-income portfolios gave me steady, reliable returns with complete security. The onboarding process was simple and very clear.",
+    image: "images/user_james.png",
+    name: "James Kim",
+    role: "Retired Veteran",
   },
   {
     quote:
-      "We processed 100 petabytes of data to find the perfect UI library. The algorithm returned 'Efferd' with 99.9% confidence.",
-    image: "https://unavatar.io/x/sundarpichai",
-    name: "Sundar Pichai",
-    role: "CEO",
-    company: "Google",
+      "The real-time ledger tracking and API-driven automation on Finvera are phenomenal. Their platform isn't just a beautiful UI—it's backed by robust, low-latency infrastructure. I've consolidated all my recurring stock purchases here.",
+    image: "../assets/testim_oluwaseun.jpg",
+    name: "Oluwaseun Adebayo",
+    role: "Software Engineer",
   },
   {
     quote:
-      "Our links might 404 sometimes, but thanks to Efferd, at least the 404 page looks absolutely stunning.",
-    image: "https://github.com/steven-tey.png",
-    name: "Steven Tey",
-    role: "Founder",
-    company: "Dub.co",
+      "Finvera Trade has completely transformed how we manage cross-border payments and hedge currency risk. The borderless accounts and low exchange rates have saved our exporting business thousands in transaction fees this quarter.",
+    image: "../assets/testim_chiamaka.jpg",
+    name: "Chiamaka Nwachukwu",
+    role: "Agricultural Exporter",
   },
   {
     quote:
-      "It's so fast, I finished my UI sprint before my next meeting even started. Open source for the win.",
-    image: "https://unavatar.io/x/peer_rich",
-    name: "Peer Richelsen",
-    role: "Co-Founder",
-    company: "Cal.com",
+      "Managing business credit, cash reserves, and long-term investments in one single dashboard is exactly what modern e-commerce founders need. Finvera's instant cash-back program on operational spend keeps our margins strong.",
+    image: "../assets/testim_marcus.jpg",
+    name: "Marcus Vance",
+    role: "E-commerce Entrepreneur",
   },
 ];
 
