@@ -10,18 +10,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const parallaxElements = document.querySelectorAll('.parallax-layer');
   let ticking = false;
 
+  // Store initial positions
+  const elementsData = Array.from(parallaxElements).map(el => {
+    // Get position relative to document top
+    const rect = el.getBoundingClientRect();
+    const absoluteTop = rect.top + window.scrollY;
+    return {
+      el,
+      speed: parseFloat(el.getAttribute('data-speed')) || 0.1,
+      initialTop: absoluteTop,
+      height: rect.height
+    };
+  });
+
   const updateParallax = () => {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
 
-    parallaxElements.forEach(el => {
-      const speed = parseFloat(el.getAttribute('data-speed')) || 0.1;
+    elementsData.forEach(data => {
+      // Calculate how far the element is from the center of the viewport
+      // If it's at the center, offset is 0.
+      const elementCenter = data.initialTop + (data.height / 2);
+      const viewportCenter = scrollY + (windowHeight / 2);
+      const distanceFromCenter = viewportCenter - elementCenter;
       
-      // We calculate offset relative to the initial position
-      // Using an offset ensures elements don't jump on load
-      const yPos = scrollY * speed;
+      // Calculate yPos based on distance from viewport center
+      const yPos = distanceFromCenter * data.speed;
       
-      el.style.transform = `translate3d(0, ${yPos}px, 0)`;
+      data.el.style.transform = `translate3d(0, ${yPos}px, 0)`;
     });
 
     ticking = false;
