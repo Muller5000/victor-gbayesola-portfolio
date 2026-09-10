@@ -26,7 +26,7 @@
   --color-text-dark: rgb(10, 10, 10);
   --color-text-muted-dark: rgb(54, 65, 83); /* #364153 Dark Slate */
   --color-text-light: rgb(255, 255, 255);
-  --color-text-muted-light: rgb(153, 161, 175); /* #99a1af Gray */
+  --color-text-muted-light: rgb(118, 118, 118); /* #767676 Gray (Accessible) */
   
   /* Borders and Shadows */
   --border-light: 1px solid hsl(214, 32%, 91%);
@@ -715,18 +715,21 @@ header.site-header.dark .hamburger span {
   animation: robotDance 2.5s ease-in-out infinite;
   animation-play-state: paused;
   transform-origin: bottom center;
+  will-change: transform;
 }
 
 .mascot-safe {
   animation: safeBounce 2.2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
   animation-play-state: paused;
   transform-origin: bottom center;
+  will-change: transform;
 }
 
 .mascot-piggy {
   animation: piggyWiggle 2.8s ease-in-out infinite;
   animation-play-state: paused;
   transform-origin: bottom center;
+  will-change: transform;
 }
 
 /* Trigger Mascot Dancing on Card Hover */
@@ -806,3 +809,13 @@ header.site-header.dark .hamburger span {
   }
 }
 
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
