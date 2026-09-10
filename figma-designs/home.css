@@ -175,7 +175,7 @@
 
     .badge-text .store-name {
       font-size: 0.88rem;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 1.2;
       color: #ffffff;
     }
@@ -197,7 +197,7 @@
       letter-spacing: 0.08em;
       color: var(--color-text-muted-dark);
       margin-bottom: 14px;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .ticker-wrap {
@@ -342,7 +342,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--color-primary);
     }
 
@@ -434,7 +434,7 @@
     .why-choose-header h2 {
       font-size: clamp(2.2rem, 4.5vw, 3.5rem);
       font-family: Arial, sans-serif;
-      font-weight: bold;
+      font-weight: 600;
       color: var(--color-text-dark);
       margin: 0;
       line-height: 1.1;
@@ -481,7 +481,7 @@
       font-size: 1.35rem;
       color: var(--color-text-dark);
       margin: 0;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .choose-subtitle {
@@ -599,7 +599,7 @@
 .calc-amount-display {
   font-family: var(--font-heading);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-primary);
 }
 /* Custom Range Slider */
@@ -654,7 +654,7 @@ input[type=range].calc-slider::-webkit-slider-thumb:hover {
 .calc-result-box .result-value {
   font-size: 1.75rem;
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-text-dark);
 }
 @media (max-width: 600px) {

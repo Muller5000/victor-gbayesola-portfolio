@@ -71,7 +71,6 @@ body {
 /* Typography styling */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 700; /* Solid bold emphasis for structural hierarchy */
   line-height: 1.2;
   color: inherit;
   margin-top: 0;
@@ -80,24 +79,28 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: clamp(2.5rem, 5vw, 3.75rem); /* 60px in Figma */
+  font-weight: 700;
   letter-spacing: -0.025em; /* Slightly tighter tracking for large headers */
   line-height: 1.15;
 }
 
 h2 {
   font-size: clamp(1.8rem, 3.5vw, 2.25rem); /* 36px in Figma */
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
 h3 {
   font-size: clamp(1.25rem, 2.5vw, 1.5rem); /* 24px/20px in Figma */
+  font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.25;
 }
 
 h4 {
   font-size: 1.15rem;
+  font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
@@ -819,3 +822,6 @@ header.site-header.dark .hamburger span {
     scroll-behavior: auto !important;
   }
 }
+
+h5 { font-size: 1rem; font-weight: 500; }
+h6 { font-size: 0.875rem; font-weight: 500; }
