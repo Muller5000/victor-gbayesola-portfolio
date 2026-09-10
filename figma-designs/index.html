@@ -112,7 +112,7 @@
     
     <!-- Right Column: Visual Deck (Faded Blend Background) -->
     <div class="hero-image-wrapper">
-      <img src="images/hero_group_users.png" alt="Finvera Customers" class="hero-main-img">
+      <div class="parallax-layer" data-speed="0.25" style="width: 100%; height: 120%; position: absolute; top: -10%;"><img src="images/hero_group_users.png" alt="Finvera Customers" class="hero-main-img"></div>
       <div class="hero-image-overlay"></div>
     </div>
 
@@ -247,7 +247,7 @@
         <!-- Trade -->
         <div class="product-card scroll-reveal reveal-delay-1">
           <div style="background-color: var(--color-primary-light); height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <img src="images/mascot_trade.png" alt="Finvera Trade Mascot" class="mascot-robot" style="height: 100%; width: auto; object-fit: contain; padding: 16px;" loading="lazy">
+            <div class="parallax-layer" data-speed="-0.1" style="height: 100%; display: flex; align-items: center; justify-content: center; width: 100%;"><img src="images/mascot_trade.png" alt="Finvera Trade Mascot" class="mascot-robot" style="height: 100%; width: auto; object-fit: contain; padding: 16px;" loading="lazy"></div>
           </div>
           <div class="product-card-body">
             <h3>Finvera Trade</h3>
@@ -261,7 +261,7 @@
         <!-- Loan -->
         <div class="product-card scroll-reveal reveal-delay-2">
           <div style="background-color: var(--color-success-bg); height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <img src="images/mascot_loan.png" alt="Finvera Loan Mascot" class="mascot-safe" style="height: 100%; width: auto; object-fit: contain; padding: 16px;" loading="lazy">
+            <div class="parallax-layer" data-speed="-0.15" style="height: 100%; display: flex; align-items: center; justify-content: center; width: 100%;"><img src="images/mascot_loan.png" alt="Finvera Loan Mascot" class="mascot-safe" style="height: 100%; width: auto; object-fit: contain; padding: 16px;" loading="lazy"></div>
           </div>
           <div class="product-card-body">
             <h3>Finvera Loan</h3>
@@ -275,7 +275,7 @@
         <!-- Wealth -->
         <div class="product-card scroll-reveal reveal-delay-3">
           <div style="background-color: hsl(270, 100%, 96%); height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <img src="images/mascot_wealth.png" alt="Finvera Wealth Mascot" class="mascot-piggy" style="height: 100%; width: auto; object-fit: contain; padding: 16px;" loading="lazy">
+            <div class="parallax-layer" data-speed="-0.1" style="height: 100%; display: flex; align-items: center; justify-content: center; width: 100%;"><img src="images/mascot_wealth.png" alt="Finvera Wealth Mascot" class="mascot-piggy" style="height: 100%; width: auto; object-fit: contain; padding: 16px;" loading="lazy"></div>
           </div>
           <div class="product-card-body">
             <h3>Finvera Wealth</h3>
@@ -468,5 +468,7 @@
 
   <script src="main.js"></script>
   <script src="js/calculator.js"></script>
+  <script src="js/parallax.js"></script>
 </body>
 </html>
+
