@@ -60,10 +60,10 @@ const TRANSLATIONS = {
     nav_contact: "Contact",
     
     hero_status: "Open to New Projects",
-    hero_title: "I design digital products that <span class='accent-gradient'>look sharp, work hard, and grow fast</span>.",
-    hero_subtitle: "Multidisciplinary designer blending user research, visual craft, and business thinking to build products people actually love using.",
-    hero_location: "Lagos, Nigeria — Working Globally",
-    hero_focus: "Design × Research × Strategy",
+    hero_title: "I craft digital experiences that are <span class='accent-gradient'>visually striking and intuitively human</span>.",
+    hero_subtitle: "Product designer specializing in high-fidelity interfaces, fluid interactions, and user-centric systems that elevate how people connect with technology.",
+    hero_location: "Lagos, Nigeria - Working Globally",
+    hero_focus: "UI/UX x Interaction x Strategy",
     hero_cta_projects: "See My Work",
     hero_cta_contact: "Start a Project",
     
@@ -208,10 +208,10 @@ const TRANSLATIONS = {
     nav_contact: "Contacto",
     
     hero_status: "Disponible para Nuevos Proyectos",
-    hero_title: "Diseño productos digitales que <span class='accent-gradient'>se ven bien, funcionan mejor y crecen rápido</span>.",
-    hero_subtitle: "Diseñador multidisciplinario que combina investigación de usuarios, diseño visual y pensamiento estratégico para crear productos que la gente realmente disfruta usar.",
-    hero_location: "Lagos, Nigeria — Trabajo Global",
-    hero_focus: "Diseño × Investigación × Estrategia",
+    hero_title: "Creo experiencias digitales que son <span class='accent-gradient'>visualmente impactantes e intuitivamente humanas</span>.",
+    hero_subtitle: "Diseñador de productos especializado en interfaces de alta fidelidad, interacciones fluidas y sistemas centrados en el usuario que elevan cómo las personas se conectan con la tecnología.",
+    hero_location: "Lagos, Nigeria - Trabajo Global",
+    hero_focus: "UI/UX x Interacción x Estrategia",
     hero_cta_projects: "Ver Mi Trabajo",
     hero_cta_contact: "Iniciar un Proyecto",
     
