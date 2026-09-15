@@ -60,7 +60,7 @@ const TRANSLATIONS = {
     nav_contact: "Contact",
     
     hero_status: "Open to New Projects",
-    hero_title: "I craft digital experiences that are <span class='accent-gradient'>visually striking and intuitively human</span>.",
+    hero_title: "I design interfaces that are <span class='accent-gradient'>visually striking & intuitively human</span>.",
     hero_subtitle: "Product designer specializing in high-fidelity interfaces, fluid interactions, and user-centric systems that elevate how people connect with technology.",
     hero_location: "Lagos, Nigeria - Working Globally",
     hero_focus: "UI/UX x Interaction x Strategy",
@@ -208,7 +208,7 @@ const TRANSLATIONS = {
     nav_contact: "Contacto",
     
     hero_status: "Disponible para Nuevos Proyectos",
-    hero_title: "Creo experiencias digitales que son <span class='accent-gradient'>visualmente impactantes e intuitivamente humanas</span>.",
+    hero_title: "Diseño interfaces que son <span class='accent-gradient'>visualmente impactantes e intuitivamente humanas</span>.",
     hero_subtitle: "Diseñador de productos especializado en interfaces de alta fidelidad, interacciones fluidas y sistemas centrados en el usuario que elevan cómo las personas se conectan con la tecnología.",
     hero_location: "Lagos, Nigeria - Trabajo Global",
     hero_focus: "UI/UX x Interacción x Estrategia",
