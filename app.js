@@ -1589,3 +1589,77 @@ document.addEventListener('DOMContentLoaded', () => {
   initFooterSparkles();
 });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof initCertificationsSlider === "function") {
+    initCertificationsSlider();
+  }
+});
+
+
+/* ==========================================================================
+   CERTIFICATIONS SLIDER
+   ========================================================================== */
+function initCertificationsSlider() {
+  const slider = document.getElementById("certs-slider");
+  const prevBtn = document.getElementById("cert-prev");
+  const nextBtn = document.getElementById("cert-next");
+  const dotsContainer = document.getElementById("cert-dots");
+  
+  if (!slider || !prevBtn || !nextBtn || !dotsContainer) return;
+
+  const slides = slider.querySelectorAll(".cert-slide");
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.classList.add("slider-dot");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll(".slider-dot");
+
+  function updateDots() {
+    dots.forEach(d => d.classList.remove("active"));
+    dots[currentIndex].classList.add("active");
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    const slideWidth = slider.clientWidth;
+    slider.scrollTo({
+      left: slideWidth * currentIndex,
+      behavior: "smooth"
+    });
+    updateDots();
+  }
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
+    goToSlide(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
+    goToSlide(currentIndex);
+  });
+
+  // Update dots on manual scroll
+  slider.addEventListener("scroll", () => {
+    const slideWidth = slider.clientWidth;
+    const newIndex = Math.round(slider.scrollLeft / slideWidth);
+    if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
+      currentIndex = newIndex;
+      updateDots();
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initCertificationsSlider();
+});
+

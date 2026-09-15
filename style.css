@@ -3658,3 +3658,116 @@ body.preloading {
 .footer-legal a:hover {
   color: #a0a0a0;
 }
+
+/* ==========================================================================
+   CERTIFICATIONS SECTION
+   ========================================================================== */
+.certifications-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.certs-slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  backdrop-filter: blur(12px);
+}
+
+.certs-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  gap: 20px;
+  scroll-behavior: smooth;
+}
+
+.certs-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.cert-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cert-slide img {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.cert-slide:hover img {
+  transform: scale(1.02);
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.slider-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.slider-btn:hover {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+}
+
+.slider-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border: none;
+  padding: 0;
+}
+
+.slider-dot.active {
+  background: var(--color-brand);
+  transform: scale(1.3);
+}
+
+@media (max-width: 768px) {
+  .certs-slider-container {
+    padding: 20px;
+  }
+  .cert-slide img {
+    max-height: 300px;
+  }
+}
+
