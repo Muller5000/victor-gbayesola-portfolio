@@ -1657,6 +1657,33 @@ function initCertificationsSlider() {
       updateDots();
     }
   });
+
+  // Autoplay functionality
+  let autoplayInterval;
+  
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
+      goToSlide(currentIndex);
+    }, 4000);
+  }
+  
+  function stopAutoplay() {
+    if (autoplayInterval) clearInterval(autoplayInterval);
+  }
+
+  // Start autoplay initially
+  startAutoplay();
+
+  // Pause autoplay on interaction (hover/touch)
+  const sliderContainer = document.querySelector(".certs-slider-container");
+  if (sliderContainer) {
+    sliderContainer.addEventListener("mouseenter", stopAutoplay);
+    sliderContainer.addEventListener("mouseleave", startAutoplay);
+    sliderContainer.addEventListener("touchstart", stopAutoplay, { passive: true });
+    sliderContainer.addEventListener("touchend", startAutoplay, { passive: true });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
