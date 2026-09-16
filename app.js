@@ -1648,7 +1648,41 @@ function initCertificationsSlider() {
     goToSlide(currentIndex);
   });
 
-  // Update dots on manual scroll
+  // Wrap images for parallax to prevent breaking CSS hover scaling
+  slides.forEach((slide) => {
+    const img = slide.querySelector("img");
+    if (img && !img.parentElement.classList.contains("parallax-wrapper")) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "parallax-wrapper";
+      wrapper.style.width = "100%";
+      wrapper.style.height = "100%";
+      wrapper.style.display = "flex";
+      wrapper.style.justifyContent = "center";
+      wrapper.style.alignItems = "center";
+      
+      slide.insertBefore(wrapper, img);
+      wrapper.appendChild(img);
+    }
+  });
+
+  // Function to apply parallax
+  function updateParallax() {
+    const slideWidth = slider.clientWidth;
+    const scrollLeft = slider.scrollLeft;
+
+    slides.forEach((slide) => {
+      const wrapper = slide.querySelector(".parallax-wrapper");
+      if (wrapper) {
+        const slideOffset = slide.offsetLeft - scrollLeft;
+        const ratio = slideOffset / slideWidth;
+        // Max shift of 25% for a nice 3D gliding effect
+        const parallaxX = -ratio * 25; 
+        wrapper.style.transform = `translateX(${parallaxX}%)`;
+      }
+    });
+  }
+
+  // Update dots and parallax on manual scroll
   slider.addEventListener("scroll", () => {
     const slideWidth = slider.clientWidth;
     const newIndex = Math.round(slider.scrollLeft / slideWidth);
@@ -1656,7 +1690,13 @@ function initCertificationsSlider() {
       currentIndex = newIndex;
       updateDots();
     }
+    
+    // Apply parallax
+    requestAnimationFrame(updateParallax);
   });
+
+  // Initial parallax apply
+  updateParallax();
 
   // Autoplay functionality
   let autoplayInterval;

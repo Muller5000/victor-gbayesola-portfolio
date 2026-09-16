@@ -3699,6 +3699,7 @@ body.preloading {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .cert-slide img {
