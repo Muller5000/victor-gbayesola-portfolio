@@ -8,9 +8,9 @@
   <meta name="description" content="Case study: Architecting Pulse Analytics, an AI-powered supply chain dashboard.">
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=7">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
 </head>
 <body class="portfolio-body case-study-page">
@@ -32,118 +32,106 @@
       </a>
       <nav class="nav-menu" id="main-navigation">
         <ul class="nav-list">
-          <li><a href="index.html#about" class="nav-item" data-translate="nav_about">About</a></li>
-          <li><a href="index.html#projects" class="nav-item" data-translate="nav_projects">Projects</a></li>
-          <li><a href="index.html#habits" class="nav-item" data-translate="nav_habits">Life Hub</a></li>
-          <li><a href="index.html#experience" class="nav-item" data-translate="nav_experience">Experience</a></li>
-          <li><a href="index.html#contact" class="nav-item" data-translate="nav_contact">Contact</a></li>
+          <li><a href="index.html#projects" class="nav-item">Works</a></li>
+          <li><a href="index.html#experience" class="nav-item">Experience</a></li>
+          <li><a href="index.html#contact" class="nav-item">Contact</a></li>
         </ul>
       </nav>
       <div class="nav-widgets">
-        <div class="lang-switcher-pill">
-          <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
-          <span class="pill-divider">|</span>
-          <button class="lang-btn" id="lang-es" onclick="setLanguage('es')">ES</button>
-        </div>
         <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
           <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
           <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
-        </button>
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="case-study-container">
+  <main class="case-study-container" style="padding-top: 180px;">
     
-    <!-- Hero Section -->
-    <section class="cs-hero">
-      <div class="container">
-        <h1 class="cs-title">Pulse Analytics <br><span class="accent-gradient">AI-Powered Supply Chain.</span></h1>
-        
-        <div style="margin-bottom: 50px;">
-          <a href="https://cocacola-beta-seven.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 8px;"></i>
-          </a>
-        </div>
+    <!-- Hero Section: Left-aligned, Massive Typography -->
+    <section class="container" style="margin-bottom: 80px;">
+      <div style="max-width: 1000px;">
+        <h1 class="cs-title" style="text-align: left; margin-bottom: 30px; font-size: clamp(3.5rem, 8vw, 6.5rem);">
+          Pulse Analytics <br><span class="accent-gradient">AI-Powered Supply Chain.</span>
+        </h1>
+        <p style="font-size: 1.35rem; color: var(--text-secondary); max-width: 65ch; line-height: 1.6; margin-bottom: 40px; font-family: var(--font-body);">
+          Managing global supply chains requires synthesizing millions of data points in real-time. I architected a centralized, high-performance dashboard that forecasts inventory needs and tracks logistics—without overwhelming the operator.
+        </p>
+        <a href="https://cocacola-beta-seven.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Launch Live Prototype <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 8px;"></i>
+        </a>
+      </div>
+    </section>
 
-        <div class="cs-hero-image-wrapper" style="padding: 10px; background: transparent; overflow: visible;">
-          <div class="live-preview-wrapper" style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); aspect-ratio: 16/9; max-height: 70vh;">
-            <div class="browser-header">
-              <div class="browser-dot"></div>
-              <div class="browser-dot"></div>
-              <div class="browser-dot"></div>
-            </div>
-            <iframe src="https://cocacola-beta-seven.vercel.app/" class="live-iframe" title="Pulse Analytics Hero Preview" loading="lazy"></iframe>
-            <div class="iframe-overlay"></div>
+    <!-- Metadata Horizontal Strip -->
+    <section class="container" style="margin-bottom: 80px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 80px; padding: 40px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div>
+          <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; font-family: var(--font-heading);">Role</h4>
+          <p style="font-size: 1.1rem; font-weight: 500;">Lead Engineer & Designer</p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; font-family: var(--font-heading);">Timeline</h4>
+          <p style="font-size: 1.1rem; font-weight: 500;">16 Weeks</p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; font-family: var(--font-heading);">Platform</h4>
+          <p style="font-size: 1.1rem; font-weight: 500;">Web & Desktop Dashboard</p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; font-family: var(--font-heading);">Impact</h4>
+          <p style="font-size: 1.1rem; font-weight: 500; color: var(--color-econ);">Optimized Forecasting</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Single High-Fidelity Artifact -->
+    <section class="container" style="margin-bottom: 140px;">
+      <div class="live-preview-wrapper" style="box-shadow: 0 40px 80px rgba(0,0,0,0.4); aspect-ratio: 16/9; width: 100%; border-radius: var(--radius-lg);">
+        <div class="browser-header">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+        </div>
+        <!-- Using the live iframe ONCE as the hero artifact -->
+        <iframe src="https://cocacola-beta-seven.vercel.app/" class="live-iframe" title="Pulse Analytics Live Preview" loading="lazy"></iframe>
+        <div class="iframe-overlay" style="pointer-events: none;"></div>
+      </div>
+    </section>
+
+    <!-- Editorial Content: The Solution (Sticky 2-Col) -->
+    <section class="container" style="margin-bottom: 140px;">
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;">
+        <div style="position: sticky; top: 120px;">
+          <h2 style="font-family: var(--font-heading); font-size: 2.8rem; margin-top: 0; line-height: 1.1;">Architecting <br>The Solution</h2>
+        </div>
+        <div>
+          <p style="font-size: 1.3rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 30px;">
+            The existing tools were fragmented, slow, and lacked predictive capabilities. Operators were forced to manually cross-reference spreadsheets against delayed shipment updates, leading to millions in lost efficiency.
+          </p>
+          <p style="font-size: 1.3rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 60px;">
+            I architected a high-performance React application leveraging modern visualization libraries. The UI focuses on actionable insights, utilizing a strict dark-mode theme to reduce eye strain for managers monitoring screens all day. The integration of AI forecasting directly into the UI layer allows managers to make split-second decisions with confidence.
+          </p>
+          
+          <div style="padding: 40px; border-left: 2px solid var(--color-ux); background: var(--bg-card); border-radius: 0 16px 16px 0;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 24px;">Key Deliverables</h3>
+            <ul style="list-style-type: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; color: var(--text-primary); font-size: 1.1rem;">
+              <li><i class="fa-solid fa-check" style="color: var(--color-ux); margin-right: 12px;"></i> Complete UX/UI overhaul of legacy dashboard</li>
+              <li><i class="fa-solid fa-check" style="color: var(--color-ux); margin-right: 12px;"></i> Custom React components for data visualization</li>
+              <li><i class="fa-solid fa-check" style="color: var(--color-ux); margin-right: 12px;"></i> Reduced cognitive load through asymmetric data grids</li>
+            </ul>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Metadata Section -->
-    <section class="cs-meta">
-      <div class="container cs-meta-grid">
-        <div class="cs-meta-item">
-          <h4>Role</h4>
-          <p>Lead Engineer & Designer</p>
-        </div>
-        <div class="cs-meta-item">
-          <h4>Timeline</h4>
-          <p>16 Weeks</p>
-        </div>
-        <div class="cs-meta-item">
-          <h4>Platform</h4>
-          <p>Web / Desktop Dashboard</p>
-        </div>
-        <div class="cs-meta-item">
-          <h4>Impact</h4>
-          <p>Optimized Inventory Forecasting</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Content Sections -->
-    <section class="cs-content">
-      <div class="container">
-        <div class="cs-text-block">
-          <h2>The Challenge</h2>
-          <p>Managing global supply chains requires synthesizing millions of data points in real-time. The existing tools were fragmented, slow, and lacked predictive capabilities. The goal was to build a centralized, AI-powered dashboard that could forecast inventory needs, track logistics, and present complex data visualizations intuitively.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="cs-visual">
-      <div class="container">
-        <div class="live-preview-wrapper" style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); aspect-ratio: 16/9; max-height: 80vh;">
-          <div class="browser-header">
-            <div class="browser-dot"></div>
-            <div class="browser-dot"></div>
-            <div class="browser-dot"></div>
-          </div>
-          <iframe src="https://cocacola-beta-seven.vercel.app/" class="live-iframe" title="Pulse Analytics Full Preview" loading="lazy"></iframe>
-          <div class="iframe-overlay"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cs-content">
-      <div class="container">
-        <div class="cs-text-block">
-          <h2>The Solution</h2>
-          <p>I architected a high-performance React application leveraging modern visualization libraries. The UI focuses on clarity and actionable insights, utilizing a dark-mode theme to reduce eye strain for operators monitoring screens all day. The integration of AI forecasting directly into the UI layer allows managers to make split-second decisions with confidence.</p>
         </div>
       </div>
     </section>
 
     <!-- Next Project CTA -->
-    <section class="cs-next-project">
+    <section class="cs-next-project" style="text-align: center; padding: 120px 0; border-top: 1px solid var(--border-color);">
       <div class="container">
-        <p>Next Case Study</p>
-        <a href="case-study-ventura.html" class="cs-next-title">Ventura <i class="fa-solid fa-arrow-right"></i></a>
+        <p style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; margin-bottom: 20px;">Next Case Study</p>
+        <a href="case-study-ventura.html" class="cs-next-title" style="font-family: var(--font-heading); font-size: 5rem; font-weight: 700; text-decoration: none; color: var(--text-primary); transition: color 0.3s ease; line-height: 1;">
+          Ventura <i class="fa-solid fa-arrow-right" style="font-size: 3.5rem; vertical-align: middle; margin-left: 10px; color: var(--color-ux);"></i>
+        </a>
       </div>
     </section>
 
