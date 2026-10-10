@@ -5,7 +5,7 @@
 :root {
   /* Google Fonts Typography Pairing */
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sub: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sub: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-main: var(--font-body);
 

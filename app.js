@@ -515,11 +515,11 @@ function initStackedCards() {
     
     gsap.to(innerCard, {
       scale: 0.92,
-      filter: "brightness(0.5)",
+      opacity: 0.55,
       ease: "none",
       scrollTrigger: {
         trigger: cards[index + 1],
-        start: "top 75%", // Wait until the next card is substantially overlapping before shrinking
+        start: "top bottom", // Start as soon as the next card enters the viewport
         end: `top top+=${120 + ((index + 1) * 40)}`, // Dynamically calculate the sticky top offset of the next card
         scrub: true
       }
