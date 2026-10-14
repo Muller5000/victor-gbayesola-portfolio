@@ -6234,3 +6234,18 @@ body.portfolio-body {
     font-size: 1.8rem;
   }
 }
+
+/* About Page Specific Styles */
+body.about-page {
+  background-color: #f8f8f7 !important;
+}
+
+.cert-card-item {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+}
+
+.cert-card-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+}
+
