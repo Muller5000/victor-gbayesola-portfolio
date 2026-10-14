@@ -1177,6 +1177,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .stacked-card.card-4 { top: 240px; z-index: 13; }
 .stacked-card.card-5 { top: 280px; z-index: 14; }
 .stacked-card.card-6 { top: 320px; z-index: 15; }
+.stacked-card.card-7 { top: 360px; z-index: 16; }
 
 .card-inner {
   background: var(--bg-card);
@@ -1226,6 +1227,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .stacked-card.card-3 .row-num { color: var(--color-strategy); }
 .stacked-card.card-4 .row-num { color: var(--color-ux); }
 .stacked-card.card-5 .row-num { color: var(--color-econ); }
+.stacked-card.card-6 .row-num { color: var(--color-strategy); }
+.stacked-card.card-7 .row-num { color: var(--color-ux); }
 
 .row-title {
   font-family: var(--font-heading);
@@ -1278,14 +1281,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: var(--bg-app);
 }
 
-.card-visual img {
+.card-visual img,
+.card-visual video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.stacked-card:hover .card-visual img {
+.stacked-card:hover .card-visual img,
+.stacked-card:hover .card-visual video {
   transform: scale(1.05);
 }
 
@@ -1310,6 +1315,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .stacked-card.card-4 { top: 140px; }
   .stacked-card.card-5 { top: 160px; }
   .stacked-card.card-6 { top: 180px; }
+  .stacked-card.card-7 { top: 200px; }
 }
 
 /* ═══ 9. QUANTIFIED HABITS & ROUTINE BENTO GRID ═══ */
@@ -3772,3 +3778,41 @@ body.preloading {
   }
 }
 
+
+/* Brand Showcase Video Badge */
+.video-badge-pill {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(8, 9, 10, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.video-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-ux);
+  box-shadow: 0 0 10px var(--color-ux);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.75); }
+}

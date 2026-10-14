@@ -1357,6 +1357,9 @@ function initNichesHoverSlider() {
       imgs.forEach((img, idx) => {
         if (String(idx) === targetIndex) {
           img.classList.add('active');
+          if (img.tagName === 'VIDEO') {
+            img.play().catch(() => {});
+          }
         } else {
           img.classList.remove('active');
         }
