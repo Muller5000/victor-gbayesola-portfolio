@@ -5645,15 +5645,35 @@ body.about-page {
   color: var(--color-dark-ink) !important;
   position: relative;
   overflow: hidden;
-  padding: 100px 0 80px 0;
-  min-height: 100vh;
+  padding: 40px 0 30px 0;
+  height: 100vh;
+  min-height: 600px;
+  max-height: 1080px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .tof-horizontal-parallax-section .tof-cases-header {
-  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 16px;
+  gap: 24px;
+}
+
+.tof-cases-header-left {
+  max-width: 680px;
+}
+
+.tof-horizontal-parallax-section .tof-cases-headline {
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-dark-ink);
+  margin-bottom: 0;
 }
 
 .tof-pill-accent {
@@ -5686,19 +5706,19 @@ body.about-page {
 
 .tof-h-track {
   display: flex;
-  gap: 70px;
+  gap: 60px;
   width: max-content;
   padding-left: max(32px, calc((100vw - 1280px) / 2 + 32px));
-  padding-right: 140px;
+  padding-right: max(180px, 32vw);
   align-items: stretch;
   will-change: transform;
 }
 
 .tof-h-card {
   flex-shrink: 0;
-  width: clamp(750px, 75vw, 960px);
-  height: clamp(480px, 58vh, 580px);
-  border-radius: 28px;
+  width: clamp(680px, 68vw, 880px);
+  height: clamp(420px, 55vh, 510px);
+  border-radius: 24px;
   background: var(--color-dark-surface);
   border: 1px solid var(--color-dark-border);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -5718,7 +5738,7 @@ body.about-page {
 }
 
 .tof-h-info {
-  padding: 38px 34px;
+  padding: 30px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -5756,7 +5776,7 @@ body.about-page {
 
 .tof-h-title {
   font-family: var(--font-geist);
-  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-size: clamp(1.65rem, 2.2vw, 2.2rem);
   font-weight: 600;
   color: var(--color-dark-ink);
   letter-spacing: -0.03em;
@@ -5773,8 +5793,10 @@ body.about-page {
   font-size: 0.98rem;
   line-height: 1.65;
   color: #c4bfb6;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   letter-spacing: -0.01em;
+  font-size: 0.92rem;
+  line-height: 1.55;
 }
 
 .tof-h-tags {

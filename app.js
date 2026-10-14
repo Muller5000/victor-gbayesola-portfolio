@@ -2107,7 +2107,8 @@ function initTofHorizontalParallax() {
   // Desktop Pinning + Horizontal Parallax Scrub
   mm.add("(min-width: 900px)", () => {
     const getScrollDistance = () => {
-      return Math.max(0, track.scrollWidth - window.innerWidth + 160);
+      // Calculates exact translation so the final card is 100% visible on screen with generous right margin
+      return Math.max(0, track.scrollWidth - window.innerWidth + 80);
     };
 
     // 1. Pinned Horizontal Track Translation
@@ -2118,7 +2119,7 @@ function initTofHorizontalParallax() {
         id: "tofHorizontalProjectsPin",
         trigger: section,
         start: "top top",
-        end: () => "+=" + getScrollDistance(),
+        end: () => "+=" + (getScrollDistance() * 1.15),
         pin: true,
         scrub: 0.8,
         invalidateOnRefresh: true,
