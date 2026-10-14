@@ -5407,6 +5407,88 @@ body.about-page {
   letter-spacing: -0.038em;
   color: var(--color-ink-primary);
   margin-bottom: 24px;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px;
+  min-height: clamp(130px, 16vw, 190px);
+}
+
+.tof-hero-title-static {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  display: inline-block;
+  transition: opacity 0.35s ease;
+}
+
+.tof-hero-headline.has-particle-canvas .tof-hero-title-static {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tof-hero-particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tof-particle-blobs {
+  position: absolute;
+  inset: -15% -10%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+}
+
+.tof-particle-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(32px);
+  opacity: 0.6;
+  will-change: transform;
+}
+
+.tof-blob-1 {
+  left: 4%;
+  top: 8%;
+  width: 62%;
+  height: 78%;
+  background: radial-gradient(closest-side, rgba(194, 94, 56, 0.22), transparent 100%);
+}
+
+.tof-blob-2 {
+  left: 44%;
+  top: 22%;
+  width: 54%;
+  height: 70%;
+  background: radial-gradient(closest-side, rgba(240, 235, 222, 0.75), transparent 100%);
+}
+
+.tof-blob-3 {
+  left: 30%;
+  top: 44%;
+  width: 44%;
+  height: 56%;
+  background: radial-gradient(closest-side, rgba(194, 94, 56, 0.16), transparent 100%);
 }
 
 .tof-serif-italic {

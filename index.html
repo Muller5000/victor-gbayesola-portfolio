@@ -51,7 +51,7 @@
   </script>
   
   <!-- Preloads for Performance -->
-  <link rel="preload" href="style.css?v=17" as="style">
+  <link rel="preload" href="style.css?v=18" as="style">
   <link rel="preload" href="assets/profile.webp" as="image">
   <link rel="preload" href="assets/lava_rock.webp" as="image">
   
@@ -66,7 +66,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=18">
   
   <!-- Lenis Smooth Scroll CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
@@ -111,8 +111,14 @@
     <!-- ═══ 1. HERO SECTION (Off-White #f8f8f7) ═══ -->
     <section class="tof-hero-section">
       <div class="tof-hero-inner">
-        <h1 class="tof-hero-headline">
-          <span>Crafting products that feel </span><span class="tof-serif-italic">inevitable.</span>
+        <h1 class="tof-hero-headline" id="tof-hero-headline">
+          <span class="tof-hero-title-static">Crafting products that feel <span class="tof-serif-italic">inevitable.</span></span>
+          <div class="tof-particle-blobs" aria-hidden="true">
+            <div class="tof-particle-blob tof-blob-1"></div>
+            <div class="tof-particle-blob tof-blob-2"></div>
+            <div class="tof-particle-blob tof-blob-3"></div>
+          </div>
+          <canvas id="tof-hero-particle-canvas" class="tof-hero-particle-canvas" aria-hidden="true"></canvas>
         </h1>
         
         <div class="tof-typewriter-wrap">
@@ -615,7 +621,7 @@
   <!-- tsParticles Slim Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@3.3.0/tsparticles.slim.bundle.min.js"></script>
   <!-- Scripts -->
-  <script src="app.js?v=14"></script>
+  <script src="app.js?v=15"></script>
   <script src="coverflow.js"></script>
 </body>
 </html>
