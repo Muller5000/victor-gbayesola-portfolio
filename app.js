@@ -1939,10 +1939,10 @@ function initTofTypewriter() {
   if (!el) return;
 
   const phrases = [
-    "Quantitative UX Analyst & Strategist",
-    "Visual Identity & Brand Architect",
-    "Digital Product Designer",
-    "Frontend Systems Builder"
+    "Product Designer & Creative Technologist",
+    "Quantitative UX & Behavioral Analyst",
+    "Venture Pitch & Growth Strategist",
+    "High-Fidelity Interface Architect"
   ];
 
   let phraseIdx = 0;
