@@ -4272,6 +4272,12 @@ body.portfolio-body {
   color: var(--text-paper-primary);
   font-family: var(--font-body);
   overflow-x: hidden;
+  overflow-y: auto !important;
+  min-height: 100vh;
+}
+html {
+  overflow-x: hidden;
+  overflow-y: auto !important;
 }
 
 .monolith-container {

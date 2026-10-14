@@ -3,9 +3,13 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Lock scroll on load for preloader
-  document.body.classList.add('preloading');
-  window.scrollTo(0, 0);
+  // Only lock scroll if preloader element is present
+  if (document.getElementById('preloader')) {
+    document.body.classList.add('preloading');
+    window.scrollTo(0, 0);
+  } else {
+    document.body.classList.remove('preloading');
+  }
 
   initLenisScroll();
   initPreloader();
@@ -971,7 +975,11 @@ function initArcticParticles() {
 function initPreloader() {
   const preloader = document.getElementById('preloader');
   const typewriterText = document.getElementById('typewriter-text');
-  if (!preloader || !typewriterText) return;
+  if (!preloader || !typewriterText) {
+    document.body.classList.remove('preloading');
+    if (window.lenisInstance) window.lenisInstance.start();
+    return;
+  }
 
   const lang = localStorage.getItem('lang') || 'en';
   const textToType = TRANSLATIONS[lang] ? TRANSLATIONS[lang]['preloader_text'] : TRANSLATIONS['en']['preloader_text'];
@@ -1099,8 +1107,12 @@ function initLenisScroll() {
     infinite: false,
   });
 
-  // Lock scroll during preloading
-  window.lenisInstance.stop();
+  if (document.getElementById('preloader')) {
+    window.lenisInstance.stop();
+  } else {
+    window.lenisInstance.start();
+    document.body.classList.remove('preloading');
+  }
 
   function raf(time) {
     if (window.lenisInstance) {
