@@ -1936,40 +1936,44 @@ function initMonolithDragScroll() {
 
 function initTofTypewriter() {
   const el = document.getElementById('tof-typewriter-text');
+  const prefixEl = document.getElementById('tof-tw-prefix');
   if (!el) return;
 
   const phrases = [
-    "Product Designer & Creative Technologist",
-    "Quantitative UX & Behavioral Analyst",
-    "Venture Pitch & Growth Strategist",
-    "High-Fidelity Interface Architect"
+    { num: "01/04", label: "DISCIPLINE:", text: "Quantitative UX & Behavioral Economics" },
+    { num: "02/04", label: "DISCIPLINE:", text: "High-Fidelity Interface Architectures" },
+    { num: "03/04", label: "DISCIPLINE:", text: "Venture Pitch & Seed Growth Systems" },
+    { num: "04/04", label: "DISCIPLINE:", text: "Certified Data Protection & Governance" }
   ];
 
   let phraseIdx = 0;
   let charIdx = 0;
   let isDeleting = false;
-  let typingSpeed = 85;
+  let typingSpeed = 75;
 
   function type() {
-    const currentPhrase = phrases[phraseIdx];
-
-    if (isDeleting) {
-      el.textContent = currentPhrase.substring(0, charIdx - 1);
-      charIdx--;
-      typingSpeed = 38;
-    } else {
-      el.textContent = currentPhrase.substring(0, charIdx + 1);
-      charIdx++;
-      typingSpeed = 85;
+    const item = phrases[phraseIdx];
+    if (prefixEl) {
+      prefixEl.textContent = `[ ${item.num} ] ${item.label}`;
     }
 
-    if (!isDeleting && charIdx === currentPhrase.length) {
+    if (isDeleting) {
+      el.textContent = item.text.substring(0, charIdx - 1);
+      charIdx--;
+      typingSpeed = 30;
+    } else {
+      el.textContent = item.text.substring(0, charIdx + 1);
+      charIdx++;
+      typingSpeed = 70;
+    }
+
+    if (!isDeleting && charIdx === item.text.length) {
       isDeleting = true;
-      typingSpeed = 2200;
+      typingSpeed = 2400;
     } else if (isDeleting && charIdx === 0) {
       isDeleting = false;
       phraseIdx = (phraseIdx + 1) % phrases.length;
-      typingSpeed = 400;
+      typingSpeed = 350;
     }
 
     setTimeout(type, typingSpeed);
@@ -1980,31 +1984,100 @@ function initTofTypewriter() {
 
 function initTofLetterboxCarousel() {
   const frame = document.getElementById('tof-letterbox-frame');
-  if (!frame) return;
+  const container = document.querySelector('.tof-letterbox-container');
+  const heroSection = document.querySelector('.tof-hero-section');
+  if (!frame || !container) return;
 
   const slides = frame.querySelectorAll('.tof-slide');
-  if (slides.length <= 1) return;
+  if (slides.length > 1) {
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4500);
+  }
 
-  let current = 0;
-  setInterval(() => {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
-  }, 4000);
+  // ═══ 1. GSAP SCROLLTRIGGER PARALLAX SCRUB (Tofunmi Signature Effect) ═══
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && heroSection) {
+    gsap.registerPlugin(ScrollTrigger);
 
-  // Parallax subtle depth on mouse movement over hero
-  const heroSection = document.querySelector('.tof-hero-section');
-  const container = document.querySelector('.tof-letterbox-container');
-  if (heroSection && container && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Subtle scale and vertical float on the letterbox frame as user scrolls through hero
+    gsap.fromTo(container,
+      { scale: 0.96, y: 0 },
+      {
+        scale: 1.02,
+        y: -32,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      }
+    );
+
+    // Parallax window scrub: inner media slides vertically inside the frame
+    const parallaxInners = container.querySelectorAll('.tof-parallax-inner');
+    if (parallaxInners.length) {
+      gsap.fromTo(parallaxInners,
+        { yPercent: -8 },
+        {
+          yPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroSection,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        }
+      );
+    }
+
+    // Headline and typewriter lift softly on scroll for depth separation
+    const headline = heroSection.querySelector('.tof-hero-headline');
+    const tw = heroSection.querySelector('.tof-typewriter-wrap');
+    if (headline) {
+      gsap.to(headline, {
+        y: -36,
+        opacity: 0.78,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    }
+    if (tw) {
+      gsap.to(tw, {
+        y: -20,
+        opacity: 0.82,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    }
+  }
+
+  // ═══ 2. SUBTLE MOUSE TILT (On Inner Frame Only, No Transform Conflict) ═══
+  if (heroSection && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     heroSection.addEventListener('mousemove', (e) => {
       const rect = heroSection.getBoundingClientRect();
       const xNorm = (e.clientX - rect.left) / rect.width - 0.5;
       const yNorm = (e.clientY - rect.top) / rect.height - 0.5;
-      container.style.transform = `perspective(1000px) rotateY(${xNorm * 3.5}deg) rotateX(${-yNorm * 3.5}deg) translateY(-2px)`;
+      frame.style.transform = `perspective(1000px) rotateY(${xNorm * 3}deg) rotateX(${-yNorm * 3}deg)`;
     });
 
     heroSection.addEventListener('mouseleave', () => {
-      container.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)`;
+      frame.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
     });
   }
 }
@@ -2109,11 +2182,11 @@ function initTofHeaderScroll() {
   if (header) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 30) {
-        header.style.backgroundColor = 'rgba(248, 248, 247, 0.96)';
-        header.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
+        header.style.backgroundColor = 'rgba(247, 245, 238, 0.96)';
+        header.style.borderBottomColor = 'rgba(29, 26, 23, 0.08)';
       } else {
-        header.style.backgroundColor = 'rgba(248, 248, 247, 0.88)';
-        header.style.borderBottomColor = 'rgba(0, 0, 0, 0.05)';
+        header.style.backgroundColor = 'rgba(247, 245, 238, 0.90)';
+        header.style.borderBottomColor = 'rgba(29, 26, 23, 0.05)';
       }
     }, { passive: true });
   }
