@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMechanicsAccordion();
   initTofTypewriter();
   initTofLetterboxCarousel();
-  initTofRailScroll();
+  initTofStackDeck();
   initTofFaqAccordion();
   initTofHeaderScroll();
   initAnimatedTestimonials(); // Interactive client reviews slider
