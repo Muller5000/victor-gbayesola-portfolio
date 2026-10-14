@@ -5639,18 +5639,29 @@ body.about-page {
   transform: translateY(-2px);
 }
 
-/* Layered Stacking Deck Styles (Linear / Apple Keynote Style) */
+/* 3. CASE STUDIES (ASYMMETRIC EDITORIAL SPREAD - BASEMENT / LOCOMOTIVE STYLE) */
+.tof-cases-section {
+  background-color: var(--color-dark-canvas) !important;
+  color: var(--color-dark-ink) !important;
+  padding: 140px 0 160px 0;
+  position: relative;
+}
+
+.tof-cases-header {
+  margin-bottom: 90px;
+}
+
 .tof-pill-accent {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 11px 22px;
+  padding: 12px 24px;
   background-color: var(--color-accent);
   color: #ffffff !important;
   border-radius: 100px;
   text-decoration: none;
   font-family: var(--font-geist);
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.01em;
   transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
@@ -5662,67 +5673,125 @@ body.about-page {
   box-shadow: 0 8px 24px var(--color-accent-glow);
 }
 
-.tof-stack-deck-container {
+.tof-editorial-container {
   display: flex;
   flex-direction: column;
-  position: relative;
-  max-width: 1240px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
-.tof-stack-card {
-  position: sticky;
-  top: calc(96px + (var(--card-index) * 20px));
+.tof-editorial-project {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 110px 0;
+  border-bottom: 1px solid var(--color-dark-border);
+}
+
+.tof-editorial-project:first-child {
+  padding-top: 0;
+}
+
+.tof-editorial-project:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Inverted Alternating Layout */
+.tof-editorial-project.is-reversed {
+  grid-template-columns: 1fr 1.35fr;
+}
+
+/* Visual Media Frame */
+.tof-editorial-media {
   width: 100%;
-  border-radius: 28px;
+  height: clamp(380px, 42vw, 560px);
+  border-radius: 24px;
+  overflow: hidden;
   background: var(--color-dark-surface);
   border: 1px solid var(--color-dark-border);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.tof-editorial-project:hover .tof-editorial-media {
+  border-color: rgba(194, 94, 56, 0.5);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.65), 0 0 30px var(--color-accent-glow);
+  transform: translateY(-4px);
+}
+
+.tof-editorial-media-inner,
+.tof-editorial-video-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
   overflow: hidden;
-  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
-  will-change: transform, filter;
-  margin-bottom: 36px;
 }
 
-.tof-stack-card:hover {
-  border-color: rgba(194, 94, 56, 0.6);
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7), 0 0 30px var(--color-accent-glow);
+.tof-editorial-img,
+.tof-editorial-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tof-stack-card-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  min-height: 520px;
-  align-items: stretch;
+.tof-editorial-project:hover .tof-editorial-img,
+.tof-editorial-project:hover .tof-editorial-video {
+  transform: scale(1.04);
 }
 
-.tof-stack-info {
-  padding: 44px 40px;
+/* Live Iframe Viewport */
+.tof-editorial-iframe-wrap {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border-right: 1px solid var(--color-dark-border);
-  background: var(--color-dark-surface);
-  position: relative;
-  z-index: 2;
+  background: #0d0c0a;
 }
 
-.tof-stack-meta-top {
+.tof-editorial-iframe-wrap .live-iframe {
+  width: 100%;
+  flex: 1;
+  border: none;
+  background: #141417;
+}
+
+.tof-editorial-iframe-wrap .browser-header {
+  background: #191715;
+  border-bottom: 1px solid rgba(247, 245, 238, 0.08);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Editorial Content Column */
+.tof-editorial-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tof-editorial-meta-top {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
-.tof-stack-index {
+.tof-editorial-index {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--color-accent);
   letter-spacing: 0.12em;
 }
 
-.tof-stack-sector {
+.tof-editorial-sector {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 700;
@@ -5731,18 +5800,18 @@ body.about-page {
   text-transform: uppercase;
 }
 
-.tof-stack-title {
+.tof-editorial-title {
   font-family: var(--font-geist);
-  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
   font-weight: 600;
   color: var(--color-dark-ink);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 14px;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  margin-bottom: 18px;
 }
 
-.tof-stack-metric {
-  margin-bottom: 16px;
+.tof-editorial-metric {
+  margin-bottom: 22px;
 }
 
 .tof-metric-badge {
@@ -5753,136 +5822,77 @@ body.about-page {
   border: 1px solid var(--color-accent);
   color: var(--color-accent);
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: 100px;
 }
 
 .tof-metric-sub {
   display: block;
   font-family: var(--font-geist);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--color-dark-secondary);
-  margin-top: 6px;
-}
-
-.tof-stack-desc {
-  font-family: var(--font-geist);
-  font-size: 1rem;
-  line-height: 1.68;
-  color: #c4bfb6;
-  margin-bottom: 20px;
+  margin-top: 8px;
   letter-spacing: -0.01em;
 }
 
-.tof-stack-tags {
+.tof-editorial-desc {
+  font-family: var(--font-geist);
+  font-size: 1.08rem;
+  line-height: 1.72;
+  color: #c4bfb6;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+  max-width: 520px;
+}
+
+.tof-editorial-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 26px;
+  margin-bottom: 34px;
 }
 
-.tof-stack-tags span {
+.tof-editorial-tags span {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   background: rgba(247, 245, 238, 0.06);
   color: var(--color-dark-secondary);
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 100px;
   border: 1px solid rgba(247, 245, 238, 0.06);
 }
 
-.tof-stack-cta {
+.tof-editorial-cta {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
-/* Visual Column */
-.tof-stack-visual {
-  background: #0d0c0a;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tof-stack-img-wrap,
-.tof-stack-video-wrap {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.tof-stack-img,
-.tof-stack-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tof-stack-card:hover .tof-stack-img,
-.tof-stack-card:hover .tof-stack-video {
-  transform: scale(1.03);
-}
-
-.tof-stack-iframe-wrap {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: #0d0c0a;
-}
-
-.tof-stack-iframe-wrap .live-iframe {
-  width: 100%;
-  flex: 1;
-  border: none;
-  background: #141417;
-}
-
-.tof-stack-iframe-wrap .browser-header {
-  background: #191715;
-  border-bottom: 1px solid rgba(247, 245, 238, 0.08);
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.browser-url-bar {
-  margin-left: 12px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--color-dark-secondary);
-  background: rgba(247, 245, 238, 0.06);
-  padding: 3px 12px;
-  border-radius: 6px;
-}
-
+/* Responsive Rules for Editorial Spread */
 @media (max-width: 991px) {
-  .tof-stack-card-inner {
+  .tof-editorial-project,
+  .tof-editorial-project.is-reversed {
     grid-template-columns: 1fr;
-    min-height: auto;
+    gap: 40px;
+    padding: 70px 0;
   }
 
-  .tof-stack-info {
-    padding: 30px 22px;
-    border-right: none;
-    border-bottom: 1px solid var(--color-dark-border);
+  .tof-editorial-project.is-reversed .tof-editorial-media {
+    order: -1;
   }
 
-  .tof-stack-visual {
+  .tof-editorial-media {
     height: 320px;
+  }
+
+  .tof-cases-header {
+    margin-bottom: 50px;
   }
 }
 
