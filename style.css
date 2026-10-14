@@ -5696,7 +5696,7 @@ body.about-page {
 
 .tof-h-card {
   flex-shrink: 0;
-  width: clamp(720px, 72vw, 920px);
+  width: clamp(750px, 75vw, 960px);
   height: clamp(480px, 58vh, 580px);
   border-radius: 28px;
   background: var(--color-dark-surface);
@@ -5713,12 +5713,12 @@ body.about-page {
 
 .tof-h-card-inner {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
+  grid-template-columns: 1.05fr 1.35fr;
   height: 100%;
 }
 
 .tof-h-info {
-  padding: 44px 38px;
+  padding: 38px 34px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -5730,9 +5730,11 @@ body.about-page {
 
 .tof-h-meta-top {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 12px;
-  margin-bottom: 12px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  margin-bottom: 14px;
 }
 
 .tof-h-index {

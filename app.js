@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorGlow();
   initCursorFollower(); // Fancy.design cursor
   initFloatingEcosystem(); // Parallax floating UI in hero
-  initHorizontalProjectsScroll(); // GSAP Pinned Horizontal Showcase
-  initProjectsCursorFollower();
   initMonolithToggles();
   initMonolithDragScroll();
   initMechanicsAccordion();
@@ -2082,62 +2080,75 @@ function initTofLetterboxCarousel() {
   }
 }
 
-function initTofRailScroll() {
-  const viewport = document.getElementById('tof-rail-viewport');
-  const pill = document.getElementById('tof-cursor-pill');
-  if (!viewport) return;
+/* ==========================================================================
+   TOF HORIZONTAL PARALLAX SHOWCASE (GSAP SCROLLTRIGGER PINNED + SCRUB)
+   ========================================================================== */
+function initTofHorizontalParallax() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    console.warn('GSAP or ScrollTrigger not loaded');
+    return;
+  }
+  
+  gsap.registerPlugin(ScrollTrigger);
 
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
+  const section = document.querySelector('.tof-horizontal-parallax-section');
+  const track = document.getElementById('tof-h-track');
+  if (!section || !track) {
+    console.warn('Horizontal parallax elements not found');
+    return;
+  }
 
-  // Mouse drag to scroll rail horizontally
-  viewport.addEventListener('mousedown', (e) => {
-    if (e.target.closest('a, button, iframe')) return;
-    isDown = true;
-    viewport.classList.add('is-dragging');
-    startX = e.pageX - viewport.offsetLeft;
-    scrollLeft = viewport.scrollLeft;
+  // Kill any existing triggers for this section
+  const oldST = ScrollTrigger.getById('tofHorizontalProjectsPin');
+  if (oldST) oldST.kill();
+
+  const mm = gsap.matchMedia();
+
+  // Desktop Pinning + Horizontal Parallax Scrub
+  mm.add("(min-width: 900px)", () => {
+    const getScrollDistance = () => {
+      return Math.max(0, track.scrollWidth - window.innerWidth + 160);
+    };
+
+    // 1. Pinned Horizontal Track Translation
+    const horizontalTween = gsap.to(track, {
+      x: () => -getScrollDistance(),
+      ease: "none",
+      scrollTrigger: {
+        id: "tofHorizontalProjectsPin",
+        trigger: section,
+        start: "top top",
+        end: () => "+=" + getScrollDistance(),
+        pin: true,
+        scrub: 0.8,
+        invalidateOnRefresh: true,
+        anticipatePin: 1
+      }
+    });
+
+    // 2. Counter-Scrub Parallax on Inner Media Windows
+    const parallaxMedia = track.querySelectorAll('.tof-h-parallax-media');
+    parallaxMedia.forEach((media) => {
+      gsap.fromTo(media,
+        { xPercent: -10 },
+        {
+          xPercent: 10,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => "+=" + getScrollDistance(),
+            scrub: 0.8
+          }
+        }
+      );
+    });
+
+    // Refresh ScrollTrigger once images/fonts load
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+    });
   });
-
-  window.addEventListener('mouseup', () => {
-    if (!isDown) return;
-    isDown = false;
-    viewport.classList.remove('is-dragging');
-  });
-
-  viewport.addEventListener('mouseleave', () => {
-    isDown = false;
-    viewport.classList.remove('is-dragging');
-    if (pill) pill.style.opacity = '0';
-  });
-
-  viewport.addEventListener('mouseenter', () => {
-    if (pill) pill.style.opacity = '1';
-  });
-
-  viewport.addEventListener('mousemove', (e) => {
-    // Pill cursor follower
-    if (pill) {
-      const rect = viewport.getBoundingClientRect();
-      const pillX = e.clientX - rect.left;
-      const pillY = e.clientY - rect.top;
-      pill.style.transform = `translate3d(${pillX - 45}px, ${pillY - 18}px, 0)`;
-    }
-
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - viewport.offsetLeft;
-    const walk = (x - startX) * 1.6;
-    viewport.scrollLeft = scrollLeft - walk;
-  });
-
-  // Smooth wheel scroll on horizontal rail when shift key or horizontal trackpad
-  viewport.addEventListener('wheel', (e) => {
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-      viewport.scrollLeft += e.deltaX;
-    }
-  }, { passive: true });
 }
 
 function initTofFaqAccordion() {
