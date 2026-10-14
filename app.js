@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingEcosystem(); // Parallax floating UI in hero
   initHorizontalProjectsScroll(); // GSAP Pinned Horizontal Showcase
   initProjectsCursorFollower();
+  initMechanicsAccordion();
   initAnimatedTestimonials(); // Interactive client reviews slider
   initNichesHoverSlider(); // Redesigned services hover slider
   initScrollRockAnimation(); // Floating lava rock animation
@@ -60,9 +61,9 @@ const TRANSLATIONS = {
     nav_experience: "Experience",
     nav_contact: "Contact",
     
-    hero_status: "Open to New Projects",
-    hero_title: "I design interfaces that are <span class='accent-gradient'>visually striking & intuitively human</span>.",
-    hero_subtitle: "Product designer specializing in high-fidelity interfaces, fluid interactions, and user-centric systems that elevate how people connect with technology.",
+    hero_status: "Available for Q4 / Q1 Engagements",
+    hero_title: "Architecting digital products that feel <span class='accent-gradient'>inevitable & human</span>.",
+    hero_subtitle: "Product Designer & Creative Technologist partnering with scale-ups and founders to turn complex systems into high-conversion interfaces and living brand identities.",
     hero_location: "Lagos, Nigeria - Working Globally",
     hero_focus: "UI/UX x Interaction x Strategy",
     hero_cta_projects: "See My Work",
@@ -168,11 +169,11 @@ const TRANSLATIONS = {
     
     expertise_sidebar_top: "WHAT I DO",
     expertise_sidebar_bottom: "End-to-end creative execution for digital products",
-    service_1: "Web Design",
-    service_2: "Web Development",
+    service_1: "Product & UI Architecture",
+    service_2: "Creative Frontend Dev",
     service_3: "Brand Identity",
-    service_4: "3D Design",
-    service_5: "Art Direction",
+    service_4: "3D & Spatial Interaction",
+    service_5: "Venture & Pitch Strategy",
     
     methodology_subtitle: "How I Work",
     methodology_title: "Every great product starts with a clear process. Here's mine.",
@@ -1793,5 +1794,46 @@ function initProjectsCursorFollower() {
 
   section.addEventListener('mousemove', (e) => {
     pill.style.transform = "translate3d(" + e.clientX + "px, " + e.clientY + "px, 0) translate(-50%, -50%)";
+  });
+}
+
+
+/* ==========================================================================
+   DELIVERY MECHANICS ACCORDION CONTROLLER
+   ========================================================================== */
+function initMechanicsAccordion() {
+  const items = document.querySelectorAll('.mechanic-accordion-item');
+  if (!items.length) return;
+
+  items.forEach(item => {
+    const trigger = item.querySelector('.mechanic-trigger');
+    const panel = item.querySelector('.mechanic-panel');
+    if (!trigger || !panel) return;
+
+    trigger.addEventListener('click', () => {
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Close all other items
+      items.forEach(otherItem => {
+        const otherTrigger = otherItem.querySelector('.mechanic-trigger');
+        const otherPanel = otherItem.querySelector('.mechanic-panel');
+        if (otherTrigger && otherPanel && otherItem !== item) {
+          otherTrigger.setAttribute('aria-expanded', 'false');
+          otherPanel.classList.remove('open');
+          otherPanel.style.maxHeight = null;
+        }
+      });
+
+      // Toggle current
+      if (isExpanded) {
+        trigger.setAttribute('aria-expanded', 'false');
+        panel.classList.remove('open');
+        panel.style.maxHeight = null;
+      } else {
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.classList.add('open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
   });
 }

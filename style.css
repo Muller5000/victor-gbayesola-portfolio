@@ -4140,3 +4140,111 @@ body.preloading {
     display: none !important;
   }
 }
+
+
+/* ==========================================================================
+   DELIVERY MECHANICS (FAQ) ACCORDION
+   ========================================================================== */
+.mechanics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.mechanics-header {
+  position: sticky;
+  top: 120px;
+}
+
+.mechanics-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-color);
+}
+
+.mechanic-accordion-item {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mechanic-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.mechanic-trigger:hover {
+  color: var(--color-econ);
+}
+
+.mechanic-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mechanic-num {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.mechanic-q {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: inherit;
+  line-height: 1.3;
+}
+
+.mechanic-icon {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.mechanic-trigger[aria-expanded="true"] .mechanic-icon {
+  transform: rotate(45deg);
+  color: var(--color-ux);
+}
+
+.mechanic-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.mechanic-panel.open {
+  opacity: 1;
+}
+
+.mechanic-panel p {
+  padding: 0 8px 24px 44px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 991px) {
+  .mechanics-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .mechanics-header {
+    position: static;
+  }
+  .mechanic-panel p {
+    padding-left: 8px;
+  }
+}
