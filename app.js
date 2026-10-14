@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorGlow();
   initCursorFollower(); // Fancy.design cursor
   initFloatingEcosystem(); // Parallax floating UI in hero
-  initStackedCards(); // GSAP ScrollTrigger Stacked Cards
+  initHorizontalProjectsScroll(); // GSAP Pinned Horizontal Showcase
+  initProjectsCursorFollower();
   initAnimatedTestimonials(); // Interactive client reviews slider
   initNichesHoverSlider(); // Redesigned services hover slider
   initScrollRockAnimation(); // Floating lava rock animation
@@ -1733,3 +1734,64 @@ document.addEventListener("DOMContentLoaded", () => {
   initCertificationsSlider();
 });
 
+
+
+/* ==========================================================================
+   PINNED HORIZONTAL PROJECTS SHOWCASE
+   ========================================================================== */
+function initHorizontalProjectsScroll() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const section = document.querySelector('.projects-horizontal-section');
+  const track = document.getElementById('projects-track');
+  if (!section || !track) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Kill existing ScrollTrigger with this id if re-initialized
+  const existingST = ScrollTrigger.getById('projectsHorizontalPin');
+  if (existingST) existingST.kill();
+
+  const mm = gsap.matchMedia();
+
+  mm.add("(min-width: 992px)", () => {
+    const getScrollDistance = () => {
+      const distance = track.scrollWidth - window.innerWidth + 120;
+      return -(Math.max(0, distance));
+    };
+
+    gsap.to(track, {
+      x: getScrollDistance,
+      ease: "none",
+      scrollTrigger: {
+        id: 'projectsHorizontalPin',
+        trigger: section,
+        start: "top top",
+        end: () => "+=" + Math.abs(getScrollDistance()),
+        pin: true,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        anticipatePin: 1
+      }
+    });
+  });
+}
+
+function initProjectsCursorFollower() {
+  const section = document.querySelector('.projects-horizontal-section');
+  const pill = document.getElementById('projects-cursor-pill');
+  if (!section || !pill) return;
+
+  section.addEventListener('mouseenter', () => {
+    pill.classList.add('visible');
+  });
+
+  section.addEventListener('mouseleave', () => {
+    pill.classList.remove('visible');
+  });
+
+  section.addEventListener('mousemove', (e) => {
+    pill.style.transform = "translate3d(" + e.clientX + "px, " + e.clientY + "px, 0) translate(-50%, -50%)";
+  });
+}

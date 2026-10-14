@@ -182,238 +182,268 @@
 
 
 
-    <!-- ═══ TYPOGRAPHIC HOVER-TO-REVEAL PROJECTS SECTION ═══ -->
-    <section class="projects-section" id="projects">
-      <div class="container">
-        <div class="projects-header">
-          <span class="subtitle-label" data-translate="projects_subtitle">Selected Works</span>
-          <h2 class="section-heading" data-translate="projects_title">Design Alchemist Cases</h2>
-          <p class="section-hint" data-translate="projects_hint">Hover to preview each project.</p>
+        <!-- ═══ CASE STUDIES & BRAND SYSTEMS PINNED HORIZONTAL SHOWCASE (TOF STYLE) ═══ -->
+    <section class="projects-horizontal-section" id="projects">
+      <!-- Floating Magnetic Pill Follower -->
+      <div id="projects-cursor-pill" aria-hidden="true">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Scroll</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+
+      <div class="projects-pin-wrap">
+        <div class="projects-header-bar">
+          <div class="projects-header-left">
+            <span class="projects-eyebrow" data-translate="projects_subtitle">Selected Works & Systems</span>
+            <h2 class="projects-main-heading">Crafted with intent. <br><span class="accent-gradient">Engineered to scale.</span></h2>
+          </div>
+          <div class="projects-header-right">
+            <span class="projects-scroll-indicator">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>Scroll to explore</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </div>
         </div>
-        
-        <div class="stacked-cards-wrapper">
-          
-          <!-- Project 1: QuickBite -->
-          <div class="stacked-card card-1">
-            <div class="card-inner">
-              <div class="card-content">
-                <div class="card-header">
-                  <div class="row-num">01</div>
-                  <h3 class="row-title" data-translate="project_1_title">QuickBite</h3>
-                </div>
-                <p class="card-desc" data-translate="project_1_desc">Redesigned the entire ordering experience for a fast-growing food delivery brand. Streamlined checkout, introduced smart rewards, and reduced user drop-off by 35%.</p>
-                <div class="card-tags">
-                  <span class="row-tool" data-translate="project_1_tool_1">Product Design</span>
-                  <span class="row-tool" data-translate="project_1_tool_2">Mobile UX</span>
-                  <span class="row-tool" data-translate="project_1_tool_3">Prototyping</span>
-                </div>
-                <a href="case-study-quickbite.html" class="btn btn-secondary card-btn">
-                  <span data-translate="view_case">View Case Study</span>
-                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </div>
-              <div class="card-visual">
-                <img src="assets/project 1.webp" alt="QuickBite Preview" loading="lazy" decoding="async">
-              </div>
-            </div>
-          </div>
 
-          <!-- Project 2: Pulse Analytics -->
-          <div class="stacked-card card-2">
-            <div class="card-inner">
-              <div class="card-content">
-                <div class="card-header">
-                  <div class="row-num">02</div>
-                  <h3 class="row-title" data-translate="project_2_title">Pulse Analytics</h3>
-                </div>
-                <p class="card-desc" data-translate="project_2_desc">Architected an AI-powered supply chain dashboard to optimize logistics and inventory forecasting.</p>
-                <div class="card-tags">
-                  <span class="row-tool" data-translate="project_2_tool_1">AI Dashboard</span>
-                  <span class="row-tool" data-translate="project_2_tool_2">Supply Chain</span>
-                  <span class="row-tool" data-translate="project_2_tool_3">React</span>
-                </div>
-                <a href="case-study-pulse.html" class="btn btn-secondary card-btn">
-                  <span data-translate="view_case">View Case Study</span>
-                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </div>
-              <div class="card-visual" style="padding: 10px; display: flex; align-items: center; justify-content: center; background: transparent;">
-                <div class="live-preview-wrapper" style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
+        <!-- The Horizontal Sliding Track -->
+        <div class="projects-track-container">
+          <div class="projects-track" id="projects-track">
+            
+            <!-- Card 1: Pulse Analytics (Tall) -->
+            <div class="h-card h-card-tall">
+              <div class="h-card-media">
+                <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
                   <div class="browser-header">
                     <div class="browser-dot"></div>
                     <div class="browser-dot"></div>
                     <div class="browser-dot"></div>
                   </div>
-                  <iframe src="https://cocacola-beta-seven.vercel.app/" class="live-iframe" title="Pulse Analytics Live Preview" loading="lazy"></iframe>
+                  <iframe src="https://cocacola-beta-seven.vercel.app/" class="live-iframe" title="Pulse Analytics Preview" loading="lazy"></iframe>
                   <div class="iframe-overlay"></div>
                 </div>
+                <div class="h-card-badge" style="color: var(--color-econ);">AI Dashboard</div>
               </div>
-            </div>
-          </div>
-
-          <!-- Project 3: Ventura -->
-          <div class="stacked-card card-3">
-            <div class="card-inner">
-              <div class="card-content">
-                <div class="card-header">
-                  <div class="row-num">03</div>
-                  <h3 class="row-title" data-translate="project_3_title">Ventura</h3>
+              <div class="h-card-info">
+                <div class="h-card-header">
+                  <span class="h-card-num">01</span>
+                  <h3 class="h-card-title">Pulse Analytics</h3>
                 </div>
-                <p class="card-desc" data-translate="project_3_desc">Created the complete brand identity and investor pitch materials for a venture-backed startup ecosystem. Helped secure seed-stage funding through strategic visual storytelling.</p>
-                <div class="card-tags">
-                  <span class="row-tool" data-translate="project_3_tool_1">Brand Identity</span>
-                  <span class="row-tool" data-translate="project_3_tool_2">Pitch Design</span>
-                  <span class="row-tool" data-translate="project_3_tool_3">Visual Strategy</span>
+                <p class="h-card-desc">AI-powered supply chain dashboard architected to optimize complex logistics and inventory forecasting.</p>
+                <div class="h-card-tags">
+                  <span class="h-card-tag">AI Forecasting</span>
+                  <span class="h-card-tag">React Canvas</span>
+                  <span class="h-card-tag">Data Viz</span>
                 </div>
-                <a href="case-study-ventura.html" class="btn btn-secondary card-btn">
-                  <span data-translate="view_case">View Case Study</span>
-                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </div>
-              <div class="card-visual">
-                <img src="assets/project 3.webp" alt="Ventura Preview" loading="lazy" decoding="async">
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4: Fashion Alpha (Live) -->
-          <div class="stacked-card card-4">
-            <div class="card-inner">
-              <div class="card-content">
-                <div class="card-header">
-                  <div class="row-num">04</div>
-                  <h3 class="row-title">Fashion Alpha</h3>
-                </div>
-                <p class="card-desc">Designed and built a high-conversion e-commerce platform for a luxury fashion brand. Features immersive product galleries and a seamless checkout experience.</p>
-                <div class="card-tags">
-                  <span class="row-tool">E-Commerce</span>
-                  <span class="row-tool">Web Design</span>
-                  <span class="row-tool">Frontend Dev</span>
-                </div>
-                <a href="https://fashion-three-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary card-btn">
-                  <span>Visit Live Site</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                </a>
-              </div>
-              <div class="card-visual" style="padding: 10px; display: flex; align-items: center; justify-content: center; background: transparent;">
-                <div class="live-preview-wrapper" style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
-                  <div class="browser-header">
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                  </div>
-                  <iframe src="https://fashion-three-alpha.vercel.app/" class="live-iframe" title="Fashion Alpha Live Preview" loading="lazy"></iframe>
-                  <div class="iframe-overlay"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5: CIPPAC (Live) -->
-          <div class="stacked-card card-5">
-            <div class="card-inner">
-              <div class="card-content">
-                <div class="card-header">
-                  <div class="row-num">05</div>
-                  <h3 class="row-title">CIPPAC</h3>
-                </div>
-                <p class="card-desc">Architected a robust corporate portal for CIPPAC. Focused on clear information architecture, accessibility, and institutional trust.</p>
-                <div class="card-tags">
-                  <span class="row-tool">Corporate UI</span>
-                  <span class="row-tool">Architecture</span>
-                  <span class="row-tool">Full-stack</span>
-                </div>
-                <a href="https://cippac.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary card-btn">
-                  <span>Visit Live Site</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                </a>
-              </div>
-              <div class="card-visual" style="padding: 10px; display: flex; align-items: center; justify-content: center; background: transparent;">
-                <div class="live-preview-wrapper" style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
-                  <div class="browser-header">
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                  </div>
-                  <iframe src="https://cippac.vercel.app/" class="live-iframe" title="CIPPAC Live Preview" loading="lazy"></iframe>
-                  <div class="iframe-overlay"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6: Finvera -->
-          <div class="stacked-card card-6">
-            <div class="card-inner">
-              <div class="card-content">
-                <div class="card-header">
-                  <div class="row-num">06</div>
-                  <h3 class="row-title">Finvera</h3>
-                </div>
-                <p class="card-desc">Designed a comprehensive fintech platform democratizing financial growth. Features intuitive trading interfaces and a cohesive brand system.</p>
-                <div class="card-tags">
-                  <span class="row-tool">Fintech</span>
-                  <span class="row-tool">UI/UX Design</span>
-                  <span class="row-tool">Design System</span>
-                </div>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; width: 100%;">
-                  <a href="case-study-finvera.html" class="btn btn-secondary card-btn" style="margin: 0; align-self: auto;">
+                <div class="h-card-actions">
+                  <a href="case-study-pulse.html" class="h-card-btn">
                     <span>View Case Study</span>
-                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    <i class="fa-solid fa-arrow-right"></i>
                   </a>
-                  <a href="https://finvera-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary card-btn" style="margin: 0; align-self: auto; background: var(--color-primary, #0066FF); color: white; border: none; box-shadow: 0 4px 14px rgba(0, 102, 255, 0.35);">
-                    <span>Visit Live Site</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="card-visual" style="padding: 10px; display: flex; align-items: center; justify-content: center; background: transparent;">
-                <div class="live-preview-wrapper" style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
-                  <div class="browser-header">
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                  </div>
-                  <iframe src="https://finvera-zeta.vercel.app/" class="live-iframe" title="Finvera Live Preview" loading="lazy"></iframe>
-                  <div class="iframe-overlay"></div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Project 7: Animo Brand Identity -->
-          <div class="stacked-card card-7">
-            <div class="card-inner">
-              <div class="card-content">
-                <div class="card-header">
-                  <div class="row-num">07</div>
-                  <h3 class="row-title">Animo</h3>
-                </div>
-                <p class="card-desc">Architected a kinetic brand identity system and motion guidelines. Built around a dynamic typographic grid, modular symbolics, and synchronized animation strips to create a living, memorable brand presence.</p>
-                <div class="card-tags">
-                  <span class="row-tool">Brand Identity</span>
-                  <span class="row-tool">Motion Design</span>
-                  <span class="row-tool">Visual System</span>
-                  <span class="row-tool">Art Direction</span>
-                </div>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; width: 100%;">
-                  <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="btn btn-secondary card-btn" style="margin: 0; align-self: auto;">
-                    <span>View Brand Deck</span>
-                    <i class="fa-brands fa-behance" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="card-visual" style="position: relative; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                <video src="assets/animo-grid-zoom-strip-1440p.mp4" autoplay loop muted playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
-                <div class="video-badge-pill">
+            <!-- Card 2: Animo (Giant Motion Showcase) -->
+            <div class="h-card h-card-giant">
+              <div class="h-card-media">
+                <video src="assets/animo-grid-zoom-strip-1440p.mp4" autoplay loop muted playsinline preload="auto"></video>
+                <div class="h-card-badge" style="color: var(--color-ux);">Brand Identity</div>
+                <div class="video-badge-pill" style="bottom: 16px; right: 16px; padding: 6px 12px; font-size: 0.7rem;">
                   <span class="video-pulse-dot"></span>
                   <span>1440p Motion Reel</span>
                 </div>
               </div>
+              <div class="h-card-info">
+                <div class="h-card-header">
+                  <span class="h-card-num" style="color: var(--color-ux);">02</span>
+                  <h3 class="h-card-title">Animo</h3>
+                </div>
+                <p class="h-card-desc">Kinetic brand identity system built on a dynamic typographic grid, modular symbolics, and synchronized animation strips.</p>
+                <div class="h-card-tags">
+                  <span class="h-card-tag">Brand Identity</span>
+                  <span class="h-card-tag">Motion Design</span>
+                  <span class="h-card-tag">Art Direction</span>
+                </div>
+                <div class="h-card-actions">
+                  <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="h-card-btn">
+                    <span>View Brand Deck</span>
+                    <i class="fa-brands fa-behance"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
 
+            <!-- Card 3: QuickBite (Mid) -->
+            <div class="h-card h-card-mid">
+              <div class="h-card-media">
+                <img src="assets/project 1.webp" alt="QuickBite Preview" loading="lazy" decoding="async">
+                <div class="h-card-badge" style="color: var(--color-ux);">Mobile Product</div>
+              </div>
+              <div class="h-card-info">
+                <div class="h-card-header">
+                  <span class="h-card-num">03</span>
+                  <h3 class="h-card-title">QuickBite</h3>
+                </div>
+                <p class="h-card-desc">End-to-end food delivery app redesign. Streamlined checkout flow, resulting in a 35% drop-off reduction.</p>
+                <div class="h-card-tags">
+                  <span class="h-card-tag">Mobile UX</span>
+                  <span class="h-card-tag">Design System</span>
+                  <span class="h-card-tag">Prototyping</span>
+                </div>
+                <div class="h-card-actions">
+                  <a href="case-study-quickbite.html" class="h-card-btn">
+                    <span>View Case Study</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Ventura (Tall) -->
+            <div class="h-card h-card-tall">
+              <div class="h-card-media">
+                <img src="assets/project 3.webp" alt="Ventura Preview" loading="lazy" decoding="async">
+                <div class="h-card-badge" style="color: var(--color-strategy);">Brand & Pitch Strategy</div>
+              </div>
+              <div class="h-card-info">
+                <div class="h-card-header">
+                  <span class="h-card-num" style="color: var(--color-strategy);">04</span>
+                  <h3 class="h-card-title">Ventura</h3>
+                </div>
+                <p class="h-card-desc">Brand identity and investor pitch materials that secured $2M in venture funding through visual storytelling.</p>
+                <div class="h-card-tags">
+                  <span class="h-card-tag">Brand Strategy</span>
+                  <span class="h-card-tag">Pitch Design</span>
+                  <span class="h-card-tag">Identity</span>
+                </div>
+                <div class="h-card-actions">
+                  <a href="case-study-ventura.html" class="h-card-btn">
+                    <span>View Case Study</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5: Finvera (Mid) -->
+            <div class="h-card h-card-mid">
+              <div class="h-card-media">
+                <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
+                  <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                  </div>
+                  <iframe src="https://finvera-zeta.vercel.app/" class="live-iframe" title="Finvera Preview" loading="lazy"></iframe>
+                  <div class="iframe-overlay"></div>
+                </div>
+                <div class="h-card-badge" style="color: var(--color-econ);">Fintech Platform</div>
+              </div>
+              <div class="h-card-info">
+                <div class="h-card-header">
+                  <span class="h-card-num" style="color: var(--color-econ);">05</span>
+                  <h3 class="h-card-title">Finvera</h3>
+                </div>
+                <p class="h-card-desc">High-speed fintech trading platform and modular design token system built for high-volume transactions.</p>
+                <div class="h-card-tags">
+                  <span class="h-card-tag">Fintech</span>
+                  <span class="h-card-tag">Trading UI</span>
+                  <span class="h-card-tag">Design System</span>
+                </div>
+                <div class="h-card-actions">
+                  <a href="case-study-finvera.html" class="h-card-btn">
+                    <span>View Case Study</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6: Fashion Alpha (Compact) -->
+            <div class="h-card h-card-compact">
+              <div class="h-card-media">
+                <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
+                  <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                  </div>
+                  <iframe src="https://fashion-three-alpha.vercel.app/" class="live-iframe" title="Fashion Alpha Preview" loading="lazy"></iframe>
+                  <div class="iframe-overlay"></div>
+                </div>
+                <div class="h-card-badge" style="color: var(--color-ux);">E-Commerce</div>
+              </div>
+              <div class="h-card-info">
+                <div class="h-card-header">
+                  <span class="h-card-num" style="color: var(--color-ux);">06</span>
+                  <h3 class="h-card-title">Fashion Alpha</h3>
+                </div>
+                <p class="h-card-desc">Luxury fashion e-commerce experience with immersive product galleries and friction-free checkout.</p>
+                <div class="h-card-tags">
+                  <span class="h-card-tag">Luxury E-Com</span>
+                  <span class="h-card-tag">Frontend Dev</span>
+                  <span class="h-card-tag">Motion</span>
+                </div>
+                <div class="h-card-actions">
+                  <a href="https://fashion-three-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" class="h-card-btn">
+                    <span>Visit Live Site</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 7: CIPPAC (Mid) -->
+            <div class="h-card h-card-mid">
+              <div class="h-card-media">
+                <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
+                  <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                  </div>
+                  <iframe src="https://cippac.vercel.app/" class="live-iframe" title="CIPPAC Preview" loading="lazy"></iframe>
+                  <div class="iframe-overlay"></div>
+                </div>
+                <div class="h-card-badge" style="color: var(--color-econ);">Institutional UI</div>
+              </div>
+              <div class="h-card-info">
+                <div class="h-card-header">
+                  <span class="h-card-num" style="color: var(--color-econ);">07</span>
+                  <h3 class="h-card-title">CIPPAC</h3>
+                </div>
+                <p class="h-card-desc">Institutional portal engineered for clarity, accessibility, and high information-density data structures.</p>
+                <div class="h-card-tags">
+                  <span class="h-card-tag">Architecture</span>
+                  <span class="h-card-tag">Accessibility</span>
+                  <span class="h-card-tag">Corporate</span>
+                </div>
+                <div class="h-card-actions">
+                  <a href="https://cippac.vercel.app/" target="_blank" rel="noopener noreferrer" class="h-card-btn">
+                    <span>Visit Live Site</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 8: Archive Teaser Card -->
+            <div class="h-card h-card-compact h-card-archive" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; background: linear-gradient(135deg, rgba(255,0,127,0.08) 0%, rgba(0,240,255,0.08) 100%);">
+              <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <i class="fa-brands fa-behance" style="font-size: 1.5rem; color: var(--color-ux);"></i>
+              </div>
+              <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 12px; color: var(--text-primary);">More on Behance</h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 260px; margin-bottom: 24px; line-height: 1.5;">Explore brand guideline boards, logo architecture, and visual experiments.</p>
+              <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 12px 28px; border-radius: 100px;">
+                <span>Explore Archive</span>
+                <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+              </a>
+            </div>
+
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- ═══ SECTOR EXPERTISE / SERVICES SECTION ═══ -->
