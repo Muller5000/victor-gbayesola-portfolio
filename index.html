@@ -71,63 +71,31 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
 </head>
 <body class="portfolio-body">
-  <!-- Dynamic Text Cursor Follower (Fancy.design Style) -->
+
   <div class="cursor-follower" id="cursor-follower"><span class="cursor-text"></span></div>
-
-  <!-- Dynamic Typewriter Preloader Screen (Intro Animation) -->
-  <div class="preloader-screen" id="preloader">
-    <div class="preloader-content">
-      <div class="preloader-title">
-        <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Throttled Mouse Glow Canvas -->
   <div class="cursor-glow" id="cursor-glow"></div>
 
-  <!-- Minimal Linear Grid-Lines Backdrop (Radnaabazar Style) -->
-  <div class="bg-grid-lines">
-    <div class="grid-vertical-line col-1"></div>
-    <div class="grid-vertical-line col-2"></div>
-    <div class="grid-vertical-line col-3"></div>
-  </div>
-
-  <!-- ═══ NAVIGATION HEADER ═══ -->
-  <header class="app-header">
+  <!-- ═══ APP HEADER ═══ -->
+  <header class="monolith-header">
     <div class="header-container">
       <a href="#" class="brand-logo">
-        <span class="logo-circle"></span>
-        <span class="brand-name">Victor G.</span>
+        <span class="hazard-dot"></span>
+        <span class="brand-name">VICTOR G.</span>
+        <span class="brand-tag">/ STUDIO</span>
       </a>
-
-      <!-- Minimal navigation links -->
       <nav class="nav-menu" id="main-navigation">
         <ul class="nav-list">
-          <li><a href="#about" class="nav-item" data-translate="nav_about">About</a></li>
-          <li><a href="#projects" class="nav-item" data-translate="nav_projects">Projects</a></li>
-          <li><a href="#habits" class="nav-item" data-translate="nav_habits">Life Hub</a></li>
-          <li><a href="#experience" class="nav-item" data-translate="nav_experience">Experience</a></li>
-          <li><a href="#contact" class="nav-item" data-translate="nav_contact">Contact</a></li>
+          <li><a href="#projects" class="nav-item">Archive</a></li>
+          <li><a href="#capabilities" class="nav-item">Capabilities</a></li>
+          <li><a href="#mechanics" class="nav-item">Mechanics</a></li>
+          <li><a href="#contact" class="nav-item">Contact</a></li>
         </ul>
       </nav>
-
-      <!-- Persistent UI Toggles -->
       <div class="nav-widgets">
-        <!-- Language Switcher Pill -->
-        <div class="lang-switcher-pill">
-          <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
-          <span class="pill-divider">|</span>
-          <button class="lang-btn" id="lang-es" onclick="setLanguage('es')">ES</button>
-        </div>
-
-        <!-- Minimal theme Switcher -->
-        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
-          <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
-          <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
-        </button>
-
-        <!-- Mobile hamburger drawer toggle -->
+        <a href="#contact" class="btn-hazard-pill">
+          <span>Start a Project</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-navigation">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -136,959 +104,430 @@
     </div>
   </header>
 
-  <main class="portfolio-container">
+  <main class="monolith-main">
     
-    <!-- ═══ HERO SECTION (Editorial Grid) ═══ -->
-    <section class="hero-section grid-section" id="hero">
-      <!-- Deep Parallax Background Layer -->
-      <div class="hero-bg-parallax" data-hero-parallax-bg aria-hidden="true">
-        <div class="hero-bg-text">CREATIVE DESIGNER</div>
-      </div>
-      
-      <div class="container hero-grid" data-hero-parallax-fg>
-        <!-- Left Side: Editorial Typography -->
-        <div class="hero-text-col">
-          <div class="status-badge">
-            <span class="pulse-indicator"></span>
-            <span data-translate="hero_status">Available for Q4 / Q1 Engagements</span>
-          </div>
-          <h1 class="hero-headline" id="hero-headline" data-translate="hero_title">
-            Architecting digital products that feel <span class="accent-gradient">inevitable & human</span>.
-          </h1>
-          <p class="hero-subtitle" data-translate="hero_subtitle">
-            Product Designer & Creative Technologist partnering with scale-ups and founders to turn complex systems into high-conversion interfaces and living brand identities.
-          </p>
-          <div class="hero-ctas">
-            <a href="#projects" class="btn btn-primary" data-translate="hero_cta_projects">See Selected Work</a>
-            <a href="#contact" class="btn btn-secondary" data-translate="hero_cta_contact">Start a Project</a>
-          </div>
+    <!-- ═══ CHAPTER 1: THE MONOLITH HERO (Concrete Paper) ═══ -->
+    <section class="monolith-hero" id="hero">
+      <div class="monolith-container hero-inner">
+        <div class="hero-telemetry">
+          <span class="hazard-badge">[ ARCHITECTURAL DIRECTION 03 ]</span>
+          <span class="telemetry-item">PRODUCT ARCHITECT & CREATIVE TECHNOLOGIST</span>
+          <span class="telemetry-status"><span class="status-pulse"></span> AVAILABLE FOR Q4 / Q1</span>
         </div>
+        
+        <h1 class="hero-monolith-title">
+          ARCHITECTING DIGITAL PRODUCTS WITH <span class="text-hazard">VISCERAL CLARITY</span>.
+        </h1>
+        
+        <p class="hero-monolith-subtitle">
+          Partnering with venture-backed scale-ups and ambitious founders to turn complex product logic into high-conversion interfaces, scalable design systems, and living brand worlds.
+        </p>
 
-        <!-- Right Side: Minimal Editorial Portrait Frame -->
-        <div class="hero-image-col">
-          <div class="editorial-portrait-frame">
-            <div class="frame-corner corner-tl"></div>
-            <div class="frame-corner corner-tr"></div>
-            <div class="frame-corner corner-bl"></div>
-            <div class="frame-corner corner-br"></div>
-            <div class="portrait-container">
-              <img src="assets/profile.webp" alt="Victor Gbayesola Headshot" class="profile-img" decoding="async">
-              <div class="portrait-overlay"></div>
+        <!-- Panoramic Letterbox Motion Teaser -->
+        <div class="letterbox-teaser-frame">
+          <video src="assets/animo-grid-zoom-strip-1440p.mp4" autoplay loop muted playsinline preload="auto" class="teaser-video"></video>
+          <div class="teaser-overlay"></div>
+          <div class="teaser-meta">
+            <div class="teaser-badge">
+              <span class="hazard-dot pulse"></span>
+              <span>1440P MOTION REEL / ANIMO BRAND SYSTEM</span>
             </div>
+            <a href="#projects" class="teaser-link">
+              <span>Explore Selected Works</span>
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ═══ CHAPTER 2: STUDIO MANIFESTO (Concrete Paper Split) ═══ -->
+    <section class="monolith-manifesto">
+      <div class="monolith-container manifesto-grid">
+        <div class="manifesto-left">
+          <span class="section-tag">[ 02 / POSITIONING ]</span>
+          <p class="manifesto-lead">
+            I operate at the intersection of quantitative logic and visual impact. From early-stage product architecture to production React code, I engineer digital environments that command market authority.
+          </p>
+          <div class="manifesto-actions">
+            <a href="assets/Gbayesola_Busayo_Resume.pdf" target="_blank" class="btn-outline-paper">
+              <i class="fa-solid fa-download"></i>
+              <span>Download CV & Track Record</span>
+            </a>
+          </div>
+        </div>
+        <div class="manifesto-right">
+          <h2 class="manifesto-headline">
+            Where brand identity meets <span class="text-hazard">engineered precision</span>.
+          </h2>
+        </div>
+      </div>
+    </section>
 
-
-        <!-- ═══ CASE STUDIES & BRAND SYSTEMS PINNED HORIZONTAL SHOWCASE (TOF STYLE) ═══ -->
-    <section class="projects-horizontal-section" id="projects">
+    <!-- ═══ CHAPTER 3: FLAGSHIP ARCHIVE (Carbon Basalt Dark Theater) ═══ -->
+    <section class="monolith-cases" id="projects">
       <!-- Floating Magnetic Pill Follower -->
       <div id="projects-cursor-pill" aria-hidden="true">
         <i class="fa-solid fa-arrow-left"></i>
-        <span>Scroll</span>
+        <span>Drag & Scroll</span>
         <i class="fa-solid fa-arrow-right"></i>
       </div>
 
-      <div class="projects-pin-wrap">
-        <div class="projects-header-bar">
-          <div class="projects-header-left">
-            <span class="projects-eyebrow" data-translate="projects_subtitle">Flagship Archive</span>
-            <h2 class="projects-main-heading">Selected Works. <br><span class="accent-gradient">Built at the intersection of craft and code.</span></h2>
-          </div>
-          <div class="projects-header-right">
-            <span class="projects-scroll-indicator">
-              <i class="fa-solid fa-arrow-left"></i>
-              <span>Scroll to explore</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
+      <div class="cases-header-wrap monolith-container">
+        <div class="cases-header-left">
+          <span class="section-tag text-hazard">[ 03 / FLAGSHIP ARCHIVE ]</span>
+          <h2 class="cases-headline">Selected Works. Built at the intersection of craft and code.</h2>
         </div>
+        <div class="cases-header-right">
+          <span class="scroll-instruction">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Drag or Trackpad Scroll</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </div>
+      </div>
 
-        <!-- The Horizontal Sliding Track -->
-        <div class="projects-track-container">
-          <div class="projects-track" id="projects-track">
-            
-            <!-- Card 1: Pulse Analytics (Tall) -->
-            <div class="h-card h-card-tall">
-              <div class="h-card-media">
-                <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
-                  <div class="browser-header">
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                  </div>
-                  <iframe src="https://cocacola-beta-seven.vercel.app/" class="live-iframe" title="Pulse Analytics Preview" loading="lazy"></iframe>
-                  <div class="iframe-overlay"></div>
+      <!-- Free-Scrubbing Horizontal Filmstrip Track -->
+      <div class="cases-track-viewport">
+        <div class="cases-track" id="cases-track">
+
+          <!-- Card 1: Pulse Analytics (Tall) -->
+          <div class="m-card m-card-tall">
+            <div class="m-card-media">
+              <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
+                <div class="browser-header">
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
                 </div>
-                <div class="h-card-badge" style="color: var(--color-econ);">AI Dashboard</div>
+                <iframe src="https://cocacola-beta-seven.vercel.app/" class="live-iframe" title="Pulse Analytics Preview" loading="lazy"></iframe>
+                <div class="iframe-overlay"></div>
               </div>
-              <div class="h-card-info">
-                <div class="h-card-header">
-                  <span class="h-card-num">01</span>
-                  <h3 class="h-card-title">Pulse Analytics</h3>
-                </div>
-                <p class="h-card-desc">AI-driven supply chain command center synthesizing global logistics into actionable real-time intelligence.</p>
-                <div class="h-card-tags">
-                  <span class="h-card-tag">AI Forecasting</span>
-                  <span class="h-card-tag">React Canvas</span>
-                  <span class="h-card-tag">Data Viz</span>
-                </div>
-                <div class="h-card-actions">
-                  <a href="case-study-pulse.html" class="h-card-btn">
-                    <span>View Case Study</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                </div>
+              <div class="m-card-badge">AI DASHBOARD</div>
+            </div>
+            <div class="m-card-info">
+              <div class="m-card-header">
+                <span class="m-card-num">01</span>
+                <h3 class="m-card-title">Pulse Analytics</h3>
+              </div>
+              <p class="m-card-desc">AI-driven supply chain command center synthesizing global logistics into actionable real-time intelligence.</p>
+              <div class="m-card-tags">
+                <span>AI Forecasting</span>
+                <span>React Canvas</span>
+                <span>Data Viz</span>
+              </div>
+              <div class="m-card-actions">
+                <a href="case-study-pulse.html" class="m-card-link">
+                  <span>View Case Study</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
             </div>
+          </div>
 
-            <!-- Card 2: Animo (Giant Motion Showcase) -->
-            <div class="h-card h-card-giant">
-              <div class="h-card-media">
-                <video src="assets/animo-grid-zoom-strip-1440p.mp4" autoplay loop muted playsinline preload="auto"></video>
-                <div class="h-card-badge" style="color: var(--color-ux);">Brand Identity</div>
-                <div class="video-badge-pill" style="bottom: 16px; right: 16px; padding: 6px 12px; font-size: 0.7rem;">
-                  <span class="video-pulse-dot"></span>
-                  <span>1440p Motion Reel</span>
-                </div>
-              </div>
-              <div class="h-card-info">
-                <div class="h-card-header">
-                  <span class="h-card-num" style="color: var(--color-ux);">02</span>
-                  <h3 class="h-card-title">Animo</h3>
-                </div>
-                <p class="h-card-desc">A living brand identity system engineered around modular typographic grids and synchronized motion.</p>
-                <div class="h-card-tags">
-                  <span class="h-card-tag">Brand Identity</span>
-                  <span class="h-card-tag">Motion Design</span>
-                  <span class="h-card-tag">Art Direction</span>
-                </div>
-                <div class="h-card-actions">
-                  <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="h-card-btn">
-                    <span>View Brand Deck</span>
-                    <i class="fa-brands fa-behance"></i>
-                  </a>
-                </div>
+          <!-- Card 2: Animo (Giant Motion Showcase) -->
+          <div class="m-card m-card-giant">
+            <div class="m-card-media">
+              <video src="assets/animo-grid-zoom-strip-1440p.mp4" autoplay loop muted playsinline preload="auto"></video>
+              <div class="m-card-badge badge-hazard">BRAND SYSTEM</div>
+              <div class="video-badge-pill" style="bottom: 16px; right: 16px; padding: 6px 12px; font-size: 0.7rem; border-color: rgba(255,72,0,0.4);">
+                <span class="hazard-dot pulse"></span>
+                <span>1440P MOTION REEL</span>
               </div>
             </div>
-
-            <!-- Card 3: QuickBite (Mid) -->
-            <div class="h-card h-card-mid">
-              <div class="h-card-media">
-                <img src="assets/project 1.webp" alt="QuickBite Preview" loading="lazy" decoding="async">
-                <div class="h-card-badge" style="color: var(--color-ux);">Mobile Product</div>
+            <div class="m-card-info">
+              <div class="m-card-header">
+                <span class="m-card-num text-hazard">02</span>
+                <h3 class="m-card-title">Animo</h3>
               </div>
-              <div class="h-card-info">
-                <div class="h-card-header">
-                  <span class="h-card-num">03</span>
-                  <h3 class="h-card-title">QuickBite</h3>
-                </div>
-                <p class="h-card-desc">High-velocity mobile commerce engineered to strip friction from checkout and reward user loyalty.</p>
-                <div class="h-card-tags">
-                  <span class="h-card-tag">Mobile UX</span>
-                  <span class="h-card-tag">Design System</span>
-                  <span class="h-card-tag">Prototyping</span>
-                </div>
-                <div class="h-card-actions">
-                  <a href="case-study-quickbite.html" class="h-card-btn">
-                    <span>View Case Study</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                </div>
+              <p class="m-card-desc">A living brand identity system engineered around modular typographic grids and synchronized motion.</p>
+              <div class="m-card-tags">
+                <span>Brand Identity</span>
+                <span>Motion Design</span>
+                <span>Art Direction</span>
+              </div>
+              <div class="m-card-actions">
+                <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="m-card-link text-hazard">
+                  <span>View Brand Deck</span>
+                  <i class="fa-brands fa-behance"></i>
+                </a>
               </div>
             </div>
+          </div>
 
-            <!-- Card 4: Ventura (Tall) -->
-            <div class="h-card h-card-tall">
-              <div class="h-card-media">
-                <img src="assets/project 3.webp" alt="Ventura Preview" loading="lazy" decoding="async">
-                <div class="h-card-badge" style="color: var(--color-strategy);">Brand & Pitch Strategy</div>
+          <!-- Card 3: QuickBite (Mid) -->
+          <div class="m-card m-card-mid">
+            <div class="m-card-media">
+              <img src="assets/project 1.webp" alt="QuickBite Preview" loading="lazy" decoding="async">
+              <div class="m-card-badge">MOBILE PRODUCT</div>
+            </div>
+            <div class="m-card-info">
+              <div class="m-card-header">
+                <span class="m-card-num">03</span>
+                <h3 class="m-card-title">QuickBite</h3>
               </div>
-              <div class="h-card-info">
-                <div class="h-card-header">
-                  <span class="h-card-num" style="color: var(--color-strategy);">04</span>
-                  <h3 class="h-card-title">Ventura</h3>
-                </div>
-                <p class="h-card-desc">Venture-grade visual identity and strategic narrative that unlocked $2M in seed capital.</p>
-                <div class="h-card-tags">
-                  <span class="h-card-tag">Brand Strategy</span>
-                  <span class="h-card-tag">Pitch Design</span>
-                  <span class="h-card-tag">Identity</span>
-                </div>
-                <div class="h-card-actions">
-                  <a href="case-study-ventura.html" class="h-card-btn">
-                    <span>View Case Study</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                </div>
+              <p class="m-card-desc">High-velocity mobile commerce engineered to strip friction from checkout and reward user loyalty.</p>
+              <div class="m-card-tags">
+                <span>Mobile UX</span>
+                <span>Design System</span>
+                <span>35% Lift</span>
+              </div>
+              <div class="m-card-actions">
+                <a href="case-study-quickbite.html" class="m-card-link">
+                  <span>View Case Study</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
             </div>
+          </div>
 
-            <!-- Card 5: Finvera (Mid) -->
-            <div class="h-card h-card-mid">
-              <div class="h-card-media">
-                <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
-                  <div class="browser-header">
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                  </div>
-                  <iframe src="https://finvera-zeta.vercel.app/" class="live-iframe" title="Finvera Preview" loading="lazy"></iframe>
-                  <div class="iframe-overlay"></div>
-                </div>
-                <div class="h-card-badge" style="color: var(--color-econ);">Fintech Platform</div>
+          <!-- Card 4: Ventura (Tall) -->
+          <div class="m-card m-card-tall">
+            <div class="m-card-media">
+              <img src="assets/project 3.webp" alt="Ventura Preview" loading="lazy" decoding="async">
+              <div class="m-card-badge">PITCH STRATEGY</div>
+            </div>
+            <div class="m-card-info">
+              <div class="m-card-header">
+                <span class="m-card-num">04</span>
+                <h3 class="m-card-title">Ventura</h3>
               </div>
-              <div class="h-card-info">
-                <div class="h-card-header">
-                  <span class="h-card-num" style="color: var(--color-econ);">05</span>
-                  <h3 class="h-card-title">Finvera</h3>
-                </div>
-                <p class="h-card-desc">Next-generation wealth management platform with fluid real-time trading canvas and design tokens.</p>
-                <div class="h-card-tags">
-                  <span class="h-card-tag">Fintech</span>
-                  <span class="h-card-tag">Trading UI</span>
-                  <span class="h-card-tag">Design System</span>
-                </div>
-                <div class="h-card-actions">
-                  <a href="case-study-finvera.html" class="h-card-btn">
-                    <span>View Case Study</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                </div>
+              <p class="m-card-desc">Venture-grade visual identity and strategic narrative that unlocked $2M in seed capital.</p>
+              <div class="m-card-tags">
+                <span>Brand Strategy</span>
+                <span>Pitch Design</span>
+                <span>$2M Seed</span>
+              </div>
+              <div class="m-card-actions">
+                <a href="case-study-ventura.html" class="m-card-link">
+                  <span>View Case Study</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
             </div>
+          </div>
 
-            <!-- Card 6: Fashion Alpha (Compact) -->
-            <div class="h-card h-card-compact">
-              <div class="h-card-media">
-                <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
-                  <div class="browser-header">
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                  </div>
-                  <iframe src="https://fashion-three-alpha.vercel.app/" class="live-iframe" title="Fashion Alpha Preview" loading="lazy"></iframe>
-                  <div class="iframe-overlay"></div>
+          <!-- Card 5: Finvera (Mid) -->
+          <div class="m-card m-card-mid">
+            <div class="m-card-media">
+              <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
+                <div class="browser-header">
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
                 </div>
-                <div class="h-card-badge" style="color: var(--color-ux);">E-Commerce</div>
+                <iframe src="https://finvera-zeta.vercel.app/" class="live-iframe" title="Finvera Preview" loading="lazy"></iframe>
+                <div class="iframe-overlay"></div>
               </div>
-              <div class="h-card-info">
-                <div class="h-card-header">
-                  <span class="h-card-num" style="color: var(--color-ux);">06</span>
-                  <h3 class="h-card-title">Fashion Alpha</h3>
-                </div>
-                <p class="h-card-desc">Luxury digital flagship merging editorial choreography with high-conversion checkout.</p>
-                <div class="h-card-tags">
-                  <span class="h-card-tag">Luxury E-Com</span>
-                  <span class="h-card-tag">Frontend Dev</span>
-                  <span class="h-card-tag">Motion</span>
-                </div>
-                <div class="h-card-actions">
-                  <a href="https://fashion-three-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" class="h-card-btn">
-                    <span>Visit Live Site</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
+              <div class="m-card-badge">FINTECH PLATFORM</div>
+            </div>
+            <div class="m-card-info">
+              <div class="m-card-header">
+                <span class="m-card-num">05</span>
+                <h3 class="m-card-title">Finvera</h3>
+              </div>
+              <p class="m-card-desc">Next-generation wealth management platform with fluid real-time trading canvas and design tokens.</p>
+              <div class="m-card-tags">
+                <span>Fintech</span>
+                <span>Trading UI</span>
+                <span>Design System</span>
+              </div>
+              <div class="m-card-actions">
+                <a href="case-study-finvera.html" class="m-card-link">
+                  <span>View Case Study</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
             </div>
+          </div>
 
-            <!-- Card 7: CIPPAC (Mid) -->
-            <div class="h-card h-card-mid">
-              <div class="h-card-media">
-                <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
-                  <div class="browser-header">
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                  </div>
-                  <iframe src="https://cippac.vercel.app/" class="live-iframe" title="CIPPAC Preview" loading="lazy"></iframe>
-                  <div class="iframe-overlay"></div>
+          <!-- Card 6: Fashion Alpha (Compact) -->
+          <div class="m-card m-card-compact">
+            <div class="m-card-media">
+              <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
+                <div class="browser-header">
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
                 </div>
-                <div class="h-card-badge" style="color: var(--color-econ);">Institutional UI</div>
+                <iframe src="https://fashion-three-alpha.vercel.app/" class="live-iframe" title="Fashion Alpha Preview" loading="lazy"></iframe>
+                <div class="iframe-overlay"></div>
               </div>
-              <div class="h-card-info">
-                <div class="h-card-header">
-                  <span class="h-card-num" style="color: var(--color-econ);">07</span>
-                  <h3 class="h-card-title">CIPPAC</h3>
-                </div>
-                <p class="h-card-desc">Institutional digital architecture structured for accessible governance, clarity, and civic trust.</p>
-                <div class="h-card-tags">
-                  <span class="h-card-tag">Architecture</span>
-                  <span class="h-card-tag">Accessibility</span>
-                  <span class="h-card-tag">Corporate</span>
-                </div>
-                <div class="h-card-actions">
-                  <a href="https://cippac.vercel.app/" target="_blank" rel="noopener noreferrer" class="h-card-btn">
-                    <span>Visit Live Site</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
+              <div class="m-card-badge">LUXURY COMMERCE</div>
+            </div>
+            <div class="m-card-info">
+              <div class="m-card-header">
+                <span class="m-card-num">06</span>
+                <h3 class="m-card-title">Fashion Alpha</h3>
+              </div>
+              <p class="m-card-desc">Luxury digital flagship merging editorial choreography with high-conversion checkout.</p>
+              <div class="m-card-tags">
+                <span>Luxury E-Com</span>
+                <span>Frontend Dev</span>
+                <span>Next.js</span>
+              </div>
+              <div class="m-card-actions">
+                <a href="https://fashion-three-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" class="m-card-link">
+                  <span>Visit Live Site</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
               </div>
             </div>
+          </div>
 
-            <!-- Card 8: Archive Teaser Card -->
-            <div class="h-card h-card-compact h-card-archive" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; background: linear-gradient(135deg, rgba(255,0,127,0.08) 0%, rgba(0,240,255,0.08) 100%);">
-              <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-                <i class="fa-brands fa-behance" style="font-size: 1.5rem; color: var(--color-ux);"></i>
+          <!-- Card 7: CIPPAC (Mid) -->
+          <div class="m-card m-card-mid">
+            <div class="m-card-media">
+              <div class="live-preview-wrapper" style="width: 100%; height: 100%;">
+                <div class="browser-header">
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
+                  <div class="browser-dot"></div>
+                </div>
+                <iframe src="https://cippac.vercel.app/" class="live-iframe" title="CIPPAC Preview" loading="lazy"></iframe>
+                <div class="iframe-overlay"></div>
               </div>
-              <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 12px; color: var(--text-primary);">More on Behance</h3>
-              <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 260px; margin-bottom: 24px; line-height: 1.5;">Explore brand guideline boards, logo architecture, and visual experiments.</p>
-              <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 12px 28px; border-radius: 100px;">
-                <span>Explore Archive</span>
-                <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+              <div class="m-card-badge">INSTITUTIONAL UI</div>
+            </div>
+            <div class="m-card-info">
+              <div class="m-card-header">
+                <span class="m-card-num">07</span>
+                <h3 class="m-card-title">CIPPAC</h3>
+              </div>
+              <p class="m-card-desc">Institutional digital architecture structured for accessible governance, clarity, and civic trust.</p>
+              <div class="m-card-tags">
+                <span>Architecture</span>
+                <span>Accessibility</span>
+                <span>Corporate</span>
+              </div>
+              <div class="m-card-actions">
+                <a href="https://cippac.vercel.app/" target="_blank" rel="noopener noreferrer" class="m-card-link">
+                  <span>Visit Live Site</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8: Behance Archive Card -->
+          <div class="m-card m-card-compact m-card-archive">
+            <div class="archive-card-inner">
+              <div class="archive-icon-wrap">
+                <i class="fa-brands fa-behance"></i>
+              </div>
+              <h3 class="archive-title">Behance Archive</h3>
+              <p class="archive-desc">Explore brand guideline decks, visual experiments, and logo systems.</p>
+              <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="btn-hazard-pill">
+                <span>View Full Deck</span>
+                <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
+          </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CHAPTER 4: CAPABILITIES & DISCIPLINES (Concrete Paper Table) ═══ -->
+    <section class="monolith-capabilities" id="capabilities">
+      <div class="monolith-container">
+        <div class="capabilities-header">
+          <span class="section-tag">[ 04 / CAPABILITIES ]</span>
+          <h2 class="section-monolith-heading">Disciplines & Systems Architecture.</h2>
+        </div>
+
+        <div class="capabilities-table">
+          <!-- Row 1 -->
+          <div class="capability-row">
+            <div class="cap-col-num">01</div>
+            <div class="cap-col-title">Product & UI Architecture</div>
+            <div class="cap-col-desc">Engineering intuitive user journeys on high-fidelity canvas, from rapid prototype validation to complex SaaS component libraries.</div>
+            <div class="cap-col-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="capability-row">
+            <div class="cap-col-num">02</div>
+            <div class="cap-col-title">Brand Systems & Kinetic Motion</div>
+            <div class="cap-col-desc">Translating emerging companies into living, scalable visual identities with modular typographic grids and synchronized motion reels.</div>
+            <div class="cap-col-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="capability-row">
+            <div class="cap-col-num">03</div>
+            <div class="cap-col-title">Creative Frontend Engineering</div>
+            <div class="cap-col-desc">Constructing resilient, high-performance web applications with React, GSAP, Tailwind, and semantic design tokens that match the design 1:1.</div>
+            <div class="cap-col-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="capability-row">
+            <div class="cap-col-num">04</div>
+            <div class="cap-col-title">Venture & Pitch Strategy</div>
+            <div class="cap-col-desc">Packaging product defensibility and commercial vision into investor decks and scalable MVPs that help founders secure seed capital.</div>
+            <div class="cap-col-arrow"><i class="fa-solid fa-arrow-right"></i></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ SECTOR EXPERTISE / SERVICES SECTION ═══ -->
-    <section class="niches-section" id="niches">
-      <h2 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0);">Services</h2>
-      <div class="container niches-container-split">
-        
-        <!-- Left Sidebar -->
-        <div class="niches-sidebar">
-          <span class="sidebar-top" data-translate="expertise_sidebar_top">CAPABILITIES & DISCIPLINES</span>
-          <p class="sidebar-bottom" data-translate="expertise_sidebar_bottom">From concept sprint to production-grade deployment.</p>
-        </div>
-        
-        <!-- Center Services List -->
-        <div class="niches-list">
-          <div class="niche-item active" data-service-index="0">
-            <span class="niche-title" data-translate="service_1">Product & UI Architecture</span>
-          </div>
-          <div class="niche-item" data-service-index="1">
-            <span class="niche-title" data-translate="service_2">Creative Frontend Dev</span>
-          </div>
-          <div class="niche-item" data-service-index="2">
-            <span class="niche-title" data-translate="service_3">Brand Systems & Motion</span>
-          </div>
-          <div class="niche-item" data-service-index="3">
-            <span class="niche-title" data-translate="service_4">3D & Spatial Interaction</span>
-          </div>
-          <div class="niche-item" data-service-index="4">
-            <span class="niche-title" data-translate="service_5">Venture & Pitch Strategy</span>
-          </div>
-        </div>
-        
-        <!-- Right Visual Display Container -->
-        <div class="niches-display">
-          <div class="display-frame">
-            <img src="assets/project 1.webp" alt="Web Design Mockup" class="display-img active" id="service-img-0" loading="lazy" decoding="async">
-            <img src="assets/project 2.webp" alt="Web Dev Mockup" class="display-img" id="service-img-1" loading="lazy" decoding="async">
-            <video src="assets/animo-grid-zoom-strip-1440p.mp4" class="display-img" id="service-img-2" autoplay loop muted playsinline preload="auto"></video>
-            <img src="assets/visual_3d_design.webp" alt="3D Design Visual" class="display-img" id="service-img-3" loading="lazy" decoding="async">
-            <img src="assets/visual_art_direction.webp" alt="Art Direction Visual" class="display-img" id="service-img-4" loading="lazy" decoding="async">
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <!-- ═══ VISUAL EXPLORATIONS (COVERFLOW) ═══ -->
-    <section class="cf-section" id="explorations">
-      <div class="container">
-        <div class="cf-section-header">
-          <h2 class="section-heading" style="font-size: 2.5rem; margin-top: 15px;">Micro-interactions & high-fidelity UI experiments.</h2>
-        </div>
-      </div>
-      
-      <div class="cf-container">
-        <div class="cf-frame" tabindex="0">
-          <div class="cf-ring">
-            
-            <div class="cf-card" data-title="HealthCare App" data-subtitle="Medical Booking UI" data-meta='[{"label":"Role","value":"Product Designer"},{"label":"Year","value":"2024"}]'>
-              <img src="assets/cf_medical.webp" alt="HealthCare App UI" decoding="async">
-            </div>
-            
-            <div class="cf-card" data-title="Taste of Indiana" data-subtitle="Restaurant Web Design" data-meta='[{"label":"Role","value":"Web Designer"},{"label":"Year","value":"2023"}]'>
-              <img src="assets/cf_restaurant.webp" alt="Taste of Indiana Restaurant Website" decoding="async">
-            </div>
-
-            <div class="cf-card" data-title="Begin Your Quest" data-subtitle="Adventure Travel App" data-meta='[{"label":"Role","value":"UI/UX Designer"},{"label":"Year","value":"2024"}]'>
-              <img src="assets/cf_travel.webp" alt="Quest Adventure App UI" decoding="async">
-            </div>
-
-            <div class="cf-card" data-title="Elektra" data-subtitle="Crypto Swap Interface" data-meta='[{"label":"Role","value":"Lead Designer"},{"label":"Year","value":"2024"}]'>
-              <img src="assets/cf_crypto.webp" alt="Elektra Crypto Swap App" decoding="async">
-            </div>
-            
-            <div class="cf-card" data-title="TalentFlow" data-subtitle="LMS Student Dashboard" data-meta='[{"label":"Role","value":"UX Designer"},{"label":"Year","value":"2025"}]'>
-              <img src="assets/cf_lms.webp" alt="TalentFlow LMS Dashboard" decoding="async">
-            </div>
-
-          </div>
-        </div>
-
-        <button class="cf-nav cf-prev" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="cf-nav cf-next" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
-
-        <div class="cf-caption">
-          <p class="cf-caption-title">Tidewater</p>
-          <p class="cf-caption-subtitle">Music App UI</p>
-          <dl class="cf-caption-meta">
-            <!-- Populated by JS -->
-          </dl>
-        </div>
-
-        <div class="cf-pagination">
-          <button class="cf-dot active" aria-label="Slide 1"></button>
-          <button class="cf-dot" aria-label="Slide 2"></button>
-          <button class="cf-dot" aria-label="Slide 3"></button>
-          <button class="cf-dot" aria-label="Slide 4"></button>
-          <button class="cf-dot" aria-label="Slide 5"></button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ METHODOLOGY / PROCESS SECTION ═══ -->
-    <section class="methodology-section grid-section" id="methodology">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-heading" data-translate="methodology_title">A disciplined framework for turning ambiguous product vision into high-performance reality.</h2>
-        </div>
-        
-        <div class="methodology-grid">
-          <div class="methodology-card" data-translate-group>
-            <div class="phase-num-wrapper">
-              <span class="phase-num" data-translate="phase_1_num">01</span>
-            </div>
-            <h3 class="phase-title" data-translate="phase_1_title">Empirical Groundwork</h3>
-            <p class="phase-desc" data-translate="phase_1_desc">
-              Before opening Figma, I analyze user behavior and market research to map core workflows, validating design directions with empirical logic rather than assumptions.
-            </p>
-          </div>
-          
-          <div class="methodology-card" data-translate-group>
-            <div class="phase-num-wrapper">
-              <span class="phase-num" data-translate="phase_2_num">02</span>
-            </div>
-            <h3 class="phase-title" data-translate="phase_2_title">Interface & Token Architecture</h3>
-            <p class="phase-desc" data-translate="phase_2_desc">
-              I build responsive, visual design systems from the ground up, crafting detailed layouts, pixel-perfect hierarchies, and smooth micro-interactions that engage users.
-            </p>
-          </div>
-          
-          <div class="methodology-card" data-translate-group>
-            <div class="phase-num-wrapper">
-              <span class="phase-num" data-translate="phase_3_num">03</span>
-            </div>
-            <h3 class="phase-title" data-translate="phase_3_title">Venture & Market Acceleration</h3>
-            <p class="phase-desc" data-translate="phase_3_desc">
-              Design is a business accelerator. I help founders package their product logic into high-impact pitch decks and scale their visual MVPs to drive startup growth.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ IMPACT & SCALE METRICS SECTION ═══ -->
-    <!-- ═══ TECHNICAL SKILLS TABS ═══ -->
-    <section class="skills-section grid-section" id="skills">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-heading" data-translate="skills_title">Technical Skills</h2>
-        </div>
-        
-        <div class="skills-container bento-glass">
-          <div class="skills-tabs">
-            <button class="skill-tab-btn active" data-tab="design">Design Tools</button>
-            <button class="skill-tab-btn" data-tab="prototyping">Prototyping</button>
-            <button class="skill-tab-btn" data-tab="strategy">Strategy & UX</button>
-            <button class="skill-tab-btn" data-tab="dev">Web & Dev</button>
-          </div>
-
-          <div class="skills-panes">
-            <!-- Design Tools Pane -->
-            <div class="skill-pane active" id="pane-design">
-              <div class="skill-grid">
-                <div class="skill-box">
-                  <span class="skill-icon"><img src="assets/logos/figma.svg" alt="Figma" width="24" height="24" decoding="async"></span>
-                  <span class="skill-name">Figma</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><img src="assets/logos/adobe-cc.svg" alt="Adobe CC" width="24" height="24" decoding="async"></span>
-                  <span class="skill-name">Adobe CC</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><img src="assets/logos/sketch.svg" alt="Sketch" width="24" height="24" decoding="async"></span>
-                  <span class="skill-name">Sketch</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><img src="assets/logos/framer.svg" alt="Framer" width="24" height="24" decoding="async"></span>
-                  <span class="skill-name">Framer</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><img src="assets/logos/canva.svg" alt="Canva" width="24" height="24" decoding="async"></span>
-                  <span class="skill-name">Canva</span>
-                </div>
-              </div>
-              <p class="skill-pane-desc">Core visual tools used to craft pixel-perfect interfaces and complex design systems.</p>
-            </div>
-
-            <!-- Prototyping Pane -->
-            <div class="skill-pane" id="pane-prototyping">
-              <div class="skill-grid">
-                <div class="skill-box">
-                  <span class="skill-icon">Pp</span>
-                  <span class="skill-name">ProtoPie</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon">Pr</span>
-                  <span class="skill-name">Principle</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><img src="assets/logos/figma.svg" alt="Figma Prototype" width="24" height="24" decoding="async"></span>
-                  <span class="skill-name">Figma Prototype</span>
-                </div>
-              </div>
-              <p class="skill-pane-desc">Advanced interaction tools for creating high-fidelity, realistic motion prototypes.</p>
-            </div>
-
-            <!-- Strategy & UX Pane -->
-            <div class="skill-pane" id="pane-strategy">
-              <div class="skill-grid">
-                <div class="skill-box">
-                  <span class="skill-icon"><i class="fa-solid fa-users-viewfinder"></i></span>
-                  <span class="skill-name">User Research</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><i class="fa-solid fa-pen-ruler"></i></span>
-                  <span class="skill-name">Wireframing</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><i class="fa-solid fa-sitemap"></i></span>
-                  <span class="skill-name">Info Arch.</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><i class="fa-solid fa-vial-circle-check"></i></span>
-                  <span class="skill-name">Usability Test</span>
-                </div>
-              </div>
-              <p class="skill-pane-desc">Foundational methodologies for understanding user behavior and structuring product architectures.</p>
-            </div>
-
-            <!-- Web & Dev Pane -->
-            <div class="skill-pane" id="pane-dev">
-              <div class="skill-grid">
-                <div class="skill-box">
-                  <span class="skill-icon"><img src="assets/logos/html5.svg" alt="HTML5" width="24" height="24" decoding="async"></span>
-                  <span class="skill-name">HTML5</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><i class="fa-brands fa-css3-alt"></i></span>
-                  <span class="skill-name">CSS3</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><img src="assets/logos/javascript.svg" alt="JavaScript" width="24" height="24" decoding="async"></span>
-                  <span class="skill-name">JavaScript</span>
-                </div>
-                <div class="skill-box">
-                  <span class="skill-icon"><img src="assets/logos/webflow.svg" alt="Webflow" width="24" height="24" decoding="async"></span>
-                  <span class="skill-name">Webflow</span>
-                </div>
-              </div>
-              <p class="skill-pane-desc">Bridging the gap between design and development with a solid understanding of frontend constraints.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ BENTO GRID ABOUT / SERVICES ═══ -->
-    <section class="about-section grid-section" id="about-bento">
-      <div class="container">
-        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
-          <div>
-            <h2 class="section-heading" data-translate="about_heading">Three Disciplines. One Designer.</h2>
-          </div>
-          <a href="assets/Gbayesola_Busayo_Resume.pdf" target="_blank" class="btn btn-secondary" style="margin-bottom: 20px;">
-            <i class="fa-solid fa-download" style="margin-right: 8px;"></i> Download Full CV
-          </a>
-        </div>
-
-        <div class="bento-grid">
-          <!-- Card 1: UX/UI Design -->
-          <div class="bento-card card-ux" data-translate-group>
-            <div class="aurora-flare"></div>
-            <div class="card-glow"></div>
-            
-            <!-- Interactive Visual Workspace -->
-            <div class="bento-visual ux-visual">
-              <div class="figma-canvas">
-                <div class="figma-grid-bg"></div>
-                <div class="figma-node node-header"></div>
-                <div class="figma-node node-hero"></div>
-                <div class="figma-node node-btn"></div>
-                <div class="figma-cursor">
-                  <svg class="cursor-svg" viewBox="0 0 100 100">
-                    <polygon points="0,0 30,70 50,50 85,50" fill="var(--color-ux)"/>
-                  </svg>
-                  <span class="cursor-tag">Victor</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i></div>
-            <h3 class="card-title" data-translate="about_ux_title">Creative UX/UI Design</h3>
-            <p class="card-desc" data-translate="about_ux_desc">
-              I craft pixel-perfect interfaces, scalable design systems, and thoughtful micro-interactions — the kind of details that turn first-time visitors into loyal users.
-            </p>
-            <div class="card-tags">
-              <span>Figma</span>
-              <span>Design Systems</span>
-              <span>Prototyping</span>
-              <span>Webflow</span>
-            </div>
-          </div>
-
-          <!-- Card 2: Research & Quantitative Economics -->
-          <div class="bento-card card-economics" data-translate-group>
-            <div class="aurora-flare"></div>
-            <div class="card-glow"></div>
-            
-            <!-- Interactive Visual Workspace -->
-            <div class="bento-visual econ-visual">
-              <div class="chart-canvas">
-                <div class="chart-grid">
-                  <div class="grid-row"></div>
-                  <div class="grid-row"></div>
-                  <div class="grid-row"></div>
-                </div>
-                <svg class="chart-svg" viewBox="0 0 200 100">
-                  <path class="chart-line" d="M 15 85 Q 60 70 100 45 T 185 15" fill="none" stroke="var(--color-econ)" stroke-width="2.5" />
-                  <path class="chart-area" d="M 15 85 Q 60 70 100 45 T 185 15 L 185 85 L 15 85 Z" fill="url(#chart-gradient)" opacity="0.15" />
-                  <defs>
-                    <linearGradient id="chart-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="var(--color-econ)" />
-                      <stop offset="100%" stop-color="transparent" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <div class="chart-dot dot-1" style="left: 100px; top: 45px;"></div>
-                <div class="chart-dot dot-2" style="left: 185px; top: 15px;"></div>
-                <div class="chart-tooltip" style="left: 105px; top: 10px;">
-                  <span class="tooltip-val">+42%</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
-            <h3 class="card-title" data-translate="about_econ_title">Quantitative Economics</h3>
-            <p class="card-desc" data-translate="about_econ_desc">
-              I ground every design decision in real user data. Behavioral research, usability testing, and analytics help me build interfaces that perform — not just look good.
-            </p>
-            <div class="card-tags">
-              <span>Economics</span>
-              <span>Data Viz</span>
-              <span>Dashboards</span>
-              <span>Metrics</span>
-            </div>
-          </div>
-
-          <!-- Card 3: Brand & Venture Strategy -->
-          <div class="bento-card card-strategy" data-translate-group>
-            <div class="aurora-flare"></div>
-            <div class="card-glow"></div>
-            
-            <!-- Interactive Visual Workspace -->
-            <div class="bento-visual strategy-visual">
-              <div class="decks-wrapper">
-                <div class="deck-slide slide-3"></div>
-                <div class="deck-slide slide-2"></div>
-                <div class="deck-slide slide-1">
-                  <div class="slide-header">
-                    <span class="slide-dot"></span>
-                    <span class="slide-dot"></span>
-                  </div>
-                  <div class="slide-body">
-                    <div class="slide-line long"></div>
-                    <div class="slide-line short"></div>
-                    <div class="slide-chart-bar"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></div>
-            <h3 class="card-title" data-translate="about_strategy_title">Venture Strategy</h3>
-            <p class="card-desc" data-translate="about_strategy_desc">
-              From pitch decks that close rounds to brand systems that scale — I help founders translate complex ideas into visual stories investors and customers believe in.
-            </p>
-            <div class="card-tags">
-              <span>Pitch Decks</span>
-              <span>Positioning</span>
-              <span>MVP Scaling</span>
-              <span>Growth Loops</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- ═══ INTERACTIVE TESTIMONIALS SLIDER SECTION ═══ -->
-    <section class="testimonials-section grid-section" id="testimonials">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-heading" data-translate="testimonials_title">Trusted by founders and high-growth ventures.</h2>
-        </div>
-
-        <div class="anim-testim-container">
-          
-          <!-- LEFT COL: Image Stack -->
-          <div class="anim-testim-images" id="anim-testim-images">
-            <!-- Images injected via JS -->
-          </div>
-
-          <!-- RIGHT COL: Text Reveal & Controls -->
-          <div class="anim-testim-content">
-            <div id="anim-testim-text-wrap" class="anim-testim-text-wrap">
-              <h3 class="anim-testim-name" id="anim-testim-name">Sarah Chen</h3>
-              <p class="anim-testim-designation" id="anim-testim-desig">Product Manager at TechFlow</p>
-              <div class="anim-testim-quote" id="anim-testim-quote">
-                <!-- Spans injected via JS for staggered blur reveal -->
-              </div>
-            </div>
-            
-            <div class="anim-testim-controls">
-              <button class="anim-testim-btn" id="anim-testim-prev" aria-label="Previous Review">
-                <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>
-              </button>
-              <button class="anim-testim-btn" id="anim-testim-next" aria-label="Next Review">
-                <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ EXPERIENCE TIMELINE ═══ -->
-
-    <!-- ═══ LIFE HUB (HABITS BENTO) SECTION ═══ -->
-    <section class="habits-section grid-section" id="habits">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-heading" data-translate="habits_heading">Life Hub & Routines</h2>
-        </div>
-        
-        <div class="habits-bento-grid">
-          <!-- Card A: Morning Routine Timeline -->
-          <div class="habit-card" style="grid-column: 1; grid-row: 1 / 3;">
-            <h3 class="habit-card-title">AM Routine</h3>
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-              <div style="display: flex; gap: 12px; align-items: flex-start;">
-                <span style="color: var(--text-muted); font-family: var(--font-heading); font-size: 0.9rem; min-width: 60px;">06:00</span>
-                <div>
-                  <h4 style="font-size: 1rem; margin-bottom: 4px;">Deep Focus Block</h4>
-                  <p style="color: var(--text-secondary); font-size: 0.9rem;">No internet. Just Figma or VS Code.</p>
-                </div>
-              </div>
-              <div style="display: flex; gap: 12px; align-items: flex-start;">
-                <span style="color: var(--text-muted); font-family: var(--font-heading); font-size: 0.9rem; min-width: 60px;">08:30</span>
-                <div>
-                  <h4 style="font-size: 1rem; margin-bottom: 4px;">Kettlebell & Mobility</h4>
-                  <p style="color: var(--text-secondary); font-size: 0.9rem;">Physical resistance to balance mental work.</p>
-                </div>
-              </div>
-              <div style="display: flex; gap: 12px; align-items: flex-start;">
-                <span style="color: var(--text-muted); font-family: var(--font-heading); font-size: 0.9rem; min-width: 60px;">09:45</span>
-                <div>
-                  <h4 style="font-size: 1rem; margin-bottom: 4px;">Inbox & Strategy</h4>
-                  <p style="color: var(--text-secondary); font-size: 0.9rem;">Clearing communications and mapping the day.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card B: Currently Reading / Consuming (Visual variation) -->
-          <div class="habit-card" style="background: linear-gradient(135deg, rgba(255, 0, 127, 0.1), rgba(0, 240, 255, 0.1)); border-color: var(--color-econ);">
-            <h3 class="habit-card-title" style="border-bottom-color: rgba(255,255,255,0.1);">Currently Reading</h3>
-            <div style="display: flex; gap: 20px; align-items: center;">
-              <div style="width: 80px; height: 120px; background: #fff; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#000;">
-                 <i class="fa-solid fa-book" style="font-size: 24px;"></i>
-              </div>
-              <div>
-                <h4 style="font-size: 1.1rem; margin-bottom: 6px;">The Design of Everyday Things</h4>
-                <p style="color: var(--text-secondary); font-size: 0.9rem;">Re-reading the classics to ground my high-fidelity work.</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card C: Daily Metrics (Clean data) -->
-          <div class="habit-card">
-            <h3 class="habit-card-title">Daily Baselines</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div>
-                <div style="font-size: 2.2rem; font-family: var(--font-heading); font-weight: 700; color: var(--color-ux); line-height: 1;">4.5h</div>
-                <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px;">Avg. Deep Work</div>
-              </div>
-              <div>
-                <div style="font-size: 2.2rem; font-family: var(--font-heading); font-weight: 700; color: var(--color-econ); line-height: 1;">3L</div>
-                <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px;">Water Intake</div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </section>
-    <section class="experience-section grid-section" id="experience">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-heading" data-translate="exp_title">Professional Trajectory</h2>
-        </div>
-
-        <div class="experience-timeline-grid">
-          <!-- Role 1 -->
-          <div class="timeline-row">
-            <div class="role-year">2024 — Present</div>
-            <div class="timeline-marker"><span class="marker-dot"></span></div>
-            <div class="role-details">
-              <h3 class="role-title">Lead Designer (Volunteer)</h3>
-              <h4 class="company-name">Heart2Hand Initiative</h4>
-              <p class="role-desc">
-                Designed brand and campaign visuals for youth-focused programmes. Maintained visual consistency across digital and print channels, collaborating with leads to translate goals into clear, engaging visuals on tight turnarounds.
-              </p>
-            </div>
-          </div>
-
-          <!-- Role 2 -->
-          <div class="timeline-row">
-            <div class="role-year">Jan 2026 — Apr 2026</div>
-            <div class="timeline-marker"><span class="marker-dot"></span></div>
-            <div class="role-details">
-              <h3 class="role-title">UX Design Intern</h3>
-              <h4 class="company-name">Trueminds Innovations Ltd</h4>
-              <p class="role-desc">
-                Designed end-to-end UI for "Chuks Kitchen" (food ordering app) and a Learning Management System (LMS) for secondary school students. Produced mockups and iterated designs quickly based on feedback.
-              </p>
-            </div>
-          </div>
-
-          <!-- Role 3 -->
-          <div class="timeline-row">
-            <div class="role-year">NYSC</div>
-            <div class="timeline-marker"><span class="marker-dot"></span></div>
-            <div class="role-details">
-              <h3 class="role-title">Corps Member</h3>
-              <h4 class="company-name">Centre for Management Development (CMD)</h4>
-              <p class="role-desc">
-                Supported internal documentation and reporting needs, including formatting and visual presentation of reports and templates. Contributed design input for internal communication materials.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Marquee Footer Banner (Fancy.design Style) -->
-    <div class="interactive-marquee-section" id="marquee-banner" onclick="scrollToContact()">
-      <div class="marquee-wrapper">
-        <div class="marquee-track" id="marquee-track">
-          <!-- Populated dynamically by translations in app.js -->
-        </div>
-      </div>
-    </div>
-    <!-- ═══ CERTIFICATIONS SECTION ═══ -->
-    <section class="certifications-section grid-section" id="certifications">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag" data-translate="certs_tag">Certifications</span>
-          <h2 class="section-heading" data-translate="certs_title">Professional Credentials</h2>
-        </div>
-        
-        <div class="certs-slider-container">
-          <div class="certs-slider" id="certs-slider">
-            <div class="cert-slide"><img src="assets/certifications/cert-1.png" alt="Certification 1" loading="lazy" decoding="async"></div>
-            <div class="cert-slide"><img src="assets/certifications/cert-2.png" alt="Certification 2" loading="lazy" decoding="async"></div>
-            <div class="cert-slide"><img src="assets/certifications/cert-3.png" alt="Certification 3" loading="lazy" decoding="async"></div>
-            <div class="cert-slide"><img src="assets/certifications/cert-4.png" alt="Certification 4" loading="lazy" decoding="async"></div>
-            <div class="cert-slide"><img src="assets/certifications/cert-5.jpg" alt="Certification 5" loading="lazy" decoding="async"></div>
-          </div>
-          
-          <div class="slider-controls">
-            <button class="slider-btn prev-btn" id="cert-prev"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="slider-dots" id="cert-dots"></div>
-            <button class="slider-btn next-btn" id="cert-next"><i class="fa-solid fa-chevron-right"></i></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ MINIMALIST CONTACT FORM ═══ -->
-    
-    <!-- ═══ DELIVERY MECHANICS & COLLABORATION FAQ ═══ -->
-    <section class="mechanics-section grid-section" id="mechanics">
-      <div class="container mechanics-grid">
-        <div class="mechanics-header">
-          <span class="subtitle-label">Transparency & Workflow</span>
-          <h2 class="section-heading" style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); line-height: 1.1; margin-top: 12px;">Engagement Mechanics.</h2>
-          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-top: 20px; max-width: 40ch;">
-            Clear scopes, transparent pricing, and predictable sprint delivery—no hidden layers.
+    <!-- ═══ CHAPTER 5: DELIVERY MECHANICS (FAQ Accordion on Concrete Paper) ═══ -->
+    <section class="monolith-mechanics" id="mechanics">
+      <div class="monolith-container mechanics-layout">
+        <div class="mechanics-info">
+          <span class="section-tag">[ 05 / DELIVERY MECHANICS ]</span>
+          <h2 class="section-monolith-heading">How Engagements Work.</h2>
+          <p class="mechanics-summary">
+            Direct collaboration with clear scopes, transparent flat-fee pricing, and predictable sprint delivery—no middle layers.
           </p>
         </div>
 
-        <div class="mechanics-list">
+        <div class="mechanics-accordion-group">
           <!-- Item 1 -->
-          <div class="mechanic-accordion-item">
-            <button class="mechanic-trigger" aria-expanded="false">
-              <div class="mechanic-title-wrap">
-                <span class="mechanic-num">01</span>
-                <span class="mechanic-q">What is the typical project timeline?</span>
-              </div>
-              <span class="mechanic-icon"><i class="fa-solid fa-plus"></i></span>
+          <div class="mechanic-row">
+            <button class="mechanic-toggle" aria-expanded="false">
+              <span class="m-toggle-num">01</span>
+              <span class="m-toggle-title">What is the typical project timeline?</span>
+              <span class="m-toggle-icon"><i class="fa-solid fa-plus"></i></span>
             </button>
-            <div class="mechanic-panel">
+            <div class="mechanic-drawer">
               <p>Most focused engagements run between 4 to 8 weeks depending on scope. Fast-track brand and MVP design sprints can be delivered in 2 to 3 weeks, while comprehensive web applications and full design systems require dedicated phases for research, prototyping, and frontend integration.</p>
             </div>
           </div>
 
           <!-- Item 2 -->
-          <div class="mechanic-accordion-item">
-            <button class="mechanic-trigger" aria-expanded="false">
-              <div class="mechanic-title-wrap">
-                <span class="mechanic-num">02</span>
-                <span class="mechanic-q">How do you handle pricing and billing?</span>
-              </div>
-              <span class="mechanic-icon"><i class="fa-solid fa-plus"></i></span>
+          <div class="mechanic-row">
+            <button class="mechanic-toggle" aria-expanded="false">
+              <span class="m-toggle-num">02</span>
+              <span class="m-toggle-title">How do you handle pricing and billing?</span>
+              <span class="m-toggle-icon"><i class="fa-solid fa-plus"></i></span>
             </button>
-            <div class="mechanic-panel">
+            <div class="mechanic-drawer">
               <p>I work on a transparent, flat-fee project structure or fixed-scope bi-weekly sprints. Every deliverable, revision cycle, and milestone is aligned upfront—meaning zero unexpected hourly surprises.</p>
             </div>
           </div>
 
           <!-- Item 3 -->
-          <div class="mechanic-accordion-item">
-            <button class="mechanic-trigger" aria-expanded="false">
-              <div class="mechanic-title-wrap">
-                <span class="mechanic-num">03</span>
-                <span class="mechanic-q">How is design and code handed over?</span>
-              </div>
-              <span class="mechanic-icon"><i class="fa-solid fa-plus"></i></span>
+          <div class="mechanic-row">
+            <button class="mechanic-toggle" aria-expanded="false">
+              <span class="m-toggle-num">03</span>
+              <span class="m-toggle-title">How is design and code handed over?</span>
+              <span class="m-toggle-icon"><i class="fa-solid fa-plus"></i></span>
             </button>
-            <div class="mechanic-panel">
+            <div class="mechanic-drawer">
               <p>For design: Organized Figma libraries with published component sets, autolayout architectures, and interactive prototypes. For development: Clean, modular GitHub repositories accompanied by setup documentation, semantic tokens, and live Vercel deployments.</p>
             </div>
           </div>
 
           <!-- Item 4 -->
-          <div class="mechanic-accordion-item">
-            <button class="mechanic-trigger" aria-expanded="false">
-              <div class="mechanic-title-wrap">
-                <span class="mechanic-num">04</span>
-                <span class="mechanic-q">Do you collaborate across international time zones?</span>
-              </div>
-              <span class="mechanic-icon"><i class="fa-solid fa-plus"></i></span>
+          <div class="mechanic-row">
+            <button class="mechanic-toggle" aria-expanded="false">
+              <span class="m-toggle-num">04</span>
+              <span class="m-toggle-title">Do you collaborate across international time zones?</span>
+              <span class="m-toggle-icon"><i class="fa-solid fa-plus"></i></span>
             </button>
-            <div class="mechanic-panel">
+            <div class="mechanic-drawer">
               <p>Yes. I operate with scale-ups and founders across North America, Europe, and Africa. Workflows are optimized around asynchronous velocity (Figma, Loom, Slack, GitHub) paired with focused, scheduled syncs.</p>
             </div>
           </div>
@@ -1096,138 +535,63 @@
       </div>
     </section>
 
-    <section class="contact-section grid-section" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-header">
-          <span class="subtitle-label" data-translate="contact_subtitle">Get In Touch</span>
-          <h2 class="section-heading" data-translate="contact_title">Initiate a Collaboration</h2>
-          <p class="contact-intro" data-translate="contact_desc">
-            Whether you need a product designed from scratch, a brand system that scales, or a pitch deck that closes — I'd love to hear about it.
+    <!-- ═══ CHAPTER 6: COLLABORATION & FOOTER (Carbon Basalt) ═══ -->
+    <section class="monolith-contact" id="contact">
+      <div class="monolith-container contact-layout">
+        <div class="contact-pitch">
+          <span class="section-tag text-hazard">[ 06 / COLLABORATION ]</span>
+          <h2 class="contact-monolith-heading">Let's build something inevitable.</h2>
+          <p class="contact-monolith-desc">
+            Got an ambitious product, a venture seeking design leadership, or an identity that needs architectural clarity? Reach out directly.
           </p>
-          <div class="direct-contact-methods">
-            <a href="mailto:designeunoch@gmail.com" class="direct-link">
-              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              <span>designeunoch@gmail.com</span>
-            </a>
-            <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="direct-link">
-              <i class="fa-brands fa-behance" aria-hidden="true"></i>
-              <span>behance.net/gbayesolavictor</span>
-            </a>
+          <div class="contact-direct-wrap">
+            <span class="direct-label">DIRECT CHANNEL</span>
+            <a href="mailto:gbayesolavictor@gmail.com" class="direct-email-link">gbayesolavictor@gmail.com</a>
           </div>
         </div>
 
-        <div class="contact-form-container">
-          <form class="minimal-contact-form" id="contact-form" onsubmit="handleFormSubmit(event)">
-            <input type="hidden" name="access_key" value="ea67b861-2575-4929-b9fb-6a5f0279fc51">
-            <div class="form-row">
-              <div class="form-group">
-                <input type="text" id="contact-name" name="name" required placeholder=" ">
-                <label for="contact-name" data-translate="contact_name_placeholder">Your Name</label>
-                <span class="input-line"></span>
-              </div>
-              <div class="form-group">
-                <input type="email" id="contact-email" name="email" required placeholder=" ">
-                <label for="contact-email" data-translate="contact_email_placeholder">Email Address</label>
-                <span class="input-line"></span>
-              </div>
+        <div class="contact-form-wrap">
+          <form class="monolith-form" id="contact-form" action="https://formspree.io/f/mqaejkkb" method="POST">
+            <div class="form-field">
+              <label for="name">NAME / VENTURE</label>
+              <input type="text" id="name" name="name" required placeholder="e.g. Alex Miller / Apex AI" class="monolith-input">
             </div>
-            
-            <div class="form-group">
-              <textarea id="contact-message" name="message" required placeholder=" " rows="4"></textarea>
-              <label for="contact-message" data-translate="contact_message_placeholder">Describe your project or inquiry...</label>
-              <span class="input-line"></span>
+            <div class="form-field">
+              <label for="email">CONTACT EMAIL</label>
+              <input type="email" id="email" name="email" required placeholder="alex@apex.ai" class="monolith-input">
             </div>
-
-            <button type="submit" class="btn btn-primary form-btn" id="submit-btn">
-              <span data-translate="contact_submit">Send secure Inquiry</span>
-              <i class="fa-solid fa-paper-plane send-icon" aria-hidden="true"></i>
+            <div class="form-field">
+              <label for="message">PROJECT BRIEF</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Tell me about the product scope, timeline, and goals..." class="monolith-textarea"></textarea>
+            </div>
+            <button type="submit" class="btn-hazard-submit">
+              <span>Send Transmission</span>
+              <i class="fa-solid fa-arrow-right"></i>
             </button>
-
-            <!-- Form Success Feedback -->
-            <div class="form-alert success" id="form-success">
-              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-              <span data-translate="contact_success">Message sent successfully! I will reach out in 24 hours.</span>
-            </div>
           </form>
         </div>
       </div>
+
+      <!-- Minimal Monolith Footer -->
+      <footer class="monolith-sub-footer">
+        <div class="monolith-container footer-content">
+          <div class="footer-left">
+            <span class="hazard-dot"></span>
+            <span class="footer-brand">VICTOR GBAYESOLA © 2026</span>
+            <span class="footer-tz">LAGOS, NIGERIA [ WAT / GMT+1 ]</span>
+          </div>
+          <div class="footer-social-links">
+            <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer">Behance</a>
+            <a href="https://linkedin.com/in/victorgbayesola" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </footer>
     </section>
 
   </main>
 
-  <!-- ═══ LORO-STYLE FOOTER ═══ -->
-  <footer class="site-footer">
-    <div id="footer-sparkles" class="footer-sparkles-bg"></div>
-    <div class="container">
-      <div class="footer-top">
-        <!-- Brand / Social Column -->
-        <div class="footer-col footer-col-brand">
-          <span class="footer-logo">Victor Gbayesola</span>
-          <p class="footer-tagline">We build websites that convert, apps that scale, and brands people remember.</p>
-          <div class="footer-socials">
-            <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" aria-label="Behance"><i class="fa-brands fa-behance" aria-hidden="true"></i></a>
-            <a href="https://linkedin.com/in/victorgbayesola" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-          </div>
-        </div>
 
-        <!-- Quick Links -->
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about-bento">About</a></li>
-            <li><a href="#projects">Portfolio</a></li>
-            <li><a href="#experience">Case Studies</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Services -->
-        <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#skills">Website Development</a></li>
-            <li><a href="#skills">App Development</a></li>
-            <li><a href="#skills">Systems & Platforms</a></li>
-            <li><a href="#skills">UX/UI Strategy</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact & CTA -->
-        <div class="footer-col">
-          <h4>Studio & Contact</h4>
-          <ul class="footer-contact-info">
-            <li>
-              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-              <span>Oyo State, Nigeria</span>
-            </li>
-            <li>
-              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              <a href="mailto:designeunoch@gmail.com">designeunoch@gmail.com</a>
-            </li>
-          </ul>
-          <a href="#contact" class="footer-btn">Get Quote</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="footer-copyright">&copy; 2026 Victor Gbayesola. All rights reserved.</div>
-        <div class="footer-bottom-center">"We build with empathy, creativity, and purpose."</div>
-        <div class="footer-legal">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll-Animated Volcanic Lava Rock -->
-  <div class="floating-lava-rock-container" id="lava-rock-container" style="opacity: 0;">
-    <img src="assets/lava_rock.webp" alt="Lava Rock" class="floating-lava-rock" id="lava-rock" loading="lazy" decoding="async">
-  </div>
-
-  <!-- Lenis Smooth Scroll Script -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   <!-- GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

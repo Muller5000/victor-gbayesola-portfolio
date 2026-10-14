@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingEcosystem(); // Parallax floating UI in hero
   initHorizontalProjectsScroll(); // GSAP Pinned Horizontal Showcase
   initProjectsCursorFollower();
+  initMonolithToggles();
+  initMonolithDragScroll();
   initMechanicsAccordion();
   initAnimatedTestimonials(); // Interactive client reviews slider
   initNichesHoverSlider(); // Redesigned services hover slider
@@ -1835,5 +1837,77 @@ function initMechanicsAccordion() {
         panel.style.maxHeight = panel.scrollHeight + 'px';
       }
     });
+  });
+}
+
+
+/* ==========================================================================
+   MONOLITH CONTROLLERS: ACCORDION & HORIZONTAL DRAG
+   ========================================================================== */
+function initMonolithToggles() {
+  const rows = document.querySelectorAll('.mechanic-row');
+  if (!rows.length) return;
+
+  rows.forEach(row => {
+    const toggle = row.querySelector('.mechanic-toggle');
+    const drawer = row.querySelector('.mechanic-drawer');
+    if (!toggle || !drawer) return;
+
+    toggle.addEventListener('click', () => {
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+      // Close all
+      rows.forEach(otherRow => {
+        const otherToggle = otherRow.querySelector('.mechanic-toggle');
+        const otherDrawer = otherRow.querySelector('.mechanic-drawer');
+        if (otherToggle && otherDrawer && otherRow !== row) {
+          otherToggle.setAttribute('aria-expanded', 'false');
+          otherDrawer.classList.remove('open');
+          otherDrawer.style.maxHeight = null;
+        }
+      });
+
+      if (isExpanded) {
+        toggle.setAttribute('aria-expanded', 'false');
+        drawer.classList.remove('open');
+        drawer.style.maxHeight = null;
+      } else {
+        toggle.setAttribute('aria-expanded', 'true');
+        drawer.classList.add('open');
+        drawer.style.maxHeight = drawer.scrollHeight + 'px';
+      }
+    });
+  });
+}
+
+function initMonolithDragScroll() {
+  const slider = document.querySelector('.cases-track-viewport');
+  if (!slider) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.8; // scroll speed multiplier
+    slider.scrollLeft = scrollLeft - walk;
   });
 }
