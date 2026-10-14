@@ -2101,7 +2101,7 @@ function initTofHorizontalParallax() {
   const mm = gsap.matchMedia();
 
   // Desktop Pinning + Horizontal Parallax Scrub
-  mm.add("(min-width: 900px)", () => {
+  mm.add("(min-width: 992px)", () => {
     const getScrollDistance = () => {
       // Calculates exact translation so the final card is 100% visible on screen with generous right margin
       return Math.max(0, track.scrollWidth - window.innerWidth + 80);

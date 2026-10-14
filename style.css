@@ -5875,18 +5875,30 @@ body.about-page {
   gap: 8px;
 }
 
-/* Responsive on Mobile (Clean Swipeable Rail without Pinning Trap) */
+/* Responsive on Mobile & Tablet (Clean Touch-Swipeable Rail without Pinning Trap) */
 @media (max-width: 991px) {
   .tof-horizontal-parallax-section {
-    min-height: auto;
-    padding: 80px 0;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    padding: 70px 0 90px 0;
+    overflow: visible;
+  }
+
+  .tof-horizontal-parallax-section .tof-cases-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
   }
 
   .tof-h-viewport {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    padding: 20px 0 40px 0;
+    -ms-overflow-style: none;
+    padding: 12px 0 32px 0;
   }
 
   .tof-h-viewport::-webkit-scrollbar {
@@ -5896,31 +5908,43 @@ body.about-page {
   .tof-h-track {
     padding-left: 20px;
     padding-right: 20px;
-    gap: 24px;
+    gap: 20px;
   }
 
   .tof-h-card {
-    width: 86vw;
+    scroll-snap-align: center;
+    width: clamp(285px, 86vw, 480px);
     height: auto;
+    border-radius: 20px;
   }
 
   .tof-h-card-inner {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    height: auto;
   }
 
   .tof-h-info {
-    padding: 30px 22px;
+    padding: 26px 20px;
     border-right: none;
     border-bottom: 1px solid var(--color-dark-border);
   }
 
   .tof-h-visual {
-    height: 300px;
+    height: clamp(210px, 46vw, 290px);
+    border-radius: 0 0 20px 20px;
   }
 
   .tof-h-parallax-media {
+    position: relative;
     width: 100%;
+    height: 100%;
     left: 0;
+    top: 0;
+  }
+
+  .tof-h-parallax-media .live-iframe {
+    pointer-events: none;
   }
 }
 
@@ -6415,49 +6439,374 @@ body.about-page {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Responsive Rules */
-@media (max-width: 991px) {
-  .tof-intro-grid,
-  .tof-faq-layout,
-  .tof-contact-layout {
-    grid-template-columns: 1fr;
-    gap: 40px;
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE SUITE (ALL SCREEN SIZES)
+   ========================================================================== */
+
+/* 1. Large Displays & Ultrawide (> 1600px) */
+@media (min-width: 1600px) {
+  .tof-container {
+    max-width: 1400px;
+  }
+
+  .tof-header-container {
+    max-width: 1520px;
+  }
+
+  .tof-hero-inner {
+    max-width: 1280px;
   }
 
   .tof-letterbox-container {
-    height: 280px;
+    max-width: 1200px;
+    height: 440px;
   }
 
-  .tof-card {
-    width: 82vw;
-  }
-
-  .tof-card-tall,
-  .tof-card-mid,
-  .tof-card-compact {
-    height: 480px;
-  }
-
-  .tof-cap-row-content {
-    gap: 12px;
+  .tof-h-card {
+    width: 880px;
+    height: 520px;
   }
 }
 
-@media (max-width: 640px) {
-  .tof-hero-section {
-    padding: 120px 20px 50px 20px;
+/* 2. Standard Tablets & Small Laptops (<= 991px) */
+@media (max-width: 991px) {
+  .tof-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .tof-intro-right {
+    order: -1;
+  }
+
+  .tof-intro-headline {
+    font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+  }
+
+  .tof-intro-bio {
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+  }
+
+  .tof-faq-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .tof-contact-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 70px;
   }
 
   .tof-letterbox-container {
-    height: 220px;
-    border-radius: 16px;
+    height: clamp(240px, 36vw, 320px);
   }
 
+  .tof-monumental-titles a {
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+  }
+}
+
+/* 3. Small Tablets & Large Mobile Devices (<= 768px) */
+@media (max-width: 768px) {
   .tof-container {
     padding: 0 20px;
   }
 
+  .tof-header {
+    padding: 0 16px;
+  }
+
+  .tof-header-container {
+    height: 64px;
+  }
+
+  .tof-logo-text {
+    font-size: 0.92rem;
+  }
+
+  /* Hero Section */
+  .tof-hero-section {
+    padding: 110px 18px 45px 18px;
+  }
+
+  .tof-hero-headline {
+    font-size: clamp(2.2rem, 7.6vw, 3.6rem);
+    line-height: 1.08;
+    margin-bottom: 18px;
+  }
+
+  .tof-typewriter-wrap {
+    font-size: clamp(0.70rem, 2.4vw, 0.80rem);
+    padding: 7px 16px;
+    margin-bottom: 28px;
+  }
+
+  .tof-letterbox-container {
+    height: clamp(210px, 46vw, 280px);
+    border-radius: 18px;
+    margin-top: 6px;
+  }
+
+  /* Brand Intro */
+  .tof-brand-intro {
+    padding: 80px 0;
+  }
+
+  .tof-intro-headline {
+    font-size: clamp(1.75rem, 5.4vw, 2.4rem);
+  }
+
+  /* Capabilities */
+  .tof-capabilities-section {
+    padding: 80px 0;
+  }
+
+  .tof-cap-header {
+    margin-bottom: 32px;
+  }
+
+  .tof-cap-headline {
+    font-size: clamp(1.8rem, 5.2vw, 2.4rem);
+  }
+
+  .tof-cap-row {
+    padding: 22px 0;
+  }
+
+  .tof-cap-name {
+    font-size: clamp(1.3rem, 4vw, 1.75rem);
+  }
+
+  .tof-cap-sub {
+    font-size: 0.88rem;
+  }
+
+  /* FAQ */
+  .tof-faq-section {
+    padding: 80px 0;
+  }
+
+  .tof-faq-headline {
+    font-size: clamp(1.8rem, 5.2vw, 2.4rem);
+  }
+
+  .tof-faq-question {
+    font-size: 1.1rem;
+  }
+
+  .tof-faq-btn {
+    padding: 16px 0;
+  }
+
+  .tof-faq-answer {
+    padding-left: 0;
+  }
+
+  /* Contact & Footer */
+  .tof-contact-section {
+    padding: 80px 0 40px 0;
+  }
+
+  .tof-contact-title {
+    font-size: clamp(2rem, 6.2vw, 2.8rem);
+    margin-bottom: 14px;
+  }
+
+  .tof-contact-desc {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+
+  .tof-monumental-titles {
+    gap: 14px 28px;
+    margin-bottom: 32px;
+  }
+
   .tof-monumental-titles a {
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 7vw, 3.2rem);
+  }
+
+  .tof-footer-nav-pills {
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .tof-footer-link {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+
+  .tof-footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 28px;
+  }
+
+  .tof-footer-newsletter {
+    max-width: 100%;
+  }
+
+  .tof-footer-copy-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 20px;
+  }
+}
+
+/* 4. Compact Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .tof-container {
+    padding: 0 16px;
+  }
+
+  /* Hero Section */
+  .tof-hero-section {
+    padding: 95px 14px 35px 14px;
+  }
+
+  .tof-hero-headline {
+    font-size: clamp(1.95rem, 8.5vw, 2.6rem);
+    margin-bottom: 16px;
+  }
+
+  .tof-typewriter-wrap {
+    font-size: 0.68rem;
+    padding: 6px 14px;
+    margin-bottom: 22px;
+    max-width: calc(100vw - 28px);
+  }
+
+  .tof-letterbox-container {
+    height: clamp(180px, 48vw, 220px);
+    border-radius: 14px;
+  }
+
+  /* Brand Intro */
+  .tof-brand-intro {
+    padding: 60px 0;
+  }
+
+  .tof-intro-headline {
+    font-size: 1.6rem;
+  }
+
+  .tof-intro-bio {
+    font-size: 0.94rem;
+    line-height: 1.62;
+    margin-bottom: 20px;
+  }
+
+  /* Selected Work Cards */
+  .tof-horizontal-parallax-section {
+    padding: 60px 0 70px 0;
+  }
+
+  .tof-h-track {
+    padding-left: 14px;
+    padding-right: 14px;
+    gap: 14px;
+  }
+
+  .tof-h-card {
+    width: calc(100vw - 28px);
+    border-radius: 16px;
+  }
+
+  .tof-h-info {
+    padding: 18px 14px;
+  }
+
+  .tof-h-visual {
+    height: 200px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .tof-h-title {
+    font-size: 1.35rem;
+  }
+
+  .tof-h-desc {
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+
+  .tof-h-tags {
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .tof-h-tags span {
+    font-size: 0.62rem;
+    padding: 4px 8px;
+  }
+
+  .tof-h-cta {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .tof-h-cta .tof-pill-dark,
+  .tof-h-cta .tof-icon-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Capabilities */
+  .tof-capabilities-section {
+    padding: 60px 0;
+  }
+
+  .tof-cap-row-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .tof-cap-name {
+    font-size: 1.25rem;
+  }
+
+  .tof-cap-sub {
+    font-size: 0.82rem;
+  }
+
+  /* FAQ */
+  .tof-faq-section {
+    padding: 60px 0;
+  }
+
+  .tof-faq-question {
+    font-size: 1rem;
+  }
+
+  .tof-faq-btn {
+    padding: 14px 0;
+  }
+
+  .tof-faq-answer p {
+    font-size: 0.9rem;
+  }
+
+  /* Contact & Footer */
+  .tof-contact-section {
+    padding: 60px 0 30px 0;
+  }
+
+  .tof-contact-title {
+    font-size: 1.85rem;
+  }
+
+  .tof-monumental-titles a {
+    font-size: clamp(1.5rem, 8.5vw, 2rem);
+  }
+
+  .tof-form .btn-submit {
+    width: 100%;
+    text-align: center;
   }
 }
