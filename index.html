@@ -51,7 +51,7 @@
   </script>
   
   <!-- Preloads for Performance -->
-  <link rel="preload" href="style.css?v=11" as="style">
+  <link rel="preload" href="style.css?v=12" as="style">
   <link rel="preload" href="assets/profile.webp" as="image">
   <link rel="preload" href="assets/lava_rock.webp" as="image">
   
@@ -66,7 +66,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=12">
   
   <!-- Lenis Smooth Scroll CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
@@ -165,8 +165,8 @@
       </div>
     </section>
 
-    <!-- ═══ 3. CASE STUDIES (Asymmetric Editorial Spread) ═══ -->
-    <section class="tof-cases-section" id="projects">
+    <!-- ═══ 3. CASE STUDIES (Horizontal Parallax Showcase) ═══ -->
+    <section class="tof-cases-section tof-horizontal-parallax-section" id="projects">
       <div class="tof-container tof-cases-header">
         <span class="tof-tag">SELECTED WORK (05)</span>
         <h3 class="tof-cases-headline">High-conversion products and brand systems, validated by metrics.</h3>
@@ -178,204 +178,211 @@
         </div>
       </div>
 
-      <!-- Asymmetric Editorial Projects Container -->
-      <div class="tof-container tof-editorial-container">
+      <!-- Pinned Horizontal Parallax Viewport -->
+      <div class="tof-h-viewport" id="tof-h-viewport">
+        <div class="tof-h-track" id="tof-h-track">
 
-        <!-- Project 01: QuickBite (Media Left, Text Right) -->
-        <article class="tof-editorial-project">
-          <div class="tof-editorial-media">
-            <div class="tof-editorial-media-inner">
-              <img src="assets/project 1.webp" alt="QuickBite Mobile Food Ordering App" class="tof-editorial-img">
-            </div>
-          </div>
-          <div class="tof-editorial-content">
-            <div class="tof-editorial-meta-top">
-              <span class="tof-editorial-index">[ 01 / 05 ]</span>
-              <span class="tof-editorial-sector">MOBILE PRODUCT & CONVERSION</span>
-            </div>
-            <h4 class="tof-editorial-title">QuickBite</h4>
-            <div class="tof-editorial-metric">
-              <span class="tof-metric-badge"><i class="fa-solid fa-arrow-trend-up"></i> +35% Checkout Lift</span>
-              <span class="tof-metric-sub">Across 25,000+ monthly mobile orders</span>
-            </div>
-            <p class="tof-editorial-desc">
-              Engineered a 12-state checkout funnel to eliminate mobile decision fatigue. Redesigned customer rewards and driver telemetry to cut cart drop-off in high-density delivery routes.
-            </p>
-            <div class="tof-editorial-tags">
-              <span>Figma Tokens</span>
-              <span>iOS Mobile System</span>
-              <span>Quantitative UX</span>
-              <span>Heuristic Audit</span>
-            </div>
-            <div class="tof-editorial-cta">
-              <a href="case-study-quickbite.html" class="tof-pill-accent">
-                <span>Read Case Study</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 02: Pulse Analytics (Text Left, Media Right - Inverted) -->
-        <article class="tof-editorial-project is-reversed">
-          <div class="tof-editorial-content">
-            <div class="tof-editorial-meta-top">
-              <span class="tof-editorial-index">[ 02 / 05 ]</span>
-              <span class="tof-editorial-sector">ENTERPRISE TELEMETRY & AI</span>
-            </div>
-            <h4 class="tof-editorial-title">Pulse Analytics</h4>
-            <div class="tof-editorial-metric">
-              <span class="tof-metric-badge"><i class="fa-solid fa-bolt"></i> Live Telemetry Console</span>
-              <span class="tof-metric-sub">Coca-Cola Nigeria Command Center</span>
-            </div>
-            <p class="tof-editorial-desc">
-              Synthesized nationwide supply telemetry into an intuitive dark-canvas intelligence center. Unified real-time depot logistics, predictive dispatch, and anomaly alerts on a zero-lag interface.
-            </p>
-            <div class="tof-editorial-tags">
-              <span>Dark Mode Architecture</span>
-              <span>Data Density Design</span>
-              <span>Data Protection (NDPC)</span>
-              <span>Next.js</span>
-            </div>
-            <div class="tof-editorial-cta">
-              <a href="case-study-pulse.html" class="tof-pill-accent">
-                <span>Read Case Study</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              </a>
-              <a href="https://cocacola-beta-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="tof-pill-white">
-                <span>Open Live Demo</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
-          </div>
-          <div class="tof-editorial-media">
-            <div class="tof-editorial-iframe-wrap">
-              <div class="browser-header">
-                <div class="browser-dot"></div>
-                <div class="browser-dot"></div>
-                <div class="browser-dot"></div>
-                <span class="browser-url-bar">pulse-command.vercel.app</span>
+          <!-- Card 01: QuickBite -->
+          <article class="tof-h-card">
+            <div class="tof-h-card-inner">
+              <div class="tof-h-info">
+                <div class="tof-h-meta-top">
+                  <span class="tof-h-index">[ 01 / 05 ]</span>
+                  <span class="tof-h-sector">MOBILE PRODUCT & CONVERSION</span>
+                </div>
+                <h4 class="tof-h-title">QuickBite</h4>
+                <div class="tof-h-metric">
+                  <span class="tof-metric-badge"><i class="fa-solid fa-arrow-trend-up"></i> +35% Checkout Lift</span>
+                  <span class="tof-metric-sub">Across 25,000+ monthly mobile orders</span>
+                </div>
+                <p class="tof-h-desc">
+                  Engineered a 12-state checkout funnel to eliminate mobile decision fatigue. Redesigned customer rewards and driver telemetry to cut cart drop-off in high-density delivery routes.
+                </p>
+                <div class="tof-h-tags">
+                  <span>Figma Tokens</span>
+                  <span>iOS Mobile System</span>
+                  <span>Quantitative UX</span>
+                </div>
+                <div class="tof-h-cta">
+                  <a href="case-study-quickbite.html" class="tof-pill-accent">
+                    <span>Read Case Study</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </a>
+                </div>
               </div>
-              <iframe src="https://cocacola-beta-seven.vercel.app/" class="live-iframe" title="Pulse Analytics" loading="lazy"></iframe>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 03: Ventura (Media Left, Text Right) -->
-        <article class="tof-editorial-project">
-          <div class="tof-editorial-media">
-            <div class="tof-editorial-media-inner">
-              <img src="assets/project 3.webp" alt="Ventura Ecosystem Pitch Deck" class="tof-editorial-img">
-            </div>
-          </div>
-          <div class="tof-editorial-content">
-            <div class="tof-editorial-meta-top">
-              <span class="tof-editorial-index">[ 03 / 05 ]</span>
-              <span class="tof-editorial-sector">VENTURE CAPITAL & PITCH DECK</span>
-            </div>
-            <h4 class="tof-editorial-title">Ventura Ecosystem</h4>
-            <div class="tof-editorial-metric">
-              <span class="tof-metric-badge"><i class="fa-solid fa-chart-line"></i> $2M Seed Capital Unlocked</span>
-              <span class="tof-metric-sub">Closed oversubscribed in 6 weeks</span>
-            </div>
-            <p class="tof-editorial-desc">
-              Architected the institutional brand identity and 18-slide investor presentation deck for Ventura. Translated complex multi-market freight logistics mechanics into an undeniable growth narrative.
-            </p>
-            <div class="tof-editorial-tags">
-              <span>Venture Strategy</span>
-              <span>Investor Deck</span>
-              <span>Visual Identity</span>
-              <span>IP Governance (WIPO)</span>
-            </div>
-            <div class="tof-editorial-cta">
-              <a href="case-study-ventura.html" class="tof-pill-accent">
-                <span>Read Case Study</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 04: Animo (Text Left, Media Right - Inverted) -->
-        <article class="tof-editorial-project is-reversed">
-          <div class="tof-editorial-content">
-            <div class="tof-editorial-meta-top">
-              <span class="tof-editorial-index">[ 04 / 05 ]</span>
-              <span class="tof-editorial-sector">KINETIC IDENTITY & MOTION REEL</span>
-            </div>
-            <h4 class="tof-editorial-title">Animo Brand System</h4>
-            <div class="tof-editorial-metric">
-              <span class="tof-metric-badge"><i class="fa-solid fa-film"></i> 1440p Motion System</span>
-              <span class="tof-metric-sub">Modular typographic grid animation</span>
-            </div>
-            <p class="tof-editorial-desc">
-              Crafted a kinetic typographic design system bridging bold editorial Swiss layout rules with fluid, physics-driven video motion. Built for high-tempo digital broadcasts and social identity.
-            </p>
-            <div class="tof-editorial-tags">
-              <span>Motion Architecture</span>
-              <span>Swiss Typography</span>
-              <span>Brand Identity</span>
-              <span>Broadcast Reel</span>
-            </div>
-            <div class="tof-editorial-cta">
-              <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="tof-pill-accent">
-                <span>View on Behance</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              </a>
-            </div>
-          </div>
-          <div class="tof-editorial-media">
-            <div class="tof-editorial-video-wrap">
-              <video src="assets/animo-grid-zoom-strip-1440p.mp4" autoplay loop muted playsinline preload="auto" class="tof-editorial-video"></video>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 05: Finvera (Media Left, Text Right) -->
-        <article class="tof-editorial-project">
-          <div class="tof-editorial-media">
-            <div class="tof-editorial-iframe-wrap">
-              <div class="browser-header">
-                <div class="browser-dot"></div>
-                <div class="browser-dot"></div>
-                <div class="browser-dot"></div>
-                <span class="browser-url-bar">finvera-wealth.vercel.app</span>
+              <div class="tof-h-visual">
+                <div class="tof-h-parallax-media">
+                  <img src="assets/project 1.webp" alt="QuickBite Mobile Food Ordering App" class="tof-h-img">
+                </div>
               </div>
-              <iframe src="https://finvera-zeta.vercel.app/" class="live-iframe" title="Finvera" loading="lazy"></iframe>
             </div>
-          </div>
-          <div class="tof-editorial-content">
-            <div class="tof-editorial-meta-top">
-              <span class="tof-editorial-index">[ 05 / 05 ]</span>
-              <span class="tof-editorial-sector">FINTECH & COMPONENT TOKENS</span>
-            </div>
-            <h4 class="tof-editorial-title">Finvera Platform</h4>
-            <div class="tof-editorial-metric">
-              <span class="tof-metric-badge"><i class="fa-solid fa-code"></i> Component Token Architecture</span>
-              <span class="tof-metric-sub">Sub-second responsive trading layout</span>
-            </div>
-            <p class="tof-editorial-desc">
-              Democratizing institutional wealth infrastructure. Architected a multi-theme design system with accessible token hierarchies and real-time portfolio allocation graphs on a responsive Next.js canvas.
-            </p>
-            <div class="tof-editorial-tags">
-              <span>Fintech UX</span>
-              <span>Design System Tokens</span>
-              <span>Wealth Analytics</span>
-              <span>Responsive Frontend</span>
-            </div>
-            <div class="tof-editorial-cta">
-              <a href="case-study-finvera.html" class="tof-pill-accent">
-                <span>Read Case Study</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              </a>
-              <a href="https://finvera-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" class="tof-pill-white">
-                <span>Open Live App</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
-          </div>
-        </article>
+          </article>
 
+          <!-- Card 02: Pulse Analytics -->
+          <article class="tof-h-card">
+            <div class="tof-h-card-inner">
+              <div class="tof-h-info">
+                <div class="tof-h-meta-top">
+                  <span class="tof-h-index">[ 02 / 05 ]</span>
+                  <span class="tof-h-sector">ENTERPRISE TELEMETRY & AI</span>
+                </div>
+                <h4 class="tof-h-title">Pulse Analytics</h4>
+                <div class="tof-h-metric">
+                  <span class="tof-metric-badge"><i class="fa-solid fa-bolt"></i> Live Telemetry Console</span>
+                  <span class="tof-metric-sub">Coca-Cola Nigeria Command Center</span>
+                </div>
+                <p class="tof-h-desc">
+                  Synthesized nationwide supply telemetry into an intuitive dark-canvas intelligence center. Unified real-time depot logistics, predictive dispatch, and anomaly alerts on a zero-lag interface.
+                </p>
+                <div class="tof-h-tags">
+                  <span>Dark Mode Architecture</span>
+                  <span>Data Density</span>
+                  <span>Next.js</span>
+                </div>
+                <div class="tof-h-cta">
+                  <a href="case-study-pulse.html" class="tof-pill-accent">
+                    <span>Read Case Study</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </a>
+                  <a href="https://cocacola-beta-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="tof-pill-white">
+                    <span>Open Live Demo</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                </div>
+              </div>
+              <div class="tof-h-visual">
+                <div class="tof-h-parallax-media">
+                  <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <span class="browser-url-bar">pulse-command.vercel.app</span>
+                  </div>
+                  <iframe src="https://cocacola-beta-seven.vercel.app/" class="live-iframe" title="Pulse Analytics" loading="lazy"></iframe>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 03: Ventura -->
+          <article class="tof-h-card">
+            <div class="tof-h-card-inner">
+              <div class="tof-h-info">
+                <div class="tof-h-meta-top">
+                  <span class="tof-h-index">[ 03 / 05 ]</span>
+                  <span class="tof-h-sector">VENTURE CAPITAL & PITCH DECK</span>
+                </div>
+                <h4 class="tof-h-title">Ventura Ecosystem</h4>
+                <div class="tof-h-metric">
+                  <span class="tof-metric-badge"><i class="fa-solid fa-chart-line"></i> $2M Seed Capital Unlocked</span>
+                  <span class="tof-metric-sub">Closed oversubscribed in 6 weeks</span>
+                </div>
+                <p class="tof-h-desc">
+                  Architected the institutional brand identity and 18-slide investor presentation deck for Ventura. Translated complex multi-market freight logistics mechanics into an undeniable growth narrative.
+                </p>
+                <div class="tof-h-tags">
+                  <span>Venture Strategy</span>
+                  <span>Investor Deck</span>
+                  <span>IP Governance</span>
+                </div>
+                <div class="tof-h-cta">
+                  <a href="case-study-ventura.html" class="tof-pill-accent">
+                    <span>Read Case Study</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+              <div class="tof-h-visual">
+                <div class="tof-h-parallax-media">
+                  <img src="assets/project 3.webp" alt="Ventura Ecosystem Pitch Deck" class="tof-h-img">
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 04: Animo Brand System -->
+          <article class="tof-h-card">
+            <div class="tof-h-card-inner">
+              <div class="tof-h-info">
+                <div class="tof-h-meta-top">
+                  <span class="tof-h-index">[ 04 / 05 ]</span>
+                  <span class="tof-h-sector">KINETIC IDENTITY & MOTION REEL</span>
+                </div>
+                <h4 class="tof-h-title">Animo Brand System</h4>
+                <div class="tof-h-metric">
+                  <span class="tof-metric-badge"><i class="fa-solid fa-film"></i> 1440p Motion System</span>
+                  <span class="tof-metric-sub">Modular typographic grid animation</span>
+                </div>
+                <p class="tof-h-desc">
+                  Crafted a kinetic typographic design system bridging bold editorial Swiss layout rules with fluid, physics-driven video motion. Built for high-tempo digital broadcasts and social identity.
+                </p>
+                <div class="tof-h-tags">
+                  <span>Motion Architecture</span>
+                  <span>Swiss Typography</span>
+                  <span>Broadcast Reel</span>
+                </div>
+                <div class="tof-h-cta">
+                  <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" class="tof-pill-accent">
+                    <span>View on Behance</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+              <div class="tof-h-visual">
+                <div class="tof-h-parallax-media">
+                  <video src="assets/animo-grid-zoom-strip-1440p.mp4" autoplay loop muted playsinline preload="auto" class="tof-h-video"></video>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 05: Finvera -->
+          <article class="tof-h-card">
+            <div class="tof-h-card-inner">
+              <div class="tof-h-info">
+                <div class="tof-h-meta-top">
+                  <span class="tof-h-index">[ 05 / 05 ]</span>
+                  <span class="tof-h-sector">FINTECH & COMPONENT TOKENS</span>
+                </div>
+                <h4 class="tof-h-title">Finvera Platform</h4>
+                <div class="tof-h-metric">
+                  <span class="tof-metric-badge"><i class="fa-solid fa-code"></i> Component Token Architecture</span>
+                  <span class="tof-metric-sub">Sub-second responsive trading layout</span>
+                </div>
+                <p class="tof-h-desc">
+                  Democratizing institutional wealth infrastructure. Architected a multi-theme design system with accessible token hierarchies and real-time portfolio allocation graphs on a responsive Next.js canvas.
+                </p>
+                <div class="tof-h-tags">
+                  <span>Fintech UX</span>
+                  <span>Token Hierarchies</span>
+                  <span>Responsive Web</span>
+                </div>
+                <div class="tof-h-cta">
+                  <a href="case-study-finvera.html" class="tof-pill-accent">
+                    <span>Read Case Study</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </a>
+                  <a href="https://finvera-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" class="tof-pill-white">
+                    <span>Open Live App</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                </div>
+              </div>
+              <div class="tof-h-visual">
+                <div class="tof-h-parallax-media">
+                  <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <span class="browser-url-bar">finvera-wealth.vercel.app</span>
+                  </div>
+                  <iframe src="https://finvera-zeta.vercel.app/" class="live-iframe" title="Finvera" loading="lazy"></iframe>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
       </div>
     </section>
     
@@ -607,7 +614,7 @@
   <!-- tsParticles Slim Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@3.3.0/tsparticles.slim.bundle.min.js"></script>
   <!-- Scripts -->
-  <script src="app.js?v=9"></script>
+  <script src="app.js?v=10"></script>
   <script src="coverflow.js"></script>
 </body>
 </html>
