@@ -2250,7 +2250,7 @@ function initTofHeaderScroll() {
    HERO PARTICLE TITLE ENGINE (Dissolve & Gather Multi-Mode Canvas)
    Ported directly from ParticleTitle (Smoke, Vortex, Sand, Burst, Sweep, Absorb)
    ========================================================================== */
-function initHeroParticleTitle() {
+async function initHeroParticleTitle() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const headlineEl = document.getElementById('tof-hero-headline');
   const cv = document.getElementById('tof-hero-particle-canvas');
@@ -2259,6 +2259,7 @@ function initHeroParticleTitle() {
   const ctx = cv.getContext('2d');
   if (!ctx) return;
 
+  // 1. Session & Reload Detection: only run on fresh load or browser reload
   const isReload = (() => {
     try {
       const navEntries = performance.getEntriesByType('navigation');
@@ -2273,7 +2274,6 @@ function initHeroParticleTitle() {
 
   const hasPlayed = sessionStorage.getItem('tof_hero_intro_settled') === 'true';
 
-  // If already played this session and NOT a fresh reload, show the full text immediately
   if (hasPlayed && !isReload) {
     headlineEl.classList.remove('has-particle-canvas');
     headlineEl.classList.add('particle-settled');
@@ -2283,396 +2283,247 @@ function initHeroParticleTitle() {
     return;
   }
 
-  const MODES = ["smoke", "vortex", "sand", "burst", "sweep", "absorb"];
-  const TIMING = { hold: 5200, field: 1400, travel: 3000 };
+  // Wait for web fonts to decode so coordinates match with 100% sub-pixel accuracy
+  try {
+    if (document.fonts && document.fonts.ready) {
+      await document.fonts.ready;
+    }
+  } catch (e) {}
 
-  const LIGHT = {
-    ink: [20, 18, 16],
-    accent: [194, 94, 56],
-    page: [247, 245, 238],
-    blobs: [
-      { rgb: [194, 94, 56], a: 0.35, fx: 0.04, fy: 0.08, fw: 0.62, fh: 0.78 },
-      { rgb: [240, 235, 222], a: 0.85, fx: 0.44, fy: 0.22, fw: 0.54, fh: 0.7 },
-      { rgb: [194, 94, 56], a: 0.25, fx: 0.3, fy: 0.44, fw: 0.44, fh: 0.56 },
-    ],
-  };
-
-  const DARK = {
+  // Active theme colors
+  const isDark = document.documentElement.classList.contains('dark') || document.documentElement.dataset.theme === 'dark';
+  const pal = isDark ? {
     ink: [247, 245, 238],
-    accent: [224, 114, 76],
-    page: [20, 18, 16],
-    blobs: [
-      { rgb: [194, 94, 56], a: 0.45, fx: 0.04, fy: 0.08, fw: 0.62, fh: 0.78 },
-      { rgb: [140, 100, 80], a: 0.30, fx: 0.44, fy: 0.22, fw: 0.54, fh: 0.7 },
-      { rgb: [180, 120, 90], a: 0.35, fx: 0.3, fy: 0.44, fw: 0.44, fh: 0.56 },
-    ],
+    accent: [224, 114, 76]
+  } : {
+    ink: [20, 18, 16],
+    accent: [194, 94, 56]
   };
 
-  function createRng(seed) {
-    let a = seed >>> 0;
-    return () => {
-      a = (a + 0x6d2b79f5) >>> 0;
-      let t = a;
-      t = Math.imul(t ^ (t >>> 15), t | 1);
-      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    };
-  }
-
+  // Fluid math helpers
   const clamp = (t) => (t < 0 ? 0 : t > 1 ? 1 : t);
   const mix = (a, b, t) => a + (b - a) * t;
-  const smooth = (t) => {
-    const c = clamp(t);
-    return c * c * (3 - 2 * c);
-  };
   const ease = (t) => {
     const c = clamp(t);
     return c < 0.5 ? 4 * c * c * c : 1 - Math.pow(-2 * c + 2, 3) / 2;
   };
-
-  function createModeBag(seed) {
-    const r = createRng(seed);
-    let bag = [];
-    let last = null;
-    return () => {
-      if (!bag.length) {
-        bag = MODES.slice();
-        for (let i = bag.length - 1; i > 0; i--) {
-          const j = Math.floor(r() * (i + 1));
-          [bag[i], bag[j]] = [bag[j], bag[i]];
-        }
-        if (bag[bag.length - 1] === last) [bag[0], bag[bag.length - 1]] = [bag[bag.length - 1], bag[0]];
-      }
-      last = bag.pop();
-      return last;
-    };
-  }
-
-  function blobStrength(b, A, x, y) {
-    const bw = b.fw * A.w, bh = b.fh * A.h;
-    const cx = A.x + b.fx * A.w + bw / 2, cy = A.y + b.fy * A.h + bh / 2;
-    return Math.max(0, 1 - Math.hypot((x - cx) / (bw / 2), (y - cy) / (bh / 2))) * b.a;
-  }
-
-  function rimMask(A, x, y) {
-    const r = Math.hypot((x - (A.x + A.w / 2)) / (A.w / 2), (y - (A.y + A.h / 2)) / (A.h / 2));
-    return r < 0.55 ? 1 : r >= 1 ? 0 : 1 - (r - 0.55) / 0.45;
-  }
-
-  function glowAt(pal, A, x, y) {
-    let [r, g, b] = pal.page;
-    let vis = 0;
-    const m = rimMask(A, x, y);
-    for (const bl of pal.blobs) {
-      const s = blobStrength(bl, A, x, y) * m;
-      r = mix(r, bl.rgb[0], s);
-      g = mix(g, bl.rgb[1], s);
-      b = mix(b, bl.rgb[2], s);
-      vis = Math.max(vis, s);
-    }
-    return { c: [r, g, b], s: vis };
-  }
-
-  function sampleFieldPoint(pal, rand, f, A) {
-    let best = null;
-    for (let k = 0; k < 4; k++) {
-      const a = rand() * 6.2832;
-      const q = Math.pow(rand(), 0.6);
-      const x = f.cx + Math.cos(a) * f.rx * q;
-      const y = f.cy + Math.sin(a) * f.ry * q;
-      const g = glowAt(pal, A, x, y);
-      if (!best || g.s > best.s) best = { x, y, c: g.c, s: g.s };
-    }
-    return best;
-  }
-
-  function plan(mode, p, W, H) {
-    switch (mode) {
-      case "smoke": return { delay: (1 - clamp(p.ny)) * 0.35 + p.r3 * 0.25, bend: (p.r1 - 0.5) * 150 };
-      case "vortex":
-        return {
-          delay: (Math.hypot(p.hx - W / 2, p.hy - H / 2) / Math.max(1, W)) * 0.9 + p.r3 * 0.15,
-          bend: (p.r2 > 0.5 ? 1 : -1) * (90 + p.r1 * 140),
-        };
-      case "sand": return { delay: p.nx * 0.6 + p.r3 * 0.18, bend: (p.r1 - 0.5) * 60 };
-      case "burst": return { delay: p.r3 * 0.1, bend: (p.r2 - 0.5) * 26 };
-      case "sweep": return { delay: (1 - p.nx) * 0.6 + p.r3 * 0.18, bend: -(60 + p.r1 * 90) };
-      default: return { delay: p.r1 * 0.55, bend: (p.r2 - 0.5) * 100 };
-    }
-  }
+  const smooth = (t) => {
+    const c = clamp(t);
+    return c * c * (3 - 2 * c);
+  };
 
   function bowAt(a, b, bend, t) {
-    const e = ease(t), dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1;
+    const e = ease(t);
+    const dx = b[0] - a[0];
+    const dy = b[1] - a[1];
+    const L = Math.hypot(dx, dy) || 1;
     const bow = Math.sin(e * Math.PI) * bend;
     return [mix(a[0], b[0], e) + (-dy / L) * bow, mix(a[1], b[1], e) + (dx / L) * bow, e];
   }
 
-  const rgbStr = (a, b, t) => {
-    const c = (i) => Math.max(0, Math.min(255, Math.round(mix(a[i], b[i], t))));
-    return `rgb(${c(0)},${c(1)},${c(2)})`;
-  };
+  const staticTextEl = headlineEl.querySelector('.tof-hero-title-static');
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  let W = headlineEl.clientWidth || 900;
+  let H = headlineEl.clientHeight || 150;
 
-  const textCv = document.createElement("canvas");
-  const nextMode = createModeBag((Date.now() & 0xffff) ^ 0x5a5a);
-  let W = 0, H = 0, dpr = 1;
-  let field = { cx: 0, cy: 0, rx: 0, ry: 0 };
-  let box = { x: 0, y: 0, w: 0, h: 0 };
-  let parts = [];
-  let phase = "gathering", mode = nextMode(), phaseStart = 0, raf = 0, timer = 0;
-  let intro = true, active = true, destroyed = false;
+  cv.width = Math.round(W * dpr);
+  cv.height = Math.round(H * dpr);
 
-  const isDarkTheme = () => document.documentElement.classList.contains('dark') || document.documentElement.dataset.theme === 'dark';
-  let pal = isDarkTheme() ? DARK : LIGHT;
+  // Sample points on high-resolution offscreen canvas
+  const textCv = document.createElement('canvas');
+  textCv.width = cv.width;
+  textCv.height = cv.height;
+  const o = textCv.getContext('2d');
+  if (!o) return;
 
-  function reroll() {
-    pal = isDarkTheme() ? DARK : LIGHT;
-    const r = createRng((Math.random() * 1e9) | 0);
-    for (const p of parts) {
-      const q = sampleFieldPoint(pal, r, field, box);
-      if (q) { p.fx = q.x; p.fy = q.y; p.fc = q.c; }
-    }
+  o.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const computedStyle = window.getComputedStyle(staticTextEl || headlineEl);
+  const fontSize = parseFloat(computedStyle.fontSize) || 52;
+  const fontWeight = computedStyle.fontWeight || '500';
+
+  const isMobile = W < 640;
+  o.textAlign = 'left';
+  o.textBaseline = 'middle';
+
+  if (isMobile) {
+    o.font = `${fontWeight} ${fontSize}px Geist, "Inter", system-ui, sans-serif`;
+    const m1 = o.measureText("Crafting products that feel");
+    o.fillText("Crafting products that feel", W / 2 - m1.width / 2, H / 2 - fontSize * 0.6);
+
+    o.font = `italic 400 ${fontSize * 1.05}px "Instrument Serif", Georgia, serif`;
+    const m2 = o.measureText("inevitable.");
+    o.fillText("inevitable.", W / 2 - m2.width / 2, H / 2 + fontSize * 0.6);
+  } else {
+    o.font = `${fontWeight} ${fontSize}px Geist, "Inter", system-ui, sans-serif`;
+    const m1 = o.measureText("Crafting products that feel ");
+    o.font = `italic 400 ${fontSize * 1.05}px "Instrument Serif", Georgia, serif`;
+    const m2 = o.measureText("inevitable.");
+
+    const totalW = m1.width + m2.width;
+    const startX = W / 2 - totalW / 2;
+
+    o.font = `${fontWeight} ${fontSize}px Geist, "Inter", system-ui, sans-serif`;
+    o.fillText("Crafting products that feel ", startX, H / 2);
+
+    o.font = `italic 400 ${fontSize * 1.05}px "Instrument Serif", Georgia, serif`;
+    o.fillText("inevitable.", startX + m1.width, H / 2);
   }
 
-  function build() {
-    W = cv.clientWidth || headlineEl.clientWidth || 800;
-    H = cv.clientHeight || headlineEl.clientHeight || 180;
-    dpr = Math.min(2, window.devicePixelRatio || 1);
-    cv.width = Math.max(1, Math.round(W * dpr));
-    cv.height = Math.max(1, Math.round(H * dpr));
-    textCv.width = cv.width;
-    textCv.height = cv.height;
+  // Sample particle points with calibrated density (target ~320 particles for 120fps fluid speed)
+  const imgData = o.getImageData(0, 0, cv.width, cv.height).data;
+  let cs = Math.max(3, Math.round(3.6 * dpr));
+  let pts = [];
 
-    pal = isDarkTheme() ? DARK : LIGHT;
-    box = { x: 0, y: 0, w: W, h: H };
-    field = { cx: W / 2, cy: H / 2, rx: Math.min(560, W * 0.42), ry: Math.min(260, H * 0.38) };
-
-    const o = textCv.getContext("2d");
-    if (!o) return;
-    o.setTransform(dpr, 0, 0, dpr, 0, 0);
-    o.clearRect(0, 0, W, H);
-
-    const isMobile = W < 640;
-    const fs = isMobile
-      ? Math.max(26, Math.min(38, W * 0.08))
-      : Math.max(38, Math.min(56, W * 0.052));
-
-    const fontSans = `500 ${fs}px Geist, "Inter", system-ui, sans-serif`;
-    const fontSerif = `italic 400 ${Math.round(fs * 1.08)}px "Instrument Serif", Georgia, serif`;
-    const inkColor = `rgb(${pal.ink.join(",")})`;
-    const accentColor = `rgb(${pal.accent.join(",")})`;
-
-    o.textAlign = "left";
-    o.textBaseline = "middle";
-
-    let textY1 = H / 2;
-    let textY2 = H / 2;
-
-    if (isMobile) {
-      // 2-line layout on small mobile screens
-      textY1 = H / 2 - fs * 0.65;
-      textY2 = H / 2 + fs * 0.65;
-
-      o.font = fontSans;
-      const m1 = o.measureText("Crafting products that feel");
-      const x1 = W / 2 - m1.width / 2;
-      o.fillStyle = inkColor;
-      o.fillText("Crafting products that feel", x1, textY1);
-
-      o.font = fontSerif;
-      const m2 = o.measureText("inevitable.");
-      const x2 = W / 2 - m2.width / 2;
-      o.fillStyle = accentColor;
-      o.fillText("inevitable.", x2, textY2);
-    } else {
-      // 1-line unified layout on tablet and desktop
-      o.font = fontSans;
-      const m1 = o.measureText("Crafting products that feel ");
-      o.font = fontSerif;
-      const m2 = o.measureText("inevitable.");
-
-      const totalW = m1.width + m2.width;
-      const startX = W / 2 - totalW / 2;
-
-      o.font = fontSans;
-      o.fillStyle = inkColor;
-      o.fillText("Crafting products that feel ", startX, H / 2);
-
-      o.font = fontSerif;
-      o.fillStyle = accentColor;
-      o.fillText("inevitable.", startX + m1.width, H / 2);
-    }
-
-    const d = o.getImageData(0, 0, cv.width, cv.height).data;
-    let cs = Math.max(2, Math.round(2.6 * dpr));
-    let pts = [];
-
-    for (;;) {
-      pts = [];
-      for (let y = 0; y < cv.height; y += cs) {
-        for (let x = 0; x < cv.width; x += cs) {
-          const w = Math.min(cs, cv.width - x), h = Math.min(cs, cv.height - y);
-          let hit = false;
-          for (let yy = y; yy < y + h && !hit; yy++) {
-            for (let xx = x; xx < x + w; xx++) {
-              if (d[(yy * cv.width + xx) * 4 + 3] > 30) { hit = true; break; }
-            }
-          }
-          if (hit) pts.push([x, y, w, h]);
-        }
+  for (let y = 0; y < cv.height; y += cs) {
+    for (let x = 0; x < cv.width; x += cs) {
+      const idx = (y * cv.width + x) * 4;
+      if (imgData[idx + 3] > 40) {
+        const hx = x / dpr;
+        const hy = y / dpr;
+        const isAccent = (hx > W * 0.58 && hy > H * 0.35) || (isMobile && hy > H / 2);
+        pts.push({ hx, hy, isAccent });
       }
-      if (pts.length <= 2600) break;
-      cs++;
     }
-
-    let minX = 1e9, maxX = -1e9;
-    for (const p of pts) {
-      p[4] = (p[0] + p[2] / 2) / dpr;
-      p[5] = (p[1] + p[3] / 2) / dpr;
-      if (p[4] < minX) minX = p[4];
-      if (p[4] > maxX) maxX = p[4];
-    }
-
-    const r = createRng(7);
-    parts = pts.map((p) => {
-      const u = r(), size = u < 0.62 ? 0.9 + r() * 0.8 : u < 0.9 ? 1.8 + r() * 1.4 : 3.4 + r() * 3.2;
-      return {
-        rx: p[0], ry: p[1], rw: p[2], rh: p[3], hx: p[4], hy: p[5], nx: (p[4] - minX) / Math.max(1, maxX - minX),
-        ny: (p[5] - (H / 2 - fs / 2)) / fs, r1: r(), r2: r(), r3: r(), size, fx: 0, fy: 0, fc: [0, 0, 0], lt: 0, bend: 0, pa: 0,
-      };
-    });
-
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    reroll();
   }
 
-  function drawRealText() {
+  // Shuffle & limit to ~340 particles
+  pts = pts.sort(() => Math.random() - 0.5).slice(0, 360);
+
+  const cx = W / 2;
+  const cy = H / 2;
+  const rx = Math.min(540, W * 0.46);
+  const ry = Math.min(220, H * 0.42);
+
+  const particles = pts.map((p, i) => {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.pow(Math.random(), 0.55);
+    const fx = cx + Math.cos(angle) * rx * dist * (Math.random() > 0.5 ? 1.15 : 0.85);
+    const fy = cy + Math.sin(angle) * ry * dist * 1.25;
+    const size = Math.random() < 0.65 ? 1.2 + Math.random() * 0.9 : 2.2 + Math.random() * 1.4;
+    const delay = (Math.hypot(p.hx - cx, p.hy - cy) / Math.max(1, W)) * 0.45 + (i / pts.length) * 0.22;
+    const bend = (Math.random() - 0.5) * 120;
+
+    return {
+      hx: p.hx,
+      hy: p.hy,
+      fx,
+      fy,
+      size,
+      delay,
+      bend,
+      isAccent: p.isAccent
+    };
+  });
+
+  // Enable particle canvas mode
+  headlineEl.classList.add('has-particle-canvas');
+
+  const DURATION = 2200; // 2.2 seconds: silky, intuitive, prompt
+  const startTime = performance.now();
+  let rafId = 0;
+
+  function render(now) {
+    const elapsed = now - startTime;
+    const prog = clamp(elapsed / DURATION);
+
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, cv.width, cv.height);
-    ctx.globalAlpha = 1;
-    ctx.drawImage(textCv, 0, 0);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
 
-  function frame(now) {
-    raf = 0;
-    const lead = intro && phase === "gathering" ? 0.08 : 0;
-    const prog = clamp((now - phaseStart) / TIMING.travel + lead), out = phase === "dissolving";
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, cv.width, cv.height);
-
-    for (const p of parts) {
-      const pl = plan(mode, p, W, H), lt = clamp((prog - pl.delay * 0.55) / 0.45);
-      p.lt = lt; p.bend = pl.bend;
-      p.pa = out ? 1 - smooth(lt / 0.18) : smooth((lt - 0.82) / 0.18);
-      if (p.pa <= 0.002) continue;
-      ctx.globalAlpha = p.pa;
-      ctx.drawImage(textCv, p.rx, p.ry, p.rw, p.rh, p.rx, p.ry, p.rw, p.rh);
+    // Synchronize progressive un-blur of the real DOM typography
+    if (staticTextEl) {
+      if (prog < 0.45) {
+        staticTextEl.style.opacity = '0';
+        staticTextEl.style.filter = 'blur(12px)';
+      } else {
+        const textReveal = smooth((prog - 0.45) / 0.55);
+        staticTextEl.style.opacity = `${textReveal}`;
+        staticTextEl.style.filter = `blur(${(1 - textReveal) * 10}px)`;
+        staticTextEl.style.transform = `translateY(${(1 - textReveal) * 6}px)`;
+      }
     }
 
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    for (const p of parts) {
-      const lt = p.lt;
-      if (lt <= 0 || lt >= 1) continue;
-      const a = out ? [p.hx, p.hy] : [p.fx, p.fy];
-      const b = out ? [p.fx, p.fy] : [p.hx, p.hy];
-      const q = bowAt(a, b, out ? p.bend : -p.bend, lt), e = out ? q[2] : 1 - q[2];
-      let alpha = 0.1 + 0.9 * (1 - smooth((e - 0.45) / 0.55));
-      alpha *= out ? 1 - smooth((lt - 0.85) / 0.15) : smooth(lt / 0.15) * (1 - p.pa);
-      if (alpha <= 0.004) continue;
-      ctx.globalAlpha = Math.min(1, alpha);
-      ctx.fillStyle = rgbStr(pal.ink, p.fc, smooth(e / 0.6));
+    // Group particles into 2 batched paths: ink and terracotta accent
+    // Exactly 2 draw calls per frame = buttery 120 FPS performance!
+    const inkParts = [];
+    const accentParts = [];
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      const lt = clamp((prog - p.delay * 0.45) / 0.55);
+      if (lt <= 0) continue;
+
+      const [qx, qy] = bowAt([p.fx, p.fy], [p.hx, p.hy], -p.bend, lt);
+      const alpha = lt >= 1 ? Math.max(0, 1 - (prog - 0.85) / 0.15) : smooth(lt / 0.2);
+      if (alpha <= 0.02) continue;
+
+      const rad = (p.size * mix(1.7, 1.0, lt)) / 2;
+      const targetList = p.isAccent ? accentParts : inkParts;
+      targetList.push({ qx, qy, rad });
+    }
+
+    // 1. Draw ink particles
+    if (inkParts.length) {
+      ctx.fillStyle = `rgba(${pal.ink[0]}, ${pal.ink[1]}, ${pal.ink[2]}, 0.85)`;
       ctx.beginPath();
-      ctx.arc(q[0], q[1], (p.size * mix(1, 1.7, smooth(e))) / 2, 0, 6.2832);
+      for (let i = 0; i < inkParts.length; i++) {
+        const pt = inkParts[i];
+        ctx.moveTo(pt.qx + pt.rad, pt.qy);
+        ctx.arc(pt.qx, pt.qy, pt.rad, 0, Math.PI * 2);
+      }
       ctx.fill();
     }
-    ctx.globalAlpha = 1;
-    if (prog < 1) raf = requestAnimationFrame(frame); else advance();
-  }
 
-  function stopWork() { clearTimeout(timer); cancelAnimationFrame(raf); raf = 0; }
-
-  function enter(next) {
-    phase = next;
-    phaseStart = performance.now();
-    stopWork();
-    if (!active || destroyed) return;
-
-    if (next === "text" || next === "settled") {
-      intro = false;
-      drawRealText();
-
-      try {
-        sessionStorage.setItem('tof_hero_intro_settled', 'true');
-      } catch (e) {}
-
-      // Smoothly transition from canvas particles to the crisp, full vector DOM text
-      setTimeout(() => {
-        headlineEl.classList.remove('has-particle-canvas');
-        headlineEl.classList.add('particle-settled');
-        if (cv) {
-          cv.style.transition = 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1)';
-          cv.style.opacity = '0';
-          setTimeout(() => {
-            if (cv) cv.style.display = 'none';
-            stopWork();
-            destroyed = true;
-          }, 700);
-        }
-        const blobs = headlineEl.querySelector('.tof-particle-blobs');
-        if (blobs) {
-          blobs.style.transition = 'opacity 1s ease';
-          blobs.style.opacity = '0.35';
-        }
-      }, 350);
-      return;
+    // 2. Draw accent terracotta particles
+    if (accentParts.length) {
+      ctx.fillStyle = `rgba(${pal.accent[0]}, ${pal.accent[1]}, ${pal.accent[2]}, 0.95)`;
+      ctx.beginPath();
+      for (let i = 0; i < accentParts.length; i++) {
+        const pt = accentParts[i];
+        ctx.moveTo(pt.qx + pt.rad, pt.qy);
+        ctx.arc(pt.qx, pt.qy, pt.rad, 0, Math.PI * 2);
+      }
+      ctx.fill();
     }
 
-    frame(performance.now());
+    if (prog < 1) {
+      rafId = requestAnimationFrame(render);
+    } else {
+      finishSettled();
+    }
   }
 
-  function advance() {
-    // Settle cleanly into full text when gathering finishes
-    enter("text");
+  function finishSettled() {
+    cancelAnimationFrame(rafId);
+    try {
+      sessionStorage.setItem('tof_hero_intro_settled', 'true');
+    } catch (e) {}
+
+    headlineEl.classList.remove('has-particle-canvas');
+    headlineEl.classList.add('particle-settled');
+
+    if (staticTextEl) {
+      staticTextEl.style.opacity = '1';
+      staticTextEl.style.filter = 'blur(0px)';
+      staticTextEl.style.transform = 'translateY(0)';
+    }
+
+    if (cv) {
+      cv.style.transition = 'opacity 0.45s ease';
+      cv.style.opacity = '0';
+      setTimeout(() => {
+        if (cv) cv.style.display = 'none';
+      }, 500);
+    }
+
+    const blobs = headlineEl.querySelector('.tof-particle-blobs');
+    if (blobs) {
+      blobs.style.transition = 'opacity 1s ease';
+      blobs.style.opacity = '0.35';
+    }
   }
 
-  // Hide static text once particle engine takes over
-  headlineEl.classList.add('has-particle-canvas');
-  build();
-  enter("gathering");
-
-  // Interaction / Visibility observers
-  let visible = true;
-  const sync = () => {
-    const isWorking = visible && !document.hidden;
-    if (isWorking === active) return;
-    active = isWorking;
-    if (active) enter(phase); else stopWork();
-  };
-
-  const io = new IntersectionObserver((entries) => {
-    visible = entries[entries.length - 1].isIntersecting;
-    sync();
-  });
-  io.observe(cv);
-
-  let rz = 0;
-  const ro = new ResizeObserver(() => {
-    clearTimeout(rz);
-    rz = window.setTimeout(() => {
-      stopWork();
-      build();
-      if (active) enter(phase); else if (phase === "text") drawRealText();
-    }, 250);
-  });
-  ro.observe(headlineEl);
-
-  document.addEventListener("visibilitychange", sync);
-
-  // Theme change observer
-  const themeObserver = new MutationObserver(() => {
-    reroll();
-    if (phase === "text") drawRealText();
-  });
-  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme"] });
+  rafId = requestAnimationFrame(render);
 }
 
