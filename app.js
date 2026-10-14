@@ -1934,40 +1934,36 @@ function initMonolithDragScroll() {
 
 function initTofTypewriter() {
   const el = document.getElementById('tof-typewriter-text');
-  const prefixEl = document.getElementById('tof-tw-prefix');
   if (!el) return;
 
   const phrases = [
-    { num: "01/04", label: "DISCIPLINE:", text: "Quantitative UX & Behavioral Economics" },
-    { num: "02/04", label: "DISCIPLINE:", text: "High-Fidelity Interface Architectures" },
-    { num: "03/04", label: "DISCIPLINE:", text: "Venture Pitch & Seed Growth Systems" },
-    { num: "04/04", label: "DISCIPLINE:", text: "Certified Data Protection & Governance" }
+    "Product Designer & Creative Technologist",
+    "Quantitative UX & Behavioral Strategist",
+    "High-Fidelity Interface Architect",
+    "Venture Pitch & Seed Growth Systems"
   ];
 
   let phraseIdx = 0;
   let charIdx = 0;
   let isDeleting = false;
-  let typingSpeed = 75;
+  let typingSpeed = 70;
 
   function type() {
-    const item = phrases[phraseIdx];
-    if (prefixEl) {
-      prefixEl.textContent = `[ ${item.num} ] ${item.label}`;
-    }
+    const current = phrases[phraseIdx];
 
     if (isDeleting) {
-      el.textContent = item.text.substring(0, charIdx - 1);
+      el.textContent = current.substring(0, charIdx - 1);
       charIdx--;
-      typingSpeed = 30;
+      typingSpeed = 28;
     } else {
-      el.textContent = item.text.substring(0, charIdx + 1);
+      el.textContent = current.substring(0, charIdx + 1);
       charIdx++;
-      typingSpeed = 70;
+      typingSpeed = 65;
     }
 
-    if (!isDeleting && charIdx === item.text.length) {
+    if (!isDeleting && charIdx === current.length) {
       isDeleting = true;
-      typingSpeed = 2400;
+      typingSpeed = 2200;
     } else if (isDeleting && charIdx === 0) {
       isDeleting = false;
       phraseIdx = (phraseIdx + 1) % phrases.length;
