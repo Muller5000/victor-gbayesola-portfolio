@@ -155,7 +155,7 @@ type Engine = { setActive: (on: boolean) => void; resize: () => void; destroy: (
 const INTRO_LEAD = 0.08;
 const FONT_STACK = 'Inter,"PingFang SC","Microsoft YaHei",system-ui,sans-serif';
 
-function createEngine(cv: HTMLCanvasElement, text: string, pal: Palette): Engine | null {
+function createEngine(cv: HTMLCanvasElement, text: string, pal: Palette, onSettled?: () => void, once: boolean = false): Engine | null {
   const ctx = cv.getContext("2d");
   if (!ctx) return null;
   const textCv = document.createElement("canvas");
@@ -264,7 +264,15 @@ function createEngine(cv: HTMLCanvasElement, text: string, pal: Palette): Engine
   function enter(next: Phase) {
     phase = next; phaseStart = performance.now(); stopWork();
     if (!active || destroyed) return;
-    if (next === "text") { intro = false; drawRealText(); timer = window.setTimeout(advance, TIMING.hold); }
+    if (next === "text") {
+      intro = false;
+      drawRealText();
+      if (once) {
+        onSettled?.();
+        return;
+      }
+      timer = window.setTimeout(advance, TIMING.hold);
+    }
     else if (next === "field") {
       ctx!.setTransform(1, 0, 0, 1, 0, 0); ctx!.clearRect(0, 0, cv.width, cv.height); ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
       timer = window.setTimeout(advance, TIMING.field);
@@ -274,7 +282,11 @@ function createEngine(cv: HTMLCanvasElement, text: string, pal: Palette): Engine
     }
   }
   function advance() {
-    enter(phase === "text" ? "dissolving" : phase === "dissolving" ? "field" : phase === "field" ? "gathering" : "text");
+    if (once) {
+      enter("text");
+    } else {
+      enter(phase === "text" ? "dissolving" : phase === "dissolving" ? "field" : phase === "field" ? "gathering" : "text");
+    }
   }
 
   build();
@@ -340,23 +352,51 @@ export interface ParticleTitleProps {
   /** Title text. The real <h2> stays in the DOM for screen readers. */
   text?: string;
   className?: string;
+  /** When true, runs once on fresh load/reload, then settles permanently on full text */
+  once?: boolean;
 }
 
 /**
  * A title that dissolves into drifting dust inside a soft glow, then gathers back into crisp text.
- * Six dissolve styles rotate. Adapts to light and dark themes, pauses when off-screen or when the tab
- * is hidden, and shows plain text when prefers-reduced-motion is set.
+ * When `once={true}` is set, it plays the gather animation on fresh load or reload, then shows the full
+ * visible text permanently.
  */
-export function ParticleTitle({ text = "What will you create today?", className = "" }: ParticleTitleProps) {
+export function ParticleTitle({ text = "What will you create today?", className = "", once = true }: ParticleTitleProps) {
   const reduce = usePrefersReducedMotion();
   const dark = useIsDark();
   const pal = dark ? DARK : LIGHT;
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [settled, setSettled] = useState(false);
 
   useEffect(() => {
+    // Check if reload or fresh session
+    const isReload = (() => {
+      try {
+        const navEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+        if (navEntries && navEntries.length > 0) return navEntries[0].type === "reload";
+        return performance.navigation && performance.navigation.type === 1;
+      } catch (e) {
+        return false;
+      }
+    })();
+
+    const hasPlayed = typeof window !== "undefined" && sessionStorage.getItem("particle_title_settled") === "true";
+    if (once && hasPlayed && !isReload) {
+      setSettled(true);
+      return;
+    }
+
     const cv = canvasRef.current;
     if (reduce || !cv) return;
-    const engine = createEngine(cv, text, dark ? DARK : LIGHT);
+
+    const onSettled = () => {
+      try {
+        sessionStorage.setItem("particle_title_settled", "true");
+      } catch (e) {}
+      setSettled(true);
+    };
+
+    const engine = createEngine(cv, text, dark ? DARK : LIGHT, onSettled, once);
     if (!engine) return;
     let visible = true;
     let size = `${cv.clientWidth}x${cv.clientHeight}`;
@@ -384,7 +424,7 @@ export function ParticleTitle({ text = "What will you create today?", className 
       ro.disconnect();
       engine.destroy();
     };
-  }, [reduce, dark, text]);
+  }, [reduce, dark, text, once]);
 
   const blobPos = ["left-[4%] top-[8%] w-[62%] h-[78%]", "left-[44%] top-[22%] w-[54%] h-[70%]", "left-[30%] top-[44%] w-[44%] h-[56%]"];
 
@@ -407,13 +447,15 @@ export function ParticleTitle({ text = "What will you create today?", className 
         ))}
       </div>
 
-      {!reduce && <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" />}
+      {!reduce && !settled && (
+        <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" />
+      )}
 
       <h2
         className={
-          reduce
-            ? "relative z-10 m-0 px-6 text-center text-3xl font-medium"
-            : "absolute m-[-1px] h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]"
+          reduce || settled
+            ? "relative z-10 m-0 px-6 text-center text-3xl font-medium transition-opacity duration-700 opacity-100"
+            : "absolute m-[-1px] h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)] opacity-0"
         }
         style={{ color: css(pal.ink, 0.95) }}
       >

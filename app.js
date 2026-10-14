@@ -2259,8 +2259,32 @@ function initHeroParticleTitle() {
   const ctx = cv.getContext('2d');
   if (!ctx) return;
 
+  const isReload = (() => {
+    try {
+      const navEntries = performance.getEntriesByType('navigation');
+      if (navEntries && navEntries.length > 0) {
+        return navEntries[0].type === 'reload';
+      }
+      return performance.navigation && performance.navigation.type === 1;
+    } catch (e) {
+      return false;
+    }
+  })();
+
+  const hasPlayed = sessionStorage.getItem('tof_hero_intro_settled') === 'true';
+
+  // If already played this session and NOT a fresh reload, show the full text immediately
+  if (hasPlayed && !isReload) {
+    headlineEl.classList.remove('has-particle-canvas');
+    headlineEl.classList.add('particle-settled');
+    if (cv) cv.style.display = 'none';
+    const blobs = headlineEl.querySelector('.tof-particle-blobs');
+    if (blobs) blobs.style.opacity = '0.35';
+    return;
+  }
+
   const MODES = ["smoke", "vortex", "sand", "burst", "sweep", "absorb"];
-  const TIMING = { hold: 5200, field: 1400, travel: 4200 };
+  const TIMING = { hold: 5200, field: 1400, travel: 3000 };
 
   const LIGHT = {
     ink: [20, 18, 16],
@@ -2572,26 +2596,43 @@ function initHeroParticleTitle() {
     phaseStart = performance.now();
     stopWork();
     if (!active || destroyed) return;
-    if (next === "text") {
+
+    if (next === "text" || next === "settled") {
       intro = false;
       drawRealText();
-      timer = window.setTimeout(advance, TIMING.hold);
-    } else if (next === "field") {
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.clearRect(0, 0, cv.width, cv.height);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      timer = window.setTimeout(advance, TIMING.field);
-    } else {
-      if (next === "dissolving") {
-        mode = nextMode();
-        reroll();
-      }
-      frame(performance.now());
+
+      try {
+        sessionStorage.setItem('tof_hero_intro_settled', 'true');
+      } catch (e) {}
+
+      // Smoothly transition from canvas particles to the crisp, full vector DOM text
+      setTimeout(() => {
+        headlineEl.classList.remove('has-particle-canvas');
+        headlineEl.classList.add('particle-settled');
+        if (cv) {
+          cv.style.transition = 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1)';
+          cv.style.opacity = '0';
+          setTimeout(() => {
+            if (cv) cv.style.display = 'none';
+            stopWork();
+            destroyed = true;
+          }, 700);
+        }
+        const blobs = headlineEl.querySelector('.tof-particle-blobs');
+        if (blobs) {
+          blobs.style.transition = 'opacity 1s ease';
+          blobs.style.opacity = '0.35';
+        }
+      }, 350);
+      return;
     }
+
+    frame(performance.now());
   }
 
   function advance() {
-    enter(phase === "text" ? "dissolving" : phase === "dissolving" ? "field" : phase === "field" ? "gathering" : "text");
+    // Settle cleanly into full text when gathering finishes
+    enter("text");
   }
 
   // Hide static text once particle engine takes over
