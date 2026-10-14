@@ -2191,11 +2191,11 @@ function initTofHeaderScroll() {
   if (header) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 30) {
-        header.style.backgroundColor = 'rgba(247, 245, 238, 0.96)';
-        header.style.borderBottomColor = 'rgba(29, 26, 23, 0.08)';
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.96)';
+        header.style.borderBottomColor = 'rgba(9, 9, 11, 0.08)';
       } else {
-        header.style.backgroundColor = 'rgba(247, 245, 238, 0.90)';
-        header.style.borderBottomColor = 'rgba(29, 26, 23, 0.05)';
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.90)';
+        header.style.borderBottomColor = 'rgba(9, 9, 11, 0.05)';
       }
     }, { passive: true });
   }
@@ -2293,11 +2293,11 @@ async function initHeroParticleTitle() {
   // Active theme colors
   const isDark = document.documentElement.classList.contains('dark') || document.documentElement.dataset.theme === 'dark';
   const pal = isDark ? {
-    ink: [247, 245, 238],
-    accent: [224, 114, 76]
+    ink: [250, 250, 250],
+    accent: [255, 85, 0]
   } : {
-    ink: [20, 18, 16],
-    accent: [194, 94, 56]
+    ink: [9, 9, 11],
+    accent: [255, 85, 0]
   };
 
   // Fluid math helpers
