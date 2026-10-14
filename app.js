@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initMonolithToggles();
   initMonolithDragScroll();
   initMechanicsAccordion();
+  initTofTypewriter();
+  initTofLetterboxCarousel();
+  initTofRailScroll();
+  initTofFaqAccordion();
+  initTofHeaderScroll();
   initAnimatedTestimonials(); // Interactive client reviews slider
   initNichesHoverSlider(); // Redesigned services hover slider
   initScrollRockAnimation(); // Floating lava rock animation
@@ -1923,3 +1928,239 @@ function initMonolithDragScroll() {
     slider.scrollLeft = scrollLeft - walk;
   });
 }
+
+
+/* ==========================================================================
+   TOF-SPEC INTERACTION CONTROLLER (RECORDING 2026-10-14 SPEC)
+   ========================================================================== */
+
+function initTofTypewriter() {
+  const el = document.getElementById('tof-typewriter-text');
+  if (!el) return;
+
+  const phrases = [
+    "Quantitative UX Analyst & Strategist",
+    "Visual Identity & Brand Architect",
+    "Digital Product Designer",
+    "Frontend Systems Builder"
+  ];
+
+  let phraseIdx = 0;
+  let charIdx = 0;
+  let isDeleting = false;
+  let typingSpeed = 85;
+
+  function type() {
+    const currentPhrase = phrases[phraseIdx];
+
+    if (isDeleting) {
+      el.textContent = currentPhrase.substring(0, charIdx - 1);
+      charIdx--;
+      typingSpeed = 38;
+    } else {
+      el.textContent = currentPhrase.substring(0, charIdx + 1);
+      charIdx++;
+      typingSpeed = 85;
+    }
+
+    if (!isDeleting && charIdx === currentPhrase.length) {
+      isDeleting = true;
+      typingSpeed = 2200;
+    } else if (isDeleting && charIdx === 0) {
+      isDeleting = false;
+      phraseIdx = (phraseIdx + 1) % phrases.length;
+      typingSpeed = 400;
+    }
+
+    setTimeout(type, typingSpeed);
+  }
+
+  type();
+}
+
+function initTofLetterboxCarousel() {
+  const frame = document.getElementById('tof-letterbox-frame');
+  if (!frame) return;
+
+  const slides = frame.querySelectorAll('.tof-slide');
+  if (slides.length <= 1) return;
+
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 4000);
+
+  // Parallax subtle depth on mouse movement over hero
+  const heroSection = document.querySelector('.tof-hero-section');
+  const container = document.querySelector('.tof-letterbox-container');
+  if (heroSection && container && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const xNorm = (e.clientX - rect.left) / rect.width - 0.5;
+      const yNorm = (e.clientY - rect.top) / rect.height - 0.5;
+      container.style.transform = `perspective(1000px) rotateY(${xNorm * 3.5}deg) rotateX(${-yNorm * 3.5}deg) translateY(-2px)`;
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      container.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)`;
+    });
+  }
+}
+
+function initTofRailScroll() {
+  const viewport = document.getElementById('tof-rail-viewport');
+  const pill = document.getElementById('tof-cursor-pill');
+  if (!viewport) return;
+
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  // Mouse drag to scroll rail horizontally
+  viewport.addEventListener('mousedown', (e) => {
+    if (e.target.closest('a, button, iframe')) return;
+    isDown = true;
+    viewport.classList.add('is-dragging');
+    startX = e.pageX - viewport.offsetLeft;
+    scrollLeft = viewport.scrollLeft;
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDown) return;
+    isDown = false;
+    viewport.classList.remove('is-dragging');
+  });
+
+  viewport.addEventListener('mouseleave', () => {
+    isDown = false;
+    viewport.classList.remove('is-dragging');
+    if (pill) pill.style.opacity = '0';
+  });
+
+  viewport.addEventListener('mouseenter', () => {
+    if (pill) pill.style.opacity = '1';
+  });
+
+  viewport.addEventListener('mousemove', (e) => {
+    // Pill cursor follower
+    if (pill) {
+      const rect = viewport.getBoundingClientRect();
+      const pillX = e.clientX - rect.left;
+      const pillY = e.clientY - rect.top;
+      pill.style.transform = `translate3d(${pillX - 45}px, ${pillY - 18}px, 0)`;
+    }
+
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - viewport.offsetLeft;
+    const walk = (x - startX) * 1.6;
+    viewport.scrollLeft = scrollLeft - walk;
+  });
+
+  // Smooth wheel scroll on horizontal rail when shift key or horizontal trackpad
+  viewport.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      viewport.scrollLeft += e.deltaX;
+    }
+  }, { passive: true });
+}
+
+function initTofFaqAccordion() {
+  const items = document.querySelectorAll('.tof-faq-item');
+  if (!items.length) return;
+
+  items.forEach(item => {
+    const btn = item.querySelector('.tof-faq-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('active');
+      
+      // Close other accordion items
+      items.forEach(other => {
+        if (other !== item) {
+          other.classList.remove('active');
+          const otherBtn = other.querySelector('.tof-faq-btn');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+function initTofHeaderScroll() {
+  const header = document.querySelector('.tof-header');
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const overlay = document.getElementById('tof-nav-overlay');
+  const bar1 = document.querySelector('.tof-toggle-bar.bar-1');
+  const bar2 = document.querySelector('.tof-toggle-bar.bar-2');
+
+  // Header background on scroll
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        header.style.backgroundColor = 'rgba(248, 248, 247, 0.96)';
+        header.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
+      } else {
+        header.style.backgroundColor = 'rgba(248, 248, 247, 0.88)';
+        header.style.borderBottomColor = 'rgba(0, 0, 0, 0.05)';
+      }
+    }, { passive: true });
+  }
+
+  // Navigation Overlay Toggle
+  if (toggleBtn && overlay) {
+    let isOpen = false;
+    toggleBtn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        overlay.classList.add('is-open');
+        if (bar1) bar1.style.transform = 'translateY(4px) rotate(45deg)';
+        if (bar2) bar2.style.transform = 'translateY(-4px) rotate(-45deg)';
+      } else {
+        overlay.classList.remove('is-open');
+        if (bar1) bar1.style.transform = 'none';
+        if (bar2) bar2.style.transform = 'none';
+      }
+    });
+
+    // Close on overlay link click
+    overlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        isOpen = false;
+        overlay.classList.remove('is-open');
+        if (bar1) bar1.style.transform = 'none';
+        if (bar2) bar2.style.transform = 'none';
+      });
+    });
+  }
+
+  // Universal smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          if (window.lenisInstance) {
+            window.lenisInstance.scrollTo(targetEl, { offset: -60, duration: 1.2 });
+          } else {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    });
+  });
+}
+
