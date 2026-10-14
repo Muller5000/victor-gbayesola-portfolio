@@ -5230,17 +5230,25 @@ html {
 
 
 /* ==========================================================================
-   TOF-SPEC DESIGN SYSTEM (INSPIRED BY TOFUNMI YINUSA & RECORDING 2026-10-14)
+   TOF-SPEC DESIGN SYSTEM (ALIVE EDITORIAL TYPOGRAPHY TUNING)
    ========================================================================== */
 
+:root {
+  --font-geist: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'Space Mono', monospace, ui-monospace;
+}
+
 /* Body override for editorial light-to-dark canvas */
-body.portfolio-body {
+body.portfolio-body,
+body.about-page {
   background-color: #f8f8f7 !important;
-  color: #111111 !important;
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  color: #09090b !important;
+  font-family: var(--font-geist) !important;
   overflow-x: hidden !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Base Container */
@@ -5276,11 +5284,11 @@ body.portfolio-body {
 
 .tof-brand-logo {
   text-decoration: none;
-  color: #111111;
-  font-family: 'Space Grotesk', 'Outfit', sans-serif;
+  color: #09090b;
+  font-family: var(--font-geist);
   font-weight: 700;
   font-size: 0.95rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   transition: opacity 0.2s ease;
 }
 
@@ -5301,9 +5309,9 @@ body.portfolio-body {
 .tof-toggle-bar {
   display: block;
   width: 24px;
-  height: 2px;
-  background-color: #111111;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  height: 1.5px;
+  background-color: #09090b;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
 }
 
 /* Minimalist Mobile Navigation Overlay */
@@ -5335,12 +5343,12 @@ body.portfolio-body {
 }
 
 .tof-nav-item {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-geist);
   font-size: clamp(2.2rem, 5vw, 3.4rem);
   font-weight: 600;
-  color: #111111;
+  color: #09090b;
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
@@ -5348,7 +5356,6 @@ body.portfolio-body {
   opacity: 0.55;
   transform: scale(1.04);
 }
-
 
 /* 1. HERO SECTION */
 .tof-hero-section {
@@ -5370,38 +5377,40 @@ body.portfolio-body {
 }
 
 .tof-hero-headline {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(3rem, 7.5vw, 6.2rem);
+  font-family: var(--font-geist);
+  font-size: clamp(2.8rem, 6.8vw, 5.8rem);
   font-weight: 500;
-  line-height: 1.04;
-  letter-spacing: -0.035em;
-  color: #111111;
+  line-height: 1.05;
+  letter-spacing: -0.038em;
+  color: #09090b;
   margin-bottom: 24px;
 }
 
 .tof-serif-italic {
-  font-family: 'Instrument Serif', Georgia, serif !important;
+  font-family: var(--font-serif) !important;
   font-style: italic !important;
   font-weight: 400 !important;
-  letter-spacing: -0.01em;
-  color: #111111;
+  letter-spacing: -0.015em;
+  color: #09090b;
 }
 
 .tof-typewriter-wrap {
-  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-  color: #666666;
+  font-family: var(--font-geist);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  color: #71717a;
   font-weight: 400;
   min-height: 36px;
   margin-bottom: 50px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  line-height: 1.6;
 }
 
 .tof-cursor-blink {
   font-weight: 300;
-  color: #111111;
+  color: #09090b;
   margin-left: 2px;
   animation: tofBlink 0.9s infinite;
 }
@@ -5476,11 +5485,13 @@ body.portfolio-body {
 }
 
 .tof-intro-bio {
-  font-size: 1.25rem;
+  font-family: var(--font-geist);
+  font-size: 1.15rem;
   line-height: 1.7;
-  color: #555555;
+  color: #52525b;
   margin-bottom: 36px;
   font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 .tof-pill-dark {
@@ -5488,18 +5499,19 @@ body.portfolio-body {
   align-items: center;
   gap: 12px;
   padding: 13px 26px;
-  background-color: #111111;
+  background-color: #09090b;
   color: #ffffff !important;
   border-radius: 100px;
   text-decoration: none;
-  font-size: 0.92rem;
+  font-family: var(--font-geist);
+  font-size: 0.88rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .tof-pill-dark:hover {
-  background-color: #222222;
+  background-color: #18181b;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
@@ -5510,12 +5522,12 @@ body.portfolio-body {
 }
 
 .tof-intro-headline {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+  font-family: var(--font-geist);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
   font-weight: 600;
-  line-height: 1.14;
-  letter-spacing: -0.025em;
-  color: #111111;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #09090b;
 }
 
 /* 3. CASE STUDIES (CARBON OLED BLACK CANVAS) */
@@ -5533,21 +5545,21 @@ body.portfolio-body {
 
 .tof-tag {
   display: inline-block;
-  font-family: 'Space Grotesk', 'Outfit', sans-serif;
-  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #888888;
+  letter-spacing: 0.18em;
+  color: #71717a;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
 .tof-cases-headline {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  font-family: var(--font-geist);
+  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
   font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   color: #ffffff;
   max-width: 820px;
   margin-bottom: 24px;
@@ -5567,9 +5579,10 @@ body.portfolio-body {
   color: #ffffff !important;
   border-radius: 100px;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-family: var(--font-geist);
+  font-size: 0.88rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
   cursor: pointer;
 }
@@ -5580,7 +5593,7 @@ body.portfolio-body {
   transform: translateY(-2px);
 }
 
-/* Horizontal Drag & Scroll Rail (Unrestricted Vertical Page Scroll) */
+/* Horizontal Drag & Scroll Rail */
 .tof-rail-viewport {
   width: 100%;
   overflow-x: auto;
@@ -5666,40 +5679,44 @@ body.portfolio-body {
 }
 
 .tof-card-cat {
-  font-family: 'Space Grotesk', 'Outfit', sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
   font-weight: 700;
-  color: #888888;
+  color: #a1a1aa;
   text-transform: uppercase;
   margin-bottom: 8px;
   display: block;
 }
 
 .tof-card-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-geist);
   font-size: 1.45rem;
   font-weight: 600;
   color: #ffffff;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   margin-bottom: 8px;
 }
 
 .tof-card-tagline {
+  font-family: var(--font-geist);
   font-size: 0.92rem;
-  color: #999999;
-  line-height: 1.5;
+  color: #a1a1aa;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
   margin-bottom: 18px;
 }
 
 .tof-card-link {
-  font-size: 0.88rem;
+  font-family: var(--font-geist);
+  font-size: 0.86rem;
   font-weight: 600;
   color: #ffffff;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  letter-spacing: 0.01em;
   transition: gap 0.2s ease, opacity 0.2s ease;
 }
 
@@ -5714,12 +5731,11 @@ body.portfolio-body {
   pointer-events: none;
   background: rgba(255, 255, 255, 0.95);
   color: #09090b;
-  font-family: 'Space Grotesk', 'Outfit', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 8px 18px;
+  font-family: var(--font-geist);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 7px 16px;
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -5735,7 +5751,7 @@ body.portfolio-body {
 .tof-capabilities-section {
   padding: 130px 0;
   background-color: #f8f8f7;
-  color: #111111;
+  color: #09090b;
 }
 
 .tof-cap-header {
@@ -5743,13 +5759,13 @@ body.portfolio-body {
 }
 
 .tof-cap-headline {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-family: var(--font-geist);
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
   max-width: 780px;
-  color: #111111;
+  color: #09090b;
 }
 
 .tof-cap-list {
@@ -5762,19 +5778,19 @@ body.portfolio-body {
   justify-content: space-between;
   align-items: center;
   padding: 32px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   text-decoration: none;
-  color: #111111;
+  color: #09090b;
   transition: padding-left 0.3s ease, border-color 0.3s ease;
 }
 
 .tof-cap-row:first-child {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .tof-cap-row:hover {
   padding-left: 14px;
-  border-bottom-color: #111111;
+  border-bottom-color: #09090b;
 }
 
 .tof-cap-row-content {
@@ -5785,24 +5801,26 @@ body.portfolio-body {
 }
 
 .tof-cap-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-family: var(--font-geist);
+  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #111111;
+  letter-spacing: -0.025em;
+  color: #09090b;
 }
 
 .tof-cap-sub {
-  font-size: 1.05rem;
-  color: #666666;
+  font-family: var(--font-geist);
+  font-size: 0.98rem;
+  color: #71717a;
   font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 .tof-cap-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #111111;
+  color: #09090b;
   transition: transform 0.3s ease;
 }
 
@@ -5825,12 +5843,12 @@ body.portfolio-body {
 }
 
 .tof-faq-headline {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-geist);
   font-size: clamp(2.2rem, 3.5vw, 3.2rem);
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  color: #111111;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #09090b;
 }
 
 .tof-faq-accordion-wrap {
@@ -5866,18 +5884,18 @@ body.portfolio-body {
 }
 
 .tof-faq-num {
-  font-family: 'Space Grotesk', monospace;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #999999;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #a1a1aa;
 }
 
 .tof-faq-question {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-geist);
   font-size: 1.25rem;
   font-weight: 600;
-  color: #111111;
-  letter-spacing: -0.01em;
+  color: #09090b;
+  letter-spacing: -0.018em;
 }
 
 .tof-faq-icon {
@@ -5892,17 +5910,17 @@ body.portfolio-body {
 .tof-faq-icon .bar-h,
 .tof-faq-icon .bar-v {
   position: absolute;
-  background-color: #111111;
+  background-color: #09090b;
   transition: transform 0.3s ease;
 }
 
 .tof-faq-icon .bar-h {
   width: 16px;
-  height: 2px;
+  height: 1.5px;
 }
 
 .tof-faq-icon .bar-v {
-  width: 2px;
+  width: 1.5px;
   height: 16px;
 }
 
@@ -5926,9 +5944,11 @@ body.portfolio-body {
 }
 
 .tof-faq-answer p {
-  font-size: 1.05rem;
+  font-family: var(--font-geist);
+  font-size: 1rem;
   line-height: 1.7;
-  color: #555555;
+  color: #52525b;
+  letter-spacing: -0.01em;
 }
 
 /* 6. CONTACT & MONUMENTAL FOOTER (OLED BLACK #09090b) */
@@ -5948,33 +5968,37 @@ body.portfolio-body {
 }
 
 .tof-contact-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-family: var(--font-geist);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
   font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   margin-bottom: 20px;
   color: #ffffff;
 }
 
 .tof-contact-desc {
-  font-size: 1.15rem;
-  line-height: 1.6;
-  color: #888888;
+  font-family: var(--font-geist);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: #a1a1aa;
   margin-bottom: 36px;
   max-width: 440px;
+  letter-spacing: -0.01em;
 }
 
 .tof-email-link {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-size: 1.1rem;
+  font-family: var(--font-geist);
+  font-size: 1.15rem;
   font-weight: 500;
   color: #ffffff;
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   padding-bottom: 6px;
+  letter-spacing: -0.01em;
   transition: border-color 0.2s ease, opacity 0.2s ease;
 }
 
@@ -5996,11 +6020,11 @@ body.portfolio-body {
 }
 
 .tof-input-group label {
-  font-family: 'Space Grotesk', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
   font-weight: 700;
-  color: #888888;
+  color: #71717a;
   text-transform: uppercase;
 }
 
@@ -6012,7 +6036,7 @@ body.portfolio-body {
   border-radius: 12px;
   padding: 14px 18px;
   color: #ffffff;
-  font-family: inherit;
+  font-family: var(--font-geist);
   font-size: 0.95rem;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
@@ -6033,7 +6057,7 @@ body.portfolio-body {
 }
 
 .tof-form .btn-submit:hover {
-  background: #e6e6e6;
+  background: #e4e4e7;
   color: #09090b !important;
 }
 
@@ -6052,14 +6076,15 @@ body.portfolio-body {
 }
 
 .tof-monumental-titles a {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-family: var(--font-geist);
+  font-size: clamp(2.6rem, 5.5vw, 5.5rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+  color: rgba(255, 255, 255, 0.28);
   text-decoration: none;
   text-transform: uppercase;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.35s ease, transform 0.35s ease;
 }
 
 .tof-monumental-titles a:hover {
@@ -6076,11 +6101,14 @@ body.portfolio-body {
 }
 
 .tof-footer-link {
-  color: #888888;
+  font-family: var(--font-geist);
+  color: #a1a1aa;
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+  font-weight: 500;
   padding: 10px 20px;
   border-radius: 100px;
+  letter-spacing: 0.01em;
   transition: color 0.2s ease;
 }
 
@@ -6116,7 +6144,8 @@ body.portfolio-body {
   border-radius: 100px;
   padding: 12px 50px 12px 20px;
   color: #ffffff;
-  font-size: 0.9rem;
+  font-family: var(--font-geist);
+  font-size: 0.88rem;
 }
 
 .tof-nl-wrap input:focus {
@@ -6152,9 +6181,11 @@ body.portfolio-body {
 }
 
 .tof-footer-socials a {
-  color: #888888;
+  font-family: var(--font-geist);
+  color: #a1a1aa;
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+  font-weight: 500;
   transition: color 0.2s ease;
 }
 
@@ -6169,8 +6200,9 @@ body.portfolio-body {
   flex-wrap: wrap;
   gap: 20px;
   padding-top: 30px;
+  font-family: var(--font-geist);
   font-size: 0.8rem;
-  color: #666666;
+  color: #71717a;
 }
 
 .tof-copy-links {
@@ -6179,13 +6211,27 @@ body.portfolio-body {
 }
 
 .tof-copy-links a {
-  color: #666666;
+  color: #71717a;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .tof-copy-links a:hover {
-  color: #999999;
+  color: #a1a1aa;
+}
+
+/* About Page Specific Styles */
+body.about-page {
+  background-color: #f8f8f7 !important;
+}
+
+.cert-card-item {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+}
+
+.cert-card-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* Responsive Rules */
@@ -6234,18 +6280,3 @@ body.portfolio-body {
     font-size: 1.8rem;
   }
 }
-
-/* About Page Specific Styles */
-body.about-page {
-  background-color: #f8f8f7 !important;
-}
-
-.cert-card-item {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
-}
-
-.cert-card-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
-}
-
