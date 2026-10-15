@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Elektra Web3 Case Study — Victor Gbayesola</title>
+  <meta name="description" content="Case study: Architecting Elektra Web3, a voice-assisted mobile cryptocurrency neobank and DeFi portfolio manager.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Elektra Web3 Case Study — Victor Gbayesola">
+  <meta property="og:description" content="Conversational AI & Mobile DeFi Architecture by Victor Gbayesola.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://designeunoch.com.ng/case-study-elektra.html">
+  <meta property="og:image" content="https://designeunoch.com.ng/assets/elektra-core.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css?v=22">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
+</head>
+<body class="portfolio-body case-study-page">
+
+  <!-- Mouse Tracking Glow & Cursor -->
+  <div class="cursor-follower" id="cursor-follower"><span class="cursor-text"></span></div>
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- Minimalist Header -->
+  <header class="tof-header">
+    <div class="tof-header-container">
+      <a href="index.html" class="tof-brand-logo select-none">
+        <span class="tof-logo-text">VICTOR G.</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="index.html#projects" class="tof-pill-dark" style="padding: 9px 18px; font-size: 0.82rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Selected Work</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="case-study-container" style="padding-top: 160px;">
+    
+    <!-- Hero Section -->
+    <section class="container" style="margin-bottom: 70px;">
+      <div style="max-width: 980px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+          <span class="tof-tag" style="background: rgba(255, 85, 0, 0.1); color: var(--color-accent); border: 1px solid rgba(255, 85, 0, 0.25);">CASE STUDY [ 03 / 06 ]</span>
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.12em;">FINTECH & AI UX</span>
+        </div>
+
+        <h1 class="cs-title" style="text-align: left; margin-bottom: 28px; font-size: clamp(3rem, 7vw, 5.8rem); line-height: 1.05;">
+          Elektra Web3 <br>
+          <span class="tof-serif-italic" style="color: var(--color-accent); font-weight: 400;">Conversational AI & Mobile DeFi.</span>
+        </h1>
+
+        <p style="font-size: 1.28rem; color: var(--color-ink-secondary); max-width: 68ch; line-height: 1.68; margin-bottom: 36px; font-family: var(--font-geist);">
+          Demystifying decentralized finance for mainstream consumers. Elektra combines voice-prompted smart contract transfers, low-friction token swaps, and institutional real-time telemetry into a fluid mobile experience that eliminates Web3 anxiety.
+        </p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 14px;">
+          <button type="button" class="tof-pill-accent" onclick="document.getElementById('gallery-section').scrollIntoView({ behavior: 'smooth' })">
+            <span>Explore Interactive Gallery</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <a href="index.html#projects" class="tof-pill-white">
+            <span>All Selected Work</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metadata Horizontal Strip -->
+    <section class="container" style="margin-bottom: 90px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 36px; padding: 36px 0; border-top: 1px solid var(--color-border-light); border-bottom: 1px solid var(--color-border-light);">
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-muted); margin-bottom: 8px;">Role</h4>
+          <p style="font-family: var(--font-geist); font-size: 1.08rem; font-weight: 600; color: var(--color-ink-primary); margin: 0;">Lead Product & Interaction Designer</p>
+        </div>
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-muted); margin-bottom: 8px;">Timeline</h4>
+          <p style="font-family: var(--font-geist); font-size: 1.08rem; font-weight: 600; color: var(--color-ink-primary); margin: 0;">8 Weeks (Design System to Hand-off)</p>
+        </div>
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-muted); margin-bottom: 8px;">Platform</h4>
+          <p style="font-family: var(--font-geist); font-size: 1.08rem; font-weight: 600; color: var(--color-ink-primary); margin: 0;">iOS & Android Native Mobile App</p>
+        </div>
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-muted); margin-bottom: 8px;">Key Innovation</h4>
+          <p style="font-family: var(--font-geist); font-size: 1.08rem; font-weight: 600; color: var(--color-accent); margin: 0;">Voice-Prompted Smart Contract Transfers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Design Gallery Showcase -->
+    <section class="container" id="gallery-section" style="margin-bottom: 130px;">
+      <div style="background: var(--color-dark-surface); border: 1px solid var(--color-dark-border); border-radius: 24px; box-shadow: 0 32px 80px rgba(0,0,0,0.45); overflow: hidden;">
+        
+        <!-- Gallery Controls -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 18px 28px; background: #16161a; border-bottom: 1px solid rgba(255,255,255,0.08); gap: 14px;">
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.1em;">HIGH-FIDELITY VIEWER</span>
+            <h3 id="cs-active-title" style="font-family: var(--font-geist); color: #fff; font-size: 1.15rem; font-weight: 600; margin: 4px 0 0 0;">Core App Experience — Instant Swaps & Portfolio Telemetry</h3>
+          </div>
+
+          <!-- Tab Switcher -->
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; background: rgba(255,255,255,0.04); padding: 5px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.06);">
+            <button type="button" class="cs-gallery-tab active" onclick="switchCsView('core')" id="cs-tab-core" style="background: var(--color-accent); color: #fff; border: none; border-radius: 100px; padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">Core Experience</button>
+            <button type="button" class="cs-gallery-tab" onclick="switchCsView('voice')" id="cs-tab-voice" style="background: transparent; color: #a1a1aa; border: none; border-radius: 100px; padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">Voice AI Transfer</button>
+            <button type="button" class="cs-gallery-tab" onclick="switchCsView('onboarding')" id="cs-tab-onboarding" style="background: transparent; color: #a1a1aa; border: none; border-radius: 100px; padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">Onboarding Hub</button>
+            <button type="button" class="cs-gallery-tab" onclick="switchCsView('full')" id="cs-tab-full" style="background: transparent; color: #a1a1aa; border: none; border-radius: 100px; padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">Full 9-Screen Grid</button>
+          </div>
+        </div>
+
+        <!-- Image Canvas -->
+        <div style="padding: 30px; display: flex; align-items: center; justify-content: center; background: #09090b; min-height: 480px;">
+          <img id="cs-gallery-img" src="assets/elektra-core.jpg" alt="Elektra Web3 App Preview" style="max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.7); transition: opacity 0.25s ease;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep-Dive Editorial Breakdown -->
+    <section class="container" style="margin-bottom: 140px;">
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;">
+        
+        <!-- Sticky Sidebar -->
+        <div style="position: sticky; top: 120px;">
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-accent); font-weight: 700; letter-spacing: 0.12em;">DESIGN RATIONALE</span>
+          <h2 style="font-family: var(--font-geist); font-size: clamp(2.2rem, 3.5vw, 3rem); font-weight: 700; margin-top: 12px; line-height: 1.1; color: var(--color-ink-primary);">
+            Simplifying Web3 <br>
+            <span class="tof-serif-italic" style="color: var(--color-accent);">Without Diluting Power.</span>
+          </h2>
+          <p style="font-size: 0.95rem; color: var(--color-ink-muted); line-height: 1.6; margin-top: 20px;">
+            A deep-dive into how natural language, transparent routing, and strict sensory feedback bridge the barrier to mass crypto adoption.
+          </p>
+        </div>
+
+        <!-- Main Narrative Content -->
+        <div>
+          <!-- Part 1 -->
+          <div style="margin-bottom: 60px;">
+            <h3 style="font-family: var(--font-geist); font-size: 1.7rem; font-weight: 600; color: var(--color-ink-primary); margin-bottom: 16px;">
+              01. The Problem: The Cognitive Penalty of DeFi
+            </h3>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary); margin-bottom: 20px;">
+              Existing non-custodial Web3 wallets suffer from severe usability friction: 42-character hexadecimal addresses, ambiguous slippage tolerance parameters, and disjointed multi-chain balances that cause over 70% of new users to abandon transactions out of error paralysis.
+            </p>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary);">
+              My objective with Elektra was to engineer a neobank-grade consumer interface that preserves self-custody principles while replacing technical anxiety with intuitive, guided intent recognition.
+            </p>
+          </div>
+
+          <!-- Part 2 -->
+          <div style="margin-bottom: 60px;">
+            <h3 style="font-family: var(--font-geist); font-size: 1.7rem; font-weight: 600; color: var(--color-ink-primary); margin-bottom: 16px;">
+              02. Conversational Intent Architecture (Voice-to-Chain)
+            </h3>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary); margin-bottom: 20px;">
+              Rather than forcing users through multi-step dropdown menus, token address lookups, and manual gas sliders, Elektra introduces a dedicated natural-language voice interface.
+            </p>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary); margin-bottom: 24px;">
+              A single voice prompt—such as <em style="color: var(--color-accent); font-weight: 600;">"Transfer 50 USDT to John"</em>—is parsed instantly into recipient ENS resolution, network auto-detection (ERC-20), and gas fee estimation, culminating in an unambiguous single-tap confirmation sheet.
+            </p>
+
+            <div style="padding: 30px; background: var(--color-canvas-subtle); border-left: 3px solid var(--color-accent); border-radius: 0 16px 16px 0;">
+              <h4 style="font-family: var(--font-geist); font-size: 1.15rem; font-weight: 600; color: var(--color-ink-primary); margin-bottom: 12px;">3-Phase Verification Safeguard:</h4>
+              <ul style="margin: 0; padding-left: 20px; color: var(--color-ink-secondary); font-size: 1.05rem; line-height: 1.7;">
+                <li><strong>Phase 1: Real-Time Acoustic Feedback</strong> with animated audio visualizer ring.</li>
+                <li><strong>Phase 2: Intent Validation</strong> resolving address books and smart contract safety score.</li>
+                <li><strong>Phase 3: Explicit Modal Authorization</strong> detailing network, gas, and final recipient.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Part 3 -->
+          <div style="margin-bottom: 60px;">
+            <h3 style="font-family: var(--font-geist); font-size: 1.7rem; font-weight: 600; color: var(--color-ink-primary); margin-bottom: 16px;">
+              03. Transparent Swaps & Institutional Telemetry
+            </h3>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary); margin-bottom: 20px;">
+              The Swap engine surfaces transparent routing metrics directly on the input card: Uniswap v3 (Base) routing, expected network fee ($3.08), maximum price impact (0.15%), and slippage tolerance (0.50%). Users always understand their exact execution price before signing.
+            </p>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary);">
+              The asset telemetry view features interactive candlestick and line charts across 1H, 1D, 1W, 1M, 1Y, and All timeframes, coupled with portfolio weight percentage gauges and 24-hour delta indicators.
+            </p>
+          </div>
+
+          <!-- Deliverables Bento Box -->
+          <div style="padding: 36px; background: var(--color-dark-surface); border: 1px solid var(--color-dark-border); border-radius: 20px;">
+            <h3 style="font-family: var(--font-geist); font-size: 1.45rem; font-weight: 600; color: #fff; margin-bottom: 20px;">
+              Key System Deliverables
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+              <div style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+                <i class="fa-solid fa-mobile-screen" style="color: var(--color-accent); font-size: 1.4rem; margin-bottom: 12px;"></i>
+                <h5 style="color: #fff; font-size: 0.98rem; font-weight: 600; margin-bottom: 6px;">9 Mobile Screen Blueprints</h5>
+                <p style="color: var(--color-dark-secondary); font-size: 0.86rem; margin: 0; line-height: 1.5;">Onboarding, Voice AI, Coin Telemetry, and Instant Swap architecture.</p>
+              </div>
+              <div style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+                <i class="fa-solid fa-microphone-lines" style="color: var(--color-accent); font-size: 1.4rem; margin-bottom: 12px;"></i>
+                <h5 style="color: #fff; font-size: 0.98rem; font-weight: 600; margin-bottom: 6px;">Voice-to-Chain Interaction</h5>
+                <p style="color: var(--color-dark-secondary); font-size: 0.86rem; margin: 0; line-height: 1.5;">Natural-language NLP flow for hands-free crypto transfers.</p>
+              </div>
+              <div style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+                <i class="fa-solid fa-layer-group" style="color: var(--color-accent); font-size: 1.4rem; margin-bottom: 12px;"></i>
+                <h5 style="color: #fff; font-size: 0.98rem; font-weight: 600; margin-bottom: 6px;">OLED Design Tokens</h5>
+                <p style="color: var(--color-dark-secondary); font-size: 0.86rem; margin: 0; line-height: 1.5;">Deep pitch carbon foundations with ultraviolet glow hierarchies.</p>
+              </div>
+              <div style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+                <i class="fa-solid fa-chart-line" style="color: var(--color-accent); font-size: 1.4rem; margin-bottom: 12px;"></i>
+                <h5 style="color: #fff; font-size: 0.98rem; font-weight: 600; margin-bottom: 6px;">Real-Time Financial Charts</h5>
+                <p style="color: var(--color-dark-secondary); font-size: 0.86rem; margin: 0; line-height: 1.5;">Low-latency market cap, circulating supply, and price charts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Project CTA -->
+    <section class="cs-next-project" style="text-align: center; padding: 120px 0; border-top: 1px solid var(--color-border-light);">
+      <div class="container">
+        <p style="color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.16em; font-family: var(--font-mono); font-size: 0.82rem; margin-bottom: 20px;">Next Selected Work</p>
+        <a href="case-study-ventura.html" class="cs-next-title" style="font-family: var(--font-geist); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 700; text-decoration: none; color: var(--color-ink-primary); transition: color 0.3s ease; line-height: 1.05; display: inline-flex; align-items: center; gap: 16px;">
+          <span>Ventura Ecosystem</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="tof-footer">
+    <div class="tof-container">
+      <div class="tof-footer-copy-line" style="border-top: 1px solid var(--color-border-light); padding: 36px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <span style="font-size: 0.88rem; color: var(--color-ink-muted);">© 2026 VICTOR GBAYESOLA. Designed with rigor, built with craft.</span>
+        <div style="display: flex; gap: 20px;">
+          <a href="index.html#projects" style="color: var(--color-ink-secondary); font-size: 0.88rem; text-decoration: none;">Selected Work</a>
+          <a href="about.html" style="color: var(--color-ink-secondary); font-size: 0.88rem; text-decoration: none;">About Me</a>
+          <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" style="color: var(--color-ink-secondary); font-size: 0.88rem; text-decoration: none;">Behance</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+    // Lenis Smooth Scroll
+    if (typeof Lenis !== 'undefined') {
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        smooth: true
+      });
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+
+    // High-Fidelity Viewer Tab Logic
+    const CS_VIEWS = {
+      core: {
+        src: 'assets/elektra-core.jpg',
+        title: 'Core App Experience — Instant Swaps & Portfolio Telemetry',
+        alt: 'Elektra Web3 Core App Screens'
+      },
+      voice: {
+        src: 'assets/elektra-voice.jpg',
+        title: 'Conversational Voice AI — Natural-Language Smart Contract Flow',
+        alt: 'Elektra Web3 Voice Transfer Screens'
+      },
+      onboarding: {
+        src: 'assets/elektra-onboarding.jpg',
+        title: 'Onboarding & Asset Hub — Low-Fee Swaps & Multi-Currency Telemetry',
+        alt: 'Elektra Web3 Onboarding Screens'
+      },
+      full: {
+        src: 'assets/elektra-full.jpg',
+        title: 'Complete 9-Screen Mobile Design System & User Architecture',
+        alt: 'Elektra Web3 Full 9-Screen System'
+      }
+    };
+
+    function switchCsView(viewKey) {
+      const data = CS_VIEWS[viewKey] || CS_VIEWS.core;
+      const img = document.getElementById('cs-gallery-img');
+      const title = document.getElementById('cs-active-title');
+
+      if (img) {
+        img.style.opacity = '0.3';
+        setTimeout(() => {
+          img.src = data.src;
+          img.alt = data.alt;
+          img.style.opacity = '1';
+        }, 120);
+      }
+      if (title) {
+        title.textContent = data.title;
+      }
+
+      const tabs = document.querySelectorAll('.cs-gallery-tab');
+      tabs.forEach(tab => {
+        tab.style.background = 'transparent';
+        tab.style.color = '#a1a1aa';
+        tab.classList.remove('active');
+      });
+      const activeTab = document.getElementById('cs-tab-' + viewKey);
+      if (activeTab) {
+        activeTab.style.background = 'var(--color-accent)';
+        activeTab.style.color = '#ffffff';
+        activeTab.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -2527,3 +2527,88 @@ async function initHeroParticleTitle() {
   rafId = requestAnimationFrame(render);
 }
 
+/* ==========================================================================
+   ELEKTRA WEB3 DESIGN GALLERY MODAL
+   ========================================================================== */
+const ELEKTRA_VIEWS = {
+  core: {
+    src: 'assets/elektra-core.jpg',
+    title: 'Core App Experience — Instant Swap, Real-Time Chart & Asset Balance',
+    alt: 'Elektra Web3 Core App Screens'
+  },
+  voice: {
+    src: 'assets/elektra-voice.jpg',
+    title: 'Conversational Voice AI — Natural-Language Transfer to Smart Contract',
+    alt: 'Elektra Web3 Voice-Prompted Transfer Flow'
+  },
+  onboarding: {
+    src: 'assets/elektra-onboarding.jpg',
+    title: 'Onboarding & Asset Hub — Low-Fee Swaps & Multi-Currency Telemetry',
+    alt: 'Elektra Web3 Onboarding Hub'
+  },
+  full: {
+    src: 'assets/elektra-full.jpg',
+    title: 'Complete 9-Screen Mobile Design System & User Architecture',
+    alt: 'Elektra Web3 Complete 9-Screen System'
+  }
+};
+
+function openElektraGalleryModal(view = 'core') {
+  const modal = document.getElementById('elektra-gallery-modal');
+  if (!modal) return;
+  switchElektraView(view);
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeElektraGalleryModal() {
+  const modal = document.getElementById('elektra-gallery-modal');
+  if (!modal) return;
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function switchElektraView(viewKey) {
+  const data = ELEKTRA_VIEWS[viewKey] || ELEKTRA_VIEWS.core;
+  const img = document.getElementById('elektra-modal-img');
+  const subtitle = document.getElementById('elektra-modal-subtitle');
+  
+  if (img) {
+    img.style.opacity = '0.3';
+    setTimeout(() => {
+      img.src = data.src;
+      img.alt = data.alt;
+      img.style.opacity = '1';
+    }, 120);
+  }
+  if (subtitle) {
+    subtitle.textContent = data.title;
+  }
+
+  const tabs = document.querySelectorAll('.elektra-tab');
+  tabs.forEach(tab => {
+    tab.style.background = 'transparent';
+    tab.style.color = '#a1a1aa';
+    tab.classList.remove('active');
+  });
+  const activeTab = document.getElementById('tab-' + viewKey);
+  if (activeTab) {
+    activeTab.style.background = 'var(--color-accent)';
+    activeTab.style.color = '#ffffff';
+    activeTab.classList.add('active');
+  }
+}
+
+// Global modal event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('elektra-gallery-modal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeElektraGalleryModal();
+    });
+  }
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeElektraGalleryModal();
+  });
+});
+
