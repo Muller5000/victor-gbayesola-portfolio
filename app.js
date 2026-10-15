@@ -2610,5 +2610,115 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeElektraGalleryModal();
   });
+
+  // Initialize Web3Forms contact form AJAX handling
+  initContactForms();
 });
+
+/* ==========================================================================
+   CONTACT FORM CONTROLLER (WEB3FORMS AJAX INTEGRATION)
+   ========================================================================== */
+function initContactForms() {
+  const forms = document.querySelectorAll('.tof-form');
+  if (!forms.length) return;
+
+  forms.forEach(form => {
+    // Avoid double-binding
+    if (form.dataset.formBound === 'true') return;
+    form.dataset.formBound = 'true';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('.btn-submit');
+      const btnSpan = submitBtn ? submitBtn.querySelector('span') : null;
+      let statusEl = form.querySelector('.tof-form-status');
+      
+      if (!statusEl) {
+        statusEl = document.createElement('div');
+        statusEl.className = 'tof-form-status';
+        form.appendChild(statusEl);
+      }
+
+      const originalText = btnSpan ? btnSpan.textContent : 'Send Message';
+
+      // Validation
+      const nameInput = form.querySelector('input[name="name"]');
+      const emailInput = form.querySelector('input[name="email"]');
+      const messageInput = form.querySelector('textarea[name="message"]');
+
+      if (!nameInput?.value.trim() || !emailInput?.value.trim() || !messageInput?.value.trim()) {
+        showStatus(statusEl, 'error', 'Please fill in all fields before sending.');
+        return;
+      }
+
+      // Loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+        submitBtn.style.cursor = 'not-allowed';
+      }
+      if (btnSpan) {
+        btnSpan.textContent = 'Transmitting...';
+      }
+      statusEl.style.display = 'none';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          showStatus(statusEl, 'success', '✓ Message sent successfully! Victor will reach out within 24 hours.');
+          form.reset();
+        } else {
+          showStatus(statusEl, 'error', data.message || 'Unable to transmit message. Please email directly at gbayesolavictor@gmail.com.');
+        }
+      } catch (err) {
+        console.error('Contact form submission error:', err);
+        showStatus(statusEl, 'error', 'Network connection issue. Please email directly at gbayesolavictor@gmail.com.');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+          submitBtn.style.cursor = 'pointer';
+        }
+        if (btnSpan) {
+          btnSpan.textContent = originalText;
+        }
+      }
+    });
+  });
+
+  function showStatus(el, type, msg) {
+    el.className = 'tof-form-status ' + type;
+    el.innerHTML = msg;
+    el.style.display = 'flex';
+    el.style.opacity = '1';
+    
+    if (type === 'success') {
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.6s ease';
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.style.display = 'none';
+          el.style.opacity = '1';
+        }, 600);
+      }, 7000);
+    }
+  }
+}
+
+// In case DOM is already loaded
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  initContactForms();
+}
+
 

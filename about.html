@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="style.css?v=21">
+  <link rel="stylesheet" href="style.css?v=23">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
 </head>
 <body class="portfolio-body about-page">
@@ -403,23 +403,30 @@
         </div>
 
         <div class="tof-contact-form-side">
-          <form class="tof-form" action="https://formspree.io/f/mqaejkkb" method="POST">
+          <form class="tof-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms Access Key for gbayesolavictor@gmail.com -->
+            <input type="hidden" name="access_key" value="ea67b861-2575-4929-b9fb-6a5f0279fc51">
+            <input type="hidden" name="subject" value="New Inquiry from About Page — Victor Gbayesola">
+            <input type="hidden" name="from_name" value="Portfolio Visitor">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
             <div class="tof-input-group">
-              <label>YOUR NAME</label>
-              <input type="text" name="name" required placeholder="e.g. John Doe">
+              <label for="contact-name">YOUR NAME</label>
+              <input type="text" id="contact-name" name="name" required placeholder="e.g. John Doe">
             </div>
             <div class="tof-input-group">
-              <label>YOUR EMAIL</label>
-              <input type="email" name="email" required placeholder="e.g. john@example.com">
+              <label for="contact-email">YOUR EMAIL</label>
+              <input type="email" id="contact-email" name="email" required placeholder="e.g. john@example.com">
             </div>
             <div class="tof-input-group">
-              <label>YOUR MESSAGE</label>
-              <textarea name="message" rows="4" required placeholder="Tell me about your product, timeline, and goals..."></textarea>
+              <label for="contact-message">YOUR MESSAGE</label>
+              <textarea id="contact-message" name="message" rows="4" required placeholder="Tell me about your product, timeline, and goals..."></textarea>
             </div>
             <button type="submit" class="tof-pill-white btn-submit">
               <span>Send Message</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
             </button>
+            <div class="tof-form-status" style="display: none;"></div>
           </form>
         </div>
       </div>
@@ -547,5 +554,6 @@
       if (e.key === 'Escape') closeCertModal();
     });
   </script>
+  <script src="app.js?v=20"></script>
 </body>
 </html>

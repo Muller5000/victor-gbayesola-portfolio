@@ -6354,6 +6354,31 @@ body.about-page {
   transform: translateY(-2px);
 }
 
+.tof-form-status {
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.5;
+  transition: opacity 0.3s ease;
+  margin-top: 12px;
+}
+
+.tof-form-status.success {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+}
+
+.tof-form-status.error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
 /* Monumental Footer */
 .tof-monumental-footer {
   border-top: 1px solid var(--color-dark-border);
