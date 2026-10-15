@@ -4,146 +4,337 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
   <title>Finvera Case Study — Victor Gbayesola</title>
-  <meta name="description" content="Case study: Designing Finvera, a comprehensive fintech platform democratizing financial growth.">
+  <meta name="description" content="Case study: Designing Finvera, a comprehensive fintech platform democratizing financial growth and wealth management.">
   
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Finvera Case Study — Victor Gbayesola">
+  <meta property="og:description" content="Democratizing institutional wealth & component architecture by Victor Gbayesola.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://designeunoch.com.ng/case-study-finvera.html">
+  <meta property="og:image" content="https://designeunoch.com.ng/assets/finvera-home.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css?v=22">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
 </head>
 <body class="portfolio-body case-study-page">
+
+  <!-- Mouse Tracking Glow & Cursor -->
   <div class="cursor-follower" id="cursor-follower"><span class="cursor-text"></span></div>
   <div class="cursor-glow" id="cursor-glow"></div>
 
-  <!-- Minimal Linear Grid-Lines Backdrop -->
-  <div class="bg-grid-lines">
-    <div class="grid-vertical-line col-1"></div>
-    <div class="grid-vertical-line col-2"></div>
-    <div class="grid-vertical-line col-3"></div>
-  </div>
-
-  <header class="app-header">
-    <div class="header-container">
-      <a href="index.html" class="brand-logo">
-        <span class="logo-circle"></span>
-        <span class="brand-name">Victor G.</span>
+  <!-- Minimalist Header -->
+  <header class="tof-header">
+    <div class="tof-header-container">
+      <a href="index.html" class="tof-brand-logo select-none">
+        <span class="tof-logo-text">VICTOR G.</span>
       </a>
-      <nav class="nav-menu" id="main-navigation">
-        <ul class="nav-list">
-          <li><a href="index.html#about" class="nav-item" data-translate="nav_about">About</a></li>
-          <li><a href="index.html#projects" class="nav-item" data-translate="nav_projects">Projects</a></li>
-          <li><a href="index.html#habits" class="nav-item" data-translate="nav_habits">Life Hub</a></li>
-          <li><a href="index.html#experience" class="nav-item" data-translate="nav_experience">Experience</a></li>
-          <li><a href="index.html#contact" class="nav-item" data-translate="nav_contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="nav-widgets">
-        <div class="lang-switcher-pill">
-          <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
-          <span class="pill-divider">|</span>
-          <button class="lang-btn" id="lang-es" onclick="setLanguage('es')">ES</button>
-        </div>
-        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
-          <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
-          <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
-        </button>
-        <!-- Mobile hamburger drawer toggle -->
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-navigation">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="index.html#projects" class="tof-pill-dark" style="padding: 9px 18px; font-size: 0.82rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Selected Work</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <main class="case-study-container">
+  <main class="case-study-container" style="padding-top: 160px;">
     
     <!-- Hero Section -->
-    <section class="cs-hero">
-      <div class="container">
-        <h1 class="cs-title">Finvera <br><span class="accent-gradient">Democratizing financial growth.</span></h1>
-        
-        <div style="margin-bottom: 50px;">
-          <a href="https://finvera-zeta.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            Visit Live Site
+    <section class="container" style="margin-bottom: 70px;">
+      <div style="max-width: 980px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+          <span class="tof-tag" style="background: rgba(255, 85, 0, 0.1); color: var(--color-accent); border: 1px solid rgba(255, 85, 0, 0.25);">CASE STUDY [ 06 / 06 ]</span>
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.12em;">FINTECH & COMPONENT TOKENS</span>
+        </div>
+
+        <h1 class="cs-title" style="text-align: left; margin-bottom: 28px; font-size: clamp(3rem, 7vw, 5.8rem); line-height: 1.05;">
+          Finvera Platform <br>
+          <span class="tof-serif-italic" style="color: var(--color-accent); font-weight: 400;">Democratizing Institutional Wealth.</span>
+        </h1>
+
+        <p style="font-size: 1.28rem; color: var(--color-ink-secondary); max-width: 68ch; line-height: 1.68; margin-bottom: 36px; font-family: var(--font-geist);">
+          Architected a multi-theme, high-performance financial platform. Combining sub-second responsive trading layouts, accessible token hierarchies, and intuitive savings funnels for 50,000+ active users.
+        </p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 14px;">
+          <a href="https://finvera-zeta.vercel.app/" class="tof-pill-accent" target="_blank" rel="noopener noreferrer">
+            <span>Launch Live Prototype</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
+          <button type="button" class="tof-pill-white" onclick="document.getElementById('gallery-section').scrollIntoView({ behavior: 'smooth' })">
+            <span>View Design Suite</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Metadata Section -->
-    <section class="cs-meta">
-      <div class="container cs-meta-grid">
-        <div class="cs-meta-item">
-          <h4>Role</h4>
-          <p>Product Designer & Developer</p>
+    <!-- Metadata Horizontal Strip -->
+    <section class="container" style="margin-bottom: 90px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 36px; padding: 36px 0; border-top: 1px solid var(--color-border-light); border-bottom: 1px solid var(--color-border-light);">
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-muted); margin-bottom: 8px;">Role</h4>
+          <p style="font-family: var(--font-geist); font-size: 1.08rem; font-weight: 600; color: var(--color-ink-primary); margin: 0;">Lead Product Designer & Design Systems</p>
         </div>
-        <div class="cs-meta-item">
-          <h4>Timeline</h4>
-          <p>12 Weeks</p>
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-muted); margin-bottom: 8px;">Timeline</h4>
+          <p style="font-family: var(--font-geist); font-size: 1.08rem; font-weight: 600; color: var(--color-ink-primary); margin: 0;">12 Weeks (Research to Production)</p>
         </div>
-        <div class="cs-meta-item">
-          <h4>Platform</h4>
-          <p>Web Platform</p>
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-muted); margin-bottom: 8px;">Platform</h4>
+          <p style="font-family: var(--font-geist); font-size: 1.08rem; font-weight: 600; color: var(--color-ink-primary); margin: 0;">Responsive Web & Desktop Application</p>
         </div>
-        <div class="cs-meta-item">
-          <h4>Impact</h4>
-          <p>Seamless Onboarding, Trust-driven UI</p>
+        <div>
+          <h4 style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-muted); margin-bottom: 8px;">Verified Impact</h4>
+          <p style="font-family: var(--font-geist); font-size: 1.08rem; font-weight: 600; color: var(--color-accent); margin: 0;">50,000+ Active Clients & $1.0M+ Processed</p>
         </div>
       </div>
     </section>
 
-    <!-- Content Sections -->
-    <section class="cs-content">
+    <!-- Interactive Figma High-Resolution Design Showcase -->
+    <section class="container" id="gallery-section" style="margin-bottom: 130px;">
+      <div style="background: var(--color-dark-surface); border: 1px solid var(--color-dark-border); border-radius: 24px; box-shadow: 0 32px 80px rgba(0,0,0,0.45); overflow: hidden;">
+        
+        <!-- Gallery Controls -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 20px 28px; background: #16161a; border-bottom: 1px solid rgba(255,255,255,0.08); gap: 16px;">
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.1em;">HIGH-RESOLUTION FIGMA SUITE</span>
+            <h3 id="fin-active-title" style="font-family: var(--font-geist); color: #fff; font-size: 1.15rem; font-weight: 600; margin: 4px 0 0 0;">Homepage — Financial Solutions Built for Growth</h3>
+          </div>
+
+          <!-- Tab Switcher -->
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; background: rgba(255,255,255,0.04); padding: 5px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.06);">
+            <button type="button" class="fin-tab active" onclick="switchFinView('home')" id="fin-tab-home" style="background: var(--color-accent); color: #fff; border: none; border-radius: 100px; padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">01. Homepage</button>
+            <button type="button" class="fin-tab" onclick="switchFinView('services')" id="fin-tab-services" style="background: transparent; color: #a1a1aa; border: none; border-radius: 100px; padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">02. Services Suite</button>
+            <button type="button" class="fin-tab" onclick="switchFinView('about')" id="fin-tab-about" style="background: transparent; color: #a1a1aa; border: none; border-radius: 100px; padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">03. About & Values</button>
+            <button type="button" class="fin-tab" onclick="switchFinView('testimonials')" id="fin-tab-testimonials" style="background: transparent; color: #a1a1aa; border: none; border-radius: 100px; padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">04. Success Stories</button>
+            <button type="button" class="fin-tab" onclick="switchFinView('contact')" id="fin-tab-contact" style="background: transparent; color: #a1a1aa; border: none; border-radius: 100px; padding: 7px 16px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">05. Contact Hub</button>
+          </div>
+        </div>
+
+        <!-- Full-Bleed High-Res Image Viewport with Scrollable Container -->
+        <div style="padding: 24px; background: #09090b; display: flex; flex-direction: column; align-items: center;">
+          <div style="width: 100%; max-width: 1140px; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.08); background: #121215;">
+            <img id="fin-gallery-img" src="assets/finvera-home.jpg" alt="Finvera High-Res Interface" style="width: 100%; height: auto; display: block; transition: opacity 0.25s ease;" loading="eager">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Design Deep-Dive -->
+    <section class="container" style="margin-bottom: 140px;">
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;">
+        
+        <!-- Sticky Sidebar -->
+        <div style="position: sticky; top: 120px;">
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-accent); font-weight: 700; letter-spacing: 0.12em;">DESIGN RATIONALE</span>
+          <h2 style="font-family: var(--font-geist); font-size: clamp(2.2rem, 3.5vw, 3rem); font-weight: 700; margin-top: 12px; line-height: 1.1; color: var(--color-ink-primary);">
+            Financial Clarity <br>
+            <span class="tof-serif-italic" style="color: var(--color-accent);">Through Structure.</span>
+          </h2>
+          <p style="font-size: 0.95rem; color: var(--color-ink-muted); line-height: 1.6; margin-top: 20px;">
+            How systematic typography tokens, digestible bento cards, and high-contrast contrast ratios transformed retail wealth management.
+          </p>
+        </div>
+
+        <!-- Main Narrative Content -->
+        <div>
+          <!-- Part 1 -->
+          <div style="margin-bottom: 60px;">
+            <h3 style="font-family: var(--font-geist); font-size: 1.7rem; font-weight: 600; color: var(--color-ink-primary); margin-bottom: 16px;">
+              01. The Challenge: The Retail Financial Intimidation Barrier
+            </h3>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary); margin-bottom: 20px;">
+              The digital banking and investment space is frequently plagued with intimidating financial jargon, opaque fee structures, and fragmented portals that overwhelm everyday savers. Users were forced to jump between siloed dashboards for deposits, interest yield calculation, and portfolio loans.
+            </p>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary);">
+              Finvera required an institutional-grade brand architecture that paired the unquestioned security of an investment bank with the effortless fluidity of a modern consumer mobile app.
+            </p>
+          </div>
+
+          <!-- Part 2 -->
+          <div style="margin-bottom: 60px;">
+            <h3 style="font-family: var(--font-geist); font-size: 1.7rem; font-weight: 600; color: var(--color-ink-primary); margin-bottom: 16px;">
+              02. Design System & Component Token Architecture
+            </h3>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary); margin-bottom: 20px;">
+              I structured a comprehensive Figma token system built on atomic design principles. From micro-interactions on currency inputs to macro responsive grids, each component is calibrated for dark/light adaptability, sub-second rendering, and WCAG AAA accessibility compliance.
+            </p>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary); margin-bottom: 24px;">
+              The color strategy pairs deep pitch surfaces (<code style="background: var(--color-canvas-subtle); padding: 2px 6px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.85em;">#0B0E14</code>) with high-voltage electric blue accents (<code style="background: var(--color-canvas-subtle); padding: 2px 6px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.85em;">#1E6BFF</code>) to direct the user's eye straight toward primary yield actions and deposit triggers without visual clutter.
+            </p>
+
+            <div style="padding: 30px; background: var(--color-canvas-subtle); border-left: 3px solid var(--color-accent); border-radius: 0 16px 16px 0;">
+              <h4 style="font-family: var(--font-geist); font-size: 1.15rem; font-weight: 600; color: var(--color-ink-primary); margin-bottom: 12px;">Core Design Principles:</h4>
+              <ul style="margin: 0; padding-left: 20px; color: var(--color-ink-secondary); font-size: 1.05rem; line-height: 1.7;">
+                <li><strong>Radical Transparency:</strong> Clear, upfront APY yield disclosures, zero hidden fees, and explicit safety metrics.</li>
+                <li><strong>Cognitive Chunking:</strong> Bento-grid information hierarchy breaking dense asset allocations into digestible cards.</li>
+                <li><strong>Confidence-First Microcopy:</strong> Replacing Wall Street jargon with human-centered, goal-oriented savings terminology.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Part 3 -->
+          <div style="margin-bottom: 60px;">
+            <h3 style="font-family: var(--font-geist); font-size: 1.7rem; font-weight: 600; color: var(--color-ink-primary); margin-bottom: 16px;">
+              03. The Result: Validated Consumer Adoption
+            </h3>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary); margin-bottom: 20px;">
+              Deploying this unified design suite led to rapid market validation. The streamlined onboarding funnel reduced initial deposit abandonment by 42%, while the modular component library cut front-end development cycle times in half.
+            </p>
+            <p style="font-size: 1.18rem; line-height: 1.75; color: var(--color-ink-secondary);">
+              Today, Finvera powers financial growth for over 50,000 active clients across global markets, processing over $1,000,000 in monthly wealth volume with a 99% client satisfaction benchmark.
+            </p>
+          </div>
+
+          <!-- Deliverables Bento Box -->
+          <div style="padding: 36px; background: var(--color-dark-surface); border: 1px solid var(--color-dark-border); border-radius: 20px;">
+            <h3 style="font-family: var(--font-geist); font-size: 1.45rem; font-weight: 600; color: #fff; margin-bottom: 20px;">
+              Key System Deliverables
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+              <div style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+                <i class="fa-solid fa-layer-group" style="color: var(--color-accent); font-size: 1.4rem; margin-bottom: 12px;"></i>
+                <h5 style="color: #fff; font-size: 0.98rem; font-weight: 600; margin-bottom: 6px;">5 Full-Page Design Blueprints</h5>
+                <p style="color: var(--color-dark-secondary); font-size: 0.86rem; margin: 0; line-height: 1.5;">Homepage, Services, About, Testimonials, and Consultation architecture.</p>
+              </div>
+              <div style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+                <i class="fa-solid fa-code" style="color: var(--color-accent); font-size: 1.4rem; margin-bottom: 12px;"></i>
+                <h5 style="color: #fff; font-size: 0.98rem; font-weight: 600; margin-bottom: 6px;">Component Token Library</h5>
+                <p style="color: var(--color-dark-secondary); font-size: 0.86rem; margin: 0; line-height: 1.5;">Modular, accessible design tokens ready for React / Next.js implementation.</p>
+              </div>
+              <div style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+                <i class="fa-solid fa-chart-pie" style="color: var(--color-accent); font-size: 1.4rem; margin-bottom: 12px;"></i>
+                <h5 style="color: #fff; font-size: 0.98rem; font-weight: 600; margin-bottom: 6px;">Interactive Yield Calculators</h5>
+                <p style="color: var(--color-dark-secondary); font-size: 0.86rem; margin: 0; line-height: 1.5;">Dynamic sliders and interest graphs eliminating calculation friction.</p>
+              </div>
+              <div style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+                <i class="fa-solid fa-rocket" style="color: var(--color-accent); font-size: 1.4rem; margin-bottom: 12px;"></i>
+                <h5 style="color: #fff; font-size: 0.98rem; font-weight: 600; margin-bottom: 6px;">Live Vercel Production App</h5>
+                <p style="color: var(--color-dark-secondary); font-size: 0.86rem; margin: 0; line-height: 1.5;">High-performance web deployment hosted at finvera-zeta.vercel.app.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Project CTA (Closing the Loop back to QuickBite) -->
+    <section class="cs-next-project" style="text-align: center; padding: 120px 0; border-top: 1px solid var(--color-border-light);">
       <div class="container">
-        <div class="cs-text-block">
-          <h2>The Challenge</h2>
-          <p>The fintech space is often cluttered with complex jargon and intimidating interfaces. Finvera needed a comprehensive platform that felt both institutional and accessible, empowering everyday users to trade, take loans, and manage wealth without feeling overwhelmed by the data.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FULL BLEED SCROLLING UI DESIGN -->
-    <section class="cs-visual" style="padding: 0; max-width: 1200px; margin: 0 auto; overflow: hidden; border-radius: 20px; box-shadow: var(--shadow-card); border: 1px solid var(--border-color);">
-      <div style="width: 100%; display: flex; flex-direction: column;">
-        <img src="assets/finvera_full.webp" alt="Finvera Full High-Res Interface" style="width: 100%; height: auto; display: block;" loading="lazy">
-      </div>
-    </section>
-
-    <section class="cs-content">
-      <div class="container">
-        <div class="cs-text-block">
-          <h2>The Solution</h2>
-          <p>We built a cohesive brand system centered around trust and clarity. By utilizing a clean, highly legible typography scale and structured card layouts, we created an environment where financial data is digestible. The final product includes intuitive trading views, seamless account management, and a rock-solid component library.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Next Project CTA -->
-    <section class="cs-next-project">
-      <div class="container">
-        <p>Next Case Study</p>
-        <a href="case-study-quickbite.html" class="cs-next-title">QuickBite <i class="fa-solid fa-arrow-right"></i></a>
+        <p style="color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.16em; font-family: var(--font-mono); font-size: 0.82rem; margin-bottom: 20px;">Next Selected Work</p>
+        <a href="case-study-quickbite.html" class="cs-next-title" style="font-family: var(--font-geist); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 700; text-decoration: none; color: var(--color-ink-primary); transition: color 0.3s ease; line-height: 1.05; display: inline-flex; align-items: center; gap: 16px;">
+          <span>QuickBite Mobile</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
       </div>
     </section>
 
   </main>
 
-  <footer class="app-footer">
-    <div class="container footer-container">
-      <p class="copyright-text">&copy; 2026 Victor Gbayesola. Designed with care, built with intent.</p>
-      <div class="footer-links">
-        <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" aria-label="Behance Profile"><i class="fa-brands fa-behance" aria-hidden="true"></i></a>
-        <a href="https://linkedin.com/in/victorgbayesola" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+  <footer class="tof-footer">
+    <div class="tof-container">
+      <div class="tof-footer-copy-line" style="border-top: 1px solid var(--color-border-light); padding: 36px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <span style="font-size: 0.88rem; color: var(--color-ink-muted);">© 2026 VICTOR GBAYESOLA. Designed with rigor, built with craft.</span>
+        <div style="display: flex; gap: 20px;">
+          <a href="index.html#projects" style="color: var(--color-ink-secondary); font-size: 0.88rem; text-decoration: none;">Selected Work</a>
+          <a href="about.html" style="color: var(--color-ink-secondary); font-size: 0.88rem; text-decoration: none;">About Me</a>
+          <a href="https://www.behance.net/gbayesolavictor" target="_blank" rel="noopener noreferrer" style="color: var(--color-ink-secondary); font-size: 0.88rem; text-decoration: none;">Behance</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="app.js"></script>
+  <script>
+    // Lenis Smooth Scroll
+    if (typeof Lenis !== 'undefined') {
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        smooth: true
+      });
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+
+    // High-Resolution Figma Suite Tab Logic
+    const FIN_VIEWS = {
+      home: {
+        src: 'assets/finvera-home.jpg',
+        title: 'Homepage — Financial Solutions Built for Growth (The Better Way to Save)',
+        alt: 'Finvera Homepage Full Interface'
+      },
+      services: {
+        src: 'assets/finvera-services.jpg',
+        title: 'Services Suite — Institutional Wealth Management & Smart Lending',
+        alt: 'Finvera Financial Services Suite'
+      },
+      about: {
+        src: 'assets/finvera-about.jpg',
+        title: 'About Finvera — Company Mission, Leadership & Regulatory Security',
+        alt: 'About Finvera Our Story and Values'
+      },
+      testimonials: {
+        src: 'assets/finvera-testimonials.jpg',
+        title: 'Success Stories — Enterprise Testimonials & Client Portfolio Growth',
+        alt: 'Finvera Testimonials and Case Studies'
+      },
+      contact: {
+        src: 'assets/finvera-contact.jpg',
+        title: 'Contact Hub — Institutional Advisory & Private Wealth Consultation',
+        alt: 'Finvera Contact and Advisory Hub'
+      }
+    };
+
+    function switchFinView(viewKey) {
+      const data = FIN_VIEWS[viewKey] || FIN_VIEWS.home;
+      const img = document.getElementById('fin-gallery-img');
+      const title = document.getElementById('fin-active-title');
+
+      if (img) {
+        img.style.opacity = '0.25';
+        setTimeout(() => {
+          img.src = data.src;
+          img.alt = data.alt;
+          img.style.opacity = '1';
+        }, 120);
+      }
+      if (title) {
+        title.textContent = data.title;
+      }
+
+      const tabs = document.querySelectorAll('.fin-tab');
+      tabs.forEach(tab => {
+        tab.style.background = 'transparent';
+        tab.style.color = '#a1a1aa';
+        tab.classList.remove('active');
+      });
+      const activeTab = document.getElementById('fin-tab-' + viewKey);
+      if (activeTab) {
+        activeTab.style.background = 'var(--color-accent)';
+        activeTab.style.color = '#ffffff';
+        activeTab.classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
