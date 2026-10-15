@@ -780,7 +780,7 @@ function Headline({ text, id, slit }: { text: string; id: string; slit: boolean 
 
 export default function SlitTypeFaq({
   items = DEFAULT_ITEMS,
-  headline = "Before you\nsend files",
+  headline = "How we\nbuild",
   slit = 0.42,
   intro = "Riso is a stencil process with soy ink and real drums. Most surprises start with file setup, so here is what to know first.",
   preset = "signal",
