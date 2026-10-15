@@ -51,7 +51,7 @@
   </script>
   
   <!-- Preloads for Performance -->
-  <link rel="preload" href="style.css?v=23" as="style">
+  <link rel="preload" href="style.css?v=24" as="style">
   <link rel="preload" href="assets/profile.webp" as="image">
   <link rel="preload" href="assets/lava_rock.webp" as="image">
   
@@ -66,7 +66,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=23">
+  <link rel="stylesheet" href="style.css?v=24">
   
   <!-- Lenis Smooth Scroll CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
@@ -481,97 +481,239 @@
       </div>
     </section>
 
-    <!-- ═══ 5. FAQ (Off-White #f8f8f7) ═══ -->
-    <section class="tof-faq-section" id="mechanics">
+    <!-- ═══ 5. FAQ (Slit-Type Signature Architecture) ═══ -->
+    <section class="tof-faq-section stf-section" id="mechanics">
       <div class="tof-container tof-faq-layout">
         <div class="tof-faq-sidebar">
           <span class="tof-tag">ENGAGEMENT & PROCESS</span>
-          <h3 class="tof-faq-headline">How we partner, execute, and deliver results.</h3>
+          <h3 class="tof-faq-headline stf-title" data-slit="true">How we partner, execute, and deliver results.</h3>
+          <p class="stf-intro">Clear operating parameters for high-velocity venture teams. Quantitative UX design, tight milestone sprints, and pixel-perfect production code.</p>
+
+          <!-- Interactive Ticker Tape -->
+          <div class="stf-ticker" data-paused="false">
+            <p class="stf-sr">RAPID 3-WEEK SPRINTS • ECONOMICS-DRIVEN UX • FIGMA TO PRODUCTION CODE • CONVERSION OPTIMIZED • ZERO FLUFF</p>
+            <div class="stf-ticker-mask" aria-hidden="true">
+              <div class="stf-ticker-track">
+                <div class="stf-ticker-run">
+                  <span>RAPID 3-WEEK SPRINTS</span>
+                  <span>ECONOMICS-DRIVEN UX</span>
+                  <span>FIGMA TO CODE</span>
+                  <span>CONVERSION OPTIMIZED</span>
+                </div>
+                <div class="stf-ticker-run">
+                  <span>RAPID 3-WEEK SPRINTS</span>
+                  <span>ECONOMICS-DRIVEN UX</span>
+                  <span>FIGMA TO CODE</span>
+                  <span>CONVERSION OPTIMIZED</span>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="stf-ticker-toggle" aria-label="Pause the moving line">
+              <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2h3v10H3zM8 2h3v10H8z" fill="currentColor"/></svg>
+            </button>
+          </div>
         </div>
 
-        <div class="tof-faq-accordion-wrap">
+        <div class="tof-faq-accordion-wrap stf-list" role="list">
           <!-- Q1 -->
-          <div class="tof-faq-item">
-            <button class="tof-faq-btn" aria-expanded="false">
-              <div class="tof-faq-q-wrap">
-                <span class="tof-faq-num">01</span>
-                <span class="tof-faq-question">How does your economics background shape your design work?</span>
+          <div class="stf-item" data-state="closed" id="faq-economics">
+            <span class="stf-fill" aria-hidden="true"></span>
+            <h4 class="stf-h">
+              <button class="stf-btn" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-btn-1">
+                <!-- Normal layer (black on white) -->
+                <span class="stf-row" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">01</span>
+                    <span class="stf-label">How does your economics background shape your design work?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+                <!-- Inverted layer (white on ink flood) -->
+                <span class="stf-row stf-row--inv" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">01</span>
+                    <span class="stf-label">How does your economics background shape your design work?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+              </button>
+            </h4>
+            <div class="stf-panel" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1">
+              <div class="stf-panel-in">
+                <div class="stf-answer">
+                  <div class="stf-text">
+                    <p>Most design starts and ends with surface aesthetics. Because of my background in quantitative economics, every layout decision, button placement, and onboarding sequence is evaluated through cognitive load, friction points, and conversion metrics. You get products that look world-class and deliver measurable business outcomes.</p>
+                  </div>
+                  <div class="stf-tools">
+                    <span class="stf-tag">METHODOLOGY</span>
+                    <button type="button" class="stf-copy" data-target="faq-economics">Copy link</button>
+                  </div>
+                </div>
               </div>
-              <div class="tof-faq-icon">
-                <span class="bar-h"></span>
-                <span class="bar-v"></span>
-              </div>
-            </button>
-            <div class="tof-faq-answer">
-              <p>Most design starts and ends with surface aesthetics. Because of my background in quantitative economics, every layout decision, button placement, and onboarding sequence is evaluated through cognitive load, friction points, and conversion metrics. You get products that look world-class and deliver measurable business outcomes.</p>
             </div>
           </div>
 
           <!-- Q2 -->
-          <div class="tof-faq-item">
-            <button class="tof-faq-btn" aria-expanded="false">
-              <div class="tof-faq-q-wrap">
-                <span class="tof-faq-num">02</span>
-                <span class="tof-faq-question">What stages of companies do you typically partner with?</span>
+          <div class="stf-item" data-state="closed" id="faq-stages">
+            <span class="stf-fill" aria-hidden="true"></span>
+            <h4 class="stf-h">
+              <button class="stf-btn" type="button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-btn-2">
+                <span class="stf-row" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">02</span>
+                    <span class="stf-label">What stages of companies do you typically partner with?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+                <span class="stf-row stf-row--inv" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">02</span>
+                    <span class="stf-label">What stages of companies do you typically partner with?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+              </button>
+            </h4>
+            <div class="stf-panel" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2">
+              <div class="stf-panel-in">
+                <div class="stf-answer">
+                  <div class="stf-text">
+                    <p>I partner primarily with early-stage to Series-A founders who need an MVP designed from scratch, a venture-winning pitch deck, or a comprehensive redesign to scale. I also consult for growth teams looking to overhaul complex internal tools or dashboards.</p>
+                  </div>
+                  <div class="stf-tools">
+                    <span class="stf-tag">CLIENTS</span>
+                    <button type="button" class="stf-copy" data-target="faq-stages">Copy link</button>
+                  </div>
+                </div>
               </div>
-              <div class="tof-faq-icon">
-                <span class="bar-h"></span>
-                <span class="bar-v"></span>
-              </div>
-            </button>
-            <div class="tof-faq-answer">
-              <p>I partner primarily with early-stage to Series-A founders who need an MVP designed from scratch, a venture-winning pitch deck, or a comprehensive redesign to scale. I also consult for growth teams looking to overhaul complex internal tools or dashboards.</p>
             </div>
           </div>
 
           <!-- Q3 -->
-          <div class="tof-faq-item">
-            <button class="tof-faq-btn" aria-expanded="false">
-              <div class="tof-faq-q-wrap">
-                <span class="tof-faq-num">03</span>
-                <span class="tof-faq-question">How fast can we go from concept to a shipped deliverable?</span>
+          <div class="stf-item" data-state="closed" id="faq-velocity">
+            <span class="stf-fill" aria-hidden="true"></span>
+            <h4 class="stf-h">
+              <button class="stf-btn" type="button" aria-expanded="false" aria-controls="faq-panel-3" id="faq-btn-3">
+                <span class="stf-row" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">03</span>
+                    <span class="stf-label">How fast can we go from concept to a shipped deliverable?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+                <span class="stf-row stf-row--inv" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">03</span>
+                    <span class="stf-label">How fast can we go from concept to a shipped deliverable?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+              </button>
+            </h4>
+            <div class="stf-panel" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3">
+              <div class="stf-panel-in">
+                <div class="stf-answer">
+                  <div class="stf-text">
+                    <p>Sprint cycles typically run between 3 to 6 weeks depending on product scope. We establish clear milestone deliverables from week one, working in tight weekly syncs with interactive Figma prototypes and production-ready handoffs.</p>
+                  </div>
+                  <div class="stf-tools">
+                    <span class="stf-tag">VELOCITY</span>
+                    <button type="button" class="stf-copy" data-target="faq-velocity">Copy link</button>
+                  </div>
+                </div>
               </div>
-              <div class="tof-faq-icon">
-                <span class="bar-h"></span>
-                <span class="bar-v"></span>
-              </div>
-            </button>
-            <div class="tof-faq-answer">
-              <p>Sprint cycles typically run between 3 to 6 weeks depending on product scope. We establish clear milestone deliverables from week one, working in tight weekly syncs with interactive Figma prototypes and production-ready handoffs.</p>
             </div>
           </div>
 
           <!-- Q4 -->
-          <div class="tof-faq-item">
-            <button class="tof-faq-btn" aria-expanded="false">
-              <div class="tof-faq-q-wrap">
-                <span class="tof-faq-num">04</span>
-                <span class="tof-faq-question">Do you write production frontend code or deliver design files only?</span>
+          <div class="stf-item" data-state="closed" id="faq-engineering">
+            <span class="stf-fill" aria-hidden="true"></span>
+            <h4 class="stf-h">
+              <button class="stf-btn" type="button" aria-expanded="false" aria-controls="faq-panel-4" id="faq-btn-4">
+                <span class="stf-row" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">04</span>
+                    <span class="stf-label">Do you write production frontend code or deliver design files only?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+                <span class="stf-row stf-row--inv" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">04</span>
+                    <span class="stf-label">Do you write production frontend code or deliver design files only?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+              </button>
+            </h4>
+            <div class="stf-panel" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4">
+              <div class="stf-panel-in">
+                <div class="stf-answer">
+                  <div class="stf-text">
+                    <p>Both. I work in Figma and Framer for rapid iteration and design systems, and can build or collaborate directly with your engineering team in React, Next.js, Tailwind, and Webflow to ensure the shipped product matches the pixel-perfect design.</p>
+                  </div>
+                  <div class="stf-tools">
+                    <span class="stf-tag">CODE & SYSTEMS</span>
+                    <button type="button" class="stf-copy" data-target="faq-engineering">Copy link</button>
+                  </div>
+                </div>
               </div>
-              <div class="tof-faq-icon">
-                <span class="bar-h"></span>
-                <span class="bar-v"></span>
-              </div>
-            </button>
-            <div class="tof-faq-answer">
-              <p>Both. I work in Figma and Framer for rapid iteration and design systems, and can build or collaborate directly with your engineering team in React, Next.js, Tailwind, and Webflow to ensure the shipped product matches the pixel-perfect design.</p>
             </div>
           </div>
 
           <!-- Q5 -->
-          <div class="tof-faq-item">
-            <button class="tof-faq-btn" aria-expanded="false">
-              <div class="tof-faq-q-wrap">
-                <span class="tof-faq-num">05</span>
-                <span class="tof-faq-question">What is your engagement and pricing model?</span>
+          <div class="stf-item" data-state="closed" id="faq-pricing">
+            <span class="stf-fill" aria-hidden="true"></span>
+            <h4 class="stf-h">
+              <button class="stf-btn" type="button" aria-expanded="false" aria-controls="faq-panel-5" id="faq-btn-5">
+                <span class="stf-row" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">05</span>
+                    <span class="stf-label">What is your engagement and pricing model?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+                <span class="stf-row stf-row--inv" aria-hidden="true">
+                  <span class="stf-q-wrap">
+                    <span class="stf-num">05</span>
+                    <span class="stf-label">What is your engagement and pricing model?</span>
+                  </span>
+                  <span class="stf-cell">
+                    <svg class="stf-plus" viewBox="0 0 32 32" fill="none"><path d="M16 1v30M1 16h30" stroke="currentColor" stroke-width="2.5"/></svg>
+                  </span>
+                </span>
+              </button>
+            </h4>
+            <div class="stf-panel" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5">
+              <div class="stf-panel-in">
+                <div class="stf-answer">
+                  <div class="stf-text">
+                    <p>I operate on structured fixed-fee project scopes or monthly dedicated sprint retainers. No ambiguous hourly billing—every deliverable, timeline, and outcome is clearly defined upfront.</p>
+                  </div>
+                  <div class="stf-tools">
+                    <span class="stf-tag">PRICING</span>
+                    <button type="button" class="stf-copy" data-target="faq-pricing">Copy link</button>
+                  </div>
+                </div>
               </div>
-              <div class="tof-faq-icon">
-                <span class="bar-h"></span>
-                <span class="bar-v"></span>
-              </div>
-            </button>
-            <div class="tof-faq-answer">
-              <p>I operate on structured fixed-fee project scopes or monthly dedicated sprint retainers. No ambiguous hourly billing—every deliverable, timeline, and outcome is clearly defined upfront.</p>
             </div>
           </div>
         </div>
@@ -709,7 +851,7 @@
   <!-- tsParticles Slim Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@3.3.0/tsparticles.slim.bundle.min.js"></script>
   <!-- Scripts -->
-  <script src="app.js?v=20"></script>
+  <script src="app.js?v=21"></script>
   <script src="coverflow.js"></script>
 </body>
 </html>

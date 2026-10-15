@@ -6118,11 +6118,13 @@ body.about-page {
   transform: translateX(8px);
 }
 
-/* 5. FAQ SECTION (#ffffff) */
-.tof-faq-section {
+/* 5. SLIT-TYPE FAQ SIGNATURE ARCHITECTURE */
+.tof-faq-section.stf-section {
   padding: 130px 0;
   background-color: var(--color-surface-white);
   border-top: 1px solid var(--color-border-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .tof-faq-layout {
@@ -6132,113 +6134,360 @@ body.about-page {
   align-items: start;
 }
 
-.tof-faq-headline {
-  font-family: var(--font-geist);
-  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  color: var(--color-ink-primary);
+.tof-faq-sidebar {
+  position: sticky;
+  top: 120px;
 }
 
-.tof-faq-accordion-wrap {
+/* Headline Slit Reveal */
+.stf-title {
+  margin: 14px 0 0 0;
+  font-family: var(--font-geist);
+  font-size: clamp(2.1rem, 3.4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--color-ink-primary);
+  text-transform: uppercase;
+}
+
+.stf-line {
+  display: block;
+  overflow: hidden;
+  padding-top: 0.08em;
+  margin-top: -0.08em;
+}
+
+.stf-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.stf-ch {
+  display: inline-block;
+  transform: translateY(0);
+  transition: transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: min(calc(var(--i, 0) * 20ms), 360ms);
+}
+
+.stf-title[data-intro="pending"] .stf-ch {
+  transform: translateY(105%);
+}
+
+.stf-title:hover .stf-ch {
+  transform: translateY(-0.03em);
+  transition-duration: 320ms;
+}
+
+.stf-intro {
+  margin-top: 18px;
+  font-family: var(--font-geist);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+  max-width: 44ch;
+}
+
+/* Interactive Ticker Tape */
+.stf-ticker {
+  margin-top: 36px;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-ink-secondary);
+}
+
+.stf-ticker-mask {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.stf-ticker-track {
+  display: inline-flex;
+  animation: stf-ticker-scroll 32s linear infinite;
+}
+
+.stf-ticker:hover .stf-ticker-track,
+.stf-ticker[data-paused="true"] .stf-ticker-track {
+  animation-play-state: paused;
+}
+
+.stf-ticker-run {
+  display: inline-flex;
+  flex: none;
+}
+
+.stf-ticker-run span {
+  padding: 0 1.2em;
+}
+
+.stf-ticker-run span::after {
+  content: "•";
+  margin-left: 1.2em;
+  color: var(--color-accent);
+}
+
+@keyframes stf-ticker-scroll {
+  to { transform: translateX(-50%); }
+}
+
+.stf-ticker-toggle {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--color-border-light);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink-secondary);
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.stf-ticker-toggle:hover {
+  background: var(--color-ink-primary);
+  color: #ffffff;
+  border-color: var(--color-ink-primary);
+}
+
+.stf-ticker-toggle svg {
+  width: 10px;
+  height: 10px;
+}
+
+/* Accordion List */
+.stf-list {
   display: flex;
   flex-direction: column;
 }
 
-.tof-faq-item {
-  border-bottom: 1px solid var(--color-border-light);
-  padding: 10px 0;
-}
-
-.tof-faq-item:first-child {
+.stf-item {
+  position: relative;
   border-top: 1px solid var(--color-border-light);
+  overflow: hidden;
+  border-radius: 6px;
+  transition: background-color 200ms ease;
 }
 
-.tof-faq-btn {
+.stf-item:last-child {
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+/* Signature Ink Flood Layer */
+.stf-fill {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -24px;
+  right: -24px;
+  background-color: var(--color-ink-primary);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stf-item[data-state="open"] .stf-fill {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 420ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.stf-item[data-state="closing"] .stf-fill {
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 280ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.stf-h {
+  margin: 0;
+  font: inherit;
+}
+
+.stf-btn {
+  position: relative;
+  display: block;
   width: 100%;
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stf-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.stf-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: none;
-  border: none;
-  padding: 20px 0;
-  cursor: pointer;
-  text-align: left;
+  gap: 20px;
+  padding: 24px 14px;
+  color: var(--color-ink-primary);
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.tof-faq-q-wrap {
+.stf-row--inv {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #ffffff;
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.stf-item[data-state="open"] .stf-row--inv {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 420ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.stf-item[data-state="closing"] .stf-row--inv {
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 280ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.stf-q-wrap {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.tof-faq-num {
+.stf-num {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--color-accent);
 }
 
-.tof-faq-question {
+.stf-label {
   font-family: var(--font-geist);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-ink-primary);
-  letter-spacing: -0.018em;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.tof-faq-icon {
+.stf-btn:hover .stf-label {
+  transform: translateX(4px);
+}
+
+.stf-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: none;
+}
+
+.stf-plus {
   width: 20px;
   height: 20px;
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  color: inherit;
+}
+
+.stf-item[data-state="open"] .stf-plus {
+  transform: rotate(135deg);
+}
+
+/* Accordion Panel */
+.stf-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 280ms cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
+  z-index: 2;
+}
+
+.stf-item[data-state="open"] .stf-panel {
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stf-panel-in {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.stf-answer {
+  padding: 4px 14px 28px 54px;
+  color: #f4f4f6;
+}
+
+.stf-text p {
+  font-family: var(--font-geist);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #d4d4d8;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.stf-tools {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 16px;
+  margin-top: 18px;
 }
 
-.tof-faq-icon .bar-h,
-.tof-faq-icon .bar-v {
-  position: absolute;
-  background-color: var(--color-accent);
-  transition: transform 0.3s ease;
+.stf-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.tof-faq-icon .bar-h {
-  width: 16px;
-  height: 1.5px;
+.stf-copy {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  color: #a1a1aa;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 180ms ease;
 }
 
-.tof-faq-icon .bar-v {
-  width: 1.5px;
-  height: 16px;
+.stf-copy:hover {
+  color: #ffffff;
 }
 
-.tof-faq-item.active .tof-faq-icon .bar-v {
-  transform: rotate(90deg);
-  opacity: 0;
-}
-
-.tof-faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, padding 0.3s ease;
-  padding-left: 38px;
-}
-
-.tof-faq-item.active .tof-faq-answer {
-  max-height: 250px;
-  opacity: 1;
-  padding-bottom: 24px;
-}
-
-.tof-faq-answer p {
-  font-family: var(--font-geist);
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-ink-secondary);
-  letter-spacing: -0.01em;
+.stf-copy.copied {
+  color: #4ade80;
+  text-decoration: none;
 }
 
 /* 6. CONTACT & MONUMENTAL FOOTER (OLED BLACK #09090b) */
@@ -6697,24 +6946,30 @@ body.about-page {
   }
 
   /* FAQ */
-  .tof-faq-section {
+  .tof-faq-section.stf-section {
     padding: 80px 0;
   }
 
-  .tof-faq-headline {
+  .stf-title {
     font-size: clamp(1.8rem, 5.2vw, 2.4rem);
   }
 
-  .tof-faq-question {
+  .stf-label {
     font-size: 1.1rem;
   }
 
-  .tof-faq-btn {
-    padding: 16px 0;
+  .stf-row {
+    padding: 18px 12px;
+    gap: 16px;
   }
 
-  .tof-faq-answer {
-    padding-left: 0;
+  .stf-answer {
+    padding: 2px 12px 22px 12px;
+  }
+
+  .stf-fill {
+    left: -16px;
+    right: -16px;
   }
 
   /* Contact & Footer */
@@ -6889,20 +7144,48 @@ body.about-page {
   }
 
   /* FAQ */
-  .tof-faq-section {
+  .tof-faq-section.stf-section {
     padding: 60px 0;
   }
 
-  .tof-faq-question {
-    font-size: 1rem;
+  .stf-title {
+    font-size: clamp(1.6rem, 6.2vw, 2rem);
   }
 
-  .tof-faq-btn {
-    padding: 14px 0;
+  .stf-label {
+    font-size: 0.98rem;
   }
 
-  .tof-faq-answer p {
-    font-size: 0.9rem;
+  .stf-row {
+    padding: 16px 8px;
+    gap: 12px;
+  }
+
+  .stf-q-wrap {
+    gap: 12px;
+  }
+
+  .stf-cell {
+    width: 32px;
+    height: 32px;
+  }
+
+  .stf-plus {
+    width: 17px;
+    height: 17px;
+  }
+
+  .stf-answer {
+    padding: 2px 8px 20px 8px;
+  }
+
+  .stf-text p {
+    font-size: 0.92rem;
+  }
+
+  .stf-fill {
+    left: -12px;
+    right: -12px;
   }
 
   /* Contact & Footer */
