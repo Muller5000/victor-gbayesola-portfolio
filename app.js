@@ -2153,83 +2153,141 @@ function initTofFaqAccordion() {
   const faqSection = document.getElementById('mechanics');
   if (!faqSection) return;
 
-  // 1. Initialize Headline Slit Effect
+  // 1. Headline Slit Reveal Controller
   const headline = faqSection.querySelector('.stf-title[data-slit="true"]');
-  if (headline && !headline.dataset.slitInitialized) {
-    headline.dataset.slitInitialized = 'true';
-    const text = headline.textContent.trim();
-    const words = text.split(/\s+/);
-    headline.innerHTML = '';
-    const lineSpan = document.createElement('span');
-    lineSpan.className = 'stf-line';
-
-    let charCount = 0;
-    words.forEach((word, wIdx) => {
-      const wordSpan = document.createElement('span');
-      wordSpan.className = 'stf-word';
-      Array.from(word).forEach(ch => {
-        const chSpan = document.createElement('span');
-        chSpan.className = 'stf-ch';
-        chSpan.style.setProperty('--i', charCount++);
-        chSpan.textContent = ch;
-        wordSpan.appendChild(chSpan);
-      });
-      lineSpan.appendChild(wordSpan);
-      if (wIdx < words.length - 1) {
-        lineSpan.appendChild(document.createTextNode(' '));
-      }
-    });
-    headline.appendChild(lineSpan);
-    headline.setAttribute('data-intro', 'pending');
-
+  if (headline) {
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         if (entries.some(e => e.isIntersecting)) {
           requestAnimationFrame(() => {
-            headline.removeAttribute('data-intro');
+            faqSection.setAttribute('data-intro', 'done');
           });
           observer.disconnect();
         }
       }, { threshold: 0.15 });
-      observer.observe(headline);
+      observer.observe(faqSection);
+      setTimeout(() => faqSection.setAttribute('data-intro', 'done'), 2200);
     } else {
-      headline.removeAttribute('data-intro');
+      faqSection.setAttribute('data-intro', 'done');
     }
   }
 
-  // 2. Initialize Ticker Tape Pause/Play
-  const ticker = faqSection.querySelector('.stf-ticker');
-  if (ticker) {
-    const toggleBtn = ticker.querySelector('.stf-ticker-toggle');
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
-        const isPaused = ticker.getAttribute('data-paused') === 'true';
-        ticker.setAttribute('data-paused', isPaused ? 'false' : 'true');
-        toggleBtn.setAttribute('aria-label', isPaused ? 'Pause the moving line' : 'Play the moving line');
-        toggleBtn.innerHTML = isPaused
-          ? '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2h3v10H3zM8 2h3v10H8z" fill="currentColor"/></svg>'
-          : '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 2v10l8.5-5z" fill="currentColor"/></svg>';
-      });
-    }
-  }
+  // 2. Real-time Search Controller
+  const searchInput = faqSection.querySelector('#stf-q');
+  const clearBtn = faqSection.querySelector('.stf-clear');
+  const countEl = faqSection.querySelector('.stf-count');
+  const emptyEl = faqSection.querySelector('.stf-empty');
+  const emptyQuerySpan = faqSection.querySelector('.stf-empty-query');
+  const resetBtn = faqSection.querySelector('.stf-reset');
 
-  // 3. Initialize Slit-Type Accordion Items with Dual-Layer Ink Flood
   const items = faqSection.querySelectorAll('.stf-item');
-  if (!items.length) {
-    // Fallback for legacy .tof-faq-item if any exist
-    const legacyItems = faqSection.querySelectorAll('.tof-faq-item');
-    legacyItems.forEach(item => {
-      const btn = item.querySelector('.tof-faq-btn');
-      if (!btn) return;
-      btn.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-        legacyItems.forEach(other => other.classList.remove('active'));
-        if (!isOpen) item.classList.add('active');
-      });
-    });
-    return;
+  if (!items.length) return;
+
+  const itemData = Array.from(items).map((item) => {
+    const qLabel = item.querySelector('.stf-q-text');
+    const answerP = item.querySelector('.stf-text p');
+    return {
+      item,
+      qText: qLabel ? qLabel.textContent : '',
+      aText: answerP ? answerP.textContent : '',
+      labels: item.querySelectorAll('.stf-q-text'),
+      answerP
+    };
+  });
+
+  function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
+  function highlightMatches(text, words) {
+    if (!words.length || !text) return text;
+    let marked = text;
+    words.forEach(w => {
+      const escaped = escapeRegex(w);
+      const regex = new RegExp('(' + escaped + ')', 'gi');
+      marked = marked.replace(regex, '<mark class="stf-mark">$1</mark>');
+    });
+    return marked;
+  }
+
+  function filterQuestions(query) {
+    const q = query.trim().toLowerCase();
+    const words = q.split(/\s+/).filter(Boolean);
+
+    if (clearBtn) {
+      clearBtn.style.display = q ? 'inline-block' : 'none';
+    }
+
+    let matchCount = 0;
+    itemData.forEach(({ item, qText, aText, labels, answerP }) => {
+      const combined = (qText + ' ' + aText).toLowerCase();
+      const isMatch = !words.length || words.every(w => combined.includes(w));
+
+      if (isMatch) {
+        matchCount++;
+        item.style.display = '';
+        labels.forEach(lbl => {
+          lbl.innerHTML = words.length ? highlightMatches(qText, words) : qText;
+        });
+        if (answerP) {
+          answerP.innerHTML = words.length ? highlightMatches(aText, words) : aText;
+        }
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    if (countEl) {
+      countEl.textContent = words.length ? matchCount + ' of ' + itemData.length + ' questions' : '';
+    }
+
+    if (emptyEl) {
+      if (words.length && matchCount === 0) {
+        emptyEl.style.display = 'block';
+        if (emptyQuerySpan) emptyQuerySpan.textContent = query.trim();
+      } else {
+        emptyEl.style.display = 'none';
+      }
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      filterQuestions(e.target.value);
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        filterQuestions('');
+      }
+      if (e.key === 'ArrowDown') {
+        const firstVisible = Array.from(items).find(it => it.style.display !== 'none');
+        if (firstVisible) {
+          const btn = firstVisible.querySelector('.stf-btn');
+          if (btn) btn.focus();
+        }
+      }
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      filterQuestions('');
+      if (searchInput) searchInput.focus();
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      filterQuestions('');
+      if (searchInput) searchInput.focus();
+    });
+  }
+
+  // 3. Row Accordion State & Dual-Layer Ink Flood
   const closeTimers = {};
 
   function setItemState(item, state) {
@@ -2264,7 +2322,7 @@ function initTofFaqAccordion() {
       const currentState = item.getAttribute('data-state');
       const isOpen = currentState === 'open';
 
-      // Signature single open: wipe out previously opened items to the right
+      // Signature single open: wipe out other open items to the right
       items.forEach(other => {
         if (other !== item && other.getAttribute('data-state') === 'open') {
           setItemState(other, 'closing');
@@ -2278,21 +2336,25 @@ function initTofFaqAccordion() {
       }
     });
 
-    // Keyboard roving focus: ArrowDown, ArrowUp, Home, End
+    // Keyboard roving focus between visible questions
     btn.addEventListener('keydown', (e) => {
+      const visibleItems = Array.from(items).filter(it => it.style.display !== 'none');
+      const curIndex = visibleItems.indexOf(item);
       let targetIndex = -1;
+
       if (e.key === 'ArrowDown') {
-        targetIndex = (index + 1) % items.length;
+        targetIndex = (curIndex + 1) % visibleItems.length;
       } else if (e.key === 'ArrowUp') {
-        targetIndex = (index - 1 + items.length) % items.length;
+        targetIndex = (curIndex - 1 + visibleItems.length) % visibleItems.length;
       } else if (e.key === 'Home') {
         targetIndex = 0;
       } else if (e.key === 'End') {
-        targetIndex = items.length - 1;
+        targetIndex = visibleItems.length - 1;
       }
-      if (targetIndex >= 0) {
+
+      if (targetIndex >= 0 && visibleItems[targetIndex]) {
         e.preventDefault();
-        const targetBtn = items[targetIndex].querySelector('.stf-btn');
+        const targetBtn = visibleItems[targetIndex].querySelector('.stf-btn');
         if (targetBtn) targetBtn.focus();
       }
     });
@@ -2317,11 +2379,9 @@ function initTofFaqAccordion() {
           try { document.execCommand('copy'); } catch (err) {}
           ta.remove();
         }
-        copyBtn.textContent = 'Link copied!';
-        copyBtn.classList.add('copied');
+        copyBtn.textContent = 'Link copied';
         setTimeout(() => {
           copyBtn.textContent = 'Copy link';
-          copyBtn.classList.remove('copied');
         }, 1800);
       });
     }
